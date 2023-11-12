@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Races]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(50) NOT NULL, 
+    [Speed] TINYINT NOT NULL, 
+    [Size] VARCHAR(16) NOT NULL
+)

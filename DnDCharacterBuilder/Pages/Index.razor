@@ -1,0 +1,746 @@
+﻿@page "/"
+
+@inject IArmorData armorData
+@inject IBackgroundData backgroundData
+@inject ICharacterClassFeatureData characterClassFeatureData
+@inject ICharacterClassLevelData characterClassLevelData
+@inject IFeatData featData
+@inject IRaceData raceData
+@inject IRacialFeatureData racialFeatureData
+@inject ISkillData skillData
+@inject ISpellData spellData
+@inject IWeaponData weaponData
+@inject ICharacterSheetData characterSheetData
+@inject NavigationManager navManager
+@inject ProtectedSessionStorage sessionStorage
+
+<PageTitle>DnD Character Builder</PageTitle>
+
+<body class="character-sheet">
+	<h1>Character Sheet</h1>
+	<div class="summary-section sheet-row">
+		<p>Character sheet summary</p>
+	</div>
+	<!-- Race and race features section -->
+	<div class="race-section sheet-row">
+		<div class="autocomplete">
+			<div class="option-selection">
+				<label for="raceSelection">Race: @(characterSheet.Race?.Name)</label>
+				<!-- Autocomplete-style selection of character's race -->
+				<input type="text"
+					   id="raceSelection"
+					   placeholder="Select a race..."
+					   class="form-control filter"
+					   aria-label="Search box"
+					   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
+					   @onfocusin="(_ => showRaceSelect = !showRaceSelect)"
+					   @onfocusout="(_ => OnRaceSelection())" />
+				<div class="option-list">
+					<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
+						@if (races?.Count > 0)
+						{
+							@foreach (var r in races)
+							{
+								<li class="option" @onclick="(_ => SelectRace(r))">
+									<span class="option-text">@r.Name</span>
+								</li>
+							}
+						}
+						else
+						{
+							<li class="disabled option">No results</li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Ability scores section -->
+	<div class="ability-score-section sheet-row">
+		<!-- Display character's ability scores alongside increment and decrement buttons -->
+		<div class="col-sm-2">
+			<p>Ability scores <br />
+				Remaining points: @characterSheet.AbilityScorePoints
+			</p>
+		</div>
+			@foreach (var a in characterSheet.AbilityScores)
+			{
+				<div class="col-sm-1">
+					<div class="ability-scores">
+						@($"{a.Ability.ToString()} {a.Value}")
+						@if(a.Value > 8)
+						{
+							<button class="btn btn-light" @onclick="(_ => DecreaseAbilityScore(a))">-</button>
+						}
+						@if (a.CanIncrease && characterSheet.AbilityScorePoints >= a.IncreaseCost)
+						{
+							<button class="btn btn-light" @onclick="(_ => IncreaseAbilityScore(a))">+</button>
+						}
+					</div>					
+				</div>
+			}			
+	</div>
+	<!-- Background section -->
+	<div class="background-section sheet-row">	
+		<div class="autocomplete">
+			<div class="option-selection">
+				<label for="backgroundSelection">Background: @(characterSheet.Background?.Name)</label>
+				<!-- Autocomplete-style selection of character's background -->
+				<input type="text"
+					   id="backgroundSelection"
+					   placeholder="Select a background..."
+					   class="form-control filter"
+					   aria-label="Search box"
+					   @oninput="((txt) => OnBGSearchInput((string)txt.Value))"
+					   @onfocusin="(_ => showBGSelect = !showBGSelect)"
+					   @onfocusout="(_ => OnBGSelection())" />
+				<div class="option-list">
+					<ul name="backgroundSelectionList" class="options @(showBGSelect ? "" : "hide")">
+						@if (backgrounds?.Count > 0)
+						{
+							@foreach (var b in backgrounds)
+							{
+								<li class="option" @onclick="(_ => SelectBackground(b))">
+									<span class="option-text">@b.Name</span>
+								</li>
+							}
+						}
+						else
+						{
+							<li class="disabled option">No results</li>
+						}
+					</ul>
+				</div>
+			</div>					
+		</div>
+	</div>
+	<!-- Skill and saving section throw proficiencies section -->
+	<div class="skills-and-saving-throws-section sheet-row">
+		<div class="skills-section">
+			<p>Character skills</p>
+			<!-- Display all current skill proficiencies -->
+			<ul name="skillSelection">
+				@if(characterSheet.SkillProficiencies.Count > 0)
+				{
+					@foreach (var s in characterSheet.SkillProficiencies)
+					{
+						<li>@s.Name</li>
+					}
+				}
+			</ul>
+		</div>
+		<div class="saving-throws-section">
+			<p>Saving throws</p>
+		</div>
+	</div>
+	<!-- Weapon and armor section -->
+	<div class="weapons-and-armors-section sheet-row">
+		<div class="weapons-section">
+			<div class="autocomplete">
+				<div class="option-selection">
+					<label for="weapon1Selection">Main hand: @characterSheet.EquippedWeapons[0]?.Name</label>
+					<!-- Autocomplete-style selection of character's main hand weapon -->
+					<input type="text"
+						   id="weapon1Selection"
+						   placeholder="Equip a weapon..."
+						   class="form-control filter"
+						   aria-label="Search box"
+						   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
+						   @onfocusin="(_ => MainHandSelect())"
+						   @onfocusout="(_ => OnWeaponSelection())" />
+					<div class="option-list">
+						<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
+							@if (weapons?.Count > 0)
+							{
+								@foreach (var w in weapons)
+								{
+									<li class="option" @onclick="(_ => SelectWeapon(w, 0))">
+										<span class="option-text">@w.Name</span>
+									</li>
+								}
+							}
+							else
+							{
+								<li class="disabled option">No results</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+			@if(characterSheet.EquippedWeapons[0]?.TwoHanded == false)
+			{
+				<div class="autocomplete">
+					<div class="option-selection">
+						<label for="weapon2Selection">Off hand: @characterSheet.EquippedWeapons[1]?.Name</label>
+						<!-- Autocomplete-style selection of character's off-hand weapon -->
+						<input type="text"
+							   id="weapon2Selection"
+							   placeholder="Equip a weapon..."
+							   class="form-control filter"
+							   aria-label="Search box"
+							   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
+							   @onfocusin="(_ => OffHandSelect())"
+							   @onfocusout="(_ => OnWeaponSelection())" />
+						<div class="option-list">
+							<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
+								@if (weapons?.Count > 0)
+								{
+									@foreach (var w in weapons)
+									{
+										<li class="option" @onclick="(_ => SelectWeapon(w, 1))">
+											<span class="option-text">@w.Name</span>
+										</li>
+									}
+								}
+								else
+								{
+									<li class="disabled option">No results</li>
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+		<div class="armor-section">
+			<div class="autocomplete">
+				<div class="option-selection">
+					<label for="armorSelection">Equipped armor: @characterSheet.EquippedArmor?.Name</label>
+					<!-- Autocomplete-style selection of character's armor -->
+					<input type="text"
+						   id="armorSelection"
+						   placeholder="Equip armor..."
+						   class="form-control filter"
+						   aria-label="Search box"
+						   @oninput="((txt) => OnArmorSearchInput((string)txt.Value))"
+						   @onfocusin="(_ => showArmorSelect = !showArmorSelect)"
+						   @onfocusout="(_ => OnArmorSelection())" />
+					<div class="option-list">
+						<ul name="armorSelectionList" class="options @(showArmorSelect ? "" : "hide")">
+							@if (armors?.Count > 0)
+							{
+								@foreach (var a in armors)
+								{
+									<li class="option" @onclick="(_ => SelectArmor(a))">
+										<span class="option-text">@a.Name</span>
+									</li>
+								}
+							}
+							else
+							{
+								<li class="disabled option">No results</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Spells section -->
+	<div class="spells-section sheet-row">
+		<p>Known spells</p>
+	</div>
+	<!-- Class levels and features section -->
+	<div class="levels-section sheet-row">
+		<div class="level-choice-section">
+			<p>
+				Levels:
+				<br />
+				<!-- Display all current character's levels -->
+				@if (characterSheet.CharacterClassLevels.Count > 0)
+				{
+					@foreach (var cl in characterSheet.CharacterClassLevels)
+					{
+						@($"{cl.BaseClass} - {cl.Subclass} {cl.Level} ")
+						<button class="btn btn-light">-</button>
+						<br />
+					}
+				}
+			</p>
+			@if(characterSheet.CharacterClassLevels?.Count < 20)
+			{
+				<div class="autocomplete">
+					<div class="option-selection">
+						<!-- Autocomplete-style selection of character's class levels -->
+						<input type="text"
+							   id="classLevelSelection"
+							   placeholder="Select a class..."
+							   class="form-control filter"
+							   aria-label="Search box"
+						@bind-value=classLevelSearchText
+						@oninput="((txt) => OnClassLevelSearchInput((string)txt.Value))"
+						@onfocusin="(_ => showClassLevelSelect = !showClassLevelSelect)"
+						@onfocusout="(_ => OnClassLevelSelection())" />
+						<div class="option-list">
+							<ul name="classLevelSelection" class="options @(showClassLevelSelect ? "" : "hide")">
+								@if (characterClassLevels?.Count > 0)
+								{
+									@foreach (var cl in characterClassLevels)
+									{
+										<li class="option" @onclick="(_ => AddClassLevel(cl))">
+											<span class="option-text">@($"{cl.BaseClass} - {cl.Subclass} {cl.Level}")</span>
+										</li>
+									}
+								}
+								else
+								{
+									<li class="disabled option">No results</li>
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			}		
+		</div>
+		<div class="level-features-section">
+			<!-- Display all acquired level features, grouped by level -->
+			@if (characterSheet.CharacterClassLevels?.Count > 0)
+			{
+				@for (int i = 0; i < characterSheet.CharacterClassLevels.Count; i++)
+				{
+					<p>Character level @(i + 1) / @($"{characterSheet.CharacterClassLevels[i].BaseClass} - {characterSheet.CharacterClassLevels[i].Subclass} level {characterSheet.CharacterClassLevels[i].Level}") features:</p>
+					<ul name="levelFeatures">
+						@foreach (var f in characterSheet.CharacterClassLevels[i].ClassLevelFeatures)
+						{
+							<li> @f.Name </li>
+						}
+					</ul>
+				}
+			}
+		</div>
+	</div>
+</body>
+
+@code
+{
+	private List<Armor> armors = new();
+	private List<Background> backgrounds = new();
+	private List<CharacterClassFeature> characterClassFeatures = new();
+	private List<CharacterClassLevel> characterClassLevels = new();
+	private List<Feat> feats = new();
+	private List<Race> races = new();
+	private List<RacialFeature> racialFeatures = new();
+	private List<Skill> skills = new();
+	private List<Spell> spells = new();
+	private List<Weapon> weapons = new();
+
+	private string backgroundSearchText = "";
+	private string raceSearchText = "";
+	private string weaponSearchText = "";
+	//private string weapon2SearchText = "";
+	private string armorSearchText = "";
+	private string classLevelSearchText = "";
+
+	private bool showBGSelect = false;
+	private bool showRaceSelect = false;
+	private bool showWeapon1Select = false;
+	private bool showWeapon2Select = false;
+	private bool showArmorSelect = false;
+	private bool showClassLevelSelect = false;
+	CancellationTokenSource tokenSource;
+
+	private CharacterSheet characterSheet = new();
+
+	protected async override Task OnInitializedAsync()
+	{
+		armors = await characterSheetData.GetArmors();
+		backgrounds = await characterSheetData.GetBackgrounds();
+		characterClassLevels = await characterSheetData.GetClassLevels();
+		characterClassLevels.RemoveInvalidLevelSelections(characterSheet.CharacterClassLevels);
+		feats = await characterSheetData.GetAvailableFeats();
+		races = await characterSheetData.GetRaces();
+		skills = await characterSheetData.GetSkills();
+		weapons = await characterSheetData.GetWeapons();
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if(firstRender)
+		{
+			await LoadCharacterSheetState();
+			StateHasChanged();
+		}
+	}
+
+	/// <summary>
+	/// Loads active character sheet state from session storage.
+	/// </summary>
+	/// <returns></returns>
+	private async Task LoadCharacterSheetState()
+	{
+		var activeSheetResult = await sessionStorage.GetAsync<CharacterSheet>(nameof(characterSheet));
+
+		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet();
+	}
+
+	/// <summary>
+	/// Delays the autocomplete option list hiding on background selection to make sure the choice goes through.
+	/// </summary>
+	/// <returns></returns>
+	private async Task OnBGSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showBGSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	/// <summary>
+	/// Filters available backgrounds based on search text input.
+	/// </summary>
+	/// <returns></returns>
+	private async Task FilterBackgrounds()
+	{
+		var output = await characterSheetData.GetBackgrounds();
+
+		if(string.IsNullOrWhiteSpace(backgroundSearchText) == false)
+		{
+			output = output.Where(b => b.Name.Contains(backgroundSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		backgrounds = output;
+	}
+
+	/// <summary>
+	/// Triggers the backgrounds filter with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <returns></returns>
+	private async Task OnBGSearchInput(string searchInput)
+	{
+		backgroundSearchText = searchInput;
+		await FilterBackgrounds();
+	}
+
+	/// <summary>
+	/// Marks the background selection on the character sheet and adds associated skill proficiencies.
+	/// </summary>
+	/// <param name="background"></param>
+	/// <returns></returns>
+	private async Task SelectBackground(Background background)
+	{
+		if(characterSheet.Background is not null)
+		{
+			characterSheet.SkillProficiencies.RemoveAt(characterSheet.SkillProficiencies.FindIndex(x => x.Id == characterSheet.Background.Skill1Id));
+			characterSheet.SkillProficiencies.RemoveAt(characterSheet.SkillProficiencies.FindIndex(x => x.Id == characterSheet.Background.Skill2Id));
+		}
+		characterSheet.Background = background;
+		characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == background.Skill1Id));
+		characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == background.Skill2Id));
+
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+	}
+
+	/// <summary>
+	/// Delays the autocomplete option list hiding on race selection to make sure the choice goes through.
+	/// </summary>
+	/// <returns></returns>
+	private async Task OnRaceSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showRaceSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	/// <summary>
+	/// Marks the race selection on the character sheet.
+	/// </summary>
+	/// <param name="race"></param>
+	/// <returns></returns>
+	private async Task SelectRace(Race race)
+	{
+		characterSheet.Race = race;
+
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+	}
+
+	/// <summary>
+	/// Filters available races based on search text input.
+	/// </summary>
+	/// <returns></returns>
+	private async Task FilterRaces()
+	{
+		var output = await characterSheetData.GetRaces();
+
+		if (string.IsNullOrWhiteSpace(raceSearchText) == false)
+		{
+			output = output.Where(r => r.Name.Contains(raceSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		races = output;
+	}
+
+	/// <summary>
+	/// Triggers the races filter with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <returns></returns>
+	private async Task OnRaceSearchInput(string searchInput)
+	{
+		raceSearchText = searchInput;
+		await FilterRaces();
+	}
+
+	/// <summary>
+	/// Activates the weapon selection autocomplete for the main hand.
+	/// </summary>
+	/// <returns></returns>
+	private async Task MainHandSelect()
+	{
+		showWeapon2Select = false;
+		showWeapon1Select = true;
+		weaponSearchText = "";
+		await FilterWeapons();
+	}
+
+	/// <summary>
+	/// Activates the weapon selection autocomplete for the off hand.
+	/// </summary>
+	/// <returns></returns>
+	private async Task OffHandSelect()
+	{
+		showWeapon1Select = false;
+		showWeapon2Select = true;
+		weaponSearchText = "";
+		await FilterWeapons();
+	}
+
+	/// <summary>
+	/// Delays the autocomplete option list hiding on weapon selection to make sure the choice goes through.
+	/// </summary>
+	/// <returns></returns>
+	private async Task OnWeaponSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			if(showWeapon1Select)
+				showWeapon1Select = false;
+			else
+				showWeapon2Select = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	/// <summary>
+	/// Marks the weapon selection for the given hand on the character sheet.
+	/// </summary>
+	/// <param name="weapon"></param>
+	/// <param name="hand"></param>
+	/// <returns></returns>
+	private async Task SelectWeapon(Weapon weapon, int hand)
+	{
+		characterSheet.EquippedWeapons[hand] = weapon;
+
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+	}
+
+	/// <summary>
+	/// Filters available weapons based on search text input and 2-handed wield possibility.
+	/// </summary>
+	/// <returns></returns>
+	private async Task FilterWeapons()
+	{
+		var output = await characterSheetData.GetWeapons();
+
+		if (string.IsNullOrWhiteSpace(weaponSearchText) == false)
+		{
+			output = output.Where(w => w.Name.Contains(weaponSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		if(showWeapon2Select)
+		{
+			output.RemoveAll(x => x.TwoHanded == true);
+		}
+
+		weapons = output;
+	}
+
+	/// <summary>
+	/// Triggers the weapons filter with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <returns></returns>
+	private async Task OnWeaponSearchInput(string searchInput)
+	{
+		weaponSearchText = searchInput;
+		await FilterWeapons();
+	}
+
+	/// <summary>
+	/// Delays the autocomplete option list hiding on armor selection to make sure the choice goes through.
+	/// </summary>
+	/// <returns></returns>
+	private async Task OnArmorSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showArmorSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	/// <summary>
+	/// Marks the armor selection on the character sheet.
+	/// </summary>
+	/// <param name="armor"></param>
+	/// <returns></returns>
+	private async Task SelectArmor(Armor armor)
+	{
+		characterSheet.EquippedArmor = armor;
+
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+	}
+
+	/// <summary>
+	/// Filters available armors based on search text input.
+	/// </summary>
+	/// <returns></returns>
+	private async Task FilterArmors()
+	{
+		var output = await characterSheetData.GetArmors();
+
+		if (string.IsNullOrWhiteSpace(armorSearchText) == false)
+		{
+			output = output.Where(a => a.Name.Contains(armorSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		armors = output;
+	}
+
+	/// <summary>
+	/// Triggers the armors filter with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <returns></returns>
+	private async Task OnArmorSearchInput(string searchInput)
+	{
+		armorSearchText = searchInput;
+		await FilterArmors();
+	}
+
+	/// <summary>
+	/// Delays the autocomplete option list hiding on class level selection to make sure the choice goes through.
+	/// </summary>
+	/// <returns></returns>
+	private async Task OnClassLevelSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showClassLevelSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	/// <summary>
+	/// Filters available class levels based on search text input.
+	/// </summary>
+	/// <returns></returns>
+	private async Task FilterClassLevels()
+	{
+		var output = await characterSheetData.GetClassLevels();
+		output.RemoveInvalidLevelSelections(characterSheet.CharacterClassLevels);
+
+		if (string.IsNullOrWhiteSpace(classLevelSearchText) == false)
+		{
+			output = output.Where(c => c.BaseClass.Contains(classLevelSearchText, StringComparison.InvariantCultureIgnoreCase) || c.Subclass.Contains(classLevelSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		characterClassLevels = output.OrderByDescending(x => x.Level).ToList();
+	}
+
+	/// <summary>
+	/// Triggers the class level filter with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <returns></returns>
+	private async Task OnClassLevelSearchInput(string searchInput)
+	{
+		classLevelSearchText = searchInput;
+		await FilterClassLevels();
+	}
+
+	/// <summary>
+	/// Projects the class level selection onto the character sheet and adds associated class features.
+	/// </summary>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
+	private async Task AddClassLevel(CharacterClassLevel classLevel)
+	{
+		characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
+
+		foreach (var f in characterClassFeatures)
+		{
+			classLevel.ClassLevelFeatures.Add(f);
+		}
+
+		characterSheet.CharacterClassLevels.Add(classLevel);
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await OnClassLevelSearchInput("");
+	}
+
+	/// <summary>
+	/// Increases the given ability score and subtracts a corresponding amount of ability points.
+	/// </summary>
+	/// <param name="abilityScore"></param>
+	/// <returns></returns>
+	private async Task IncreaseAbilityScore(AbilityScore abilityScore)
+	{
+		characterSheet.AbilityScorePoints -= abilityScore.IncreaseCost;
+		abilityScore.Value++;
+
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+	}
+
+	/// <summary>
+	/// Decreases the given ability score and adds a corresponding amount of ability points back.
+	/// </summary>
+	/// <param name="abilityScore"></param>
+	/// <returns></returns>
+	private async Task DecreaseAbilityScore(AbilityScore abilityScore)
+	{
+		abilityScore.Value--;
+		characterSheet.AbilityScorePoints += abilityScore.IncreaseCost;
+
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+	}
+
+	// private void ParseTags(string tags)
+	// {
+	// 	string[] tagList = tags.Split("|");
+
+	// 	foreach (string tagEntry in tagList)
+	// 	{
+	// 		string[] tagSet = tagEntry.Split(",");
+
+	// 		switch (tagSet[0])
+	// 		{
+	// 			case "SubfeatureSelection":
+	// 				break;
+	// 			case "BonusSpell":
+	// 				break;
+	// 			case "WeaponProficiency":
+	// 				break;
+	// 			case "ArmorProficiency":
+	// 				break;
+	// 			case "SkillProficiency":
+	// 				break;
+	// 			default:
+	// 				break;
+	// 		}
+	// 	}
+	// }
+}
+

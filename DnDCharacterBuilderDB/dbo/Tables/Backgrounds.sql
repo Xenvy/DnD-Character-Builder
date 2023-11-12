@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Backgrounds]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] VARCHAR(50) NOT NULL, 
+    [Skill1Id] TINYINT NOT NULL, 
+    [Skill2Id] TINYINT NOT NULL
+)
