@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing background data in the database.
+/// </summary>
 public class BackgroundData : IBackgroundData
 {
     private readonly ISqlDataAccess _db;

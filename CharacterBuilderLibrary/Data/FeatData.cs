@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing feat data in the database.
+/// </summary>
 public class FeatData : IFeatData
 {
     private readonly ISqlDataAccess _db;

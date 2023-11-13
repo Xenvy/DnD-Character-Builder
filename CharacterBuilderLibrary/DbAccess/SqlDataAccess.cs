@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 namespace CharacterBuilderLibrary.DbAccess;
 
 /// <summary>
-/// Provides methods for SQL data reads and writes using generics.
+/// Provides methods for SQL data reads and writes using Dapper.
 /// </summary>
 public class SqlDataAccess : ISqlDataAccess
 {

@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing armor data in the database.
+/// </summary>
 public class ArmorData : IArmorData
 {
     private readonly ISqlDataAccess _db;

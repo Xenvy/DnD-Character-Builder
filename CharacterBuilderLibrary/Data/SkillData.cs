@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing skill data in the database.
+/// </summary>
 public class SkillData : ISkillData
 {
     private readonly ISqlDataAccess _db;

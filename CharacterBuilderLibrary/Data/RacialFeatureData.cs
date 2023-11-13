@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing racial feature data in the database.
+/// </summary>
 public class RacialFeatureData : IRacialFeatureData
 {
     private readonly ISqlDataAccess _db;

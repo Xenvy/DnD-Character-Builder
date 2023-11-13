@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing class feature data in the database.
+/// </summary>
 public class CharacterClassFeatureData : ICharacterClassFeatureData
 {
     private readonly ISqlDataAccess _db;

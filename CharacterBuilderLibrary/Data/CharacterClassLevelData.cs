@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing class level data in the database.
+/// </summary>
 public class CharacterClassLevelData : ICharacterClassLevelData
 {
     private readonly ISqlDataAccess _db;

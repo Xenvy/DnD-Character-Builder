@@ -3,6 +3,9 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing all character sheet components data in the database.
+/// </summary>
 public class CharacterSheetData : ICharacterSheetData
 {
 	private readonly IArmorData _armorData;

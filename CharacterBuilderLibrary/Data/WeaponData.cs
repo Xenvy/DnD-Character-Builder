@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing weapon data in the database.
+/// </summary>
 public class WeaponData : IWeaponData
 {
     private readonly ISqlDataAccess _db;

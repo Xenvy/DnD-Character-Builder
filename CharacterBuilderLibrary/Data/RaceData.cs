@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing race data in the database.
+/// </summary>
 public class RaceData : IRaceData
 {
     private readonly ISqlDataAccess _db;

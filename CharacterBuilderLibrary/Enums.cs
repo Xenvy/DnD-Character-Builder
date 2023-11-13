@@ -1,7 +1,7 @@
 ﻿namespace CharacterBuilderLibrary;
 
 /// <summary>
-/// Represents one of the six ability scores a character has.
+/// Represents one of the six abilities a character has.
 /// </summary>
 public enum Ability
 {

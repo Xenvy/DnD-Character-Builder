@@ -531,7 +531,7 @@
 	}
 
 	/// <summary>
-	/// Marks the weapon selection for the given hand on the character sheet.
+	/// Marks the weapon selection for the specified hand on the character sheet.
 	/// </summary>
 	/// <param name="weapon"></param>
 	/// <param name="hand"></param>
@@ -692,7 +692,7 @@
 	}
 
 	/// <summary>
-	/// Increases the given ability score and subtracts a corresponding amount of ability points.
+	/// Increases the specified ability score and subtracts a corresponding amount of ability points.
 	/// </summary>
 	/// <param name="abilityScore"></param>
 	/// <returns></returns>
@@ -705,7 +705,7 @@
 	}
 
 	/// <summary>
-	/// Decreases the given ability score and adds a corresponding amount of ability points back.
+	/// Decreases the specified ability score and adds a corresponding amount of ability points back.
 	/// </summary>
 	/// <param name="abilityScore"></param>
 	/// <returns></returns>
@@ -717,6 +717,11 @@
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 	}
 
+	/// <summary>
+	/// Removes the specified class level and all its higher occurences from the character sheet.
+	/// </summary>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
 	private async Task RemoveClassLevel(CharacterClassLevel classLevel)
 	{
 		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);

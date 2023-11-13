@@ -3,6 +3,9 @@ using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.Data;
 
+/// <summary>
+/// Provides methods for accessing spell data in the database.
+/// </summary>
 public class SpellData : ISpellData
 {
     private readonly ISqlDataAccess _db;

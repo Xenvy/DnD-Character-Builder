@@ -1,6 +1,9 @@
 ﻿
 namespace CharacterBuilderLibrary.Models;
 
+/// <summary>
+/// Represents one of the six ability scores a character has.
+/// </summary>
 public class AbilityScore
 {
     public AbilityScore(Ability ability)
