@@ -81,7 +81,8 @@ div .ability-scores {
 }
 
 p {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
 }
 
 label {
@@ -172,4 +173,34 @@ label {
 
 .hide {
     display: none;
+}
+
+.feature-with-tooltip {
+    position: relative;
+    display: inline-flex;
+    border-bottom: 1px dotted black;
+    margin: 0 0.5rem 1.5rem 1rem;
+}
+
+    .feature-with-tooltip .tooltip-text {
+        visibility: hidden;
+        width: 20rem;
+        top: -5px;
+        right: 105%;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 3px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .feature-with-tooltip:hover .tooltip-text {
+        visibility: visible;
+    }
+
+.feature-no-tooltip {
+    display: inline-flex;
+    margin: 0 0.5rem 1.5rem 1rem;
 }

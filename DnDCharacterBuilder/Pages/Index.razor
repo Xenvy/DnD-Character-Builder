@@ -299,12 +299,20 @@
 				@for (int i = 0; i < characterSheet.CharacterClassLevels.Count; i++)
 				{
 					<p>Character level @(i + 1) / @($"{characterSheet.CharacterClassLevels[i].BaseClass} - {characterSheet.CharacterClassLevels[i].Subclass} level {characterSheet.CharacterClassLevels[i].Level}") features:</p>
-					<ul name="levelFeatures">
-						@foreach (var f in characterSheet.CharacterClassLevels[i].ClassLevelFeatures)
+					@foreach (var f in characterSheet.CharacterClassLevels[i].ClassLevelFeatures)
+					{
+						@if (!String.IsNullOrWhiteSpace(f.Description))
 						{
-							<li> @f.Name </li>
+							<div class="feature-with-tooltip">
+								@f.Name
+								<span class="tooltip-text"> @f.Description </span>
+							</div>
 						}
-					</ul>
+						else
+						{
+							<div class="feature-no-tooltip">@f.Name</div>
+						}
+					}
 				}
 			}
 		</div>
