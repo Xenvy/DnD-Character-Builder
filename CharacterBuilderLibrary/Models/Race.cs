@@ -20,4 +20,9 @@ public class Race
     /// Race's base movement speed.
     /// </summary>
     public int Speed { get; set; }
+
+    /// <summary>
+    /// Race special features.
+    /// </summary>
+    public List<RacialFeature> RaceFeatures { get; set; } = new();
 }

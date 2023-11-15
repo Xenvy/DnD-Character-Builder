@@ -30,16 +30,16 @@ public class CharacterSheetData : ICharacterSheetData
 	private const string weaponCache = "WeaponData";
 
 	public CharacterSheetData(IArmorData armorData,
-							   IBackgroundData backgroundData,
-							   ICharacterClassLevelData characterClassLevelData,
-							   ICharacterClassFeatureData characterClassFeatureData,
-							   IFeatData featData,
-							   IRaceData raceData,
-							   IRacialFeatureData racialFeatureData,
-							   ISkillData skillData,
-							   ISpellData spellData,
-							   IWeaponData weaponData,
-							   IMemoryCache cache)
+							  IBackgroundData backgroundData,
+							  ICharacterClassLevelData characterClassLevelData,
+							  ICharacterClassFeatureData characterClassFeatureData,
+							  IFeatData featData,
+							  IRaceData raceData,
+							  IRacialFeatureData racialFeatureData,
+							  ISkillData skillData,
+							  ISpellData spellData,
+							  IWeaponData weaponData,
+							  IMemoryCache cache)
 	{
 		_armorData = armorData;
 		_backgroundData = backgroundData;

@@ -21,7 +21,7 @@ public class RacialFeatureData : IRacialFeatureData
     /// <returns></returns>
     public async Task<IEnumerable<RacialFeature>?> GetFeaturesByRaceId(int raceId)
     {
-        var results = await _db.LoadData<RacialFeature, dynamic>("dbo.spRacialFeatures_GetByRaceId", new { Id = raceId });
+        var results = await _db.LoadData<RacialFeature, dynamic>("dbo.spRacialFeatures_GetByRaceId", new { RaceId = raceId });
 
         return results;
     }

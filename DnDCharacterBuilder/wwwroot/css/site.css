@@ -111,12 +111,12 @@ label {
     width: 50%;
 }
 
-.level-choice-section {
+.level-choice-section, .race-choice-section {
     width: 50%;
     border-right: 3px solid black;
 }
 
-.level-features-section {
+.level-features-section, .race-features-section {
     width: 50%;
 }
 

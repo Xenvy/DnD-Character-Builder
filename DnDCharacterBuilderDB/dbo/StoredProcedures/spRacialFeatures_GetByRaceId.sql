@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[spRacialFeatures_GetByRaceId]
-	@Id tinyint
+	@RaceId tinyint
 AS
 begin
 	select [Id], [Name], [RaceId], [Description], [ParentFeatureName], [SubfeatureSelections], [Tags]
 	from dbo.[RacialFeatures]
-	where Id = @Id;
+	where RaceId = @RaceId;
 end

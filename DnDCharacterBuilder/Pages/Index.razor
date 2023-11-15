@@ -23,36 +23,58 @@
 	</div>
 	<!-- Race and race features section -->
 	<div class="race-section sheet-row">
-		<div class="autocomplete">
-			<div class="option-selection">
-				<label for="raceSelection">Race: @(characterSheet.Race?.Name)</label>
-				<!-- Autocomplete-style selection of character's race -->
-				<input type="text"
-					   id="raceSelection"
-					   placeholder="Select a race..."
-					   class="form-control filter"
-					   aria-label="Search box"
-					   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
-					   @onfocusin="(_ => showRaceSelect = !showRaceSelect)"
-					   @onfocusout="(_ => OnRaceSelection())" />
-				<div class="option-list">
-					<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
-						@if (races?.Count > 0)
-						{
-							@foreach (var r in races)
+		<div class="race-choice-section">
+			<div class="autocomplete">
+				<div class="option-selection">
+					<label for="raceSelection">Race: @(characterSheet.Race?.Name)</label>
+					<!-- Autocomplete-style selection of character's race -->
+					<input type="text"
+						   id="raceSelection"
+						   placeholder="Select a race..."
+						   class="form-control filter"
+						   aria-label="Search box"
+					@oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
+					@onfocusin="(_ => showRaceSelect = !showRaceSelect)"
+					@onfocusout="(_ => OnRaceSelection())" />
+					<div class="option-list">
+						<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
+							@if (races?.Count > 0)
 							{
-								<li class="option" @onclick="(_ => SelectRace(r))">
-									<span class="option-text">@r.Name</span>
-								</li>
+								@foreach (var r in races)
+								{
+									<li class="option" @onclick="(_ => SelectRace(r))">
+										<span class="option-text">@r.Name</span>
+									</li>
+								}
 							}
-						}
-						else
-						{
-							<li class="disabled option">No results</li>
-						}
-					</ul>
+							else
+							{
+								<li class="disabled option">No results</li>
+							}
+						</ul>
+					</div>
 				</div>
 			</div>
+		</div>
+		<div class="race-features-section">
+			@if(characterSheet.Race is not null)
+			{
+				<p>@characterSheet.Race.Name features:</p>
+				@foreach (var rf in characterSheet.Race.RaceFeatures)
+				{
+					@if (!String.IsNullOrWhiteSpace(rf.Description))
+					{
+						<div class="feature-with-tooltip">
+							@rf.Name
+							<span class="tooltip-text"> @rf.Description </span>
+						</div>
+					}
+					else
+					{
+						<div class="feature-no-tooltip">@rf.Name</div>
+					}
+				}
+			}
 		</div>
 	</div>
 	<!-- Ability scores section -->
@@ -464,6 +486,9 @@
 	/// <returns></returns>
 	private async Task SelectRace(Race race)
 	{
+		racialFeatures = await characterSheetData.GetRacialFeatures(race);
+		race.RaceFeatures = racialFeatures;
+
 		characterSheet.Race = race;
 
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
@@ -688,11 +713,7 @@
 	private async Task AddClassLevel(CharacterClassLevel classLevel)
 	{
 		characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
-
-		foreach (var f in characterClassFeatures)
-		{
-			classLevel.ClassLevelFeatures.Add(f);
-		}
+		classLevel.ClassLevelFeatures = characterClassFeatures;
 
 		characterSheet.CharacterClassLevels.Add(classLevel);
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
