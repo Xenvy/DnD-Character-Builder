@@ -33,9 +33,9 @@
 						   placeholder="Select a race..."
 						   class="form-control filter"
 						   aria-label="Search box"
-					@oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
-					@onfocusin="(_ => showRaceSelect = !showRaceSelect)"
-					@onfocusout="(_ => OnRaceSelection())" />
+						   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
+						   @onfocusin="(_ => showRaceSelect = !showRaceSelect)"
+						   @onfocusout="(_ => OnRaceSelection())" />
 					<div class="option-list">
 						<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
 							@if (races?.Count > 0)
@@ -174,6 +174,7 @@
 						<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
 							@if (weapons?.Count > 0)
 							{
+								<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 0))"><span class="option-text">(Empty hand)</span></li>
 								@foreach (var w in weapons)
 								{
 									<li class="option" @onclick="(_ => SelectWeapon(w, 0))">
@@ -207,6 +208,7 @@
 							<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
 								@if (weapons?.Count > 0)
 								{
+									<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 1))"><span class="option-text">(Empty hand)</span></li>
 									@foreach (var w in weapons)
 									{
 										<li class="option" @onclick="(_ => SelectWeapon(w, 1))">
@@ -241,6 +243,7 @@
 						<ul name="armorSelectionList" class="options @(showArmorSelect ? "" : "hide")">
 							@if (armors?.Count > 0)
 							{
+								<li class="option" @onclick="(_ => SelectArmor(new Armor()))"><span class="option-text">(No armor)</span></li>
 								@foreach (var a in armors)
 								{
 									<li class="option" @onclick="(_ => SelectArmor(a))">
@@ -289,10 +292,10 @@
 							   placeholder="Select a class..."
 							   class="form-control filter"
 							   aria-label="Search box"
-						@bind-value=classLevelSearchText
-						@oninput="((txt) => OnClassLevelSearchInput((string)txt.Value))"
-						@onfocusin="(_ => showClassLevelSelect = !showClassLevelSelect)"
-						@onfocusout="(_ => OnClassLevelSelection())" />
+							   @bind-value=classLevelSearchText
+							   @oninput="((txt) => OnClassLevelSearchInput((string)txt.Value))"
+							   @onfocusin="(_ => showClassLevelSelect = !showClassLevelSelect)"
+							   @onfocusout="(_ => OnClassLevelSelection())" />
 						<div class="option-list">
 							<ul name="classLevelSelection" class="options @(showClassLevelSelect ? "" : "hide")">
 								@if (characterClassLevels?.Count > 0)
