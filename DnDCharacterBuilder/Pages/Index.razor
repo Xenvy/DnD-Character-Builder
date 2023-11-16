@@ -264,6 +264,57 @@
 	<!-- Spells section -->
 	<div class="spells-section sheet-row">
 		<p>Known spells</p>
+		@if (characterSheet.CharacterClassLevels?.Count > 0)
+		{
+			@foreach (var cl in characterSheet.CharacterClassLevels)
+			{
+				<p>@($"{cl.BaseClass} - {cl.Subclass} level {cl.Level}") spells:</p>
+				@if (cl.GetNewSpellCount() > cl.SpellsLearned.Count)
+				{
+					<div class="autocomplete">
+						<div class="option-selection">
+							<!-- Autocomplete-style selection of character's spells -->
+							<input type="text"
+								   id="spellSelection"
+								   placeholder="Select a spell..."
+								   class="form-control filter"
+								   aria-label="Search box"
+								   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
+								   @onfocusin="(_ => showSpellSelect = !showSpellSelect)"
+								   @onfocusout="(_ => OnSpellSelection())" />
+							<div class="option-list">
+								<ul name="spellSelectionList" class="options @(showSpellSelect ? "" : "hide")">
+									@if (spells?.Count > 0)
+									{
+										@foreach (var s in spells)
+										{
+											<li class="option" @onclick="(_ => SelectSpell(s, cl))">
+												<span class="option-text">@s.Name</span>
+											</li>
+										}
+									}
+									else
+									{
+										<li class="disabled option">No results</li>
+									}
+								</ul>
+							</div>
+						</div>
+					</div>
+				}
+				@*if (!String.IsNullOrWhiteSpace(f.Description))
+				{
+					<div class="feature-with-tooltip">
+						@f.Name
+						<span class="tooltip-text"> @f.Description </span>
+					</div>
+				}
+				else
+				{
+					<div class="feature-no-tooltip">@f.Name</div>
+				}*@
+			}
+		}
 	</div>
 	<!-- Class levels and features section -->
 	<div class="levels-section sheet-row">
@@ -363,6 +414,7 @@
 	//private string weapon2SearchText = "";
 	private string armorSearchText = "";
 	private string classLevelSearchText = "";
+	private string spellSearchText = "";
 
 	private bool showBGSelect = false;
 	private bool showRaceSelect = false;
@@ -370,6 +422,7 @@
 	private bool showWeapon2Select = false;
 	private bool showArmorSelect = false;
 	private bool showClassLevelSelect = false;
+	private bool showSpellSelect = false;
 	CancellationTokenSource tokenSource;
 
 	private CharacterSheet characterSheet = new();
@@ -721,6 +774,41 @@
 		characterSheet.CharacterClassLevels.Add(classLevel);
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 		await OnClassLevelSearchInput("");
+	}
+
+	private async Task OnSpellSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showSpellSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	private async Task FilterSpells(CharacterClassLevel classLevel)
+	{
+		var output = await characterSheetData.GetAvailableSpells(classLevel);
+
+		if (string.IsNullOrWhiteSpace(spellSearchText) == false)
+		{
+			output = output.Where(s => s.Name.Contains(spellSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		spells = output.OrderByDescending(x => x.Level).ToList();
+	}
+
+	private async Task OnSpellSearchInput(string searchInput, CharacterClassLevel classLevel)
+	{
+		spellSearchText = searchInput;
+		await FilterSpells(classLevel);
+	}
+
+	private async Task SelectSpell(Spell spell, CharacterClassLevel classLevel)
+	{
+		classLevel.SpellsLearned.Add(spell);
+		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 	}
 
 	/// <summary>

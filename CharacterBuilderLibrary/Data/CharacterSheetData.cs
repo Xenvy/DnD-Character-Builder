@@ -388,7 +388,7 @@ public class CharacterSheetData : ICharacterSheetData
 		try
 		{
 			//TODO: Get available spell level from the table
-			output = (await _spellData.GetSpellsBySpellListAndLevel(characterClassLevel.SpellList, 0)).ToList();
+			output = (await _spellData.GetSpellsBySpellListAndLevel(characterClassLevel.BaseClass, 8)).ToList();
 		}
 		catch (Exception ex)
 		{

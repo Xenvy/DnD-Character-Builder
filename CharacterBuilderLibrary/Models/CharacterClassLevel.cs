@@ -54,11 +54,6 @@ public class CharacterClassLevel
     public Ability? SpellcastingAbilityScore { get; set; }
 
     /// <summary>
-    /// Class/subclass spell list type, if applicable.
-    /// </summary>
-    public string? SpellList { get; set; }
-
-    /// <summary>
     /// Class/subclass spellcasting progression type (full, 1/2, 1/3), if applicable.
     /// </summary>
     public int? SpellcastingProgression { get; set; }
@@ -66,7 +61,7 @@ public class CharacterClassLevel
     /// <summary>
     /// Class/subclass spells learned at this level.
     /// </summary>
-    public List<Spell>? SpellsLearned { get; set; }
+    public List<Spell> SpellsLearned { get; set; } = new();
 
     /// <summary>
     /// Additional information used to update the character's sheet (ex. saving throw proficiencies).
