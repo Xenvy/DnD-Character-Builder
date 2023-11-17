@@ -128,24 +128,24 @@ internal static class CharacterSheetHelpers
         switch(characterClassLevel.BaseClass) 
         {
             case "Bard":
-                output = BardSpellsLearned[characterClassLevel.Level];
+                output = BardSpellsLearned[characterClassLevel.Level - 1];
                 break;
             case "Fighter":
                 if (characterClassLevel.Subclass == "Eldritch Knight")
-                    output = EKAndATSpellsLearned[characterClassLevel.Level];
+                    output = EKAndATSpellsLearned[characterClassLevel.Level - 1];
                 break;
             case "Ranger":
-                output = RangerSpellsLearned[characterClassLevel.Level];
+                output = RangerSpellsLearned[characterClassLevel.Level - 1];
                 break;
             case "Rogue":
                 if (characterClassLevel.Subclass == "Arcane Trickster")
-                    output = EKAndATSpellsLearned[characterClassLevel.Level];
+                    output = EKAndATSpellsLearned[characterClassLevel.Level - 1];
                 break;
             case "Sorcerer":
-                output = SorcererSpellsLearned[characterClassLevel.Level];
+                output = SorcererSpellsLearned[characterClassLevel.Level - 1];
                 break;
             case "Warlock":
-                output = WarlockSpellsLearned[characterClassLevel.Level];
+                output = WarlockSpellsLearned[characterClassLevel.Level - 1];
                 break;
             case "Wizard":
                 output = characterClassLevel.Level != 1 ? 2 : 6;

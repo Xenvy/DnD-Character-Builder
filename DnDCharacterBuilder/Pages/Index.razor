@@ -263,58 +263,61 @@
 	</div>
 	<!-- Spells section -->
 	<div class="spells-section sheet-row">
-		<p>Known spells</p>
-		@if (characterSheet.CharacterClassLevels?.Count > 0)
-		{
-			@foreach (var cl in characterSheet.CharacterClassLevels)
+		<div>
+			<p>Spells</p>
+			@if (characterSheet.CharacterClassLevels?.Count > 0)
 			{
-				<p>@($"{cl.BaseClass} - {cl.Subclass} level {cl.Level}") spells:</p>
-				@if (cl.GetNewSpellCount() > cl.SpellsLearned.Count)
+				@foreach (var cl in characterSheet.CharacterClassLevels)
 				{
-					<div class="autocomplete">
-						<div class="option-selection">
-							<!-- Autocomplete-style selection of character's spells -->
-							<input type="text"
-								   id="spellSelection"
-								   placeholder="Select a spell..."
-								   class="form-control filter"
-								   aria-label="Search box"
-								   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
-								   @onfocusin="(_ => showSpellSelect = !showSpellSelect)"
-								   @onfocusout="(_ => OnSpellSelection())" />
-							<div class="option-list">
-								<ul name="spellSelectionList" class="options @(showSpellSelect ? "" : "hide")">
-									@if (spells?.Count > 0)
-									{
-										@foreach (var s in spells)
+					@if(cl.SpellsLearned.Count > 0)
+					{
+						<p>@($"{cl.BaseClass} - {cl.Subclass} level {cl.Level}") spells:</p>
+						@foreach(var s in cl.SpellsLearned)
+						{
+							<div class="feature-with-tooltip">
+								@s.Name
+								<span class="tooltip-text"> @s.Description </span>
+							</div>
+						}
+					}
+					@if (cl.GetNewSpellCount() > cl.SpellsLearned.Count)
+					{
+						<p>Select a spell for @cl.BaseClass level @cl.Level:</p>
+						<div class="autocomplete">
+							<div class="option-selection">
+								<!-- Autocomplete-style selection of character's spells -->
+								<input type="text"
+										id="spellSelection"
+										placeholder="Select a spell..."
+										class="form-control filter"
+										aria-label="Search box"
+								@bind-value="spellSearchText"
+								@oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
+								@onfocusin="(_ => showSpellSelect = !showSpellSelect)"
+								@onfocusout="(_ => OnSpellSelection())" />
+								<div class="option-list">
+									<ul name="spellSelectionList" class="options @(showSpellSelect ? "" : "hide")">
+										@if (spells?.Count > 0)
 										{
-											<li class="option" @onclick="(_ => SelectSpell(s, cl))">
-												<span class="option-text">@s.Name</span>
-											</li>
+											@foreach (var s in spells)
+											{
+												<li class="option" @onclick="(_ => SelectSpell(s, cl))">
+													<span class="option-text">@s.Name</span>
+												</li>
+											}
 										}
-									}
-									else
-									{
-										<li class="disabled option">No results</li>
-									}
-								</ul>
+										else
+										{
+											<li class="disabled option">No results</li>
+										}
+									</ul>
+								</div>
 							</div>
 						</div>
-					</div>
+					}		
 				}
-				@*if (!String.IsNullOrWhiteSpace(f.Description))
-				{
-					<div class="feature-with-tooltip">
-						@f.Name
-						<span class="tooltip-text"> @f.Description </span>
-					</div>
-				}
-				else
-				{
-					<div class="feature-no-tooltip">@f.Name</div>
-				}*@
 			}
-		}
+		</div>
 	</div>
 	<!-- Class levels and features section -->
 	<div class="levels-section sheet-row">
@@ -809,6 +812,7 @@
 	{
 		classLevel.SpellsLearned.Add(spell);
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await OnSpellSearchInput("", classLevel);
 	}
 
 	/// <summary>
