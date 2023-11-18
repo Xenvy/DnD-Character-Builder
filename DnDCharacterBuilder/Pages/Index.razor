@@ -447,6 +447,10 @@
 		if(firstRender)
 		{
 			await LoadCharacterSheetState();
+			foreach(var s in showSpellSelect)
+			{
+				showSpellSelect[s.Key] = false;
+			}
 			StateHasChanged();
 		}
 	}
@@ -457,8 +461,10 @@
 	/// <returns></returns>
 	private async Task LoadCharacterSheetState()
 	{
+		var activeShowSpellsResult = await sessionStorage.GetAsync<Dictionary<int, bool>>(nameof(showSpellSelect));
 		var activeSheetResult = await sessionStorage.GetAsync<CharacterSheet>(nameof(characterSheet));
 
+		showSpellSelect = activeShowSpellsResult.Success ? activeShowSpellsResult.Value : new Dictionary<int, bool>();
 		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet();
 	}
 
@@ -520,7 +526,7 @@
 		characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == background.Skill1Id));
 		characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == background.Skill2Id));
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -550,7 +556,7 @@
 
 		characterSheet.Race = race;
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -632,7 +638,7 @@
 	{
 		characterSheet.EquippedWeapons[hand] = weapon;
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -691,7 +697,7 @@
 	{
 		characterSheet.EquippedArmor = armor;
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -778,7 +784,7 @@
 
 		showSpellSelect.Add(classLevel.Id, false);
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 		await OnClassLevelSearchInput("");
 	}
 
@@ -814,7 +820,7 @@
 	private async Task SelectSpell(Spell spell, CharacterClassLevel classLevel)
 	{
 		classLevel.SpellsLearned.Add(spell);
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 		await OnSpellSearchInput("", classLevel);
 	}
 
@@ -828,7 +834,7 @@
 		characterSheet.AbilityScorePoints -= abilityScore.IncreaseCost;
 		abilityScore.Value++;
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -841,7 +847,7 @@
 		abilityScore.Value--;
 		characterSheet.AbilityScorePoints += abilityScore.IncreaseCost;
 
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -854,6 +860,16 @@
 		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);
 		showSpellSelect.Remove(classLevel.Id);
 		await FilterClassLevels();
+		await SaveSessionData();
+	}
+
+	/// <summary>
+	/// Saves the current state of the character sheet to the browser's session storage.
+	/// </summary>
+	/// <returns></returns>
+	private async Task SaveSessionData()
+	{
+		await sessionStorage.SetAsync(nameof(showSpellSelect), showSpellSelect);
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 	}
 
