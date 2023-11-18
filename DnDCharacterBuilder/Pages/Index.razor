@@ -276,27 +276,27 @@
 						{
 							<div class="feature-with-tooltip">
 								@s.Name
-								<span class="tooltip-text"> @s.Description </span>
+								<span class="spell-tooltip-text"> @s.Description </span>
 							</div>
 						}
 					}
 					@if (cl.GetNewSpellCount() > cl.SpellsLearned.Count)
 					{
-						<p>Select a spell for @cl.BaseClass level @cl.Level:</p>
+						<p>Select a spell for @cl.BaseClass level @cl.Level (@(cl.GetNewSpellCount() - cl.SpellsLearned.Count) remaining):</p>
 						<div class="autocomplete">
 							<div class="option-selection">
 								<!-- Autocomplete-style selection of character's spells -->
 								<input type="text"
-										id="spellSelection"
-										placeholder="Select a spell..."
-										class="form-control filter"
-										aria-label="Search box"
-								@bind-value="spellSearchText"
-								@oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
-								@onfocusin="(_ => showSpellSelect = !showSpellSelect)"
-								@onfocusout="(_ => OnSpellSelection())" />
+									   id="spellSelection"
+									   placeholder="Select a spell..."
+									   class="form-control filter"
+									   aria-label="Search box"
+									   @bind-value="spellSearchText"
+									   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
+									   @onfocusin="(_ => showSpellSelect[cl.Id] = !showSpellSelect[cl.Id])"
+									   @onfocusout="(_ => OnSpellSelection(cl.Id))" />
 								<div class="option-list">
-									<ul name="spellSelectionList" class="options @(showSpellSelect ? "" : "hide")">
+									<ul name="spellSelectionList" class="options @(showSpellSelect[cl.Id] ? "" : "hide")">
 										@if (spells?.Count > 0)
 										{
 											@foreach (var s in spells)
@@ -425,7 +425,7 @@
 	private bool showWeapon2Select = false;
 	private bool showArmorSelect = false;
 	private bool showClassLevelSelect = false;
-	private bool showSpellSelect = false;
+	private Dictionary<int, bool> showSpellSelect = new();
 	CancellationTokenSource tokenSource;
 
 	private CharacterSheet characterSheet = new();
@@ -775,17 +775,20 @@
 		classLevel.ClassLevelFeatures = characterClassFeatures;
 
 		characterSheet.CharacterClassLevels.Add(classLevel);
+
+		showSpellSelect.Add(classLevel.Id, false);
+
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 		await OnClassLevelSearchInput("");
 	}
 
-	private async Task OnSpellSelection()
+	private async Task OnSpellSelection(int level)
 	{
 		tokenSource = new CancellationTokenSource();
 		await Task.Factory.StartNew(async () =>
 		{
 			await Task.Delay(100);
-			showSpellSelect = false;
+			showSpellSelect[level] = false;
 			await InvokeAsync(StateHasChanged);
 		}, tokenSource.Token);
 	}
@@ -849,6 +852,7 @@
 	private async Task RemoveClassLevel(CharacterClassLevel classLevel)
 	{
 		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);
+		showSpellSelect.Remove(classLevel.Id);
 		await FilterClassLevels();
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 	}
