@@ -1,8 +1,8 @@
-﻿
+﻿using CharacterBuilderLibrary.Models;
 
-namespace DnDCharacterBuilder.CharacterSheetLogic;
+namespace CharacterBuilderLibrary.CharacterSheetLogic;
 
-internal static class CharacterSheetHelpers
+public static class CharacterSheetHelpers
 {
     /// <summary>
     /// Filters available class levels by removing invalid selections.

@@ -1,4 +1,5 @@
-﻿using CharacterBuilderLibrary.Models;
+﻿using CharacterBuilderLibrary.CharacterSheetLogic;
+using CharacterBuilderLibrary.Models;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace CharacterBuilderLibrary.Data;
@@ -381,14 +382,14 @@ public class CharacterSheetData : ICharacterSheetData
 	/// <param name="characterClassLevel"> The class level to get the available spells of.</param>
 	/// <returns>A list of all available spells.</returns>
 	/// <exception cref="Exception"></exception>
-	public async Task<List<Spell>> GetAvailableSpells(CharacterClassLevel characterClassLevel)
+	public async Task<List<Spell>> GetAvailableSpells(CharacterClassLevel classLevel)
 	{
 		List<Spell> output;
 
 		try
 		{
 			//TODO: Get available spell level from the table
-			output = (await _spellData.GetSpellsBySpellListAndLevel(characterClassLevel.BaseClass, 8)).ToList();
+			output = (await _spellData.GetSpellsBySpellListAndLevel(classLevel.BaseClass, classLevel.GetAvailableSpellLevel())).ToList();
 		}
 		catch (Exception ex)
 		{
