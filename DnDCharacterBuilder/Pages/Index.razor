@@ -278,6 +278,7 @@
 								@s.Name
 								<span class="spell-tooltip-text"> @s.Description </span>
 							</div>
+							<button class="btn btn-light remove-spell-button" @onclick="(_ => RemoveSpell(s, cl))">-</button>
 						}
 					}
 					@if (cl.GetNewSpellCount() > cl.SpellsLearned.Count)
@@ -293,7 +294,7 @@
 									   aria-label="Search box"
 									   @bind-value="spellSearchText"
 									   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
-									   @onfocusin="(_ => showSpellSelect[cl.Id] = !showSpellSelect[cl.Id])"
+									   @onfocusin="(_ => OnSpellSelectFocusIn(cl))"
 									   @onfocusout="(_ => OnSpellSelection(cl.Id))" />
 								<div class="option-list">
 									<ul name="spellSelectionList" class="options @(showSpellSelect[cl.Id] ? "" : "hide")">
@@ -301,7 +302,7 @@
 										{
 											@foreach (var s in spells)
 											{
-												<li class="option" @onclick="(_ => SelectSpell(s, cl))">
+												<li class="option" @onclick="(_ => AddSpell(s, cl))">
 													<span class="option-text">@s.Name</span>
 												</li>
 											}
@@ -771,7 +772,7 @@
 	}
 
 	/// <summary>
-	/// Projects the class level selection onto the character sheet and adds associated class features.
+	/// Marks the class level selection on the character sheet and adds associated class features.
 	/// </summary>
 	/// <param name="classLevel"></param>
 	/// <returns></returns>
@@ -788,6 +789,24 @@
 		await OnClassLevelSearchInput("");
 	}
 
+	/// <summary>
+	/// Removes the specified class level and all its higher occurences from the character sheet.
+	/// </summary>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
+	private async Task RemoveClassLevel(CharacterClassLevel classLevel)
+	{
+		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);
+		showSpellSelect.Remove(classLevel.Id);
+		await FilterClassLevels();
+		await SaveSessionData();
+	}
+
+	/// <summary>
+	/// Delays the autocomplete option list hiding on spell selection to make sure the choice goes through.
+	/// </summary>
+	/// <param name="level"></param>
+	/// <returns></returns>
 	private async Task OnSpellSelection(int level)
 	{
 		tokenSource = new CancellationTokenSource();
@@ -799,6 +818,11 @@
 		}, tokenSource.Token);
 	}
 
+	/// <summary>
+	/// Filters available spells based on search text input.
+	/// </summary>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
 	private async Task FilterSpells(CharacterClassLevel classLevel)
 	{
 		var output = await characterSheetData.GetAvailableSpells(classLevel);
@@ -811,17 +835,52 @@
 		spells = output.OrderByDescending(x => x.Level).ToList();
 	}
 
+	/// <summary>
+	/// Triggers the spell filter with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
 	private async Task OnSpellSearchInput(string searchInput, CharacterClassLevel classLevel)
 	{
 		spellSearchText = searchInput;
 		await FilterSpells(classLevel);
 	}
 
-	private async Task SelectSpell(Spell spell, CharacterClassLevel classLevel)
+	/// <summary>
+	/// Triggers the spell filter and activates the display of available selections.
+	/// </summary>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
+	private async Task OnSpellSelectFocusIn(CharacterClassLevel classLevel)
+	{
+		await FilterSpells(classLevel);
+		showSpellSelect[classLevel.Id] = !showSpellSelect[classLevel.Id];
+	}
+
+	/// <summary>
+	/// Adds a spell to the learned spells list of the specified class level.
+	/// </summary>
+	/// <param name="spell"></param>
+	/// <param name="classLevel"></param>
+	/// <returns></returns>
+	private async Task AddSpell(Spell spell, CharacterClassLevel classLevel)
 	{
 		classLevel.SpellsLearned.Add(spell);
 		await SaveSessionData();
 		await OnSpellSearchInput("", classLevel);
+	}
+
+	/// <summary>
+	/// Removes the passed in spell from the list of learned spells of specified character level.
+	/// </summary>
+	/// <param name="spell">The spell to remove.</param>
+	/// <param name="classLevel">The class level with the list of learned spells to remove from.</param>
+	/// <returns></returns>
+	private async Task RemoveSpell(Spell spell, CharacterClassLevel classLevel)
+	{
+		characterSheet.CharacterClassLevels.Find(cl => cl.Id == classLevel.Id).SpellsLearned.Remove(spell);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -847,19 +906,6 @@
 		abilityScore.Value--;
 		characterSheet.AbilityScorePoints += abilityScore.IncreaseCost;
 
-		await SaveSessionData();
-	}
-
-	/// <summary>
-	/// Removes the specified class level and all its higher occurences from the character sheet.
-	/// </summary>
-	/// <param name="classLevel"></param>
-	/// <returns></returns>
-	private async Task RemoveClassLevel(CharacterClassLevel classLevel)
-	{
-		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);
-		showSpellSelect.Remove(classLevel.Id);
-		await FilterClassLevels();
 		await SaveSessionData();
 	}
 
