@@ -17,9 +17,9 @@ public class Weapon
     public string Name { get; set; }
 
     /// <summary>
-    /// Weapon damage die.
+    /// Weapon damage.
     /// </summary>
-    public int DamageDie { get; set; }
+    public string Damage { get; set; }
 
     /// <summary>
     /// Proficiency group the weapon belongs to.

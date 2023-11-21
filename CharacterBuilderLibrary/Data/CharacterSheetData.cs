@@ -388,14 +388,13 @@ public class CharacterSheetData : ICharacterSheetData
 
 		try
 		{
-			//TODO: Get available spell level from the table
 			output = (await _spellData.GetSpellsBySpellListAndLevel(classLevel.BaseClass, classLevel.GetAvailableSpellLevel())).ToList();
 		}
 		catch (Exception ex)
 		{
 			throw new Exception(ex.Message);
 		}
-		//TODO: Apply filter
+
 		return output;
 	}
 

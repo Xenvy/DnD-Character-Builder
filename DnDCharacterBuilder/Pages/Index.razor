@@ -190,6 +190,9 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<p>Main hand attack: @characterSheet.EquippedWeapons[0].Name @($"+{characterSheet.AbilityScores[0].Modifier + characterSheet.ProficiencyBonus}") @($"{characterSheet.EquippedWeapons[0].Damage}+{characterSheet.AbilityScores[0].Modifier}")</p>
+			</div>
 			@if(characterSheet.EquippedWeapons[0]?.TwoHanded == false)
 			{
 				<div class="autocomplete">
@@ -223,6 +226,9 @@
 							</ul>
 						</div>
 					</div>
+				</div>
+				<div>
+					<p>Off-hand attack: @characterSheet.EquippedWeapons[1].Name @($"+{characterSheet.AbilityScores[0].Modifier + characterSheet.ProficiencyBonus}") @characterSheet.EquippedWeapons[1].Damage</p>
 				</div>
 			}
 		</div>
@@ -655,7 +661,7 @@
 			output = output.Where(w => w.Name.Contains(weaponSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
 		}
 
-		if(showWeapon2Select)
+		if(showWeapon2Select || characterSheet.EquippedWeapons[1].Name is not null)
 		{
 			output.RemoveAll(x => x.TwoHanded == true);
 		}
