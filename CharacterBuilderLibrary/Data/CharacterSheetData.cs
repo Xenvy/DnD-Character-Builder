@@ -210,22 +210,22 @@ public class CharacterSheetData : ICharacterSheetData
 	/// <exception cref="Exception"></exception>
 	public async Task<List<CharacterClassLevel>> GetClassLevels()
 	{
-		//var output = _cache.Get<List<CharacterClassLevel>>(classLevelCache);
+		var output = _cache.Get<List<CharacterClassLevel>>(classLevelCache);
 
-		//if (output is null)
-		//{
-		//	try
-		//	{
-		var output = (await _characterClassLevelData.GetClassLevels()).ToList();
-		//		_cache.Set(classLevelCache, output, TimeSpan.FromDays(1));
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		throw new Exception(ex.Message);
-		//	}
-		//}
+		if (output is null)
+		{
+			try
+			{
+				output = (await _characterClassLevelData.GetClassLevels()).ToList();
+				_cache.Set(classLevelCache, output, TimeSpan.FromDays(1));
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
 
-		return output;
+		return output.ToList();
 	}
 
 	/// <summary>
@@ -438,7 +438,7 @@ public class CharacterSheetData : ICharacterSheetData
 			}
 		}
 
-		return output;
+		return output.ToList();
 	}
 
 	/// <summary>
@@ -483,9 +483,4 @@ public class CharacterSheetData : ICharacterSheetData
 
 		return output;
 	}
-
-	//private void UpdateSheetRefLink()
-	//{
-
-	//}
 }
