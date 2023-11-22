@@ -76,9 +76,32 @@ div .sheet-row {
     border-right: 3px solid black;
 }
 
-div .ability-scores {
-    padding: 0.6rem;
+div .ability-scores-section {
+    flex-direction: column;
 }
+
+div .ability-scores {
+    display: flex;
+    margin: 1rem;
+}
+
+div .ability-score-entry {
+    margin-right: 1.5rem;
+}
+
+    .ability-score-entry .as-subtract-btn {
+        margin-left: 0.5rem;
+        background-color: lightcoral;
+    }
+
+    .ability-score-entry .as-add-btn {
+        margin-right: 0.5rem;
+        background-color: lightgreen;
+    }
+
+    .ability-score-entry .disabled-btn {
+        background-color: lightgray;
+    }
 
 p {
     padding-left: 1rem;

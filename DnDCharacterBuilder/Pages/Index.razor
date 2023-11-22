@@ -78,29 +78,25 @@
 		</div>
 	</div>
 	<!-- Ability scores section -->
-	<div class="ability-score-section sheet-row">
+	<div class="ability-scores-section sheet-row">
 		<!-- Display character's ability scores alongside increment and decrement buttons -->
-		<div class="col-sm-2">
+		<div class="ability-score-points">
 			<p>Ability scores <br />
 				Remaining points: @characterSheet.AbilityScorePoints
 			</p>
 		</div>
+		<div class="ability-scores">
 			@foreach (var a in characterSheet.AbilityScores)
 			{
-				<div class="col-sm-1">
-					<div class="ability-scores">
-						@($"{a.Ability.ToString()} {a.Value}")
-						@if(a.Value > 8)
-						{
-							<button class="btn btn-light" @onclick="(_ => DecreaseAbilityScore(a))">-</button>
-						}
-						@if (a.CanIncrease && characterSheet.AbilityScorePoints >= a.IncreaseCost)
-						{
-							<button class="btn btn-light" @onclick="(_ => IncreaseAbilityScore(a))">+</button>
-						}
-					</div>					
+				<div>
+					<div class="ability-score-entry">
+						@($"{a.Ability.ToString()}: {a.Value} [{a.Modifier}]")
+						<button class="btn btn-light as-subtract-btn @(a.Value > 8 ? "" : "disabled disabled-btn")" @onclick="(_ => DecreaseAbilityScore(a))">-</button>
+						<button class="btn btn-light as-add-btn @(a.CanIncrease && characterSheet.AbilityScorePoints >= a.IncreaseCost ? "" : "disabled disabled-btn")" @onclick="(_ => IncreaseAbilityScore(a))">+</button>
+					</div>
 				</div>
-			}			
+			}
+		</div>				
 	</div>
 	<!-- Background section -->
 	<div class="background-section sheet-row">	
