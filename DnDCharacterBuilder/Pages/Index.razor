@@ -265,6 +265,9 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<p>Current Armor Class: @(characterSheet.EquippedArmor is null ? 10 : characterSheet.EquippedArmor.ArmorClass) base + @(characterSheet.AbilityScores[1].Modifier > characterSheet.EquippedArmor?.MaxDexBonus ? characterSheet.EquippedArmor.MaxDexBonus : characterSheet.AbilityScores[1].Modifier) dexterity bonus</p>
+			</div>
 		</div>
 	</div>
 	<!-- Spells section -->
