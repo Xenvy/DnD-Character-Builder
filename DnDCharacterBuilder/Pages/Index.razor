@@ -19,7 +19,16 @@
 <body class="character-sheet">
 	<h1>Character Sheet</h1>
 	<div class="summary-section sheet-row">
-		<p>Character sheet summary</p>
+		<p>Level @characterSheet.CharacterLevel @characterSheet.Race?.Name Adventurer
+			@if(characterSheet.CharacterClassLevels.Any())
+			{
+				@(" /")
+				@foreach(var cl in characterSheet.CharacterClassLevels.DistinctBy(x => x.BaseClass))
+				{
+					@($"/ {cl.BaseClass} ")
+				}
+			}
+		</p>
 	</div>
 	<!-- Race and race features section -->
 	<div class="race-section sheet-row">
@@ -88,12 +97,10 @@
 		<div class="ability-scores">
 			@foreach (var a in characterSheet.AbilityScores)
 			{
-				<div>
-					<div class="ability-score-entry">
-						@($"{a.Ability.ToString()}: {a.Value} [{a.Modifier}]")
-						<button class="btn btn-light as-subtract-btn @(a.Value > 8 ? "" : "disabled disabled-btn")" @onclick="(_ => DecreaseAbilityScore(a))">-</button>
-						<button class="btn btn-light as-add-btn @(a.CanIncrease && characterSheet.AbilityScorePoints >= a.IncreaseCost ? "" : "disabled disabled-btn")" @onclick="(_ => IncreaseAbilityScore(a))">+</button>
-					</div>
+				<div class="ability-score-entry">
+					@($"{a.Ability.ToString()}: {a.Value} [{a.Modifier}]")
+					<button class="btn btn-light as-subtract-btn @(a.Value > 8 ? "" : "disabled disabled-btn")" @onclick="(_ => DecreaseAbilityScore(a))">-</button>
+					<button class="btn btn-light as-add-btn @(a.CanIncrease && characterSheet.AbilityScorePoints >= a.IncreaseCost ? "" : "disabled disabled-btn")" @onclick="(_ => IncreaseAbilityScore(a))">+</button>
 				</div>
 			}
 		</div>				
