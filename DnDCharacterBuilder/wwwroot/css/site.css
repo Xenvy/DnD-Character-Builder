@@ -249,3 +249,8 @@ label {
 .remove-spell-button {
     margin-right: 2rem;
 }
+
+.skills-table {
+    margin: 1rem;
+    width: 90%;
+}

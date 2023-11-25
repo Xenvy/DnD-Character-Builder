@@ -139,20 +139,34 @@
 			</div>					
 		</div>
 	</div>
-	<!-- Skill and saving section throw proficiencies section -->
+	<!-- Skills and saving section throw proficiencies section -->
 	<div class="skills-and-saving-throws-section sheet-row">
 		<div class="skills-section">
 			<p>Character skills</p>
-			<!-- Display all current skill proficiencies -->
-			<ul name="skillSelection">
-				@if(characterSheet.SkillProficiencies.Count > 0)
-				{
-					@foreach (var s in characterSheet.SkillProficiencies)
+			<!-- Display all skills and their values -->
+			<table name="skillsTable" class="table table-striped skills-table">
+				<thead>
+					<tr>
+						<th>Skill</th>
+						<th>Ability</th>
+						<th>Ability Bonus</th>
+						<th>Skill Proficiency Bonus</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var s in skills)
 					{
-						<li>@s.Name</li>
+						<tr>
+							<td>@s.Name</td>
+							<td>@s.AssociatedAbilityScore</td>
+							<td>@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier</td>
+							<td>@(characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) != null ? characterSheet.ProficiencyBonus : 0)</td>
+							<td>@(@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier + (characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) != null ? characterSheet.ProficiencyBonus : 0))</td>
+						</tr>		
 					}
-				}
-			</ul>
+				</tbody>		
+			</table>
 		</div>
 		<div class="saving-throws-section">
 			<p>Saving throws</p>
