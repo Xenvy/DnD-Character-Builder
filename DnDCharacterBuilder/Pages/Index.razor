@@ -36,32 +36,40 @@
 			<div class="autocomplete">
 				<div class="option-selection">
 					<label for="raceSelection">Race: @(characterSheet.Race?.Name)</label>
-					<!-- Autocomplete-style selection of character's race -->
-					<input type="text"
-						   id="raceSelection"
-						   placeholder="Select a race..."
-						   class="form-control filter"
-						   aria-label="Search box"
-						   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
-						   @onfocusin="(_ => showRaceSelect = !showRaceSelect)"
-						   @onfocusout="(_ => OnRaceSelection())" />
-					<div class="option-list">
-						<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
-							@if (races?.Count > 0)
-							{
-								@foreach (var r in races)
+					@if(characterSheet.Race is not null)
+					{
+						<button class="btn btn-sm" @onclick="(_ => showRaceSwap = !showRaceSwap)"><span class="oi oi-loop-circular"></span></button>
+					}
+					@if(showRaceSwap)
+					{
+						<!-- Autocomplete-style selection of character's race -->
+						<input type="text"
+							   id="raceSelection"
+							   placeholder="Select a race..."
+							   class="form-control filter"
+							   aria-label="Search box"
+							   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
+							   @onfocusin="(_ => showRaceSelect = !showRaceSelect)"
+							   @onfocusout="(_ => OnRaceSelection())"
+							   @bind-value="raceSearchText" />
+						<div class="option-list">
+							<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
+								@if (races?.Count > 0)
 								{
-									<li class="option" @onclick="(_ => SelectRace(r))">
-										<span class="option-text">@r.Name</span>
-									</li>
+									@foreach (var r in races)
+									{
+										<li class="option" @onclick="(_ => SelectRace(r))">
+											<span class="option-text">@r.Name</span>
+										</li>
+									}
 								}
-							}
-							else
-							{
-								<li class="disabled option">No results</li>
-							}
-						</ul>
-					</div>
+								else
+								{
+									<li class="disabled option">No results</li>
+								}
+							</ul>
+						</div>
+					}
 				</div>
 			</div>
 		</div>
@@ -110,32 +118,40 @@
 		<div class="autocomplete">
 			<div class="option-selection">
 				<label for="backgroundSelection">Background: @(characterSheet.Background?.Name)</label>
-				<!-- Autocomplete-style selection of character's background -->
-				<input type="text"
-					   id="backgroundSelection"
-					   placeholder="Select a background..."
-					   class="form-control filter"
-					   aria-label="Search box"
-					   @oninput="((txt) => OnBGSearchInput((string)txt.Value))"
-					   @onfocusin="(_ => showBGSelect = !showBGSelect)"
-					   @onfocusout="(_ => OnBGSelection())" />
-				<div class="option-list">
-					<ul name="backgroundSelectionList" class="options @(showBGSelect ? "" : "hide")">
-						@if (backgrounds?.Count > 0)
-						{
-							@foreach (var b in backgrounds)
+				@if (characterSheet.Background is not null)
+				{
+					<button class="btn btn-sm" @onclick="(_ => showBackgroundSwap = !showBackgroundSwap)"><span class="oi oi-loop-circular"></span></button>
+				}
+				@if(showBackgroundSwap)
+				{
+					<!-- Autocomplete-style selection of character's background -->
+					<input type="text"
+						   id="backgroundSelection"
+						   placeholder="Select a background..."
+						   class="form-control filter"
+						   aria-label="Search box"
+						   @oninput="((txt) => OnBackgroundSearchInput((string)txt.Value))"
+						   @onfocusin="(_ => showBackgroundSelect = !showBackgroundSelect)"
+						   @onfocusout="(_ => OnBackgroundSelection())"
+						   @bind-value="backgroundSearchText" />
+					<div class="option-list">
+						<ul name="backgroundSelectionList" class="options @(showBackgroundSelect ? "" : "hide")">
+							@if (backgrounds?.Count > 0)
 							{
-								<li class="option" @onclick="(_ => SelectBackground(b))">
-									<span class="option-text">@b.Name</span>
-								</li>
+								@foreach (var b in backgrounds)
+								{
+									<li class="option" @onclick="(_ => SelectBackground(b))">
+										<span class="option-text">@b.Name</span>
+									</li>
+								}
 							}
-						}
-						else
-						{
-							<li class="disabled option">No results</li>
-						}
-					</ul>
-				</div>
+							else
+							{
+								<li class="disabled option">No results</li>
+							}
+						</ul>
+					</div>
+				}
 			</div>					
 		</div>
 	</div>
@@ -178,60 +194,29 @@
 			<div class="autocomplete">
 				<div class="option-selection">
 					<label for="weapon1Selection">Main hand: @characterSheet.EquippedWeapons[0]?.Name</label>
-					<!-- Autocomplete-style selection of character's main hand weapon -->
-					<input type="text"
-						   id="weapon1Selection"
-						   placeholder="Equip a weapon..."
-						   class="form-control filter"
-						   aria-label="Search box"
-						   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
-						   @onfocusin="(_ => MainHandSelect())"
-						   @onfocusout="(_ => OnWeaponSelection())" />
-					<div class="option-list">
-						<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
-							@if (weapons?.Count > 0)
-							{
-								<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 0))"><span class="option-text">(Empty hand)</span></li>
-								@foreach (var w in weapons)
-								{
-									<li class="option" @onclick="(_ => SelectWeapon(w, 0))">
-										<span class="option-text">@w.Name</span>
-									</li>
-								}
-							}
-							else
-							{
-								<li class="disabled option">No results</li>
-							}
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div>
-				<p>Main hand attack: @characterSheet.EquippedWeapons[0].Name @($"+{characterSheet.AbilityScores[0].Modifier + characterSheet.ProficiencyBonus}") @($"{characterSheet.EquippedWeapons[0].Damage}+{characterSheet.AbilityScores[0].Modifier}")</p>
-			</div>
-			@if(characterSheet.EquippedWeapons[0]?.TwoHanded == false)
-			{
-				<div class="autocomplete">
-					<div class="option-selection">
-						<label for="weapon2Selection">Off hand: @characterSheet.EquippedWeapons[1]?.Name</label>
-						<!-- Autocomplete-style selection of character's off-hand weapon -->
+					@if (characterSheet.EquippedWeapons[0].Name is not null)
+					{
+						<button class="btn btn-sm" @onclick="(_ => showWeapon1Swap = !showWeapon1Swap)"><span class="oi oi-loop-circular"></span></button>
+					}
+					@if(showWeapon1Swap)
+					{
+						<!-- Autocomplete-style selection of character's main hand weapon -->
 						<input type="text"
-							   id="weapon2Selection"
+							   id="weapon1Selection"
 							   placeholder="Equip a weapon..."
 							   class="form-control filter"
 							   aria-label="Search box"
 							   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
-							   @onfocusin="(_ => OffHandSelect())"
+							   @onfocusin="(_ => MainHandSelect())"
 							   @onfocusout="(_ => OnWeaponSelection())" />
 						<div class="option-list">
-							<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
+							<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
 								@if (weapons?.Count > 0)
 								{
-									<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 1))"><span class="option-text">(Empty hand)</span></li>
+									<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 0))"><span class="option-text">(Empty hand)</span></li>
 									@foreach (var w in weapons)
 									{
-										<li class="option" @onclick="(_ => SelectWeapon(w, 1))">
+										<li class="option" @onclick="(_ => SelectWeapon(w, 0))">
 											<span class="option-text">@w.Name</span>
 										</li>
 									}
@@ -242,6 +227,51 @@
 								}
 							</ul>
 						</div>
+					}
+				</div>
+			</div>
+			<div>
+				<p>Main hand attack: @characterSheet.EquippedWeapons[0].Name @($"+{characterSheet.AbilityScores[0].Modifier + characterSheet.ProficiencyBonus}") @($"{characterSheet.EquippedWeapons[0].Damage}+{characterSheet.AbilityScores[0].Modifier}")</p>
+			</div>
+			@if(characterSheet.EquippedWeapons[0]?.TwoHanded == false)
+			{
+				<div class="autocomplete">
+					<div class="option-selection">
+						<label for="weapon2Selection">Off hand: @characterSheet.EquippedWeapons[1]?.Name</label>
+						@if (characterSheet.EquippedWeapons[1].Name is not null)
+						{
+							<button class="btn btn-sm" @onclick="(_ => showWeapon2Swap = !showWeapon2Swap)"><span class="oi oi-loop-circular"></span></button>
+						}
+						@if(showWeapon2Swap)
+						{
+							<!-- Autocomplete-style selection of character's off-hand weapon -->
+							<input type="text"
+								   id="weapon2Selection"
+								   placeholder="Equip a weapon..."
+								   class="form-control filter"
+								   aria-label="Search box"
+								   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
+								   @onfocusin="(_ => OffHandSelect())"
+								   @onfocusout="(_ => OnWeaponSelection())" />
+							<div class="option-list">
+								<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
+									@if (weapons?.Count > 0)
+									{
+										<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 1))"><span class="option-text">(Empty hand)</span></li>
+										@foreach (var w in weapons)
+										{
+											<li class="option" @onclick="(_ => SelectWeapon(w, 1))">
+												<span class="option-text">@w.Name</span>
+											</li>
+										}
+									}
+									else
+									{
+										<li class="disabled option">No results</li>
+									}
+								</ul>
+							</div>
+						}	
 					</div>
 				</div>
 				<div>
@@ -252,34 +282,42 @@
 		<div class="armor-section">
 			<div class="autocomplete">
 				<div class="option-selection">
-					<label for="armorSelection">Equipped armor: @characterSheet.EquippedArmor?.Name</label>
-					<!-- Autocomplete-style selection of character's armor -->
-					<input type="text"
-						   id="armorSelection"
-						   placeholder="Equip armor..."
-						   class="form-control filter"
-						   aria-label="Search box"
-						   @oninput="((txt) => OnArmorSearchInput((string)txt.Value))"
-						   @onfocusin="(_ => showArmorSelect = !showArmorSelect)"
-						   @onfocusout="(_ => OnArmorSelection())" />
-					<div class="option-list">
-						<ul name="armorSelectionList" class="options @(showArmorSelect ? "" : "hide")">
-							@if (armors?.Count > 0)
-							{
-								<li class="option" @onclick="(_ => SelectArmor(new Armor()))"><span class="option-text">(No armor)</span></li>
-								@foreach (var a in armors)
+					<label for="armorSelection">Equipped armor: @characterSheet.EquippedArmor.Name</label>
+					@if (characterSheet.EquippedArmor.Name is not null)
+					{
+						<button class="btn btn-sm" @onclick="(_ => showArmorSwap = !showArmorSwap)"><span class="oi oi-loop-circular"></span></button>
+					}
+					@if(showArmorSwap)
+					{
+						<!-- Autocomplete-style selection of character's armor -->
+						<input type="text"
+							   id="armorSelection"
+							   placeholder="Equip armor..."
+							   class="form-control filter"
+							   aria-label="Search box"
+							   @oninput="((txt) => OnArmorSearchInput((string)txt.Value))"
+							   @onfocusin="(_ => showArmorSelect = !showArmorSelect)"
+							   @onfocusout="(_ => OnArmorSelection())"
+							   @bind-value="armorSearchText" />
+						<div class="option-list">
+							<ul name="armorSelectionList" class="options @(showArmorSelect ? "" : "hide")">
+								@if (armors?.Count > 0)
 								{
-									<li class="option" @onclick="(_ => SelectArmor(a))">
-										<span class="option-text">@a.Name</span>
-									</li>
+									<li class="option" @onclick="(_ => SelectArmor(new Armor()))"><span class="option-text">(No armor)</span></li>
+									@foreach (var a in armors)
+									{
+										<li class="option" @onclick="(_ => SelectArmor(a))">
+											<span class="option-text">@a.Name</span>
+										</li>
+									}
 								}
-							}
-							else
-							{
-								<li class="disabled option">No results</li>
-							}
-						</ul>
-					</div>
+								else
+								{
+									<li class="disabled option">No results</li>
+								}
+							</ul>
+						</div>
+					}		
 				</div>
 			</div>
 			<div>
@@ -291,7 +329,7 @@
 	<div class="spells-section sheet-row">
 		<div>
 			<p>Spells</p>
-			@if (characterSheet.CharacterClassLevels?.Count > 0)
+			@if (characterSheet.CharacterClassLevels.Count > 0)
 			{
 				@foreach (var cl in characterSheet.CharacterClassLevels)
 				{
@@ -363,7 +401,7 @@
 					}
 				}
 			</p>
-			@if(characterSheet.CharacterClassLevels?.Count < 20)
+			@if (characterSheet.CharacterClassLevels.Count < 20)
 			{
 				<div class="autocomplete">
 					<div class="option-selection">
@@ -400,7 +438,7 @@
 		</div>
 		<div class="level-features-section">
 			<!-- Display all acquired level features, grouped by level -->
-			@if (characterSheet.CharacterClassLevels?.Count > 0)
+			@if (characterSheet.CharacterClassLevels.Count > 0)
 			{
 				@for (int i = 0; i < characterSheet.CharacterClassLevels.Count; i++)
 				{
@@ -441,18 +479,23 @@
 	private string backgroundSearchText = "";
 	private string raceSearchText = "";
 	private string weaponSearchText = "";
-	//private string weapon2SearchText = "";
 	private string armorSearchText = "";
 	private string classLevelSearchText = "";
 	private string spellSearchText = "";
 
-	private bool showBGSelect = false;
+	private bool showBackgroundSelect = false;
 	private bool showRaceSelect = false;
 	private bool showWeapon1Select = false;
 	private bool showWeapon2Select = false;
 	private bool showArmorSelect = false;
 	private bool showClassLevelSelect = false;
 	private Dictionary<int, bool> showSpellSelect = new();
+
+	private bool showRaceSwap = true;
+	private bool showBackgroundSwap = true;
+	private bool showWeapon1Swap = true;
+	private bool showWeapon2Swap = true;
+	private bool showArmorSwap = true;
 	CancellationTokenSource tokenSource;
 
 	private CharacterSheet characterSheet = new();
@@ -478,6 +521,20 @@
 			{
 				showSpellSelect[s.Key] = false;
 			}
+
+			if(characterSheet.EquippedWeapons[0].Name is not null)
+			{
+				showWeapon1Swap = false;
+			}
+			if(characterSheet.EquippedWeapons[1].Name is not null)
+			{
+				showWeapon2Swap = false;
+			}
+			if(characterSheet.EquippedArmor.Name is not null)
+			{
+				showArmorSwap = false;
+			}
+
 			StateHasChanged();
 		}
 	}
@@ -499,15 +556,18 @@
 	/// Delays the autocomplete option list hiding on background selection to make sure the choice goes through.
 	/// </summary>
 	/// <returns></returns>
-	private async Task OnBGSelection()
+	private async Task OnBackgroundSelection()
 	{
 		tokenSource = new CancellationTokenSource();
 		await Task.Factory.StartNew(async () =>
 		{
 			await Task.Delay(100);
-			showBGSelect = false;
+			showBackgroundSelect = false;
+			showBackgroundSwap = false;
+			backgroundSearchText = "";
 			await InvokeAsync(StateHasChanged);
-		}, tokenSource.Token);
+			await FilterBackgrounds();
+		}, tokenSource.Token);	
 	}
 
 	/// <summary>
@@ -531,7 +591,7 @@
 	/// </summary>
 	/// <param name="searchInput"></param>
 	/// <returns></returns>
-	private async Task OnBGSearchInput(string searchInput)
+	private async Task OnBackgroundSearchInput(string searchInput)
 	{
 		backgroundSearchText = searchInput;
 		await FilterBackgrounds();
@@ -567,7 +627,10 @@
 		{
 			await Task.Delay(100);
 			showRaceSelect = false;
+			showRaceSwap = false;
+			raceSearchText = "";
 			await InvokeAsync(StateHasChanged);
+			await FilterRaces();
 		}, tokenSource.Token);
 	}
 
@@ -648,9 +711,21 @@
 		{
 			await Task.Delay(100);
 			if(showWeapon1Select)
+			{
 				showWeapon1Select = false;
+				if(characterSheet.EquippedWeapons[0].Name is not null)
+				{
+					showWeapon1Swap = false;
+				}
+			}
 			else
+			{
 				showWeapon2Select = false;
+				if (characterSheet.EquippedWeapons[1].Name is not null)
+				{
+					showWeapon2Swap = false;
+				}
+			}
 			await InvokeAsync(StateHasChanged);
 		}, tokenSource.Token);
 	}
@@ -711,7 +786,13 @@
 		{
 			await Task.Delay(100);
 			showArmorSelect = false;
+			if(characterSheet.EquippedArmor.Name is not null)
+			{
+				showArmorSwap = false;
+			}
+			armorSearchText = "";
 			await InvokeAsync(StateHasChanged);
+			await FilterArmors();
 		}, tokenSource.Token);
 	}
 

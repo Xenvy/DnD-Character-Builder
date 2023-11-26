@@ -100,7 +100,7 @@ public class CharacterSheet
 	/// <summary>
 	/// Character's currently equipped armor.
 	/// </summary>
-	public Armor? EquippedArmor { get; set; }
+	public Armor EquippedArmor { get; set; } = new();
 
 	public int AbilityScorePoints { get; set; } = 27;
 
