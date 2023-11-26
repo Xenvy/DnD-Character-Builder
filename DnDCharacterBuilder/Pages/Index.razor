@@ -186,6 +186,27 @@
 		</div>
 		<div class="saving-throws-section">
 			<p>Saving throws</p>
+			<table name="savingThrowsTable" class="table table-striped saving-throws-table">
+				<thead>
+					<tr>
+						<th>Saving Throw</th>
+						<th>Ability Bonus</th>
+						<th>Proficiency Bonus</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var a in characterSheet.AbilityScores)
+					{
+						<tr>
+							<td>@a.Ability</td>
+							<td>@a.Modifier</td>
+							<td>@(characterSheet.SavingThrowProficiencies.FindIndex(x => x == a.Ability) != -1 ? characterSheet.ProficiencyBonus : 0)</td>
+							<td>@(a.Modifier + (characterSheet.SavingThrowProficiencies.FindIndex(x => x == a.Ability) != -1 ? characterSheet.ProficiencyBonus : 0))</td>
+						</tr>
+					}
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<!-- Weapon and armor section -->
