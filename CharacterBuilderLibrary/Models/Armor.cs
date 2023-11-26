@@ -24,7 +24,7 @@ public class Armor
     /// <summary>
     /// Armor's maximum allowed Dexterity bonus.
     /// </summary>
-    public int MaxDexBonus { get; set; }
+    public int MaxDexBonus { get { return ArmorGroup == "Light" ? 16 : ArmorGroup == "Medium" ? 2 : 0; } }
 
     /// <summary>
     /// Armor's Strength requirement.

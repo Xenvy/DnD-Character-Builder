@@ -2,7 +2,7 @@
 	@Id int
 AS
 begin
-	select [Id], [Name], [ArmorClass], [Type], [StrengthRequirement], [StealthDisadvantage]
+	select [Id], [Name], [ArmorClass], [ArmorGroup], [StrengthRequirement], [StealthDisadvantage]
 	from dbo.[Armor]
 	where Id = @Id;
 end

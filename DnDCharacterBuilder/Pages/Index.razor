@@ -206,9 +206,10 @@
 							   placeholder="Equip a weapon..."
 							   class="form-control filter"
 							   aria-label="Search box"
-							   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
+							   @oninput="((txt) => OnWeapon1SearchInput((string)txt.Value))"
 							   @onfocusin="(_ => MainHandSelect())"
-							   @onfocusout="(_ => OnWeaponSelection())" />
+							   @onfocusout="(_ => OnWeaponSelection())"
+							   @bind-value="weapon1SearchText" />
 						<div class="option-list">
 							<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
 								@if (weapons?.Count > 0)
@@ -250,9 +251,10 @@
 								   placeholder="Equip a weapon..."
 								   class="form-control filter"
 								   aria-label="Search box"
-								   @oninput="((txt) => OnWeaponSearchInput((string)txt.Value))"
+								   @oninput="((txt) => OnWeapon2SearchInput((string)txt.Value))"
 								   @onfocusin="(_ => OffHandSelect())"
-								   @onfocusout="(_ => OnWeaponSelection())" />
+								   @onfocusout="(_ => OnWeaponSelection())"
+								   @bind-value="weapon2SearchText" />
 							<div class="option-list">
 								<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
 									@if (weapons?.Count > 0)
@@ -321,7 +323,7 @@
 				</div>
 			</div>
 			<div>
-				<p>Current Armor Class: @(characterSheet.EquippedArmor is null ? 10 : characterSheet.EquippedArmor.ArmorClass) base + @(characterSheet.AbilityScores[1].Modifier > characterSheet.EquippedArmor?.MaxDexBonus ? characterSheet.EquippedArmor.MaxDexBonus : characterSheet.AbilityScores[1].Modifier) dexterity bonus</p>
+				<p>Current Armor Class: @(characterSheet.EquippedArmor.Name is null ? 10 : characterSheet.EquippedArmor.ArmorClass) base + @(characterSheet.AbilityScores[1].Modifier > characterSheet.EquippedArmor.MaxDexBonus ? characterSheet.EquippedArmor.MaxDexBonus : characterSheet.AbilityScores[1].Modifier) dexterity bonus</p>
 			</div>
 		</div>
 	</div>
@@ -478,7 +480,8 @@
 
 	private string backgroundSearchText = "";
 	private string raceSearchText = "";
-	private string weaponSearchText = "";
+	private string weapon1SearchText = "";
+	private string weapon2SearchText = "";
 	private string armorSearchText = "";
 	private string classLevelSearchText = "";
 	private string spellSearchText = "";
@@ -684,8 +687,8 @@
 	{
 		showWeapon2Select = false;
 		showWeapon1Select = true;
-		weaponSearchText = "";
-		await FilterWeapons();
+		weapon1SearchText = "";
+		await FilterWeapons(weapon1SearchText);
 	}
 
 	/// <summary>
@@ -696,8 +699,8 @@
 	{
 		showWeapon1Select = false;
 		showWeapon2Select = true;
-		weaponSearchText = "";
-		await FilterWeapons();
+		weapon2SearchText = "";
+		await FilterWeapons(weapon2SearchText);
 	}
 
 	/// <summary>
@@ -717,6 +720,7 @@
 				{
 					showWeapon1Swap = false;
 				}
+				weapon1SearchText = "";
 			}
 			else
 			{
@@ -725,8 +729,10 @@
 				{
 					showWeapon2Swap = false;
 				}
+				weapon2SearchText = "";
 			}
 			await InvokeAsync(StateHasChanged);
+			await FilterWeapons("");
 		}, tokenSource.Token);
 	}
 
@@ -747,13 +753,13 @@
 	/// Filters available weapons based on search text input and 2-handed wield possibility.
 	/// </summary>
 	/// <returns></returns>
-	private async Task FilterWeapons()
+	private async Task FilterWeapons(string searchText)
 	{
 		var output = await characterSheetData.GetWeapons();
 
-		if (string.IsNullOrWhiteSpace(weaponSearchText) == false)
+		if (string.IsNullOrWhiteSpace(searchText) == false)
 		{
-			output = output.Where(w => w.Name.Contains(weaponSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+			output = output.Where(w => w.Name.Contains(searchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
 		}
 
 		if(showWeapon2Select || characterSheet.EquippedWeapons[1].Name is not null)
@@ -765,14 +771,25 @@
 	}
 
 	/// <summary>
-	/// Triggers the weapons filter with the supplied search text.
+	/// Triggers the weapons filter on main hand weapons with the supplied search text.
 	/// </summary>
 	/// <param name="searchInput"></param>
 	/// <returns></returns>
-	private async Task OnWeaponSearchInput(string searchInput)
+	private async Task OnWeapon1SearchInput(string searchInput)
 	{
-		weaponSearchText = searchInput;
-		await FilterWeapons();
+		weapon1SearchText = searchInput;
+		await FilterWeapons(searchInput);
+	}
+
+	/// <summary>
+	/// Triggers the weapons filter on off hand weapons with the supplied search text.
+	/// </summary>
+	/// <param name="searchInput"></param>
+	/// <returns></returns>
+	private async Task OnWeapon2SearchInput(string searchInput)
+	{
+		weapon2SearchText = searchInput;
+		await FilterWeapons(searchInput);
 	}
 
 	/// <summary>

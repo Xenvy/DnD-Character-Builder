@@ -3674,7 +3674,7 @@ begin
 end
 if not exists (select 1 from dbo.[Armor])
 begin
-	insert into dbo.[Armor] ([Name], [ArmorClass], [Type], [StrengthRequirement], [StealthDisadvantage])
+	insert into dbo.[Armor] ([Name], [ArmorClass], [ArmorGroup], [StrengthRequirement], [StealthDisadvantage])
 	values ('Padded', 11, 'Light', 0, 'TRUE'),
 			('Leather', 11, 'Light', 0, 'FALSE'),
 			('Studded leather', 12, 'Light', 0, 'FALSE'),
