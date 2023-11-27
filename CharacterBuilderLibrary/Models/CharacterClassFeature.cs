@@ -14,7 +14,7 @@ public class CharacterClassFeature
     /// <summary>
     /// ID of the class/subclass the feature belongs to.
     /// </summary>
-    public int ClassId { get; set; }
+    public int ClassLevelId { get; set; }
 
     /// <summary>
     /// Feature name.
@@ -29,7 +29,12 @@ public class CharacterClassFeature
     /// <summary>
     /// Parent feature, if applicable (ex. Riposte - Battle Master Maneuver).
     /// </summary>
-    public string? SubfeatureOf { get; set; }
+    public string? ParentFeatureName { get; set; }
+
+    /// <summary>
+    /// Number of subfeature selections available, if any. -1 means there are pre-set, non-selectable subfeatures.
+    /// </summary>
+    public int SubfeatureSelections { get; set; }
 
     /// <summary>
     /// Additional information used to update the character's sheet (extra attack, proficiencies, etc.).

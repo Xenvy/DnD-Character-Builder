@@ -27,9 +27,9 @@ public class CharacterClassFeatureData : ICharacterClassFeatureData
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<CharacterClassFeature>?> GetFeaturesByClassId(int classId)
+    public async Task<IEnumerable<CharacterClassFeature>?> GetFeaturesByClassId(int classLevelId)
     {
-        var results = await _db.LoadData<CharacterClassFeature, dynamic>("dbo.spClassFeatures_GetByClassId", new { ClassId = classId });
+        var results = await _db.LoadData<CharacterClassFeature, dynamic>("dbo.spClassFeatures_GetByClassId", new { ClassLevelId = classLevelId });
 
         return results;
     }

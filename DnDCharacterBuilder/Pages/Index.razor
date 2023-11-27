@@ -479,6 +479,7 @@
 						{
 							<div class="feature-no-tooltip">@f.Name</div>
 						}
+						<!--Class feature tag parser-->
 					}
 				}
 			}
@@ -1074,30 +1075,4 @@
 		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
 	}
 
-	// private void ParseTags(string tags)
-	// {
-	// 	string[] tagList = tags.Split("|");
-
-	// 	foreach (string tagEntry in tagList)
-	// 	{
-	// 		string[] tagSet = tagEntry.Split(",");
-
-	// 		switch (tagSet[0])
-	// 		{
-	// 			case "SubfeatureSelection":
-	// 				break;
-	// 			case "BonusSpell":
-	// 				break;
-	// 			case "WeaponProficiency":
-	// 				break;
-	// 			case "ArmorProficiency":
-	// 				break;
-	// 			case "SkillProficiency":
-	// 				break;
-	// 			default:
-	// 				break;
-	// 		}
-	// 	}
-	// }
 }
-

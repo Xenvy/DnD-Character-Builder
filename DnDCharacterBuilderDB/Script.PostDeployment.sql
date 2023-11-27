@@ -3691,10 +3691,10 @@ end
 if not exists (select 1 from dbo.[ClassFeatures])
 begin
 	insert into dbo.[ClassFeatures] ([Name], [ClassLevelId], [Description], [ParentFeatureName], [SubfeatureSelections], [Tags])
-	values ('Saving Throw Proficiency (Strength, Constitution)', 1, '', '', NULL, 'savingThrowProficiency,str|savingThrowProficiency,con'),
-('Armor Proficiency (Light, Medium, Shield)', 1, '', '', NULL, 'armorProficiency,light|armorProficiency,medium'),
-('Barbarian Weapon Proficiencies', 1, 'As a barbarian, you have proficiency with all simple and martial weapons.', '', NULL, 'weaponProficiency,all'),
-('Skill Proficiency', 1, '', '', NULL, 'skillSelect,1,8,10,13,14,16|skillSelect,1,8,10,13,14,16'),
+	values ('Saving Throw Proficiency (Strength, Constitution)', 1, '', '', 0, 'savingThrowProficiency,str|savingThrowProficiency,con'),
+('Armor Proficiency (Light, Medium, Shield)', 1, '', '', 0, 'armorProficiency,light|armorProficiency,medium'),
+('Barbarian Weapon Proficiencies', 1, 'As a barbarian, you have proficiency with all simple and martial weapons.', '', 0, 'weaponProficiency,all'),
+('Skill Proficiency', 1, '', '', 0, 'skillSelect,1,8,10,13,14,16|skillSelect,1,8,10,13,14,16'),
 ('Rage', 1, 'In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.
 
 While raging, you gain the following benefits if you aren''t wearing heavy armor:
@@ -3707,76 +3707,76 @@ If you are able to cast spells, you can''t cast them or concentrate on them whil
 
 Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven''t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.
 
-Once you have raged twice, you must finish a long rest before you can rage again. This number goes up as you gain barbarian levels.', '', NULL, ''),
-('Unarmored Defense', 1, 'While you are not wearing any armor, your armor class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.', '', NULL, 'unarmoredDefense,con'),
-('Reckless Attack', 2, 'Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.', '', NULL, ''),
-('Danger Sense', 2, 'At 2nd level, you gain an uncanny sense of when things nearby aren''t as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can''t be blinded, deafened, or incapacitated.', '', NULL, ''),
-('Additional Rage Use', 3, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 6, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 12, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 17, 'You can rage one more time per long rest.', '', NULL, ''),
-('Unlimited Rage Uses', 20, 'You can now rage an unlimited number of times.', '', NULL, ''),
-('Feat', 4, '', '', NULL, 'feat'),
-('Feat', 8, '', '', NULL, 'feat'),
-('Feat', 12, '', '', NULL, 'feat'),
-('Feat', 16, '', '', NULL, 'feat'),
-('Feat', 19, '', '', NULL, 'feat'),
-('Extra Attack', 5, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Fast Movement', 5, 'Starting at 5th level, your speed increases by 10 feet while you aren''t wearing heavy armor.', '', NULL, 'fastMovement'),
+Once you have raged twice, you must finish a long rest before you can rage again. This number goes up as you gain barbarian levels.', '', 0, ''),
+('Unarmored Defense', 1, 'While you are not wearing any armor, your armor class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.', '', 0, 'unarmoredDefense,con'),
+('Reckless Attack', 2, 'Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.', '', 0, ''),
+('Danger Sense', 2, 'At 2nd level, you gain an uncanny sense of when things nearby aren''t as they should be, giving you an edge when you dodge away from danger. You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can''t be blinded, deafened, or incapacitated.', '', 0, ''),
+('Additional Rage Use', 3, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 6, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 12, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 17, 'You can rage one more time per long rest.', '', 0, ''),
+('Unlimited Rage Uses', 20, 'You can now rage an unlimited number of times.', '', 0, ''),
+('Feat', 4, '', '', 0, 'feat'),
+('Feat', 8, '', '', 0, 'feat'),
+('Feat', 12, '', '', 0, 'feat'),
+('Feat', 16, '', '', 0, 'feat'),
+('Feat', 19, '', '', 0, 'feat'),
+('Extra Attack', 5, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Fast Movement', 5, 'Starting at 5th level, your speed increases by 10 feet while you aren''t wearing heavy armor.', '', 0, 'fastMovement'),
 ('Feral Instinct', 7, 'By 7th level, your instincts are so honed that you have advantage on initiative rolls.
 
-Additionally, if you are surprised at the beginning of combat and aren''t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.', '', NULL, ''),
+Additionally, if you are surprised at the beginning of combat and aren''t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.', '', 0, ''),
 ('Brutal Critical', 9, 'Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.
 
-This increases to two additional dice at 13th level and three additional dice at 17th level.', '', NULL, ''),
+This increases to two additional dice at 13th level and three additional dice at 17th level.', '', 0, ''),
 ('Relentless Rage', 11, 'Starting at 11th level, your rage can keep you fighting despite grievous wounds. If you drop to 0 hit points while you''re raging and don''t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead.
 
-Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.', '', NULL, ''),
-('Persistent Rage', 15, 'Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.', '', NULL, ''),
-('Indomitable Might', 18, 'Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.', '', NULL, ''),
-('Primal Champion', 20, 'At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.', '', NULL, 'abilityImprovement,str,4|abilityImprovement,con,4'),
-('Frenzy', 3, 'Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion.', '', NULL, ''),
-('Mindless Rage', 6, 'Beginning at 6th level, you can''t be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage.', '', NULL, ''),
+Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.', '', 0, ''),
+('Persistent Rage', 15, 'Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.', '', 0, ''),
+('Indomitable Might', 18, 'Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.', '', 0, ''),
+('Primal Champion', 20, 'At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.', '', 0, 'abilityImprovement,str,4|abilityImprovement,con,4'),
+('Frenzy', 3, 'Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion.', '', 0, ''),
+('Mindless Rage', 6, 'Beginning at 6th level, you can''t be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage.', '', 0, ''),
 ('Intimidating Presence', 10, 'Beginning at 10th level, you can use your action to frighten someone with your menacing presence. When you do so, choose one creature that you can see within 30 feet of you. If the creature can see or hear you, it must succeed on a Wisdom saving throw (DC equal to 8 + your proficiency bonus + your Charisma modifier) or be frightened of you until the end of your next turn. On subsequent turns, you can use your action to extend the duration of this effect on the frightened creature until the end of your next turn. This effect ends if the creature ends its turn out of line of sight or more than 60 feet away from you.
 
-If the creature succeeds on its saving throw, you can''t use this feature on that creature again for 24 hours.', '', NULL, ''),
-('Retaliation', 14, 'Starting at 14th level, when you take damage from a creature that is within 5 feet of you, you can use your reaction to make a melee weapon attack against that creature.', '', NULL, ''),
-('Spirit Seeker', 21, 'Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the Beast Sense and Speak with Animals spells, but only as rituals.', '', NULL, ''),
+If the creature succeeds on its saving throw, you can''t use this feature on that creature again for 24 hours.', '', 0, ''),
+('Retaliation', 14, 'Starting at 14th level, when you take damage from a creature that is within 5 feet of you, you can use your reaction to make a melee weapon attack against that creature.', '', 0, ''),
+('Spirit Seeker', 21, 'Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the Beast Sense and Speak with Animals spells, but only as rituals.', '', 0, ''),
 ('Totem Spirit', 21, 'At 3rd level, when you adopt this path, you choose a totem spirit and gain its feature. You must make or acquire a physical totem object – an amulet or similar adornment – that incorporates fur or feathers, claws, teeth, or bones of the totem animal. At your option, you also gain minor physical attributes that are reminiscent of your totem spirit. For example, if you have a bear totem spirit, you might be unusually hairy and thick-skinned, or if your totem is the eagle, your eyes turn bright yellow.
 
 Your totem animal might be an animal related to those listed here but more appropriate to your homeland. For example, you could choose a hawk or vulture in place of an eagle.', '', 1, ''),
-('Totem Spirit - Bear', NULL, 'Bear - While raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment.', 'Totem Spirit', NULL, ''),
-('Totem Spirit - Eagle', NULL, 'Eagle - While you''re raging and aren''t wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease.', 'Totem Spirit', NULL, ''),
-('Totem Spirit - Wolf', NULL, 'Wolf - While you''re raging, your friends have advantage on melee attack rolls against any creature within 5 feet of you that is hostile to you. The spirit of the wolf makes you a leader of hunters.', 'Totem Spirit', NULL, ''),
-('Additional Rage Use', 21, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 24, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 30, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 35, 'You can rage one more time per long rest.', '', NULL, ''),
-('Unlimited Rage Uses', 38, 'You can now rage an unlimited number of times.', '', NULL, ''),
-('Feat', 22, '', '', NULL, 'feat'),
-('Feat', 26, '', '', NULL, 'feat'),
-('Feat', 30, '', '', NULL, 'feat'),
-('Feat', 34, '', '', NULL, 'feat'),
-('Feat', 37, '', '', NULL, 'feat'),
-('Extra Attack', 23, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Fast Movement', 23, 'Starting at 5th level, your speed increases by 10 feet while you aren''t wearing heavy armor.', '', NULL, 'fastMovement'),
+('Totem Spirit - Bear', NULL, 'Bear - While raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment.', 'Totem Spirit', 0, ''),
+('Totem Spirit - Eagle', NULL, 'Eagle - While you''re raging and aren''t wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease.', 'Totem Spirit', 0, ''),
+('Totem Spirit - Wolf', NULL, 'Wolf - While you''re raging, your friends have advantage on melee attack rolls against any creature within 5 feet of you that is hostile to you. The spirit of the wolf makes you a leader of hunters.', 'Totem Spirit', 0, ''),
+('Additional Rage Use', 21, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 24, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 30, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 35, 'You can rage one more time per long rest.', '', 0, ''),
+('Unlimited Rage Uses', 38, 'You can now rage an unlimited number of times.', '', 0, ''),
+('Feat', 22, '', '', 0, 'feat'),
+('Feat', 26, '', '', 0, 'feat'),
+('Feat', 30, '', '', 0, 'feat'),
+('Feat', 34, '', '', 0, 'feat'),
+('Feat', 37, '', '', 0, 'feat'),
+('Extra Attack', 23, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Fast Movement', 23, 'Starting at 5th level, your speed increases by 10 feet while you aren''t wearing heavy armor.', '', 0, 'fastMovement'),
 ('Feral Instinct', 25, 'By 7th level, your instincts are so honed that you have advantage on initiative rolls.
 
-Additionally, if you are surprised at the beginning of combat and aren''t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.', '', NULL, ''),
+Additionally, if you are surprised at the beginning of combat and aren''t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.', '', 0, ''),
 ('Brutal Critical', 27, 'Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.
 
-This increases to two additional dice at 13th level and three additional dice at 17th level.', '', NULL, ''),
+This increases to two additional dice at 13th level and three additional dice at 17th level.', '', 0, ''),
 ('Relentless Rage', 29, 'Starting at 11th level, your rage can keep you fighting despite grievous wounds. If you drop to 0 hit points while you''re raging and don''t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead.
 
-Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.', '', NULL, ''),
-('Persistent Rage', 33, 'Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.', '', NULL, ''),
-('Indomitable Might', 36, 'Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.', '', NULL, ''),
-('Primal Champion', 38, 'At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.', '', NULL, 'abilityImprovement,str,4|abilityImprovement,con,4'),
+Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.', '', 0, ''),
+('Persistent Rage', 33, 'Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.', '', 0, ''),
+('Indomitable Might', 36, 'Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.', '', 0, ''),
+('Primal Champion', 38, 'At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.', '', 0, 'abilityImprovement,str,4|abilityImprovement,con,4'),
 ('Aspect of the Beast', 24, 'At 6th level, you gain a magical benefit based on the totem animal of your choice. You can choose the same animal you selected at 3rd level or a different one.', '', 1, ''),
-('Aspect of the Beast - Bear', NULL, 'Bear - You gain the might of a bear. Your carrying capacity (including maximum load and maximum lift) is doubled, and you have advantage on Strength checks made to push, pull, lift, or break objects.', 'Aspect of the Beast', NULL, ''),
-('Aspect of the Beast - Eagle', NULL, 'Eagle - You gain the eyesight of an eagle. You can see up to 1 mile away with no difficulty, able to discern even fine details as though looking at something no more than 100 feet away from you. Additionally, dim light doesn''t impose disadvantage on your Wisdom (Perception) checks.', 'Aspect of the Beast', NULL, ''),
-('Aspect of the Beast - Wolf', NULL, 'Wolf - You gain the hunting sensibilities of a wolf. You can track other creatures while traveling at a fast pace, and you can move stealthily while traveling at a normal pace.', 'Aspect of the Beast', NULL, ''),
-('Spirit Walker', 28, 'At 10th level, you can cast the Commune with Nature spell, but only as a ritual. When you do so, a spiritual version of one of the animals you chose for Totem Spirit or Aspect of the Beast appears to you to convey the information you seek.', '', NULL, ''),
+('Aspect of the Beast - Bear', NULL, 'Bear - You gain the might of a bear. Your carrying capacity (including maximum load and maximum lift) is doubled, and you have advantage on Strength checks made to push, pull, lift, or break objects.', 'Aspect of the Beast', 0, ''),
+('Aspect of the Beast - Eagle', NULL, 'Eagle - You gain the eyesight of an eagle. You can see up to 1 mile away with no difficulty, able to discern even fine details as though looking at something no more than 100 feet away from you. Additionally, dim light doesn''t impose disadvantage on your Wisdom (Perception) checks.', 'Aspect of the Beast', 0, ''),
+('Aspect of the Beast - Wolf', NULL, 'Wolf - You gain the hunting sensibilities of a wolf. You can track other creatures while traveling at a fast pace, and you can move stealthily while traveling at a normal pace.', 'Aspect of the Beast', 0, ''),
+('Spirit Walker', 28, 'At 10th level, you can cast the Commune with Nature spell, but only as a ritual. When you do so, a spiritual version of one of the animals you chose for Totem Spirit or Aspect of the Beast appears to you to convey the information you seek.', '', 0, ''),
 ('Totemic Attunement', 32, 'At 14th level, you gain a magical benefit based on a totem animal of your choice. You can choose the same animal you selected previously or a different one.
 
 Bear - While you''re raging, any creature within 5 feet of you that''s hostile to you has disadvantage on attack rolls against targets other than you or another character with this feature. An enemy is immune to this effect if it can''t see or hear you or if it can''t be frightened.
@@ -3784,12 +3784,12 @@ Bear - While you''re raging, any creature within 5 feet of you that''s hostile t
 Eagle - While raging, you have a flying speed equal to your current walking speed. This benefit works only in short bursts; you fall if you end your turn in the air and nothing else is holding you aloft.
 
 Wolf - While you''re raging, you can use a bonus action on your turn to knock a Large or smaller creature prone when you hit it with melee weapon attack.', '', 1, ''),
-('Totemic Attunement - Bear', NULL, 'Bear - While you''re raging, any creature within 5 feet of you that''s hostile to you has disadvantage on attack rolls against targets other than you or another character with this feature. An enemy is immune to this effect if it can''t see or hear you or if it can''t be frightened.', 'Totemic Attunement', NULL, ''),
-('Totemic Attunement - Eagle', NULL, 'Eagle - While raging, you have a flying speed equal to your current walking speed. This benefit works only in short bursts; you fall if you end your turn in the air and nothing else is holding you aloft.', 'Totemic Attunement', NULL, ''),
-('Totemic Attunement - Wolf', NULL, 'Wolf - While you''re raging, you can use a bonus action on your turn to knock a Large or smaller creature prone when you hit it with melee weapon attack.', 'Totemic Attunement', NULL, ''),
+('Totemic Attunement - Bear', NULL, 'Bear - While you''re raging, any creature within 5 feet of you that''s hostile to you has disadvantage on attack rolls against targets other than you or another character with this feature. An enemy is immune to this effect if it can''t see or hear you or if it can''t be frightened.', 'Totemic Attunement', 0, ''),
+('Totemic Attunement - Eagle', NULL, 'Eagle - While raging, you have a flying speed equal to your current walking speed. This benefit works only in short bursts; you fall if you end your turn in the air and nothing else is holding you aloft.', 'Totemic Attunement', 0, ''),
+('Totemic Attunement - Wolf', NULL, 'Wolf - While you''re raging, you can use a bonus action on your turn to knock a Large or smaller creature prone when you hit it with melee weapon attack.', 'Totemic Attunement', 0, ''),
 ('Magic Awareness', 39, 'When you choose this path at 3rd level, as an action, you can open your awareness to the presence of concentrated magic. Until the end of your next turn, you know the location of any spell or magic item within 60 feet of you that isn’t behind total cover. When you sense a spell, you learn which school of magic it belongs to.
 
-You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.', '', NULL, ''),
+You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.', '', 0, ''),
 ('Wild Surge', 39, 'Also at 3rd level, the magical energy roiling inside you sometimes erupts from you. When you enter your rage, roll on the Wild Magic table to determine the magical effect produced.
 
 If the effect requires a saving throw, the DC equals 8 + your proficiency bonus + your Constitution modifier.
@@ -3808,100 +3808,100 @@ If the effect requires a saving throw, the DC equals 8 + your proficiency bonus 
 
 7:    Flowers and vines temporarily grow around you; until your rage ends, the ground within 15 feet of you is difficult terrain for your enemies.
 
-8:    A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.', '', NULL, ''),
-('Additional Rage Use', 39, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 42, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 48, 'You can rage one more time per long rest.', '', NULL, ''),
-('Additional Rage Use', 53, 'You can rage one more time per long rest.', '', NULL, ''),
-('Unlimited Rage Uses', 56, 'You can now rage an unlimited number of times.', '', NULL, ''),
-('Feat', 40, '', '', NULL, 'feat'),
-('Feat', 44, '', '', NULL, 'feat'),
-('Feat', 48, '', '', NULL, 'feat'),
-('Feat', 52, '', '', NULL, 'feat'),
-('Feat', 55, '', '', NULL, 'feat'),
-('Extra Attack', 41, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Fast Movement', 41, 'Starting at 5th level, your speed increases by 10 feet while you aren''t wearing heavy armor.', '', NULL, 'fastMovement'),
+8:    A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.', '', 0, ''),
+('Additional Rage Use', 39, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 42, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 48, 'You can rage one more time per long rest.', '', 0, ''),
+('Additional Rage Use', 53, 'You can rage one more time per long rest.', '', 0, ''),
+('Unlimited Rage Uses', 56, 'You can now rage an unlimited number of times.', '', 0, ''),
+('Feat', 40, '', '', 0, 'feat'),
+('Feat', 44, '', '', 0, 'feat'),
+('Feat', 48, '', '', 0, 'feat'),
+('Feat', 52, '', '', 0, 'feat'),
+('Feat', 55, '', '', 0, 'feat'),
+('Extra Attack', 41, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Fast Movement', 41, 'Starting at 5th level, your speed increases by 10 feet while you aren''t wearing heavy armor.', '', 0, 'fastMovement'),
 ('Feral Instinct', 43, 'By 7th level, your instincts are so honed that you have advantage on initiative rolls.
 
-Additionally, if you are surprised at the beginning of combat and aren''t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.', '', NULL, ''),
+Additionally, if you are surprised at the beginning of combat and aren''t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn.', '', 0, ''),
 ('Brutal Critical', 45, 'Beginning at 9th level, you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack.
 
-This increases to two additional dice at 13th level and three additional dice at 17th level.', '', NULL, ''),
+This increases to two additional dice at 13th level and three additional dice at 17th level.', '', 0, ''),
 ('Relentless Rage', 47, 'Starting at 11th level, your rage can keep you fighting despite grievous wounds. If you drop to 0 hit points while you''re raging and don''t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead.
 
-Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.', '', NULL, ''),
-('Persistent Rage', 51, 'Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.', '', NULL, ''),
-('Indomitable Might', 54, 'Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.', '', NULL, ''),
-('Primal Champion', 56, 'At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.', '', NULL, 'abilityImprovement,str,4|abilityImprovement,con,4'),
+Each time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.', '', 0, ''),
+('Persistent Rage', 51, 'Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.', '', 0, ''),
+('Indomitable Might', 54, 'Beginning at 18th level, if your total for a Strength check is less than your Strength score, you can use that score in place of the total.', '', 0, ''),
+('Primal Champion', 56, 'At 20th level, you embody the power of the wilds. Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24.', '', 0, 'abilityImprovement,str,4|abilityImprovement,con,4'),
 ('Bolstering Magic', 42, 'Beginning at 6th level, you can harness your wild magic to bolster yourself or a companion. As an action, you can touch one creature (which can be yourself) and confer one of the following benefits of your choice to that creature:
 
 For 10 minutes, the creature can roll a d3 whenever making an attack roll or an ability check and add the number rolled to the d20 roll.
 Roll a d3. The creature regains one expended spell slot, the level of which equals the number rolled or lower (the creature’s choice). Once a creature receives this benefit, that creature can’t receive it again until after a long rest.
-You can take this action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.', '', NULL, ''),
-('Unstable Backlash', 46, 'At 10th level, when you are imperiled during your rage, the magic within you can lash out; immediately after you take damage or fail a saving throw while raging, you can use your reaction to roll on the Wild Magic table and immediately produce the effect rolled. This effect replaces your current Wild Magic effect.', '', NULL, ''),
-('Controlled Surge', 50, 'At 14th level, whenever you roll on the Wild Magic table, you can roll the die twice and choose which of the two effects to unleash. If you roll the same number on both dice, you can ignore the number and choose any effect on the table.', '', NULL, ''),
-('Saving Throw Proficiency (Dexterity, Charisma)', 57, '', '', NULL, 'savingThrowProficiency,dex|savingThrowProficiency,cha'),
-('Armor Proficiency (Light)', 57, '', '', NULL, 'armorProficiency,light'),
-('Bard Weapon Proficiencies', 57, 'As a bard, you have proficiency with all simple weapons, hand crossbows, longswords, rapiers and shortswords.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,35|weaponProficiency,single,23|weaponProficiency,single,27|weaponProficiency,single,29'),
-('Skill Proficiency', 57, '', '', NULL, 'skillSelectAny|skillSelectAny|skillSelectAny'),
+You can take this action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.', '', 0, ''),
+('Unstable Backlash', 46, 'At 10th level, when you are imperiled during your rage, the magic within you can lash out; immediately after you take damage or fail a saving throw while raging, you can use your reaction to roll on the Wild Magic table and immediately produce the effect rolled. This effect replaces your current Wild Magic effect.', '', 0, ''),
+('Controlled Surge', 50, 'At 14th level, whenever you roll on the Wild Magic table, you can roll the die twice and choose which of the two effects to unleash. If you roll the same number on both dice, you can ignore the number and choose any effect on the table.', '', 0, ''),
+('Saving Throw Proficiency (Dexterity, Charisma)', 57, '', '', 0, 'savingThrowProficiency,dex|savingThrowProficiency,cha'),
+('Armor Proficiency (Light)', 57, '', '', 0, 'armorProficiency,light'),
+('Bard Weapon Proficiencies', 57, 'As a bard, you have proficiency with all simple weapons, hand crossbows, longswords, rapiers and shortswords.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,35|weaponProficiency,single,23|weaponProficiency,single,27|weaponProficiency,single,29'),
+('Skill Proficiency', 57, '', '', 0, 'skillSelectAny|skillSelectAny|skillSelectAny'),
 ('Bardic Inspiration', 57, 'You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.
 
 Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.
 
 You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.
 
-Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.', '', NULL, ''),
-('Jack of All Trades', 58, 'Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn''t already include your proficiency bonus.', '', NULL, 'jackOfAllTrades'),
+Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.', '', 0, ''),
+('Jack of All Trades', 58, 'Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn''t already include your proficiency bonus.', '', 0, 'jackOfAllTrades'),
 ('Song of Rest', 58, 'Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points at the end of the short rest by spending one or more Hit Dice, each of those creatures regains an extra 1d6 hit points.
 
-The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.', '', NULL, ''),
+The extra Hit Points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.', '', 0, ''),
 ('Expertise', 59, 'At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', NULL, 'expertise|expertise'),
+At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', 0, 'expertise|expertise'),
 ('Expertise', 66, 'At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', NULL, 'expertise|expertise'),
-('Feat', 60, '', '', NULL, 'feat'),
-('Feat', 64, '', '', NULL, 'feat'),
-('Feat', 68, '', '', NULL, 'feat'),
-('Feat', 72, '', '', NULL, 'feat'),
-('Feat', 75, '', '', NULL, 'feat'),
-('Font of Inspiration', 61, 'Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.', '', NULL, ''),
-('Countercharm', 62, 'At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).', '', NULL, ''),
+At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', 0, 'expertise|expertise'),
+('Feat', 60, '', '', 0, 'feat'),
+('Feat', 64, '', '', 0, 'feat'),
+('Feat', 68, '', '', 0, 'feat'),
+('Feat', 72, '', '', 0, 'feat'),
+('Feat', 75, '', '', 0, 'feat'),
+('Font of Inspiration', 61, 'Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.', '', 0, ''),
+('Countercharm', 62, 'At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).', '', 0, ''),
 ('Magical Secrets', 66, 'By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.
 
 The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.
 
-You learn two additional spells from any classes at 14th level and again at 18th level.', '', NULL, 'spellSelectAny,5|spellSelectAny,5'),
-('Superior Inspiration', 76, 'At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.', '', NULL, ''),
-('Bonus Proficiencies', 59, 'When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice.', '', NULL, 'skillSelectAny|skillSelectAny|skillSelectAny'),
-('Cutting Words', 59, 'Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature''s roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can''t hear you or if it''s immune to being charmed.', '', NULL, ''),
-('Additional Magical Secrets', 62, 'At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don''t count against the number of bard spells you know.', '', NULL, 'spellSelectAny,3|spellSelectAny,3'),
-('Peerless Skill', 70, 'Starting at 14th level, when you make an ability check, you can expend one use of Bardic Inspiration. Roll a Bardic Inspiration die and add the number rolled to your ability check. You can choose to do so after you roll the die for the ability check, but before the DM tells you whether you succeed or fail.', '', NULL, ''),
+You learn two additional spells from any classes at 14th level and again at 18th level.', '', 0, 'spellSelectAny,5|spellSelectAny,5'),
+('Superior Inspiration', 76, 'At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.', '', 0, ''),
+('Bonus Proficiencies', 59, 'When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice.', '', 0, 'skillSelectAny|skillSelectAny|skillSelectAny'),
+('Cutting Words', 59, 'Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature''s roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can''t hear you or if it''s immune to being charmed.', '', 0, ''),
+('Additional Magical Secrets', 62, 'At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don''t count against the number of bard spells you know.', '', 0, 'spellSelectAny,3|spellSelectAny,3'),
+('Peerless Skill', 70, 'Starting at 14th level, when you make an ability check, you can expend one use of Bardic Inspiration. Roll a Bardic Inspiration die and add the number rolled to your ability check. You can choose to do so after you roll the die for the ability check, but before the DM tells you whether you succeed or fail.', '', 0, ''),
 ('Expertise', 77, 'At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', NULL, 'expertise|expertise'),
+At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', 0, 'expertise|expertise'),
 ('Expertise', 84, 'At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', NULL, 'expertise|expertise'),
-('Feat', 78, '', '', NULL, 'feat'),
-('Feat', 82, '', '', NULL, 'feat'),
-('Feat', 86, '', '', NULL, 'feat'),
-('Feat', 90, '', '', NULL, 'feat'),
-('Feat', 93, '', '', NULL, 'feat'),
-('Font of Inspiration', 79, 'Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.', '', NULL, ''),
-('Countercharm', 80, 'At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).', '', NULL, ''),
+At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', 0, 'expertise|expertise'),
+('Feat', 78, '', '', 0, 'feat'),
+('Feat', 82, '', '', 0, 'feat'),
+('Feat', 86, '', '', 0, 'feat'),
+('Feat', 90, '', '', 0, 'feat'),
+('Feat', 93, '', '', 0, 'feat'),
+('Font of Inspiration', 79, 'Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.', '', 0, ''),
+('Countercharm', 80, 'At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).', '', 0, ''),
 ('Magical Secrets', 84, 'By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.
 
 The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.
 
-You learn two additional spells from any classes at 14th level and again at 18th level.', '', NULL, 'spellSelectAny,5|spellSelectAny,5'),
-('Superior Inspiration', 94, 'At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.', '', NULL, ''),
-('Armor Proficiency (Medium)', 77, '', '', NULL, 'armorProficiency,medium'),
-('Weapon Proficiency (Scimitar)', 77, '', '', NULL, 'weaponProficiency,single,28'),
+You learn two additional spells from any classes at 14th level and again at 18th level.', '', 0, 'spellSelectAny,5|spellSelectAny,5'),
+('Superior Inspiration', 94, 'At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.', '', 0, ''),
+('Armor Proficiency (Medium)', 77, '', '', 0, 'armorProficiency,medium'),
+('Weapon Proficiency (Scimitar)', 77, '', '', 0, 'weaponProficiency,single,28'),
 ('Fighting Style - Bard', 77, 'At 3rd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can''t take a Fighting Style option more than once, even if you later get to choose again.', '', 1, ''),
-('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Bard', NULL, 'duelingStyle'),
-('Two-Weapon Fighting', NULL, 'When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.', 'Fighting Style - Bard', NULL, 'twoWeaponFightingStyle'),
+('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Bard', 0, 'duelingStyle'),
+('Two-Weapon Fighting', NULL, 'When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.', 'Fighting Style - Bard', 0, 'twoWeaponFightingStyle'),
 ('Blade Flourish', 77, 'At 3rd level, you learn to conduct impressive displays of martial prowess and speed.
 
 Whenever you take the Attack action on your turn, your walking speed increases by 10 feet until the end of the turn, and if a weapon attack that you make as part of this action hits a creature, you can use one of the following Blade Flourish options of your choice. You can use only one Blade Flourish option per turn.
@@ -3910,318 +3910,318 @@ Defensive Flourish - You can expend one use of your Bardic Inspiration to cause 
 
 Slashing Flourish - You can expend one use of your Bardic Inspiration to cause the weapon to deal extra damage to the target you hit and to any other creature of your choice that you can see within 5 feet of you. The damage equals the number you roll on the Bardic Inspiration die.
 
-Mobile Flourish - You can expend one use of your Bardic Inspiration to cause the weapon to deal extra damage to the target you hit. The damage equals the number you roll on the Bardic Inspiration die. You can also push the target up to 5 feet away from you, plus a number of feet equal to the number you roll on that die. You can then immediately use your reaction to move up to your walking speed to an unoccupied space within 5 feet of the target.', '', NULL, ''),
-('Extra Attack', 80, 'Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Master''s Flourish', 88, 'Starting at 14th level, whenever you use a Blade Flourish option, you can roll a d6 and use it instead of expending a Bardic Inspiration die.', '', NULL, ''),
+Mobile Flourish - You can expend one use of your Bardic Inspiration to cause the weapon to deal extra damage to the target you hit. The damage equals the number you roll on the Bardic Inspiration die. You can also push the target up to 5 feet away from you, plus a number of feet equal to the number you roll on that die. You can then immediately use your reaction to move up to your walking speed to an unoccupied space within 5 feet of the target.', '', 0, ''),
+('Extra Attack', 80, 'Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Master''s Flourish', 88, 'Starting at 14th level, whenever you use a Blade Flourish option, you can roll a d6 and use it instead of expending a Bardic Inspiration die.', '', 0, ''),
 ('Expertise', 95, 'At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', NULL, 'expertise|expertise'),
+At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', 0, 'expertise|expertise'),
 ('Expertise', 102, 'At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', NULL, 'expertise|expertise'),
-('Feat', 96, '', '', NULL, 'feat'),
-('Feat', 100, '', '', NULL, 'feat'),
-('Feat', 104, '', '', NULL, 'feat'),
-('Feat', 108, '', '', NULL, 'feat'),
-('Feat', 111, '', '', NULL, 'feat'),
-('Font of Inspiration', 97, 'Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.', '', NULL, ''),
-('Countercharm', 98, 'At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).', '', NULL, ''),
+At 10th level, you can choose another two skill proficiencies to gain this benefit.', '', 0, 'expertise|expertise'),
+('Feat', 96, '', '', 0, 'feat'),
+('Feat', 100, '', '', 0, 'feat'),
+('Feat', 104, '', '', 0, 'feat'),
+('Feat', 108, '', '', 0, 'feat'),
+('Feat', 111, '', '', 0, 'feat'),
+('Font of Inspiration', 97, 'Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.', '', 0, ''),
+('Countercharm', 98, 'At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).', '', 0, ''),
 ('Magical Secrets', 102, 'By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any classes, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.
 
 The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.
 
-You learn two additional spells from any classes at 14th level and again at 18th level.', '', NULL, 'spellSelectAny,5|spellSelectAny,5'),
-('Superior Inspiration', 112, 'At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.', '', NULL, ''),
-('Armor Proficiency (Medium, Shield)', 95, '', '', NULL, 'armorProficiency,medium'),
-('Weapon Proficiency (Martial)', 95, '', '', NULL, 'weaponProficiency,martial|weaponProficiency,single,38'),
-('Combat Inspiration', 95, 'Also at 3rd level, you learn to inspire others in battle. A creature that has a Bardic Inspiration die from you can roll that die and add the number rolled to a weapon damage roll it just made. Alternatively, when an attack roll is made against the creature, it can use its reaction to roll the Bardic Inspiration die and add the number rolled to its AC against that attack, after seeing the roll but before knowing whether it hits or misses.', '', NULL, ''),
-('Extra Attack', 98, 'Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Battle Magic', 106, 'At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harmonious act. When you use your action to cast a bard spell, you can make one weapon attack as a bonus action.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 113, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Shield)', 113, '', '', NULL, 'armorProficiency,light|armorProficiency,medium'),
-('Cleric Weapon Proficiencies', 113, 'As a cleric, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,38'),
-('Skill Proficiency', 113, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+You learn two additional spells from any classes at 14th level and again at 18th level.', '', 0, 'spellSelectAny,5|spellSelectAny,5'),
+('Superior Inspiration', 112, 'At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.', '', 0, ''),
+('Armor Proficiency (Medium, Shield)', 95, '', '', 0, 'armorProficiency,medium'),
+('Weapon Proficiency (Martial)', 95, '', '', 0, 'weaponProficiency,martial|weaponProficiency,single,38'),
+('Combat Inspiration', 95, 'Also at 3rd level, you learn to inspire others in battle. A creature that has a Bardic Inspiration die from you can roll that die and add the number rolled to a weapon damage roll it just made. Alternatively, when an attack roll is made against the creature, it can use its reaction to roll the Bardic Inspiration die and add the number rolled to its AC against that attack, after seeing the roll but before knowing whether it hits or misses.', '', 0, ''),
+('Extra Attack', 98, 'Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Battle Magic', 106, 'At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harmonious act. When you use your action to cast a bard spell, you can make one weapon attack as a bonus action.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 113, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Shield)', 113, '', '', 0, 'armorProficiency,light|armorProficiency,medium'),
+('Cleric Weapon Proficiencies', 113, 'As a cleric, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,38'),
+('Skill Proficiency', 113, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 114, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 116, '', '', NULL, 'feat'),
-('Feat', 120, '', '', NULL, 'feat'),
-('Feat', 124, '', '', NULL, 'feat'),
-('Feat', 128, '', '', NULL, 'feat'),
-('Feat', 131, '', '', NULL, 'feat'),
-('Destroy Undead', 117, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 116, '', '', 0, 'feat'),
+('Feat', 120, '', '', 0, 'feat'),
+('Feat', 124, '', '', 0, 'feat'),
+('Feat', 128, '', '', 0, 'feat'),
+('Feat', 131, '', '', 0, 'feat'),
+('Destroy Undead', 117, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 122, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 113, 'At 1st level, you gain Command and Identify spells.', '', NULL, 'spell,55|spell,189'),
-('Domain Spells', 115, 'At 3rd level, you gain Augury and Suggestion spells.', '', NULL, 'spell,19|spell,318'),
-('Domain Spells', 117, 'At 5th level, you gain Nondetection and Speak with Dead spells.', '', NULL, 'spell,241|spell,307'),
-('Domain Spells', 119, 'At 7th level, you gain Arcane Eye and Confusion spells.', '', NULL, 'spell,13|spell,62'),
-('Domain Spells', 121, 'At 9th level, you gain Legend Lore and Scrying spells.', '', NULL, 'spell,198|spell,287'),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 113, 'At 1st level, you gain Command and Identify spells.', '', 0, 'spell,55|spell,189'),
+('Domain Spells', 115, 'At 3rd level, you gain Augury and Suggestion spells.', '', 0, 'spell,19|spell,318'),
+('Domain Spells', 117, 'At 5th level, you gain Nondetection and Speak with Dead spells.', '', 0, 'spell,241|spell,307'),
+('Domain Spells', 119, 'At 7th level, you gain Arcane Eye and Confusion spells.', '', 0, 'spell,13|spell,62'),
+('Domain Spells', 121, 'At 9th level, you gain Legend Lore and Scrying spells.', '', 0, 'spell,198|spell,287'),
 ('Blessings of Knowledge', 113, 'At 1st level, you learn two languages of your choice. You also become proficient in your choice of two of the following skills: Arcana, History, Nature, or Religion.
 
-Your proficiency bonus is doubled for any ability check you make that uses either of those skills.', '', NULL, 'skillSelectExpertise,5,6,8,9|skillSelectExpertise,5,6,8,9'),
-('Channel Divinity: Knowledge of the Ages', 114, 'Starting at 2nd level, you can use your Channel Divinity to tap into a divine well of knowledge. As an action, you choose one skill or tool. For 10 minutes, you have proficiency with the chosen skill or tool.', '', NULL, ''),
+Your proficiency bonus is doubled for any ability check you make that uses either of those skills.', '', 0, 'skillSelectExpertise,5,6,8,9|skillSelectExpertise,5,6,8,9'),
+('Channel Divinity: Knowledge of the Ages', 114, 'Starting at 2nd level, you can use your Channel Divinity to tap into a divine well of knowledge. As an action, you choose one skill or tool. For 10 minutes, you have proficiency with the chosen skill or tool.', '', 0, ''),
 ('Channel Divinity: Read Thoughts', 118, 'At 6th level, you can use your Channel Divinity to read a creature''s thoughts. You can then use your access to the creature''s mind to command it.
 
 As an action, choose one creature that you can see within 60 feet of you. That creature must make a Wisdom saving throw. If the creature succeeds on the saving throw, you can''t use this feature on it again until you finish a long rest.
 
 If the creature fails its save, you can read its surface thoughts (those foremost in its mind, reflecting its current emotions and what it is actively thinking about) when it is within 60 feet of you. This effect lasts for 1 minute.
 
-During that time, you can use your action to end this effect and cast the Suggestion spell on the creature without expending a spell slot. The target automatically fails its saving throw against the spell.', '', NULL, ''),
-('Potent Spellcasting', 120, 'Starting at 8th level, you add your Wisdom modifier to the damage you deal with any cleric cantrip.', '', NULL, ''),
+During that time, you can use your action to end this effect and cast the Suggestion spell on the creature without expending a spell slot. The target automatically fails its saving throw against the spell.', '', 0, ''),
+('Potent Spellcasting', 120, 'Starting at 8th level, you add your Wisdom modifier to the damage you deal with any cleric cantrip.', '', 0, ''),
 ('Visions of the Past', 129, 'Starting at 17th level, you can call up visions of the past that relate to an object you hold or your immediate surroundings. You spend at least 1 minute in meditation and prayer, then receive dreamlike, shadowy glimpses of recent events. You can meditate in this way for a number of minutes equal to your Wisdom score and must maintain concentration during that time, as if you were casting a spell.
 
 Once you use this feature, you can''t use it again until you finish a short or long rest.
 
 Object Reading - Holding an object as you meditate, you can see visions of the object''s previous owner. After meditating for 1 minute, you learn how the owner acquired and lost the object, as well as the most recent significant event involving the object and that owner. If the object was owned by another creature in the recent past (within a number of days equal to your Wisdom score), you can spend 1 additional minute for each owner to learn the same information about that creature.
 
-Area Reading - As you meditate, you see visions of recent events in your immediate vicinity (a room, street, tunnel, clearing, or the like, up to a 50-foot cube), going back a number of days equal to your Wisdom score. For each minute you meditate, you learn about one significant event, beginning with the most recent. Significant events typically involve powerful emotions, such as battles and betrayals, marriages and murders, births and funerals. However, they might also include more mundane events that are nevertheless important in your current situation.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 133, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Heavy, Shield)', 133, '', '', NULL, 'armorProficiency,all'),
-('Cleric Weapon Proficiencies', 133, 'As a cleric, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,38'),
-('Skill Proficiency', 133, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+Area Reading - As you meditate, you see visions of recent events in your immediate vicinity (a room, street, tunnel, clearing, or the like, up to a 50-foot cube), going back a number of days equal to your Wisdom score. For each minute you meditate, you learn about one significant event, beginning with the most recent. Significant events typically involve powerful emotions, such as battles and betrayals, marriages and murders, births and funerals. However, they might also include more mundane events that are nevertheless important in your current situation.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 133, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Heavy, Shield)', 133, '', '', 0, 'armorProficiency,all'),
+('Cleric Weapon Proficiencies', 133, 'As a cleric, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,38'),
+('Skill Proficiency', 133, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 134, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 136, '', '', NULL, 'feat'),
-('Feat', 140, '', '', NULL, 'feat'),
-('Feat', 144, '', '', NULL, 'feat'),
-('Feat', 148, '', '', NULL, 'feat'),
-('Feat', 151, '', '', NULL, 'feat'),
-('Destroy Undead', 137, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 136, '', '', 0, 'feat'),
+('Feat', 140, '', '', 0, 'feat'),
+('Feat', 144, '', '', 0, 'feat'),
+('Feat', 148, '', '', 0, 'feat'),
+('Feat', 151, '', '', 0, 'feat'),
+('Destroy Undead', 137, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 142, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 133, 'At 1st level, you gain Bless and Cure Wounds spells.', '', NULL, 'spell,34|spell,85'),
-('Domain Spells', 135, 'At 3rd level, you gain Lesser Restoration and Spiritual Weapon spells.', '', NULL, 'spell,201|spell,312'),
-('Domain Spells', 137, 'At 5th level, you gain Beacon of Hope and Revifify spells.', '', NULL, 'spell,28|spell,282'),
-('Domain Spells', 139, 'At 7th level, you gain Death Ward and Guardian of Faith spells.', '', NULL, 'spell,90|spell,165'),
-('Domain Spells', 141, 'At 9th level, you gain Mass Cure Wounds and Raise Dead spells.', '', NULL, 'spell,218|spell,271'),
-('Disciple of Life', 133, 'Also starting at 1st level, your healing spells are more effective. Whenever you use a spell of 1st level or higher to restore hit points to a creature, the creature regains additional hit points equal to 2 + the spell''s level.', '', NULL, ''),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 133, 'At 1st level, you gain Bless and Cure Wounds spells.', '', 0, 'spell,34|spell,85'),
+('Domain Spells', 135, 'At 3rd level, you gain Lesser Restoration and Spiritual Weapon spells.', '', 0, 'spell,201|spell,312'),
+('Domain Spells', 137, 'At 5th level, you gain Beacon of Hope and Revifify spells.', '', 0, 'spell,28|spell,282'),
+('Domain Spells', 139, 'At 7th level, you gain Death Ward and Guardian of Faith spells.', '', 0, 'spell,90|spell,165'),
+('Domain Spells', 141, 'At 9th level, you gain Mass Cure Wounds and Raise Dead spells.', '', 0, 'spell,218|spell,271'),
+('Disciple of Life', 133, 'Also starting at 1st level, your healing spells are more effective. Whenever you use a spell of 1st level or higher to restore hit points to a creature, the creature regains additional hit points equal to 2 + the spell''s level.', '', 0, ''),
 ('Channel Divinity: Preserve Life', 134, 'Starting at 2nd level, you can use your Channel Divinity to heal the badly injured.
 
-As an action, you present your holy symbol and evoke healing energy that can restore a number of hit points equal to five times your cleric level. Choose any creatures within 30 feet of you, and divide those hit points among them. This feature can restore a creature to no more than half of its hit point maximum. You can''t use this feature on an undead or a construct.', '', NULL, ''),
-('Blessed Healer', 138, 'Beginning at 6th level, the healing spells you cast on others heal you as well. When you cast a spell of 1st level or higher that restores hit points to a creature other than you, you regain hit points equal to 2 + the spell''s level.', '', NULL, ''),
-('Divine Strike', 140, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage to the target. When you reach 14th level, the extra damage increases to 2d8.', '', NULL, ''),
-('Supreme Healing', 149, 'Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 153, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Shield)', 153, '', '', NULL, 'armorProficiency,light|armorProficiency,medium'),
-('Cleric Weapon Proficiencies', 153, 'As a cleric, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,38'),
-('Skill Proficiency', 153, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+As an action, you present your holy symbol and evoke healing energy that can restore a number of hit points equal to five times your cleric level. Choose any creatures within 30 feet of you, and divide those hit points among them. This feature can restore a creature to no more than half of its hit point maximum. You can''t use this feature on an undead or a construct.', '', 0, ''),
+('Blessed Healer', 138, 'Beginning at 6th level, the healing spells you cast on others heal you as well. When you cast a spell of 1st level or higher that restores hit points to a creature other than you, you regain hit points equal to 2 + the spell''s level.', '', 0, ''),
+('Divine Strike', 140, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage to the target. When you reach 14th level, the extra damage increases to 2d8.', '', 0, ''),
+('Supreme Healing', 149, 'Starting at 17th level, when you would normally roll one or more dice to restore hit points with a spell, you instead use the highest number possible for each die. For example, instead of restoring 2d6 hit points to a creature, you restore 12.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 153, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Shield)', 153, '', '', 0, 'armorProficiency,light|armorProficiency,medium'),
+('Cleric Weapon Proficiencies', 153, 'As a cleric, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,38'),
+('Skill Proficiency', 153, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 154, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 156, '', '', NULL, 'feat'),
-('Feat', 160, '', '', NULL, 'feat'),
-('Feat', 164, '', '', NULL, 'feat'),
-('Feat', 168, '', '', NULL, 'feat'),
-('Feat', 171, '', '', NULL, 'feat'),
-('Destroy Undead', 157, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 156, '', '', 0, 'feat'),
+('Feat', 160, '', '', 0, 'feat'),
+('Feat', 164, '', '', 0, 'feat'),
+('Feat', 168, '', '', 0, 'feat'),
+('Feat', 171, '', '', 0, 'feat'),
+('Destroy Undead', 157, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 162, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 153, 'At 1st level, you gain Burning Hands and Faerie Fire spells.', '', NULL, 'spell,41|spell,126'),
-('Domain Spells', 155, 'At 3rd level, you gain Flaming Sphere and Scorching Ray spells.', '', NULL, 'spell,143|spell,286'),
-('Domain Spells', 157, 'At 5th level, you gain Daylight and Fireball spells.', '', NULL, 'spell,89|spell,137'),
-('Domain Spells', 159, 'At 7th level, you gain Guardian of Faith and Wall of Fire spells.', '', NULL, 'spell,165|spell,345'),
-('Domain Spells', 161, 'At 9th level, you gain Flame Strike and Scrying spells.', '', NULL, 'spell,142|spell,287'),
-('Bonus Cantrip: Light', 153, 'When you choose this domain at 1st level, you gain the Light cantrip if you don''t already know it. This cantrip doesn’t count against the number of cleric cantrips you know.', '', NULL, 'spell,203'),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 153, 'At 1st level, you gain Burning Hands and Faerie Fire spells.', '', 0, 'spell,41|spell,126'),
+('Domain Spells', 155, 'At 3rd level, you gain Flaming Sphere and Scorching Ray spells.', '', 0, 'spell,143|spell,286'),
+('Domain Spells', 157, 'At 5th level, you gain Daylight and Fireball spells.', '', 0, 'spell,89|spell,137'),
+('Domain Spells', 159, 'At 7th level, you gain Guardian of Faith and Wall of Fire spells.', '', 0, 'spell,165|spell,345'),
+('Domain Spells', 161, 'At 9th level, you gain Flame Strike and Scrying spells.', '', 0, 'spell,142|spell,287'),
+('Bonus Cantrip: Light', 153, 'When you choose this domain at 1st level, you gain the Light cantrip if you don''t already know it. This cantrip doesn’t count against the number of cleric cantrips you know.', '', 0, 'spell,203'),
 ('Warding Flare', 153, 'Also at 1st level, you can interpose divine light between yourself and an attacking enemy. When you are attacked by a creature within 30 feet of you that you can see, you can use your reaction to impose disadvantage on the attack roll, causing light to flare before the attacker before it hits or misses. An attacker that can''t be blinded is immune to this feature.
 
-You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.', '', NULL, ''),
+You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.', '', 0, ''),
 ('Channel Divinity: Radiance of the Dawn', 154, 'Starting at 2nd level, you can use your Channel Divinity to harness sunlight, banishing darkness and dealing radiant damage to your foes.
 
-As an action, you present your holy symbol, and any magical darkness within 30 feet of you is dispelled. Additionally, each hostile creature within 30 feet of you must make a Constitution saving throw. A creature takes radiant damage equal to 2d10 + your cleric level on a failed saving throw, and half as much damage on a successful one. A creature that has total cover from you is not affected.', '', NULL, ''),
-('Improved Flare', 158, 'Starting at 6th level, you can also use your Warding Flare feature when a creature that you can see within 30 feet of you attacks a creature other than you.', '', NULL, ''),
-('Potent Spellcasting', 160, 'Starting at 8th level, you add your Wisdom modifier to the damage you deal with any cleric cantrip.', '', NULL, ''),
-('Corona of Light', 169, 'Starting at 17th level, you can use your action to activate an aura of sunlight that lasts for 1 minute or until you dismiss it using another action. You emit bright light in a 60-foot radius and dim light 30 feet beyond that. Your enemies in the bright light have disadvantage on saving throws against any spell that deals fire or radiant damage.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 173, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Heavy, Shield)', 173, '', '', NULL, 'armorProficiency,all'),
-('Cleric Weapon Proficiencies', 173, 'As a cleric, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,38'),
-('Skill Proficiency', 173, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+As an action, you present your holy symbol, and any magical darkness within 30 feet of you is dispelled. Additionally, each hostile creature within 30 feet of you must make a Constitution saving throw. A creature takes radiant damage equal to 2d10 + your cleric level on a failed saving throw, and half as much damage on a successful one. A creature that has total cover from you is not affected.', '', 0, ''),
+('Improved Flare', 158, 'Starting at 6th level, you can also use your Warding Flare feature when a creature that you can see within 30 feet of you attacks a creature other than you.', '', 0, ''),
+('Potent Spellcasting', 160, 'Starting at 8th level, you add your Wisdom modifier to the damage you deal with any cleric cantrip.', '', 0, ''),
+('Corona of Light', 169, 'Starting at 17th level, you can use your action to activate an aura of sunlight that lasts for 1 minute or until you dismiss it using another action. You emit bright light in a 60-foot radius and dim light 30 feet beyond that. Your enemies in the bright light have disadvantage on saving throws against any spell that deals fire or radiant damage.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 173, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Heavy, Shield)', 173, '', '', 0, 'armorProficiency,all'),
+('Cleric Weapon Proficiencies', 173, 'As a cleric, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,38'),
+('Skill Proficiency', 173, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 174, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 176, '', '', NULL, 'feat'),
-('Feat', 180, '', '', NULL, 'feat'),
-('Feat', 184, '', '', NULL, 'feat'),
-('Feat', 188, '', '', NULL, 'feat'),
-('Feat', 191, '', '', NULL, 'feat'),
-('Destroy Undead', 177, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 176, '', '', 0, 'feat'),
+('Feat', 180, '', '', 0, 'feat'),
+('Feat', 184, '', '', 0, 'feat'),
+('Feat', 188, '', '', 0, 'feat'),
+('Feat', 191, '', '', 0, 'feat'),
+('Destroy Undead', 177, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 182, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 173, 'At 1st level, you gain Animal Friendship and Speak with Animals spells.', '', NULL, 'spell,5|spell,306'),
-('Domain Spells', 175, 'At 3rd level, you gain Barkskin and Spike Growth spells.', '', NULL, 'spell,27|spell,310'),
-('Domain Spells', 177, 'At 5th level, you gain Plant Growth and Wind Wall spells.', '', NULL, 'spell,254|spell,356'),
-('Domain Spells', 179, 'At 7th level, you gain Dominate Beast and Grasping Vine spells.', '', NULL, 'spell,107|spell,161'),
-('Domain Spells', 181, 'At 9th level, you gain Insect Plague and Tree Stride spells.', '', NULL, 'spell,194|spell,336'),
-('Acolyte of Nature', 173, 'At 1st level, you learn one cantrip of your choice from the druid spell list. This cantrip counts as a cleric cantrip for you, but it doesn’t count against the number of cleric cantrips you know. You also gain proficiency in one of the following skills of your choice: Animal Handling, Nature, or Survival.', '', NULL, 'spellSelect,druid,0|skillSelect,8,10,14'),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 173, 'At 1st level, you gain Animal Friendship and Speak with Animals spells.', '', 0, 'spell,5|spell,306'),
+('Domain Spells', 175, 'At 3rd level, you gain Barkskin and Spike Growth spells.', '', 0, 'spell,27|spell,310'),
+('Domain Spells', 177, 'At 5th level, you gain Plant Growth and Wind Wall spells.', '', 0, 'spell,254|spell,356'),
+('Domain Spells', 179, 'At 7th level, you gain Dominate Beast and Grasping Vine spells.', '', 0, 'spell,107|spell,161'),
+('Domain Spells', 181, 'At 9th level, you gain Insect Plague and Tree Stride spells.', '', 0, 'spell,194|spell,336'),
+('Acolyte of Nature', 173, 'At 1st level, you learn one cantrip of your choice from the druid spell list. This cantrip counts as a cleric cantrip for you, but it doesn’t count against the number of cleric cantrips you know. You also gain proficiency in one of the following skills of your choice: Animal Handling, Nature, or Survival.', '', 0, 'spellSelect,druid,0|skillSelect,8,10,14'),
 ('Channel Divinity: Charm Animals and Plants', 174, 'Starting at 2nd level, you can use your Channel Divinity to charm animals and plants.
 
-As an action, you present your holy symbol and invoke the name of your deity. Each beast or plant creature that can see you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is charmed by you for 1 minute or until it takes damage. While it is charmed by you, it is friendly to you and other creatures you designate.', '', NULL, ''),
-('Dampen Elements', 178, 'Starting at 6th level, when you or a creature within 30 feet of you takes acid, cold, fire, lightning, or thunder damage, you can use your reaction to grant resistance to the creature against that instance of the damage.', '', NULL, ''),
-('Divine Strike', 180, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 cold, fire, or lightning damage (your choice) to the target. When you reach 14th level, the extra damage increases to 2d8.', '', NULL, ''),
-('Master of Nature', 189, 'At 17th level, you gain the ability to command animals and plant creatures. While creatures are charmed by your Charm Animals and Plants feature, you can take a bonus action on your turn to verbally command what each of those creatures will do on its next turn.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 193, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Heavy, Shield)', 193, '', '', NULL, 'armorProficiency,all'),
-('Cleric Weapon Proficiencies', 193, 'As a Tempest domain cleric, you have proficiency with all simple and martial weapons.', '', NULL, 'weaponProficiency,all'),
-('Skill Proficiency', 193, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+As an action, you present your holy symbol and invoke the name of your deity. Each beast or plant creature that can see you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is charmed by you for 1 minute or until it takes damage. While it is charmed by you, it is friendly to you and other creatures you designate.', '', 0, ''),
+('Dampen Elements', 178, 'Starting at 6th level, when you or a creature within 30 feet of you takes acid, cold, fire, lightning, or thunder damage, you can use your reaction to grant resistance to the creature against that instance of the damage.', '', 0, ''),
+('Divine Strike', 180, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 cold, fire, or lightning damage (your choice) to the target. When you reach 14th level, the extra damage increases to 2d8.', '', 0, ''),
+('Master of Nature', 189, 'At 17th level, you gain the ability to command animals and plant creatures. While creatures are charmed by your Charm Animals and Plants feature, you can take a bonus action on your turn to verbally command what each of those creatures will do on its next turn.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 193, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Heavy, Shield)', 193, '', '', 0, 'armorProficiency,all'),
+('Cleric Weapon Proficiencies', 193, 'As a Tempest domain cleric, you have proficiency with all simple and martial weapons.', '', 0, 'weaponProficiency,all'),
+('Skill Proficiency', 193, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 194, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 196, '', '', NULL, 'feat'),
-('Feat', 200, '', '', NULL, 'feat'),
-('Feat', 204, '', '', NULL, 'feat'),
-('Feat', 208, '', '', NULL, 'feat'),
-('Feat', 211, '', '', NULL, 'feat'),
-('Destroy Undead', 197, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 196, '', '', 0, 'feat'),
+('Feat', 200, '', '', 0, 'feat'),
+('Feat', 204, '', '', 0, 'feat'),
+('Feat', 208, '', '', 0, 'feat'),
+('Feat', 211, '', '', 0, 'feat'),
+('Destroy Undead', 197, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 202, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 193, 'At 1st level, you gain Fog Cloud and Thunderwave spells.', '', NULL, 'spell,146|spell,332'),
-('Domain Spells', 195, 'At 3rd level, you gain Gust of Wind and Shatter spells.', '', NULL, 'spell,169|spell,294'),
-('Domain Spells', 197, 'At 5th level, you gain Call Lightning and Sleet Storm spells.', '', NULL, 'spell,42|spell,303'),
-('Domain Spells', 199, 'At 7th level, you gain Control Water and Ice Storm spells.', '', NULL, 'spell,75|spell,188'),
-('Domain Spells', 201, 'At 9th level, you gain Destructive Wave and Insect Plague spells.', '', NULL, 'spell,93|spell,194'),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 193, 'At 1st level, you gain Fog Cloud and Thunderwave spells.', '', 0, 'spell,146|spell,332'),
+('Domain Spells', 195, 'At 3rd level, you gain Gust of Wind and Shatter spells.', '', 0, 'spell,169|spell,294'),
+('Domain Spells', 197, 'At 5th level, you gain Call Lightning and Sleet Storm spells.', '', 0, 'spell,42|spell,303'),
+('Domain Spells', 199, 'At 7th level, you gain Control Water and Ice Storm spells.', '', 0, 'spell,75|spell,188'),
+('Domain Spells', 201, 'At 9th level, you gain Destructive Wave and Insect Plague spells.', '', 0, 'spell,93|spell,194'),
 ('Wrath of the Storm', 193, 'Also at 1st level, you can thunderously rebuke attackers. When a creature within 5 feet of you that you can see hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes 2d8 lightning or thunder damage (your choice) on a failed saving throw, and half as much damage on a successful one.
 
-You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.', '', NULL, ''),
+You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.', '', 0, ''),
 ('Channel Divinity: Destructive Wrath', 194, 'Starting at 2nd level, you can use your Channel Divinity to wield the power of the storm with unchecked ferocity.
 
-When you roll lightning or thunder damage, you can use your Channel Divinity to deal maximum damage, instead of rolling.', '', NULL, ''),
-('Thunderbolt Strike', 198, 'At 6th level, when you deal lightning damage to a Large or smaller creature, you can also push it up to 10 feet away from you.', '', NULL, ''),
-('Divine Strike', 200, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 thunder damage to the target. When you reach 14th level, the extra damage increases to 2d8.', '', NULL, ''),
-('Stormborn', 209, 'At 17th level, you have a flying speed equal to your current walking speed whenever you are not underground or indoors.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 213, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Shield)', 213, '', '', NULL, 'armorProficiency,light|armorProficiency,medium'),
-('Cleric Weapon Proficiencies', 213, 'As a cleric, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,38'),
-('Skill Proficiency', 213, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+When you roll lightning or thunder damage, you can use your Channel Divinity to deal maximum damage, instead of rolling.', '', 0, ''),
+('Thunderbolt Strike', 198, 'At 6th level, when you deal lightning damage to a Large or smaller creature, you can also push it up to 10 feet away from you.', '', 0, ''),
+('Divine Strike', 200, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 thunder damage to the target. When you reach 14th level, the extra damage increases to 2d8.', '', 0, ''),
+('Stormborn', 209, 'At 17th level, you have a flying speed equal to your current walking speed whenever you are not underground or indoors.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 213, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Shield)', 213, '', '', 0, 'armorProficiency,light|armorProficiency,medium'),
+('Cleric Weapon Proficiencies', 213, 'As a cleric, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,38'),
+('Skill Proficiency', 213, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 214, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 216, '', '', NULL, 'feat'),
-('Feat', 220, '', '', NULL, 'feat'),
-('Feat', 224, '', '', NULL, 'feat'),
-('Feat', 228, '', '', NULL, 'feat'),
-('Feat', 231, '', '', NULL, 'feat'),
-('Destroy Undead', 217, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 216, '', '', 0, 'feat'),
+('Feat', 220, '', '', 0, 'feat'),
+('Feat', 224, '', '', 0, 'feat'),
+('Feat', 228, '', '', 0, 'feat'),
+('Feat', 231, '', '', 0, 'feat'),
+('Destroy Undead', 217, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 222, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 213, 'At 1st level, you gain Charm Person and Disguise Self spells.', '', NULL, 'spell,45|spell,99'),
-('Domain Spells', 215, 'At 3rd level, you gain Mirror Image and Pass Without Trace spells.', '', NULL, 'spell,231|spell,246'),
-('Domain Spells', 217, 'At 5th level, you gain Blink and Dispel Magic spells.', '', NULL, 'spell,38|spell,102'),
-('Domain Spells', 219, 'At 7th level, you gain Dimension Door and Polymorph spells.', '', NULL, 'spell,98|spell,256'),
-('Domain Spells', 221, 'At 9th level, you gain Dominate Person and Modify Memory spells.', '', NULL, 'spell,109|spell,234'),
-('Blessing of the Trickster', 213, 'Starting when you choose this domain at 1st level, you can use your action to touch a willing creature other than yourself to give it advantage on Dexterity (Stealth) checks. This blessing lasts for 1 hour or until you use this feature again.', '', NULL, ''),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 213, 'At 1st level, you gain Charm Person and Disguise Self spells.', '', 0, 'spell,45|spell,99'),
+('Domain Spells', 215, 'At 3rd level, you gain Mirror Image and Pass Without Trace spells.', '', 0, 'spell,231|spell,246'),
+('Domain Spells', 217, 'At 5th level, you gain Blink and Dispel Magic spells.', '', 0, 'spell,38|spell,102'),
+('Domain Spells', 219, 'At 7th level, you gain Dimension Door and Polymorph spells.', '', 0, 'spell,98|spell,256'),
+('Domain Spells', 221, 'At 9th level, you gain Dominate Person and Modify Memory spells.', '', 0, 'spell,109|spell,234'),
+('Blessing of the Trickster', 213, 'Starting when you choose this domain at 1st level, you can use your action to touch a willing creature other than yourself to give it advantage on Dexterity (Stealth) checks. This blessing lasts for 1 hour or until you use this feature again.', '', 0, ''),
 ('Channel Divnity: Invoke Duplicity', 214, 'Starting at 2nd level, you can use your Channel Divinity to create an illusory duplicate of yourself.
 
 As an action, you create a perfect illusion of yourself that lasts for 1 minute, or until you lose your concentration (as if you were concentrating on a spell). The illusion appears in an unoccupied space that you can see within 30 feet of you. As a bonus action on your turn, you can move the illusion up to 30 feet to a space you can see, but it must remain within 120 feet of you.
 
-For the duration, you can cast spells as though you were in the illusion''s space, but you must use your own senses. Additionally, when both you and your illusion are within 5 feet of a creature that can see the illusion, you have advantage on attack rolls against that creature, given how distracting the illusion is to the target.', '', NULL, ''),
+For the duration, you can cast spells as though you were in the illusion''s space, but you must use your own senses. Additionally, when both you and your illusion are within 5 feet of a creature that can see the illusion, you have advantage on attack rolls against that creature, given how distracting the illusion is to the target.', '', 0, ''),
 ('Channel Divinity: Cloak of Shadows', 218, 'Starting at 6th level, you can use your Channel Divinity to vanish.
 
-As an action, you become invisible until the end of your next turn. You become visible if you attack or cast a spell.', '', NULL, ''),
-('Divine Strike', 220, 'At 8th level, you gain the ability to infuse your weapon strikes with poison – a gift from your deity. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 poison damage to the target. When you reach 14th level, the extra damage increases to 2d8.', '', NULL, ''),
-('Improved Duplicity', 229, 'At 17th level, you can create up to four duplicates of yourself, instead of one, when you use Invoke Duplicity. As a bonus action on your turn, you can move any number of them up to 30 feet, to a maximum range of 120 feet.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 233, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Heavy, Shield)', 233, '', '', NULL, 'armorProficiency,all'),
-('Cleric Weapon Proficiencies', 233, 'As a War domain cleric, you have proficiency with all simple and martial weapons.', '', NULL, 'weaponProficiency,all'),
-('Skill Proficiency', 233, '', '', NULL, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
+As an action, you become invisible until the end of your next turn. You become visible if you attack or cast a spell.', '', 0, ''),
+('Divine Strike', 220, 'At 8th level, you gain the ability to infuse your weapon strikes with poison – a gift from your deity. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 poison damage to the target. When you reach 14th level, the extra damage increases to 2d8.', '', 0, ''),
+('Improved Duplicity', 229, 'At 17th level, you can create up to four duplicates of yourself, instead of one, when you use Invoke Duplicity. As a bonus action on your turn, you can move any number of them up to 30 feet, to a maximum range of 120 feet.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 233, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Heavy, Shield)', 233, '', '', 0, 'armorProficiency,all'),
+('Cleric Weapon Proficiencies', 233, 'As a War domain cleric, you have proficiency with all simple and martial weapons.', '', 0, 'weaponProficiency,all'),
+('Skill Proficiency', 233, '', '', 0, 'skillSelect,6,9,11,12,18|skillSelect,6,9,11,12,18'),
 ('Channel Divinity', 234, 'At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains grant you additional effects as you advance in levels, as noted in the domain description.
 
 When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.
 
 Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.
 
-Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', NULL, ''),
+Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.', '', 0, ''),
 ('Channel Divinity: Turn Undead', 114, 'As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
-('Feat', 236, '', '', NULL, 'feat'),
-('Feat', 240, '', '', NULL, 'feat'),
-('Feat', 244, '', '', NULL, 'feat'),
-('Feat', 248, '', '', NULL, 'feat'),
-('Feat', 251, '', '', NULL, 'feat'),
-('Destroy Undead', 237, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
+('Feat', 236, '', '', 0, 'feat'),
+('Feat', 240, '', '', 0, 'feat'),
+('Feat', 244, '', '', 0, 'feat'),
+('Feat', 248, '', '', 0, 'feat'),
+('Feat', 251, '', '', 0, 'feat'),
+('Destroy Undead', 237, 'Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Cleric table above.', '', 0, ''),
 ('Divine Intervention', 242, 'Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
 
 Imploring your deity''s aid requires you to use your action. Describe the assistance you seek, and roll percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM chooses the nature of the intervention; the effect of any cleric spell or cleric domain spell would be appropriate. If your deity intervenes, you can''t use this feature again for 7 days. Otherwise, you can use it again after you finish a long rest.
 
-At 20th level, your call for intervention succeeds automatically, no roll required.', '', NULL, ''),
-('Domain Spells', 233, 'At 1st level, you gain Divine Favor and Shield of Faith spells.', '', NULL, 'spell,105|spell,296'),
-('Domain Spells', 235, 'At 3rd level, you gain Magic Weapon and Spiritual Weapon spells.', '', NULL, 'spell,216|spell,312'),
-('Domain Spells', 237, 'At 5th level, you gain Crusader''s Mantle and Spirit Guardians spells.', '', NULL, 'spell,84|spell,311'),
-('Domain Spells', 239, 'At 7th level, you gain Freedom of Movement and Stoneskin spells.', '', NULL, 'spell,150|spell,316'),
-('Domain Spells', 241, 'At 9th level, you gain Flame Strike and Hold Monster spells.', '', NULL, 'spell,142|spell,182'),
+At 20th level, your call for intervention succeeds automatically, no roll required.', '', 0, ''),
+('Domain Spells', 233, 'At 1st level, you gain Divine Favor and Shield of Faith spells.', '', 0, 'spell,105|spell,296'),
+('Domain Spells', 235, 'At 3rd level, you gain Magic Weapon and Spiritual Weapon spells.', '', 0, 'spell,216|spell,312'),
+('Domain Spells', 237, 'At 5th level, you gain Crusader''s Mantle and Spirit Guardians spells.', '', 0, 'spell,84|spell,311'),
+('Domain Spells', 239, 'At 7th level, you gain Freedom of Movement and Stoneskin spells.', '', 0, 'spell,150|spell,316'),
+('Domain Spells', 241, 'At 9th level, you gain Flame Strike and Hold Monster spells.', '', 0, 'spell,142|spell,182'),
 ('War Priest', 233, 'From 1st level, your god delivers bolts of inspiration to you while you are engaged in battle. When you use the Attack action, you can make one weapon attack as a bonus action.
 
-You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.', '', NULL, ''),
-('Channel Divinity: Guided Strike', 234, 'Starting at 2nd level, you can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses.', '', NULL, ''),
-('Channel Divinity: War God''s Blessing', 238, 'At 6th level, when a creature within 30 feet of you makes an attack roll, you can use your reaction to grant that creature a +10 bonus to the roll, using your Channel Divinity. You make this choice after you see the roll, but before the DM says whether the attack hits or misses.', '', NULL, ''),
-('Divine Strike', 240, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to 2d8.', '', NULL, ''),
-('Avatar of Battle', 249, 'At 17th level, you gain resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.', '', NULL, ''),
-('Saving Throw Proficiency (Intelligence, Wisdom)', 253, '', '', NULL, 'savingThrowProficiency,int|savingThrowProficiency,wis'),
-('Armor Proficiency (Light, Medium, Shield)', 253, '', '', NULL, 'armorProficiency,light|armorProficiency,medium'),
-('Druid Weapon Proficiencies', 253, 'As a druid, you have proficiency with clubs, daggers, darts, javelins, maces, quarterstaves, scimitars, sickles, slings and spears.', '', NULL, 'weaponProficiency,multiple,1,2,5,7,8,9,10,13,15,28,38'),
-('Skill Proficiency', 253, '', '', NULL, 'skillSelect,5,8,9,10,11,12,13,14|skillSelect,5,8,9,10,11,12,13,14'),
-('Druidic', 253, 'You know Druidic, the secret language of druids. You can speak the language and use it to leave hidden messages. You and others who know this language automatically spot such a message. Others spot the message''s presence with a successful DC 15 Wisdom (Perception) check but can''t decipher it without magic.', '', NULL, ''),
+You can use this feature a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.', '', 0, ''),
+('Channel Divinity: Guided Strike', 234, 'Starting at 2nd level, you can use your Channel Divinity to strike with supernatural accuracy. When you make an attack roll, you can use your Channel Divinity to gain a +10 bonus to the roll. You make this choice after you see the roll, but before the DM says whether the attack hits or misses.', '', 0, ''),
+('Channel Divinity: War God''s Blessing', 238, 'At 6th level, when a creature within 30 feet of you makes an attack roll, you can use your reaction to grant that creature a +10 bonus to the roll, using your Channel Divinity. You make this choice after you see the roll, but before the DM says whether the attack hits or misses.', '', 0, ''),
+('Divine Strike', 240, 'At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 damage of the same type dealt by the weapon to the target. When you reach 14th level, the extra damage increases to 2d8.', '', 0, ''),
+('Avatar of Battle', 249, 'At 17th level, you gain resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.', '', 0, ''),
+('Saving Throw Proficiency (Intelligence, Wisdom)', 253, '', '', 0, 'savingThrowProficiency,int|savingThrowProficiency,wis'),
+('Armor Proficiency (Light, Medium, Shield)', 253, '', '', 0, 'armorProficiency,light|armorProficiency,medium'),
+('Druid Weapon Proficiencies', 253, 'As a druid, you have proficiency with clubs, daggers, darts, javelins, maces, quarterstaves, scimitars, sickles, slings and spears.', '', 0, 'weaponProficiency,multiple,1,2,5,7,8,9,10,13,15,28,38'),
+('Skill Proficiency', 253, '', '', 0, 'skillSelect,5,8,9,10,11,12,13,14|skillSelect,5,8,9,10,11,12,13,14'),
+('Druidic', 253, 'You know Druidic, the secret language of druids. You can speak the language and use it to leave hidden messages. You and others who know this language automatically spot such a message. Others spot the message''s presence with a successful DC 15 Wisdom (Perception) check but can''t decipher it without magic.', '', 0, ''),
 ('Wild Shape', 254, 'Starting at 2nd level, you can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice. You regain expended uses when you finish a short or long rest.
 
 Your druid level determines the beasts you can transform into. At 2nd level, you can transform into any beast that has a challenge rating of 1/4 or lower that doesn''t have a flying or swimming speed. At 4th level, you can transform into any beast that has a challenge rating of 1/2 or lower that doesn''t have a flying speed. At 8th level, you can transform into any beast that has a challenge rating of 1 or lower.
@@ -4234,71 +4234,71 @@ While you are transformed, the following rules apply:
 - When you transform, you assume the beast''s hit points and Hit Dice. When you revert to your normal form, you return to the number of hit points you had before you transformed. However, if you revert as a result of dropping to 0 hit points, any excess damage carries over to your normal form, For example, if you take 10 damage in animal form and have only 1 hit point left, you revert and take 9 damage. As long as the excess damage doesn''t reduce your normal form to 0 hit points, you aren''t knocked unconscious.
 - You can''t cast spells, and your ability to speak or take any action that requires hands is limited to the capabilities of your beast form. Transforming doesn''t break your concentration on a spell you''ve already cast, however, or prevent you from taking actions that are part of a spell, such as Call Lightning, that you''ve already cast.
 - You retain the benefit of any features from your class, race, or other source and can use them if the new form is physically capable of doing so. However, you can''t use any of your special senses, such as darkvision, unless your new form also has that sense.
-- You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature''s shape and size. Your equipment doesn''t change size or shape to match the new form, and any equipment that the new form can''t wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.', '', NULL, ''),
-('Feat', 256, '', '', NULL, 'feat'),
-('Feat', 260, '', '', NULL, 'feat'),
-('Feat', 264, '', '', NULL, 'feat'),
-('Feat', 268, '', '', NULL, 'feat'),
-('Feat', 271, '', '', NULL, 'feat'),
-('Timeless Body', 270, 'Starting at 18th level, the primal magic that you wield causes you to age more slowly. For every 10 years that pass, your body ages only 1 year.', '', NULL, ''),
-('Beast Spells', 270, 'Beginning at 18th level, you can cast many of your druid spells in any shape you assume using Wild Shape. You can perform the somatic and verbal components of a druid spell while in a beast shape, but you aren''t able to provide material components.', '', NULL, ''),
+- You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature''s shape and size. Your equipment doesn''t change size or shape to match the new form, and any equipment that the new form can''t wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.', '', 0, ''),
+('Feat', 256, '', '', 0, 'feat'),
+('Feat', 260, '', '', 0, 'feat'),
+('Feat', 264, '', '', 0, 'feat'),
+('Feat', 268, '', '', 0, 'feat'),
+('Feat', 271, '', '', 0, 'feat'),
+('Timeless Body', 270, 'Starting at 18th level, the primal magic that you wield causes you to age more slowly. For every 10 years that pass, your body ages only 1 year.', '', 0, ''),
+('Beast Spells', 270, 'Beginning at 18th level, you can cast many of your druid spells in any shape you assume using Wild Shape. You can perform the somatic and verbal components of a druid spell while in a beast shape, but you aren''t able to provide material components.', '', 0, ''),
 ('Archdruid', 272, 'At 20th level, you can use your Wild Shape an unlimited number of times.
 
-Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', NULL, ''),
-('Bonus Cantrip', 254, 'When you choose this circle at 2nd level, you learn one additional druid cantrip of your choice. This cantrip doesn’t count against the number of druid cantrips you know.', '', NULL, 'spellSelect,dru,0'),
+Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', 0, ''),
+('Bonus Cantrip', 254, 'When you choose this circle at 2nd level, you learn one additional druid cantrip of your choice. This cantrip doesn’t count against the number of druid cantrips you know.', '', 0, 'spellSelect,dru,0'),
 ('Natural Recovery', 254, 'Starting at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can''t use this feature again until you finish a long rest.
 
-For example, when you are a 4th-level druid, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level slot or two 1st-level slots.', '', NULL, ''),
+For example, when you are a 4th-level druid, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level slot or two 1st-level slots.', '', 0, ''),
 ('Circle of the Land', 255, 'Your mystical connection to the land infuses you with the ability to cast certain spells. At 3rd, 5th, 7th, and 9th level you gain access to circle spells connected to the land where you became a druid. Choose that land – arctic, coast, desert, forest, grassland, mountain, swamp, or Underdark – and consult the associated list of spells.
 
 Once you gain access to a circle spell, you always have it prepared, and it doesn''t count against the number of spells you can prepare each day. If you gain access to a spell that doesn''t appear on the druid spell list, the spell is nonetheless a druid spell for you.', '', 1, ''),
-('Arctic', NULL, '', 'Circle of the Land', 0, 'buffer,257,331|buffer,259,332|buffer,261,333'),
-('Coast', NULL, '', 'Circle of the Land', 0, 'buffer,257,335|buffer,259,336|buffer,261,337'),
-('Desert', NULL, '', 'Circle of the Land', 0, 'buffer,257,339|buffer,259,340|buffer,261,341'),
-('Forest', NULL, '', 'Circle of the Land', 0, 'buffer,257,343|buffer,259,344|buffer,261,345'),
-('Grassland', NULL, '', 'Circle of the Land', 0, 'buffer,257,347|buffer,259,348|buffer,261,349'),
-('Mountain', NULL, '', 'Circle of the Land', 0, 'buffer,257,351|buffer,259,352|buffer,261,353'),
-('Swamp', NULL, '', 'Circle of the Land', 0, 'buffer,257,355|buffer,259,356|buffer,261,357'),
-('Underdark', NULL, '', 'Circle of the Land', 0, 'buffer,257,359|buffer,259,360|buffer,261,361'),
-('Artcic Circle Spells', NULL, 'At 3rd level, you gain Hold Person and Spike Growth spells.', 'Arctic', NULL, 'spell,183|spell,310'),
-('Arctic Circle Spells', NULL, 'At 5th level, you gain Sleet Storm and Slow spells.', '', NULL, 'spell,303|spell,304'),
-('Arctic Circle Spells', NULL, 'At 7th level, you gain Freedom of Movement and Ice Storm spells.', '', NULL, 'spell,150|spell,188'),
-('Arctic Circle Spells', NULL, 'At 9th level, you gain Commune with Nature and Cone of Cold spells.', '', NULL, 'spell,57|spell,61'),
-('Coast Circle Spells', NULL, 'At 3rd level, you gain Mirror Image and Misty Step spells.', 'Coast', NULL, 'spell,231|spell,233'),
-('Coast Circle Spells', NULL, 'At 5th level, you gain Water Breathing and Water Walk spells.', '', NULL, 'spell,351|spell,352'),
-('Coast Circle Spells', NULL, 'At 7th level, you gain Control Water and Freedom of Movement spells.', '', NULL, 'spell,75|spell,150'),
-('Coast Circle Spells', NULL, 'At 9th level, you gain Conjure Elemental and Scrying spells.', '', NULL, 'spell,66|spell,287'),
-('Desert Circle Spells', NULL, 'At 3rd level, you gain Blur and Silence spells.', 'Desert', NULL, 'spell,39|spell,299'),
-('Desert Circle Spells', NULL, 'At 5th level, you gain Create Food and Water and Protection from Energy spells.', '', NULL, 'spell,79|spell,267'),
-('Desert Circle Spells', NULL, 'At 7th level, you gain Blight and Hallucinatory Terrain spells.', '', NULL, 'spell,35|spell,172'),
-('Desert Circle Spells', NULL, 'At 9th level, you gain Insect Plague and Wall of Stone spells.', '', NULL, 'spell,194|spell,348'),
-('Forest Circle Spells', NULL, 'At 3rd level, you gain Barkskin and Spider Climb spells.', 'Forest', NULL, 'spell,27|spell,309'),
-('Forest Circle Spells', NULL, 'At 5th level, you gain Call Lightning and Plant Growth spells.', '', NULL, 'spell,42|spell,254'),
-('Forest Circle Spells', NULL, 'At 7th level, you gain Divination and Freedom of Movement spells.', '', NULL, 'spell,104|spell,150'),
-('Forest Circle Spells', NULL, 'At 9th level, you gain Commune with Nature and Tree Stride spells.', '', NULL, 'spell,57|spell,336'),
-('Grassland Circle Spells', NULL, 'At 3rd level, you gain Invisibility and Pass Without Trace spells.', 'Grassland', NULL, 'spell,195|spell,246'),
-('Grassland Circle Spells', NULL, 'At 5th level, you gain Daylight and Haste spells.', '', NULL, 'spell,89|spell,174'),
-('Grassland Circle Spells', NULL, 'At 7th level, you gain Divination and Freedom of Movement spells.', '', NULL, 'spell,104|spell,150'),
-('Grassland Circle Spells', NULL, 'At 9th level, you gain Dream and Insect Plague spells.', '', NULL, 'spell,111|spell,194'),
-('Mountain Circle Spells', NULL, 'At 3rd level, you gain Spider Climb and Spike Growth spells.', 'Mountain', NULL, 'spell,309|spell,310'),
-('Mountain Circle Spells', NULL, 'At 5th level, you gain Lightning Bolt and Meld into Stone spells.', '', NULL, 'spell,205|spell,223'),
-('Mountain Circle Spells', NULL, 'At 7th level, you gain Stone Shape and Stoneskin spells.', '', NULL, 'spell,315|spell,316'),
-('Mountain Circle Spells', NULL, 'At 9th level, you gain Passwall and Wall of Stone spells.', '', NULL, 'spell,247|spell,348'),
-('Swamp Circle Spells', NULL, 'At 3rd level, you gain Darkness and Melf''s Acid Arrow spells.', 'Swamp', NULL, 'spell,87|spell,224'),
-('Swamp Circle Spells', NULL, 'At 5th level, you gain Water Walk and Stinking Cloud spells.', '', NULL, 'spell,352|spell,314'),
-('Swamp Circle Spells', NULL, 'At 7th level, you gain Freedom of Movement and Locate Creature spells.', '', NULL, 'spell,150|spell,207'),
-('Swamp Circle Spells', NULL, 'At 9th level, you gain Insect Plague and Scrying spells.', '', NULL, 'spell,194|spell,287'),
-('Underdark Circle Spells', NULL, 'At 3rd level, you gain Spider Climb and Web spells.', 'Underdark', NULL, 'spell,309|spell,353'),
-('Underdark Circle Spells', NULL, 'At 5th level, you gain Gaseous Form and Stinking Cloud spells.', '', NULL, 'spell,152|spell,314'),
-('Underdark Circle Spells', NULL, 'At 7th level, you gain Greater Invisibility and Stone Shape spells.', '', NULL, 'spell,163|spell,315'),
-('Underdark Circle Spells', NULL, 'At 9th level, you gain Cloudkill and Insect Plague spells.', '', NULL, 'spell,53|spell,194'),
+('Arctic', NULL, '', 'Circle of the Land', -1, 'buffer,257,331|buffer,259,332|buffer,261,333'),
+('Coast', NULL, '', 'Circle of the Land', -1, 'buffer,257,335|buffer,259,336|buffer,261,337'),
+('Desert', NULL, '', 'Circle of the Land', -1, 'buffer,257,339|buffer,259,340|buffer,261,341'),
+('Forest', NULL, '', 'Circle of the Land', -1, 'buffer,257,343|buffer,259,344|buffer,261,345'),
+('Grassland', NULL, '', 'Circle of the Land', -1, 'buffer,257,347|buffer,259,348|buffer,261,349'),
+('Mountain', NULL, '', 'Circle of the Land', -1, 'buffer,257,351|buffer,259,352|buffer,261,353'),
+('Swamp', NULL, '', 'Circle of the Land', -1, 'buffer,257,355|buffer,259,356|buffer,261,357'),
+('Underdark', NULL, '', 'Circle of the Land', -1, 'buffer,257,359|buffer,259,360|buffer,261,361'),
+('Artcic Circle Spells', NULL, 'At 3rd level, you gain Hold Person and Spike Growth spells.', 'Arctic', 0, 'spell,183|spell,310'),
+('Arctic Circle Spells', NULL, 'At 5th level, you gain Sleet Storm and Slow spells.', '', 0, 'spell,303|spell,304'),
+('Arctic Circle Spells', NULL, 'At 7th level, you gain Freedom of Movement and Ice Storm spells.', '', 0, 'spell,150|spell,188'),
+('Arctic Circle Spells', NULL, 'At 9th level, you gain Commune with Nature and Cone of Cold spells.', '', 0, 'spell,57|spell,61'),
+('Coast Circle Spells', NULL, 'At 3rd level, you gain Mirror Image and Misty Step spells.', 'Coast', 0, 'spell,231|spell,233'),
+('Coast Circle Spells', NULL, 'At 5th level, you gain Water Breathing and Water Walk spells.', '', 0, 'spell,351|spell,352'),
+('Coast Circle Spells', NULL, 'At 7th level, you gain Control Water and Freedom of Movement spells.', '', 0, 'spell,75|spell,150'),
+('Coast Circle Spells', NULL, 'At 9th level, you gain Conjure Elemental and Scrying spells.', '', 0, 'spell,66|spell,287'),
+('Desert Circle Spells', NULL, 'At 3rd level, you gain Blur and Silence spells.', 'Desert', 0, 'spell,39|spell,299'),
+('Desert Circle Spells', NULL, 'At 5th level, you gain Create Food and Water and Protection from Energy spells.', '', 0, 'spell,79|spell,267'),
+('Desert Circle Spells', NULL, 'At 7th level, you gain Blight and Hallucinatory Terrain spells.', '', 0, 'spell,35|spell,172'),
+('Desert Circle Spells', NULL, 'At 9th level, you gain Insect Plague and Wall of Stone spells.', '', 0, 'spell,194|spell,348'),
+('Forest Circle Spells', NULL, 'At 3rd level, you gain Barkskin and Spider Climb spells.', 'Forest', 0, 'spell,27|spell,309'),
+('Forest Circle Spells', NULL, 'At 5th level, you gain Call Lightning and Plant Growth spells.', '', 0, 'spell,42|spell,254'),
+('Forest Circle Spells', NULL, 'At 7th level, you gain Divination and Freedom of Movement spells.', '', 0, 'spell,104|spell,150'),
+('Forest Circle Spells', NULL, 'At 9th level, you gain Commune with Nature and Tree Stride spells.', '', 0, 'spell,57|spell,336'),
+('Grassland Circle Spells', NULL, 'At 3rd level, you gain Invisibility and Pass Without Trace spells.', 'Grassland', 0, 'spell,195|spell,246'),
+('Grassland Circle Spells', NULL, 'At 5th level, you gain Daylight and Haste spells.', '', 0, 'spell,89|spell,174'),
+('Grassland Circle Spells', NULL, 'At 7th level, you gain Divination and Freedom of Movement spells.', '', 0, 'spell,104|spell,150'),
+('Grassland Circle Spells', NULL, 'At 9th level, you gain Dream and Insect Plague spells.', '', 0, 'spell,111|spell,194'),
+('Mountain Circle Spells', NULL, 'At 3rd level, you gain Spider Climb and Spike Growth spells.', 'Mountain', 0, 'spell,309|spell,310'),
+('Mountain Circle Spells', NULL, 'At 5th level, you gain Lightning Bolt and Meld into Stone spells.', '', 0, 'spell,205|spell,223'),
+('Mountain Circle Spells', NULL, 'At 7th level, you gain Stone Shape and Stoneskin spells.', '', 0, 'spell,315|spell,316'),
+('Mountain Circle Spells', NULL, 'At 9th level, you gain Passwall and Wall of Stone spells.', '', 0, 'spell,247|spell,348'),
+('Swamp Circle Spells', NULL, 'At 3rd level, you gain Darkness and Melf''s Acid Arrow spells.', 'Swamp', 0, 'spell,87|spell,224'),
+('Swamp Circle Spells', NULL, 'At 5th level, you gain Water Walk and Stinking Cloud spells.', '', 0, 'spell,352|spell,314'),
+('Swamp Circle Spells', NULL, 'At 7th level, you gain Freedom of Movement and Locate Creature spells.', '', 0, 'spell,150|spell,207'),
+('Swamp Circle Spells', NULL, 'At 9th level, you gain Insect Plague and Scrying spells.', '', 0, 'spell,194|spell,287'),
+('Underdark Circle Spells', NULL, 'At 3rd level, you gain Spider Climb and Web spells.', 'Underdark', 0, 'spell,309|spell,353'),
+('Underdark Circle Spells', NULL, 'At 5th level, you gain Gaseous Form and Stinking Cloud spells.', '', 0, 'spell,152|spell,314'),
+('Underdark Circle Spells', NULL, 'At 7th level, you gain Greater Invisibility and Stone Shape spells.', '', 0, 'spell,163|spell,315'),
+('Underdark Circle Spells', NULL, 'At 9th level, you gain Cloudkill and Insect Plague spells.', '', 0, 'spell,53|spell,194'),
 ('Land''s Stride', 258, 'Starting at 6th level, moving through nonmagical difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.
 
-In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', NULL, ''),
-('Nature''s Ward', 262, 'When you reach 10th level, you can''t be charmed or frightened by elementals or fey, and you are immune to poison and disease.', '', NULL, ''),
+In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', 0, ''),
+('Nature''s Ward', 262, 'When you reach 10th level, you can''t be charmed or frightened by elementals or fey, and you are immune to poison and disease.', '', 0, ''),
 ('Nature''s Sanctuary', 266, 'When you reach 14th level, creatures of the natural world sense your connection to nature and become hesitant to attack you. When a beast or plant creature attacks you, that creature must make a Wisdom saving throw against your druid spell save DC. On a failed save, the creature must choose a different target, or the attack automatically misses. On a successful save, the creature is immune to this effect for 24 hours.
 
-The creature is aware of this effect before it makes its attack against you.', '', NULL, ''),
+The creature is aware of this effect before it makes its attack against you.', '', 0, ''),
 ('Wild Shape', 273, 'Starting at 2nd level, you can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice. You regain expended uses when you finish a short or long rest.
 
 Your druid level determines the beasts you can transform into. At 2nd level, you can transform into any beast that has a challenge rating of 1/4 or lower that doesn''t have a flying or swimming speed. At 4th level, you can transform into any beast that has a challenge rating of 1/2 or lower that doesn''t have a flying speed. At 8th level, you can transform into any beast that has a challenge rating of 1 or lower.
@@ -4311,26 +4311,26 @@ While you are transformed, the following rules apply:
 - When you transform, you assume the beast''s hit points and Hit Dice. When you revert to your normal form, you return to the number of hit points you had before you transformed. However, if you revert as a result of dropping to 0 hit points, any excess damage carries over to your normal form, For example, if you take 10 damage in animal form and have only 1 hit point left, you revert and take 9 damage. As long as the excess damage doesn''t reduce your normal form to 0 hit points, you aren''t knocked unconscious.
 - You can''t cast spells, and your ability to speak or take any action that requires hands is limited to the capabilities of your beast form. Transforming doesn''t break your concentration on a spell you''ve already cast, however, or prevent you from taking actions that are part of a spell, such as Call Lightning, that you''ve already cast.
 - You retain the benefit of any features from your class, race, or other source and can use them if the new form is physically capable of doing so. However, you can''t use any of your special senses, such as darkvision, unless your new form also has that sense.
-- You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature''s shape and size. Your equipment doesn''t change size or shape to match the new form, and any equipment that the new form can''t wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.', '', NULL, ''),
-('Feat', 275, '', '', NULL, 'feat'),
-('Feat', 279, '', '', NULL, 'feat'),
-('Feat', 283, '', '', NULL, 'feat'),
-('Feat', 287, '', '', NULL, 'feat'),
-('Feat', 290, '', '', NULL, 'feat'),
-('Timeless Body', 289, 'Starting at 18th level, the primal magic that you wield causes you to age more slowly. For every 10 years that pass, your body ages only 1 year.', '', NULL, ''),
-('Beast Spells', 289, 'Beginning at 18th level, you can cast many of your druid spells in any shape you assume using Wild Shape. You can perform the somatic and verbal components of a druid spell while in a beast shape, but you aren''t able to provide material components.', '', NULL, ''),
+- You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature''s shape and size. Your equipment doesn''t change size or shape to match the new form, and any equipment that the new form can''t wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.', '', 0, ''),
+('Feat', 275, '', '', 0, 'feat'),
+('Feat', 279, '', '', 0, 'feat'),
+('Feat', 283, '', '', 0, 'feat'),
+('Feat', 287, '', '', 0, 'feat'),
+('Feat', 290, '', '', 0, 'feat'),
+('Timeless Body', 289, 'Starting at 18th level, the primal magic that you wield causes you to age more slowly. For every 10 years that pass, your body ages only 1 year.', '', 0, ''),
+('Beast Spells', 289, 'Beginning at 18th level, you can cast many of your druid spells in any shape you assume using Wild Shape. You can perform the somatic and verbal components of a druid spell while in a beast shape, but you aren''t able to provide material components.', '', 0, ''),
 ('Archdruid', 291, 'At 20th level, you can use your Wild Shape an unlimited number of times.
 
-Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', NULL, ''),
+Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', 0, ''),
 ('Combat Wild Shape', 273, 'When you choose this circle at 2nd level, you gain the ability to use Wild Shape on your turn as a bonus action, rather than as an action.
 
-Additionally, while you are transformed by Wild Shape, you can use a bonus action to expend one spell slot to regain 1d8 hit points per level of the spell slot expended.', '', NULL, ''),
+Additionally, while you are transformed by Wild Shape, you can use a bonus action to expend one spell slot to regain 1d8 hit points per level of the spell slot expended.', '', 0, ''),
 ('Circle Forms', 273, 'The rites of your circle grant you the ability to transform into more dangerous animal forms. Starting at 2nd level, you can use your Wild Shape to transform into a beast with a challenge rating as high as 1. You ignore the Max. CR column of the Beast Shapes table, but must abide by the other limitations there.
 
-Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.', '', NULL, ''),
-('Primal Strike', 277, 'Starting at 6th level, your attacks in beast form count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', NULL, ''),
-('Elemental Wild Shape', 281, 'At 10th level, you can expend two uses of Wild Shape at the same time to transform into an air elemental, an earth elemental, a fire elemental, or a water elemental.', '', NULL, ''),
-('Thousand Forms', 285, 'By 14th level, you have learned to use magic to alter your physical form in more subtle ways. You can cast the Alter Self spell at will.', '', NULL, ''),
+Starting at 6th level, you can transform into a beast with a challenge rating as high as your druid level divided by 3, rounded down.', '', 0, ''),
+('Primal Strike', 277, 'Starting at 6th level, your attacks in beast form count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', 0, ''),
+('Elemental Wild Shape', 281, 'At 10th level, you can expend two uses of Wild Shape at the same time to transform into an air elemental, an earth elemental, a fire elemental, or a water elemental.', '', 0, ''),
+('Thousand Forms', 285, 'By 14th level, you have learned to use magic to alter your physical form in more subtle ways. You can cast the Alter Self spell at will.', '', 0, ''),
 ('Wild Shape', 292, 'Starting at 2nd level, you can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice. You regain expended uses when you finish a short or long rest.
 
 Your druid level determines the beasts you can transform into. At 2nd level, you can transform into any beast that has a challenge rating of 1/4 or lower that doesn''t have a flying or swimming speed. At 4th level, you can transform into any beast that has a challenge rating of 1/2 or lower that doesn''t have a flying speed. At 8th level, you can transform into any beast that has a challenge rating of 1 or lower.
@@ -4343,73 +4343,73 @@ While you are transformed, the following rules apply:
 - When you transform, you assume the beast''s hit points and Hit Dice. When you revert to your normal form, you return to the number of hit points you had before you transformed. However, if you revert as a result of dropping to 0 hit points, any excess damage carries over to your normal form, For example, if you take 10 damage in animal form and have only 1 hit point left, you revert and take 9 damage. As long as the excess damage doesn''t reduce your normal form to 0 hit points, you aren''t knocked unconscious.
 - You can''t cast spells, and your ability to speak or take any action that requires hands is limited to the capabilities of your beast form. Transforming doesn''t break your concentration on a spell you''ve already cast, however, or prevent you from taking actions that are part of a spell, such as Call Lightning, that you''ve already cast.
 - You retain the benefit of any features from your class, race, or other source and can use them if the new form is physically capable of doing so. However, you can''t use any of your special senses, such as darkvision, unless your new form also has that sense.
-- You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature''s shape and size. Your equipment doesn''t change size or shape to match the new form, and any equipment that the new form can''t wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.', '', NULL, ''),
-('Feat', 294, '', '', NULL, 'feat'),
-('Feat', 298, '', '', NULL, 'feat'),
-('Feat', 302, '', '', NULL, 'feat'),
-('Feat', 306, '', '', NULL, 'feat'),
-('Feat', 309, '', '', NULL, 'feat'),
-('Timeless Body', 308, 'Starting at 18th level, the primal magic that you wield causes you to age more slowly. For every 10 years that pass, your body ages only 1 year.', '', NULL, ''),
-('Beast Spells', 308, 'Beginning at 18th level, you can cast many of your druid spells in any shape you assume using Wild Shape. You can perform the somatic and verbal components of a druid spell while in a beast shape, but you aren''t able to provide material components.', '', NULL, ''),
+- You choose whether your equipment falls to the ground in your space, merges into your new form, or is worn by it. Worn equipment functions as normal, but the DM decides whether it is practical for the new form to wear a piece of equipment, based on the creature''s shape and size. Your equipment doesn''t change size or shape to match the new form, and any equipment that the new form can''t wear must either fall to the ground or merge with it. Equipment that merges with the form has no effect until you leave the form.', '', 0, ''),
+('Feat', 294, '', '', 0, 'feat'),
+('Feat', 298, '', '', 0, 'feat'),
+('Feat', 302, '', '', 0, 'feat'),
+('Feat', 306, '', '', 0, 'feat'),
+('Feat', 309, '', '', 0, 'feat'),
+('Timeless Body', 308, 'Starting at 18th level, the primal magic that you wield causes you to age more slowly. For every 10 years that pass, your body ages only 1 year.', '', 0, ''),
+('Beast Spells', 308, 'Beginning at 18th level, you can cast many of your druid spells in any shape you assume using Wild Shape. You can perform the somatic and verbal components of a druid spell while in a beast shape, but you aren''t able to provide material components.', '', 0, ''),
 ('Archdruid', 310, 'At 20th level, you can use your Wild Shape an unlimited number of times.
 
-Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', NULL, ''),
+Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', 0, ''),
 ('Circle of Spores Spells', 292, 'Your symbiotic link to fungi and your ability to tap into the cycle of life and death grants you access to certain spells. At 2nd level, you learn the Chill Touch cantrip.
 
-At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level in the Circle of Spores Spells table. Once you gain access to one of these spells, you always have it prepared, and it doesn''t count against the number of spells you can prepare each day. If you gain access to a spell that doesn''t appear on the druid spell list, the spell is nonetheless a druid spell for you.', '', NULL, 'spell,46'),
-('Circle Spells 3rd level', 293, 'At 3rd level, you gain Blindness/Deafness and Gentle Repose spells.', '', NULL, 'spell,37|spell,155'),
-('Circle Spells 5th level', 295, 'At 5th level, you gain Animate Dead and Gaseous Form spells.', '', NULL, 'spell,8|spell,152'),
-('Circle Spells 7th level', 297, 'At 7th level, you gain Blight and Confusion spells.', '', NULL, 'spell,35|spell,62'),
-('Circle Spells 9th level', 299, 'At 9th level, you gain Cloudkill and Contagion spells.', '', NULL, 'spell,53|spell,72'),
-('Halo of Spores', 292, 'Starting at 2nd level, you are surrounded by invisible, necrotic spores that are harmless until you unleash them on a creature nearby. When a creature you can see moves into a space within 10 feet of you or starts its turn there, you can use your reaction to deal 1d4 necrotic damage to that creature unless it succeeds on a Constitution saving throw against your spell save DC. The necrotic damage increases to 1d6 at 6th level, 1d8 at 10th level, and 1d10 at 14th level.', '', NULL, ''),
+At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level in the Circle of Spores Spells table. Once you gain access to one of these spells, you always have it prepared, and it doesn''t count against the number of spells you can prepare each day. If you gain access to a spell that doesn''t appear on the druid spell list, the spell is nonetheless a druid spell for you.', '', 0, 'spell,46'),
+('Circle Spells 3rd level', 293, 'At 3rd level, you gain Blindness/Deafness and Gentle Repose spells.', '', 0, 'spell,37|spell,155'),
+('Circle Spells 5th level', 295, 'At 5th level, you gain Animate Dead and Gaseous Form spells.', '', 0, 'spell,8|spell,152'),
+('Circle Spells 7th level', 297, 'At 7th level, you gain Blight and Confusion spells.', '', 0, 'spell,35|spell,62'),
+('Circle Spells 9th level', 299, 'At 9th level, you gain Cloudkill and Contagion spells.', '', 0, 'spell,53|spell,72'),
+('Halo of Spores', 292, 'Starting at 2nd level, you are surrounded by invisible, necrotic spores that are harmless until you unleash them on a creature nearby. When a creature you can see moves into a space within 10 feet of you or starts its turn there, you can use your reaction to deal 1d4 necrotic damage to that creature unless it succeeds on a Constitution saving throw against your spell save DC. The necrotic damage increases to 1d6 at 6th level, 1d8 at 10th level, and 1d10 at 14th level.', '', 0, ''),
 ('Symbiotic Entity', 292, 'Also at 2nd level, you gain the ability to channel magic into your spores. As an action, you can expend a use of your Wild Shape feature to awaken those spores, rather than transforming into a beast form, and you gain 4 temporary hit points for each level you have in this class. While this feature is active, you gain the following benefits:
 
 When you deal your Halo of Spores damage, roll the damage die a second time and add it to the total.
 Your melee weapon attacks deal an extra 1d6 necrotic damage to any target they hit.
-These benefits last for 10 minutes, until you lose all these temporary hit points. or until you use your Wild Shape again.', '', NULL, ''),
+These benefits last for 10 minutes, until you lose all these temporary hit points. or until you use your Wild Shape again.', '', 0, ''),
 ('Fungal Infestation', 296, 'At 6th level, your spores gain the ability to infest a corpse and animate it. If a beast or a humanoid that is Small or Medium dies within 10 feet of you, you can use your reaction to animate it, causing it to stand up immediately with 1 hit point. The creature uses the Zombie stat block in the Monster Manual. It remains animate for 1 hour, after which time it collapses and dies.
 
 In combat, the zombie''s turn comes immediately after yours. It obeys your mental commands, and the only action it can take is the Attack action, making one melee attack.
 
-You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest.', '', NULL, ''),
+You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest.', '', 0, ''),
 ('Spreading Spores', 300, 'At 10th level, you gain the ability to seed an area with deadly spores. As a bonus action while your Symbiotic Entity feature is active, you can hurl spores up to 30 feet away, where they swirl in a 10-foot cube for 1 minute. The spores disappear early if you use this feature again, if you dismiss them as a bonus action, or if your Symbiotic Entity feature is no longer active.
 
 Whenever a creature moves into the cube or starts its turn there, that creature takes your Halo of Spores damage, unless the creature succeeds on a Constitution saving throw against your spell save DC. A creature can take this damage no more than once per turn.
 
-While the cube of spores persists, you can''t use your Halo of Spores reaction.', '', NULL, ''),
-('Fungal Body', 304, 'At 14th level, the fungal spores in your body alter you: you can''t be blinded, deafened, frightened, or poisoned, and any critical hit against you counts as a normal hit instead, unless you''re incapacitated.', '', NULL, ''),
-('Saving Throw Proficiency (Strength, Constitution)', 311, '', '', NULL, 'savingThrowProficiency,str|savingThrowProficiency,con'),
-('Armor Proficiency (Light, Medium, Heavy, Shield)', 311, '', '', NULL, 'armorProficiency,all'),
-('Fighter Weapon Proficiencies', 311, 'As a fighter, you have proficiency with all simple and martial weapons.', '', NULL, 'weaponProficiency,all'),
-('Skill Proficiency', 311, '', '', NULL, 'skillSelect,1,2,6,10,11,13,14,16|skillSelect,1,2,6,10,11,13,14,16'),
+While the cube of spores persists, you can''t use your Halo of Spores reaction.', '', 0, ''),
+('Fungal Body', 304, 'At 14th level, the fungal spores in your body alter you: you can''t be blinded, deafened, frightened, or poisoned, and any critical hit against you counts as a normal hit instead, unless you''re incapacitated.', '', 0, ''),
+('Saving Throw Proficiency (Strength, Constitution)', 311, '', '', 0, 'savingThrowProficiency,str|savingThrowProficiency,con'),
+('Armor Proficiency (Light, Medium, Heavy, Shield)', 311, '', '', 0, 'armorProficiency,all'),
+('Fighter Weapon Proficiencies', 311, 'As a fighter, you have proficiency with all simple and martial weapons.', '', 0, 'weaponProficiency,all'),
+('Skill Proficiency', 311, '', '', 0, 'skillSelect,1,2,6,10,11,13,14,16|skillSelect,1,2,6,10,11,13,14,16'),
 ('Fighting Style - Fighter', 311, 'You adopt a particular style of fighting as your specialty. Choose one of the following options. You can''t take a Fighting Style option more than once, even if you later get to choose again.', '', 1, ''),
-('Archery', NULL, 'You gain a +2 bonus to attack rolls you make with ranged weapons.', 'Fighting Style - Fighter', NULL, 'archeryStyle'),
-('Defense', NULL, 'While you are wearing armor, you gain a +1 bonus to AC.', 'Fighting Style - Fighter', NULL, 'defenseStyle'),
-('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Fighter', NULL, 'duelingStyle'),
-('Great Weapon Fighting', NULL, 'When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.', 'Fighting Style - Fighter', NULL, ''),
-('Protection', NULL, 'When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.', 'Fighting Style - Fighter', NULL, ''),
-('Two-Weapon Fighting', NULL, 'When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.', 'Fighting Style - Fighter', NULL, 'twoWeaponFightingStyle'),
+('Archery', NULL, 'You gain a +2 bonus to attack rolls you make with ranged weapons.', 'Fighting Style - Fighter', 0, 'archeryStyle'),
+('Defense', NULL, 'While you are wearing armor, you gain a +1 bonus to AC.', 'Fighting Style - Fighter', 0, 'defenseStyle'),
+('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Fighter', 0, 'duelingStyle'),
+('Great Weapon Fighting', NULL, 'When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.', 'Fighting Style - Fighter', 0, ''),
+('Protection', NULL, 'When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.', 'Fighting Style - Fighter', 0, ''),
+('Two-Weapon Fighting', NULL, 'When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.', 'Fighting Style - Fighter', 0, 'twoWeaponFightingStyle'),
 ('Second Wind', 311, 'You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level.
 
-Once you use this feature, you must finish a short or long rest before you can use it again.', '', NULL, ''),
+Once you use this feature, you must finish a short or long rest before you can use it again.', '', 0, ''),
 ('Action Surge', 312, 'Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.
 
-Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.', '', NULL, ''),
-('Feat', 314, '', '', NULL, 'feat'),
-('Feat', 316, '', '', NULL, 'feat'),
-('Feat', 318, '', '', NULL, 'feat'),
-('Feat', 322, '', '', NULL, 'feat'),
-('Feat', 324, '', '', NULL, 'feat'),
-('Feat', 326, '', '', NULL, 'feat'),
-('Feat', 329, '', '', NULL, 'feat'),
+Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.', '', 0, ''),
+('Feat', 314, '', '', 0, 'feat'),
+('Feat', 316, '', '', 0, 'feat'),
+('Feat', 318, '', '', 0, 'feat'),
+('Feat', 322, '', '', 0, 'feat'),
+('Feat', 324, '', '', 0, 'feat'),
+('Feat', 326, '', '', 0, 'feat'),
+('Feat', 329, '', '', 0, 'feat'),
 ('Extra Attack', 315, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.
 
-The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.', '', NULL, 'extraAttack,1'),
-('Extra Attack', 321, '', '', NULL, 'extraAttack,2'),
-('Extra Attack', 330, '', '', NULL, 'extraAttack,3'),
+The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.', '', 0, 'extraAttack,1'),
+('Extra Attack', 321, '', '', 0, 'extraAttack,2'),
+('Extra Attack', 330, '', '', 0, 'extraAttack,3'),
 ('Indomitable', 319, 'Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can''t use this feature again until you finish a long rest.
 
-You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.', '', NULL, ''),
+You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.', '', 0, ''),
 ('Combat Superiority', 313, 'When you choose this archetype at 3rd level, you learn maneuvers that are fueled by special dice called superiority dice.
 
 Maneuvers - You learn three maneuvers of your choice. Many maneuvers enhance an attack in some way. You can use only one maneuver per attack. You learn two additional maneuvers of your choice at 7th, 10th, and 15th level. Each time you learn new maneuvers, you can also replace one maneuver you know with a different one.
@@ -4422,23 +4422,23 @@ Maneuver save DC = 8 + your proficiency bonus + your Strength or Dexterity modif
 ('Combat Superiority', 317, 'You learn two additional maneuvers of your choice.', '', 2, ''),
 ('Combat Superiority', 320, 'You learn two additional maneuvers of your choice.', '', 2, ''),
 ('Combat Superiority', 325, 'You learn two additional maneuvers of your choice.', '', 2, ''),
-('Commander''s Strike', NULL, 'When you take the Attack action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack''s damage roll.', 'Combat Superiority', NULL, ''),
-('Disarming Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to disarm the target, forcing it to drop one item of your choice that it''s holding. You add the superiority die to the attack''s damage roll, and the target must make a Strength saving throw. On a failed save, it drops the object you choose. The object lands at its feet.', 'Combat Superiority', NULL, ''),
-('Distracting Strike', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature, giving your allies an opening. You add the superiority die to the attack''s damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn.', 'Combat Superiority', NULL, ''),
-('Evasive Footwork', NULL, 'When you move, you can expend one superiority die, rolling the die and adding the number rolled to your AC until you stop moving.', 'Combat Superiority', NULL, ''),
-('Feinting Attack', NULL, 'You can expend one superiority die and use a bonus action on your turn to feint, choosing one creature within 5 feet of you as your target. You have advantage on your next attack roll against that creature this turn. If that attack hits, add the superiority die to the attack''s damage roll.', 'Combat Superiority', NULL, ''),
-('Goading Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to goad the target into attacking you. You add the superiority die to the attack''s damage roll, and the target must make a Wisdom saving throw. On a failed save, the target has disadvantage on all attack rolls against targets other than you until the end of your next turn.', 'Combat Superiority', NULL, ''),
-('Lunging Attack', NULL, 'When you make a melee weapon attack on your turn, you can expend one superiority die to increase your reach for that attack by 5 feet. If you hit, you add the superiority die to the attack''s damage roll.', 'Combat Superiority', NULL, ''),
-('Maneuvering Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to maneuver one of your comrades into a more advantageous position. You add the superiority die to the attack''s damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack.', 'Combat Superiority', NULL, ''),
-('Menacing Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to frighten the target. You add the superiority die to the attack''s damage roll, and the target must make a Wisdom saving throw. On a failed save, it is frightened of you until the end of your next turn.', 'Combat Superiority', NULL, ''),
-('Parry', NULL, 'When another creature damages you with a melee attack, you can use your reaction and expend one superiority die to reduce the damage by the number you roll on your superiority die + your Dexterity modifier.', 'Combat Superiority', NULL, ''),
-('Precision Attack', NULL, 'When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied.', 'Combat Superiority', NULL, ''),
-('Pushing Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack''s damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 15 feet away from you.', 'Combat Superiority', NULL, ''),
-('Rally', NULL, 'On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier.', 'Combat Superiority', NULL, ''),
-('Riposte', NULL, 'When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack''s damage roll.', 'Combat Superiority', NULL, ''),
-('Sweeping Attack', NULL, 'When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack.', 'Combat Superiority', NULL, ''),
-('Trip Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack''s damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target prone.', 'Combat Superiority', NULL, ''),
-('Student of War', 313, 'At 3rd level, you gain proficiency with one type of artisan''s tools of your choice.', '', NULL, ''),
+('Commander''s Strike', NULL, 'When you take the Attack action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack''s damage roll.', 'Combat Superiority', 0, ''),
+('Disarming Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to disarm the target, forcing it to drop one item of your choice that it''s holding. You add the superiority die to the attack''s damage roll, and the target must make a Strength saving throw. On a failed save, it drops the object you choose. The object lands at its feet.', 'Combat Superiority', 0, ''),
+('Distracting Strike', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature, giving your allies an opening. You add the superiority die to the attack''s damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn.', 'Combat Superiority', 0, ''),
+('Evasive Footwork', NULL, 'When you move, you can expend one superiority die, rolling the die and adding the number rolled to your AC until you stop moving.', 'Combat Superiority', 0, ''),
+('Feinting Attack', NULL, 'You can expend one superiority die and use a bonus action on your turn to feint, choosing one creature within 5 feet of you as your target. You have advantage on your next attack roll against that creature this turn. If that attack hits, add the superiority die to the attack''s damage roll.', 'Combat Superiority', 0, ''),
+('Goading Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to goad the target into attacking you. You add the superiority die to the attack''s damage roll, and the target must make a Wisdom saving throw. On a failed save, the target has disadvantage on all attack rolls against targets other than you until the end of your next turn.', 'Combat Superiority', 0, ''),
+('Lunging Attack', NULL, 'When you make a melee weapon attack on your turn, you can expend one superiority die to increase your reach for that attack by 5 feet. If you hit, you add the superiority die to the attack''s damage roll.', 'Combat Superiority', 0, ''),
+('Maneuvering Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to maneuver one of your comrades into a more advantageous position. You add the superiority die to the attack''s damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack.', 'Combat Superiority', 0, ''),
+('Menacing Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to frighten the target. You add the superiority die to the attack''s damage roll, and the target must make a Wisdom saving throw. On a failed save, it is frightened of you until the end of your next turn.', 'Combat Superiority', 0, ''),
+('Parry', NULL, 'When another creature damages you with a melee attack, you can use your reaction and expend one superiority die to reduce the damage by the number you roll on your superiority die + your Dexterity modifier.', 'Combat Superiority', 0, ''),
+('Precision Attack', NULL, 'When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied.', 'Combat Superiority', 0, ''),
+('Pushing Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack''s damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 15 feet away from you.', 'Combat Superiority', 0, ''),
+('Rally', NULL, 'On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier.', 'Combat Superiority', 0, ''),
+('Riposte', NULL, 'When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack''s damage roll.', 'Combat Superiority', 0, ''),
+('Sweeping Attack', NULL, 'When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack.', 'Combat Superiority', 0, ''),
+('Trip Attack', NULL, 'When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack''s damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target prone.', 'Combat Superiority', 0, ''),
+('Student of War', 313, 'At 3rd level, you gain proficiency with one type of artisan''s tools of your choice.', '', 0, ''),
 ('Know Your Enemy', 317, 'Starting at 7th level, if you spend at least 1 minute observing or interacting with another creature outside combat, you can learn certain information about its capabilities compared to your own. The DM tells you if the creature is your equal, superior, or inferior in regard to two of the following characteristics of your choice:
 
 - Strength score
@@ -4447,59 +4447,59 @@ Maneuver save DC = 8 + your proficiency bonus + your Strength or Dexterity modif
 - Armor Class
 - Current hit points
 - Total class levels, if any
-- Fighter class levels, if any', '', NULL, ''),
-('Improved Combat Superiority', 320, 'At 10th level, your superiority dice turn into d10s. At 18th level, they turn into d12s.', '', NULL, ''),
-('Relentless', 325, 'Starting at 15th level, when you roll initiative and have no superiority dice remaining, you regain 1 superiority die.', '', NULL, ''),
-('Feat', 332, '', '', NULL, 'feat'),
-('Feat', 334, '', '', NULL, 'feat'),
-('Feat', 336, '', '', NULL, 'feat'),
-('Feat', 340, '', '', NULL, 'feat'),
-('Feat', 342, '', '', NULL, 'feat'),
-('Feat', 344, '', '', NULL, 'feat'),
-('Feat', 347, '', '', NULL, 'feat'),
+- Fighter class levels, if any', '', 0, ''),
+('Improved Combat Superiority', 320, 'At 10th level, your superiority dice turn into d10s. At 18th level, they turn into d12s.', '', 0, ''),
+('Relentless', 325, 'Starting at 15th level, when you roll initiative and have no superiority dice remaining, you regain 1 superiority die.', '', 0, ''),
+('Feat', 332, '', '', 0, 'feat'),
+('Feat', 334, '', '', 0, 'feat'),
+('Feat', 336, '', '', 0, 'feat'),
+('Feat', 340, '', '', 0, 'feat'),
+('Feat', 342, '', '', 0, 'feat'),
+('Feat', 344, '', '', 0, 'feat'),
+('Feat', 347, '', '', 0, 'feat'),
 ('Extra Attack', 333, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.
 
-The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.', '', NULL, 'extraAttack,1'),
-('Extra Attack', 339, '', '', NULL, 'extraAttack,2'),
-('Extra Attack', 348, '', '', NULL, 'extraAttack,3'),
+The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.', '', 0, 'extraAttack,1'),
+('Extra Attack', 339, '', '', 0, 'extraAttack,2'),
+('Extra Attack', 348, '', '', 0, 'extraAttack,3'),
 ('Indomitable', 337, 'Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can''t use this feature again until you finish a long rest.
 
-You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.', '', NULL, ''),
-('Improved Critical', 331, 'Beginning when you choose this archetype at 3rd level, your weapon attacks score a critical hit on a roll of 19 or 20.', '', NULL, ''),
+You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.', '', 0, ''),
+('Improved Critical', 331, 'Beginning when you choose this archetype at 3rd level, your weapon attacks score a critical hit on a roll of 19 or 20.', '', 0, ''),
 ('Remarkable Athlete', 335, 'Starting at 7th level, you can add half your proficiency bonus (rounded up) to any Strength, Dexterity, or Constitution check you make that doesn''t already use your proficiency bonus.
 
-In addition, when you make a running long jump, the distance you can cover increases by a number of feet equal to your Strength modifier.', '', NULL, 'remarkableAthlete'),
+In addition, when you make a running long jump, the distance you can cover increases by a number of feet equal to your Strength modifier.', '', 0, 'remarkableAthlete'),
 ('Fighting Style - Fighter', 338, 'At 10th level, you can choose a second option from the Fighting Style class feature.', '', 1, ''),
-('Superior Critical', 343, 'Starting at 15th level, your weapon attacks score a critical hit on a roll of 18-20.', '', NULL, ''),
-('Survivor', 346, 'At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don''t gain this benefit if you have 0 hit points.', '', NULL, ''),
-('Feat', 350, '', '', NULL, 'feat'),
-('Feat', 352, '', '', NULL, 'feat'),
-('Feat', 354, '', '', NULL, 'feat'),
-('Feat', 358, '', '', NULL, 'feat'),
-('Feat', 360, '', '', NULL, 'feat'),
-('Feat', 362, '', '', NULL, 'feat'),
-('Feat', 365, '', '', NULL, 'feat'),
+('Superior Critical', 343, 'Starting at 15th level, your weapon attacks score a critical hit on a roll of 18-20.', '', 0, ''),
+('Survivor', 346, 'At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don''t gain this benefit if you have 0 hit points.', '', 0, ''),
+('Feat', 350, '', '', 0, 'feat'),
+('Feat', 352, '', '', 0, 'feat'),
+('Feat', 354, '', '', 0, 'feat'),
+('Feat', 358, '', '', 0, 'feat'),
+('Feat', 360, '', '', 0, 'feat'),
+('Feat', 362, '', '', 0, 'feat'),
+('Feat', 365, '', '', 0, 'feat'),
 ('Extra Attack', 351, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.
 
-The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.', '', NULL, 'extraAttack,1'),
-('Extra Attack', 357, '', '', NULL, 'extraAttack,2'),
-('Extra Attack', 366, '', '', NULL, 'extraAttack,3'),
+The number of attacks increases to three when you reach 11th level in this class and to four when you reach 20th level in this class.', '', 0, 'extraAttack,1'),
+('Extra Attack', 357, '', '', 0, 'extraAttack,2'),
+('Extra Attack', 366, '', '', 0, 'extraAttack,3'),
 ('Indomitable', 355, 'Beginning at 9th level, you can reroll a saving throw that you fail. If you do so, you must use the new roll, and you can''t use this feature again until you finish a long rest.
 
-You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.', '', NULL, ''),
+You can use this feature twice between long rests starting at 13th level and three times between long rests starting at 17th level.', '', 0, ''),
 ('Weapon Bond', 349, 'At 3rd level, you learn a ritual that creates a magical bond between yourself and one weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. The weapon must be within your reach throughout the ritual, at the conclusion of which you touch the weapon and forge the bond.
 
 Once you have bonded a weapon to yourself, you can''t be disarmed of that weapon unless you are incapacitated. If it is on the same plane of existence, you can summon that weapon as a bonus action on your turn, causing it to teleport instantly to your hand.
 
-You can have up to two bonded weapons, but can summon only one at a time with your bonus action. If you attempt to bond with a third weapon, you must break the bond with one of the other two.', '', NULL, ''),
-('War Magic', 353, 'Beginning at 7th level, when you use your action to cast a cantrip, you can make one weapon attack as a bonus action.', '', NULL, ''),
-('Eldritch Strike', 356, 'At 10th level, you learn how to make your weapon strikes undercut a creature''s resistance to your spells. When you hit a creature with a weapon attack, that creature has disadvantage on the next saving throw it makes against a spell you cast before the end of your next turn.', '', NULL, ''),
-('Arcane Charge', 361, 'At 15th level, you gain the ability to teleport up to 30 feet to an unoccupied space you can see when you use your Action Surge. You can teleport before or after the additional action.', '', NULL, ''),
-('Improved War Magic', 364, 'Starting at 18th level, when you use your action to cast a spell, you can make one weapon attack as a bonus action.', '', NULL, ''),
-('Saving Throw Proficiency (Strength, Dexterity)', 367, '', '', NULL, 'savingThrowProficiency,str|savingThrowProficiency,dex'),
-('Monk Weapon Proficiencies', 367, 'As a monk, you have proficiency with all simple weapons and shortswords.', '', NULL, 'weaponProficiency,simple|weaponProficiency,single,29'),
-('Skill Proficiency', 367, '', '', NULL, 'skillSelect,1,2,4,6,9,11'),
-('Unarmored Defense', 367, 'Beginning at 1st level, while you are wearing no armor and not wielding a shield, your AC equals 10 + your Dexterity modifier + your Wisdom modifier.', '', NULL, 'unarmoredDefense,wis'),
+You can have up to two bonded weapons, but can summon only one at a time with your bonus action. If you attempt to bond with a third weapon, you must break the bond with one of the other two.', '', 0, ''),
+('War Magic', 353, 'Beginning at 7th level, when you use your action to cast a cantrip, you can make one weapon attack as a bonus action.', '', 0, ''),
+('Eldritch Strike', 356, 'At 10th level, you learn how to make your weapon strikes undercut a creature''s resistance to your spells. When you hit a creature with a weapon attack, that creature has disadvantage on the next saving throw it makes against a spell you cast before the end of your next turn.', '', 0, ''),
+('Arcane Charge', 361, 'At 15th level, you gain the ability to teleport up to 30 feet to an unoccupied space you can see when you use your Action Surge. You can teleport before or after the additional action.', '', 0, ''),
+('Improved War Magic', 364, 'Starting at 18th level, when you use your action to cast a spell, you can make one weapon attack as a bonus action.', '', 0, ''),
+('Saving Throw Proficiency (Strength, Dexterity)', 367, '', '', 0, 'savingThrowProficiency,str|savingThrowProficiency,dex'),
+('Monk Weapon Proficiencies', 367, 'As a monk, you have proficiency with all simple weapons and shortswords.', '', 0, 'weaponProficiency,simple|weaponProficiency,single,29'),
+('Skill Proficiency', 367, '', '', 0, 'skillSelect,1,2,4,6,9,11'),
+('Unarmored Defense', 367, 'Beginning at 1st level, while you are wearing no armor and not wielding a shield, your AC equals 10 + your Dexterity modifier + your Wisdom modifier.', '', 0, 'unarmoredDefense,wis'),
 ('Martial Arts', 367, 'At 1st level, your practice of martial arts gives you mastery of combat styles that use unarmed strikes and monk weapons, which are shortswords and any simple melee weapons that don''t have the two-handed or heavy property.
 
 You gain the following benefits while you are unarmed or wielding only monk weapons and you aren''t wearing armor or wielding a shield:
@@ -4508,7 +4508,7 @@ You gain the following benefits while you are unarmed or wielding only monk weap
 - You can roll a d4 in place of the normal damage of your unarmed strike or monk weapon. This die changes as you gain monk levels, as shown in the Martial Arts column of the Monk table.
 - When you use the Attack action with an unarmed strike or a monk weapon on your turn, you can make one unarmed strike as a bonus action. For example, if you take the Attack action and attack with a quarterstaff, you can also make an unarmed strike as a bonus action, assuming you haven''t already taken a bonus action this turn.
 
-Certain monasteries use specialized forms of the monk weapons. For example, you might use a club that is two lengths of wood connected by a short chain (called a nunchaku) or a sickle with a shorter, straighter blade (called a kama). Whatever name you use for a monk weapon, you can use the game statistics provided for the weapon on the Weapons page of the Player''s Handbook.', '', NULL, 'martialArts'),
+Certain monasteries use specialized forms of the monk weapons. For example, you might use a club that is two lengths of wood connected by a short chain (called a nunchaku) or a sickle with a shorter, straighter blade (called a kama). Whatever name you use for a monk weapon, you can use the game statistics provided for the weapon on the Weapons page of the Player''s Handbook.', '', 0, 'martialArts'),
 ('Ki', 368, 'Starting at 2nd level, your training allows you to harness the mystic energy of ki. Your access to this energy is represented by a number of ki points. Your monk level determines the number of points you have, as shown in the Ki Points column of the Monk table.
 
 You can spend these points to fuel various ki features. You start knowing three such features: Flurry of Blows, Patient Defense, and Step of the Wind. You learn more ki features as you gain levels in this class.
@@ -4521,34 +4521,34 @@ Ki save DC = 8 + your proficiency bonus + your Wisdom modifier
 
 Flurry of Blows - Immediately after you take the Attack action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action.
 Patient Defense - You can spend 1 ki point to take the Dodge action as a bonus action on your turn.
-Step of the Wind - You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn.', '', NULL, ''),
+Step of the Wind - You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn.', '', 0, ''),
 ('Unarmored Movement', 368, 'Starting at 2nd level, your speed increases by 10 feet while you are not wearing armor or wielding a shield. This bonus increases when you reach certain monk levels, as shown in the Monk table.
 
-At 9th level, you gain the ability to move along vertical surfaces and across liquids on your turn without falling during the move.', '', NULL, 'unarmoredMovement'),
+At 9th level, you gain the ability to move along vertical surfaces and across liquids on your turn without falling during the move.', '', 0, 'unarmoredMovement'),
 ('Deflect Missiles', 369, 'Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your Dexterity modifier + your monk level.
 
-If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.', '', NULL, ''),
-('Feat', 370, '', '', NULL, 'feat'),
-('Feat', 374, '', '', NULL, 'feat'),
-('Feat', 378, '', '', NULL, 'feat'),
-('Feat', 382, '', '', NULL, 'feat'),
-('Feat', 385, '', '', NULL, 'feat'),
-('Slow Fall', 370, 'Beginning at 4th level, you can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.', '', NULL, ''),
-('Extra Attack', 371, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Stunning Strike', 371, 'Starting at 5th level, you can interfere with the flow of ki in an opponent''s body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.', '', NULL, ''),
-('Ki-Empowered Strikes', 372, 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', NULL, ''),
-('Evasion', 373, 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', NULL, ''),
-('Stillnes of Mind', 373, 'Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened.', '', NULL, ''),
-('Purity of Body', 376, 'At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison.', '', NULL, ''),
-('Tongue of the Sun and Moon', 379, 'Starting at 13th level, you learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.', '', NULL, ''),
+If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.', '', 0, ''),
+('Feat', 370, '', '', 0, 'feat'),
+('Feat', 374, '', '', 0, 'feat'),
+('Feat', 378, '', '', 0, 'feat'),
+('Feat', 382, '', '', 0, 'feat'),
+('Feat', 385, '', '', 0, 'feat'),
+('Slow Fall', 370, 'Beginning at 4th level, you can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.', '', 0, ''),
+('Extra Attack', 371, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Stunning Strike', 371, 'Starting at 5th level, you can interfere with the flow of ki in an opponent''s body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.', '', 0, ''),
+('Ki-Empowered Strikes', 372, 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', 0, ''),
+('Evasion', 373, 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', 0, ''),
+('Stillnes of Mind', 373, 'Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened.', '', 0, ''),
+('Purity of Body', 376, 'At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison.', '', 0, ''),
+('Tongue of the Sun and Moon', 379, 'Starting at 13th level, you learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.', '', 0, ''),
 ('Diamond Soul', 380, 'Beginning at 14th level, your mastery of ki grants you proficiency in all saving throws.
 
-Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.', '', NULL, 'savingThrowProficiency,all'),
-('Timeless Body', 381, 'At 15th level, your ki sustains you so that you suffer none of the frailty of old age, and you can''t be aged magically. You can still die of old age, however. In addition, you no longer need food or water.', '', NULL, ''),
+Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.', '', 0, 'savingThrowProficiency,all'),
+('Timeless Body', 381, 'At 15th level, your ki sustains you so that you suffer none of the frailty of old age, and you can''t be aged magically. You can still die of old age, however. In addition, you no longer need food or water.', '', 0, ''),
 ('Empty Body', 384, 'Beginning at 18th level, you can use your action to spend 4 ki points to become invisible for 1 minute. During that time, you also have resistance to all damage but force damage.
 
-Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can''t take any other creatures with you.', '', NULL, ''),
-('Pefect Self', 386, 'At 20th level, when you roll for initiative and have no ki points remaining, you regain 4 ki points.', '', NULL, ''),
+Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can''t take any other creatures with you.', '', 0, ''),
+('Pefect Self', 386, 'At 20th level, when you roll for initiative and have no ki points remaining, you regain 4 ki points.', '', 0, ''),
 ('Disciple of the Elements', 369, 'When you choose this tradition at 3rd level, you learn magical disciplines that harness the power of the four elements. A discipline requires you to spend ki points each time you use it.
 
 You know the Elemental Attunement discipline and one other elemental discipline of your choice. You learn one additional elemental discipline of your choice at 6th, 11th, and 17th level.
@@ -4570,170 +4570,170 @@ The maximum number of ki points you can spend to cast a spell in this way (inclu
 Create a harmless, instantaneous sensory effect related to air, earth, fire, or water such as a shower of sparks, a puff of wind, a spray of light mist, or a gentle rumbling of stone.
 Instantaneously light or snuff out a candle, a torch, or a small campfire.
 Chill or warm up to 1 pound of nonliving material for up to 1 hour.
-Cause earth, fire, water, or mist that can fit within a 1-foot cube to shape itself into a crude form you designate for 1 minute.', '', NULL, ''),
-('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Disciple of the Elements', NULL, ''),
-('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Disciple of the Elements', NULL, ''),
-('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Disciple of the Elements', NULL, ''),
-('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Disciple of the Elements', NULL, ''),
-('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Disciple of the Elements', NULL, ''),
-('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Disciple of the Elements', NULL, ''),
-('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Disciple of the Elements', NULL, ''),
+Cause earth, fire, water, or mist that can fit within a 1-foot cube to shape itself into a crude form you designate for 1 minute.', '', 0, ''),
+('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Disciple of the Elements', 0, ''),
+('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Disciple of the Elements', 0, ''),
+('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Disciple of the Elements', 0, ''),
+('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Disciple of the Elements', 0, ''),
+('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Disciple of the Elements', 0, ''),
+('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Disciple of the Elements', 0, ''),
+('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Disciple of the Elements', 0, ''),
 ('Second Elemental Discipline', 372, '', '', 1, ''),
-('Clench of the North Wind', NULL, 'You can spend 3 ki points to cast Hold Person.', 'Second Elemental Discipline', NULL, ''),
-('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Second Elemental Discipline', NULL, ''),
-('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Second Elemental Discipline', NULL, ''),
-('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Second Elemental Discipline', NULL, ''),
-('Gong of the Summit', NULL, 'You can spend 3 ki points to cast Shatter.', 'Second Elemental Discipline', NULL, ''),
-('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Second Elemental Discipline', NULL, ''),
-('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Second Elemental Discipline', NULL, ''),
-('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Second Elemental Discipline', NULL, ''),
-('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Second Elemental Discipline', NULL, ''),
+('Clench of the North Wind', NULL, 'You can spend 3 ki points to cast Hold Person.', 'Second Elemental Discipline', 0, ''),
+('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Second Elemental Discipline', 0, ''),
+('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Second Elemental Discipline', 0, ''),
+('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Second Elemental Discipline', 0, ''),
+('Gong of the Summit', NULL, 'You can spend 3 ki points to cast Shatter.', 'Second Elemental Discipline', 0, ''),
+('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Second Elemental Discipline', 0, ''),
+('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Second Elemental Discipline', 0, ''),
+('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Second Elemental Discipline', 0, ''),
+('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Second Elemental Discipline', 0, ''),
 ('Third Elemental Discipline', 377, '', '', 1, ''),
-('Clench of the North Wind', NULL, 'You can spend 3 ki points to cast Hold Person.', 'Third Elemental Discipline', NULL, ''),
-('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Third Elemental Discipline', NULL, ''),
-('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Third Elemental Discipline', NULL, ''),
-('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Third Elemental Discipline', NULL, ''),
-('Flames of the Phoenix', NULL, 'You can spend 4 ki points to cast Fireball.', 'Third Elemental Discipline', NULL, ''),
-('Gong of the Summit', NULL, 'You can spend 3 ki points to cast Shatter.', 'Third Elemental Discipline', NULL, ''),
-('Mist Stance', NULL, 'You can spend 4 ki points to cast Gaseous Form, targeting yourself.', 'Third Elemental Discipline', NULL, ''),
-('Ride the Wind', NULL, 'You can spend 4 ki points to cast Fly, targeting yourself.', 'Third Elemental Discipline', NULL, ''),
-('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Third Elemental Discipline', NULL, ''),
-('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Third Elemental Discipline', NULL, ''),
-('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Third Elemental Discipline', NULL, ''),
-('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Third Elemental Discipline', NULL, ''),
+('Clench of the North Wind', NULL, 'You can spend 3 ki points to cast Hold Person.', 'Third Elemental Discipline', 0, ''),
+('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Third Elemental Discipline', 0, ''),
+('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Third Elemental Discipline', 0, ''),
+('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Third Elemental Discipline', 0, ''),
+('Flames of the Phoenix', NULL, 'You can spend 4 ki points to cast Fireball.', 'Third Elemental Discipline', 0, ''),
+('Gong of the Summit', NULL, 'You can spend 3 ki points to cast Shatter.', 'Third Elemental Discipline', 0, ''),
+('Mist Stance', NULL, 'You can spend 4 ki points to cast Gaseous Form, targeting yourself.', 'Third Elemental Discipline', 0, ''),
+('Ride the Wind', NULL, 'You can spend 4 ki points to cast Fly, targeting yourself.', 'Third Elemental Discipline', 0, ''),
+('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Third Elemental Discipline', 0, ''),
+('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Third Elemental Discipline', 0, ''),
+('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Third Elemental Discipline', 0, ''),
+('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Third Elemental Discipline', 0, ''),
 ('Fourth Elemental Discipline', 383, '', '', 1, ''),
-('Breath of Winter', NULL, 'You can spend 6 ki points to cast Cone of Cold.', 'Fourth Elemental Discipline', NULL, ''),
-('Clench of the North Wind', NULL, 'You can spend 3 ki points to cast Hold Person.', 'Fourth Elemental Discipline', NULL, ''),
-('Eternal Mountain Defense', NULL, 'You can spend 5 ki points to cast Stoneskin, targeting yourself.', 'Fourth Elemental Discipline', NULL, ''),
-('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Fourth Elemental Discipline', NULL, ''),
-('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Fourth Elemental Discipline', NULL, ''),
-('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Fourth Elemental Discipline', NULL, ''),
-('Flames of the Phoenix', NULL, 'You can spend 4 ki points to cast Fireball.', 'Fourth Elemental Discipline', NULL, ''),
-('Gong of the Summit', NULL, 'You can spend 3 ki points to cast Shatter.', 'Fourth Elemental Discipline', NULL, ''),
-('Mist Stance', NULL, 'You can spend 4 ki points to cast Gaseous Form, targeting yourself.', 'Fourth Elemental Discipline', NULL, ''),
-('Ride the Wind', NULL, 'You can spend 4 ki points to cast Fly, targeting yourself.', 'Fourth Elemental Discipline', NULL, ''),
-('River of Hungry Flame', NULL, 'You can spend 5 ki points to cast Wall of Fire.', 'Fourth Elemental Discipline', NULL, ''),
-('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Fourth Elemental Discipline', NULL, ''),
-('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Fourth Elemental Discipline', NULL, ''),
-('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Fourth Elemental Discipline', NULL, ''),
-('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Fourth Elemental Discipline', NULL, ''),
-('Wave of Rolling Earth', NULL, 'You can spend 6 ki points to cast Wall of Stone.', 'Fourth Elemental Discipline', NULL, ''),
+('Breath of Winter', NULL, 'You can spend 6 ki points to cast Cone of Cold.', 'Fourth Elemental Discipline', 0, ''),
+('Clench of the North Wind', NULL, 'You can spend 3 ki points to cast Hold Person.', 'Fourth Elemental Discipline', 0, ''),
+('Eternal Mountain Defense', NULL, 'You can spend 5 ki points to cast Stoneskin, targeting yourself.', 'Fourth Elemental Discipline', 0, ''),
+('Fangs of the Fire Snake', NULL, 'When you use the Attack action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra 1d10 fire damage.', 'Fourth Elemental Discipline', 0, ''),
+('Fist of Four Thunders', NULL, 'You can spend 2 ki points to cast Thunderwave.', 'Fourth Elemental Discipline', 0, ''),
+('Fist of Unbroken Air', NULL, 'You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it prone. On a successful save, the creature takes half as much damage, and you don''t push it or knock it prone.', 'Fourth Elemental Discipline', 0, ''),
+('Flames of the Phoenix', NULL, 'You can spend 4 ki points to cast Fireball.', 'Fourth Elemental Discipline', 0, ''),
+('Gong of the Summit', NULL, 'You can spend 3 ki points to cast Shatter.', 'Fourth Elemental Discipline', 0, ''),
+('Mist Stance', NULL, 'You can spend 4 ki points to cast Gaseous Form, targeting yourself.', 'Fourth Elemental Discipline', 0, ''),
+('Ride the Wind', NULL, 'You can spend 4 ki points to cast Fly, targeting yourself.', 'Fourth Elemental Discipline', 0, ''),
+('River of Hungry Flame', NULL, 'You can spend 5 ki points to cast Wall of Fire.', 'Fourth Elemental Discipline', 0, ''),
+('Rush of the Gale Spirits', NULL, 'You can spend 2 ki points to cast Gust of Wind.', 'Fourth Elemental Discipline', 0, ''),
+('Shape of the Flowing River', NULL, 'As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice''s elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can''t exceed half the area''s largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high, raise or lower the square''s elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can''t shape the ice to trap or injure a creature in the area.', 'Fourth Elemental Discipline', 0, ''),
+('Sweeping Cinder Strike', NULL, 'You can spend 2 ki points to cast Burning Hands.', 'Fourth Elemental Discipline', 0, ''),
+('Water Whip', NULL, 'You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes 3d10 bludgeoning damage, plus an extra 1d10 bludgeoning damage for each additional ki point you spend, and you can either knock it prone or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don''t pull it or knock it prone.', 'Fourth Elemental Discipline', 0, ''),
+('Wave of Rolling Earth', NULL, 'You can spend 6 ki points to cast Wall of Stone.', 'Fourth Elemental Discipline', 0, ''),
 ('Deflect Missiles', 387, 'Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your Dexterity modifier + your monk level.
 
-If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.', '', NULL, ''),
-('Feat', 388, '', '', NULL, 'feat'),
-('Feat', 392, '', '', NULL, 'feat'),
-('Feat', 396, '', '', NULL, 'feat'),
-('Feat', 400, '', '', NULL, 'feat'),
-('Feat', 403, '', '', NULL, 'feat'),
-('Slow Fall', 388, 'Beginning at 4th level, you can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.', '', NULL, ''),
-('Extra Attack', 389, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Stunning Strike', 389, 'Starting at 5th level, you can interfere with the flow of ki in an opponent''s body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.', '', NULL, ''),
-('Ki-Empowered Strikes', 390, 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', NULL, ''),
-('Evasion', 391, 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', NULL, ''),
-('Stillnes of Mind', 391, 'Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened.', '', NULL, ''),
-('Purity of Body', 394, 'At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison.', '', NULL, ''),
-('Tongue of the Sun and Moon', 397, 'Starting at 13th level, you learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.', '', NULL, ''),
+If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.', '', 0, ''),
+('Feat', 388, '', '', 0, 'feat'),
+('Feat', 392, '', '', 0, 'feat'),
+('Feat', 396, '', '', 0, 'feat'),
+('Feat', 400, '', '', 0, 'feat'),
+('Feat', 403, '', '', 0, 'feat'),
+('Slow Fall', 388, 'Beginning at 4th level, you can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.', '', 0, ''),
+('Extra Attack', 389, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Stunning Strike', 389, 'Starting at 5th level, you can interfere with the flow of ki in an opponent''s body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.', '', 0, ''),
+('Ki-Empowered Strikes', 390, 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', 0, ''),
+('Evasion', 391, 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', 0, ''),
+('Stillnes of Mind', 391, 'Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened.', '', 0, ''),
+('Purity of Body', 394, 'At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison.', '', 0, ''),
+('Tongue of the Sun and Moon', 397, 'Starting at 13th level, you learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.', '', 0, ''),
 ('Diamond Soul', 398, 'Beginning at 14th level, your mastery of ki grants you proficiency in all saving throws.
 
-Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.', '', NULL, 'savingThrowProficiency,all'),
-('Timeless Body', 399, 'At 15th level, your ki sustains you so that you suffer none of the frailty of old age, and you can''t be aged magically. You can still die of old age, however. In addition, you no longer need food or water.', '', NULL, ''),
+Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.', '', 0, 'savingThrowProficiency,all'),
+('Timeless Body', 399, 'At 15th level, your ki sustains you so that you suffer none of the frailty of old age, and you can''t be aged magically. You can still die of old age, however. In addition, you no longer need food or water.', '', 0, ''),
 ('Empty Body', 402, 'Beginning at 18th level, you can use your action to spend 4 ki points to become invisible for 1 minute. During that time, you also have resistance to all damage but force damage.
 
-Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can''t take any other creatures with you.', '', NULL, ''),
-('Pefect Self', 404, 'At 20th level, when you roll for initiative and have no ki points remaining, you regain 4 ki points.', '', NULL, ''),
+Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can''t take any other creatures with you.', '', 0, ''),
+('Pefect Self', 404, 'At 20th level, when you roll for initiative and have no ki points remaining, you regain 4 ki points.', '', 0, ''),
 ('Open Hand Technique', 387, 'Starting when you choose this tradition at 3rd level, you can manipulate your enemy''s ki when you harness your own. Whenever you hit a creature with one of the attacks granted by your Flurry of Blows, you can impose one of the following effects on that target:
 
 - It must succeed on a Dexterity saving throw or be knocked prone.
 - It must make a Strength saving throw. If it fails, you can push it up to 15 feet away from you.
-- It can''t take reactions until the end of your next turn.', '', NULL, ''),
-('Wholeness of Body', 390, 'At 6th level, you gain the ability to heal yourself. As an action, you can regain hit points equal to three times your monk level. You must finish a long rest before you can use this feature again.', '', NULL, ''),
-('Tranquility', 395, 'Beginning at 11th level, you can enter a special meditation that surrounds you with an aura of peace. At the end of a long rest, you gain the effect of a Sanctuary spell that lasts until the start of your next long rest (the spell can end early as normal). The saving throw DC for the spell equals 8 + your Wisdom modifier + your proficiency bonus.', '', NULL, ''),
+- It can''t take reactions until the end of your next turn.', '', 0, ''),
+('Wholeness of Body', 390, 'At 6th level, you gain the ability to heal yourself. As an action, you can regain hit points equal to three times your monk level. You must finish a long rest before you can use this feature again.', '', 0, ''),
+('Tranquility', 395, 'Beginning at 11th level, you can enter a special meditation that surrounds you with an aura of peace. At the end of a long rest, you gain the effect of a Sanctuary spell that lasts until the start of your next long rest (the spell can end early as normal). The saving throw DC for the spell equals 8 + your Wisdom modifier + your proficiency bonus.', '', 0, ''),
 ('Quivering Palm', 401, 'At 17th level, you gain the ability to set up lethal vibrations in someone''s body. When you hit a creature with an unarmed strike, you can spend 3 ki points to start these imperceptible vibrations, which last for a number of days equal to your monk level. The vibrations are harmless unless you use your action to end them. To do so, you and the target must be on the same plane of existence. When you use this action, the creature must make a Constitution saving throw. If it fails, it is reduced to 0 hit points. If it succeeds, it takes 10d10 necrotic damage.
 
-You can have only one creature under the effect of this feature at a time. You can choose to end the vibrations harmlessly without using an action.', '', NULL, ''),
+You can have only one creature under the effect of this feature at a time. You can choose to end the vibrations harmlessly without using an action.', '', 0, ''),
 ('Deflect Missiles', 405, 'Starting at 3rd level, you can use your reaction to deflect or catch the missile when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your Dexterity modifier + your monk level.
 
-If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.', '', NULL, ''),
-('Feat', 406, '', '', NULL, 'feat'),
-('Feat', 410, '', '', NULL, 'feat'),
-('Feat', 414, '', '', NULL, 'feat'),
-('Feat', 418, '', '', NULL, 'feat'),
-('Feat', 421, '', '', NULL, 'feat'),
-('Slow Fall', 406, 'Beginning at 4th level, you can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.', '', NULL, ''),
-('Extra Attack', 407, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
-('Stunning Strike', 407, 'Starting at 5th level, you can interfere with the flow of ki in an opponent''s body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.', '', NULL, ''),
-('Ki-Empowered Strikes', 408, 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', NULL, ''),
-('Evasion', 409, 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', NULL, ''),
-('Stillnes of Mind', 409, 'Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened.', '', NULL, ''),
-('Purity of Body', 412, 'At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison.', '', NULL, ''),
-('Tongue of the Sun and Moon', 415, 'Starting at 13th level, you learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.', '', NULL, ''),
+If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free. If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.', '', 0, ''),
+('Feat', 406, '', '', 0, 'feat'),
+('Feat', 410, '', '', 0, 'feat'),
+('Feat', 414, '', '', 0, 'feat'),
+('Feat', 418, '', '', 0, 'feat'),
+('Feat', 421, '', '', 0, 'feat'),
+('Slow Fall', 406, 'Beginning at 4th level, you can use your reaction when you fall to reduce any falling damage you take by an amount equal to five times your monk level.', '', 0, ''),
+('Extra Attack', 407, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
+('Stunning Strike', 407, 'Starting at 5th level, you can interfere with the flow of ki in an opponent''s body. When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.', '', 0, ''),
+('Ki-Empowered Strikes', 408, 'Starting at 6th level, your unarmed strikes count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', 0, ''),
+('Evasion', 409, 'At 7th level, your instinctive agility lets you dodge out of the way of certain area effects, such as a blue dragon''s lightning breath or a fireball spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', 0, ''),
+('Stillnes of Mind', 409, 'Starting at 7th level, you can use your action to end one effect on yourself that is causing you to be charmed or frightened.', '', 0, ''),
+('Purity of Body', 412, 'At 10th level, your mastery of the ki flowing through you makes you immune to disease and poison.', '', 0, ''),
+('Tongue of the Sun and Moon', 415, 'Starting at 13th level, you learn to touch the ki of other minds so that you understand all spoken languages. Moreover, any creature that can understand a language can understand what you say.', '', 0, ''),
 ('Diamond Soul', 416, 'Beginning at 14th level, your mastery of ki grants you proficiency in all saving throws.
 
-Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.', '', NULL, 'savingThrowProficiency,all'),
-('Timeless Body', 417, 'At 15th level, your ki sustains you so that you suffer none of the frailty of old age, and you can''t be aged magically. You can still die of old age, however. In addition, you no longer need food or water.', '', NULL, ''),
+Additionally, whenever you make a saving throw and fail, you can spend 1 ki point to reroll it and take the second result.', '', 0, 'savingThrowProficiency,all'),
+('Timeless Body', 417, 'At 15th level, your ki sustains you so that you suffer none of the frailty of old age, and you can''t be aged magically. You can still die of old age, however. In addition, you no longer need food or water.', '', 0, ''),
 ('Empty Body', 420, 'Beginning at 18th level, you can use your action to spend 4 ki points to become invisible for 1 minute. During that time, you also have resistance to all damage but force damage.
 
-Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can''t take any other creatures with you.', '', NULL, ''),
-('Pefect Self', 422, 'At 20th level, when you roll for initiative and have no ki points remaining, you regain 4 ki points.', '', NULL, ''),
-('Shadow Arts', 405, 'Starting when you choose this tradition at 3rd level, you can use your ki to duplicate the effects of certain spells. As an action, you can spend 2 ki points to cast darkness, darkvision, pass without trace, or silence, without providing material components. Additionally, you gain the minor illusion cantrip if you don''t already know it.', '', NULL, ''),
-('Shadow Step', 408, 'At 6th level, you gain the ability to step from one shadow into another. When you are in dim light or darkness, as a bonus action you can teleport up to 60 feet to an unoccupied space you can see that is also in dim light or darkness. You then have advantage on the first melee attack you make before the end of the turn.', '', NULL, ''),
-('Cloak of Shadows', 413, 'By 11th level, you have learned to become one with the shadows. When you are in an area of dim light or darkness, you can use your action to become invisible. You remain invisible until you make an attack, cast a spell, or are in an area of bright light.', '', NULL, ''),
-('Opportunist', 419, 'At 17th level, you can exploit a creature''s momentary distraction when it is hit by an attack. Whenever a creature within 5 feet of you is hit by an attack made by a creature other than you, you can use your reaction to make a melee attack against that creature.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 423, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light, Medium, Heavy, Shield)', 423, '', '', NULL, 'armorProficiency,all'),
-('Paladin Weapon Proficiencies', 423, 'As a paladin, you have proficiency with all simple and martial weapons.', '', NULL, 'weaponProficiency,all'),
-('Skill Proficiency', 423, '', '', NULL, 'skillSelect,1,9,11,12,16,18|skillSelect,1,9,11,12,16,18'),
+Additionally, you can spend 8 ki points to cast the astral projection spell, without needing material components. When you do so, you can''t take any other creatures with you.', '', 0, ''),
+('Pefect Self', 422, 'At 20th level, when you roll for initiative and have no ki points remaining, you regain 4 ki points.', '', 0, ''),
+('Shadow Arts', 405, 'Starting when you choose this tradition at 3rd level, you can use your ki to duplicate the effects of certain spells. As an action, you can spend 2 ki points to cast darkness, darkvision, pass without trace, or silence, without providing material components. Additionally, you gain the minor illusion cantrip if you don''t already know it.', '', 0, ''),
+('Shadow Step', 408, 'At 6th level, you gain the ability to step from one shadow into another. When you are in dim light or darkness, as a bonus action you can teleport up to 60 feet to an unoccupied space you can see that is also in dim light or darkness. You then have advantage on the first melee attack you make before the end of the turn.', '', 0, ''),
+('Cloak of Shadows', 413, 'By 11th level, you have learned to become one with the shadows. When you are in an area of dim light or darkness, you can use your action to become invisible. You remain invisible until you make an attack, cast a spell, or are in an area of bright light.', '', 0, ''),
+('Opportunist', 419, 'At 17th level, you can exploit a creature''s momentary distraction when it is hit by an attack. Whenever a creature within 5 feet of you is hit by an attack made by a creature other than you, you can use your reaction to make a melee attack against that creature.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 423, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light, Medium, Heavy, Shield)', 423, '', '', 0, 'armorProficiency,all'),
+('Paladin Weapon Proficiencies', 423, 'As a paladin, you have proficiency with all simple and martial weapons.', '', 0, 'weaponProficiency,all'),
+('Skill Proficiency', 423, '', '', 0, 'skillSelect,1,9,11,12,16,18|skillSelect,1,9,11,12,16,18'),
 ('Divine Sense', 423, 'The presence of strong evil registers on your senses like a noxious odor, and powerful good rings like heavenly music in your ears. As an action, you can open your awareness to detect such forces. Until the end of your next turn, you know the location of any celestial, fiend, or undead within 60 feet of you that is not behind total cover. You know the type (celestial, fiend, or undead) of any being whose presence you sense, but not its identity (the vampire Count Strahd von Zarovich, for instance). Within the same radius, you also detect the presence of any place or object that has been consecrated or desecrated, as with the Hallow spell.
 
-You can use this feature a number of times equal to 1 + your Charisma modifier. When you finish a long rest, you regain all expended uses.', '', NULL, ''),
+You can use this feature a number of times equal to 1 + your Charisma modifier. When you finish a long rest, you regain all expended uses.', '', 0, ''),
 ('Lay on Hands', 423, 'Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5.
 
 As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.
 
 Alternatively, you can expend 5 hit points from your pool of healing to cure the target of one disease or neutralize one poison affecting it. You can cure multiple diseases and neutralize multiple poisons with a single use of Lay on Hands, expending hit points separately for each one.
 
-This feature has no effect on undead and constructs.', '', NULL, ''),
+This feature has no effect on undead and constructs.', '', 0, ''),
 ('Fighting Style - Paladin', 424, 'Starting at 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can''t take a Fighting Style option more than once, even if you later get to choose again.', '', 1, ''),
-('Defense', NULL, 'While you are wearing armor, you gain a +1 bonus to AC.', 'Fighting Style - Paladin', NULL, 'defenseStyle'),
-('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Paladin', NULL, 'duelingStyle'),
-('Great Weapon Fighting', NULL, 'When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.', 'Fighting Style - Paladin', NULL, ''),
-('Protection', NULL, 'When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.', 'Fighting Style - Paladin', NULL, ''),
-('Divine Smite', 424, 'Starting at 2nd level, when you hit a creature with a melee weapon attack, you can expend one spell slot to deal radiant damage to the target, in addition to the weapon''s damage. The extra damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend, to a maximum of 6d8.', '', NULL, ''),
-('Divine Health', 425, 'By 3rd level, the divine magic flowing through you makes you immune to disease.', '', NULL, ''),
-('Feat', 426, '', '', NULL, 'feat'),
-('Feat', 430, '', '', NULL, 'feat'),
-('Feat', 434, '', '', NULL, 'feat'),
-('Feat', 438, '', '', NULL, 'feat'),
-('Feat', 441, '', '', NULL, 'feat'),
-('Extra Attack', 427, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
+('Defense', NULL, 'While you are wearing armor, you gain a +1 bonus to AC.', 'Fighting Style - Paladin', 0, 'defenseStyle'),
+('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Paladin', 0, 'duelingStyle'),
+('Great Weapon Fighting', NULL, 'When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.', 'Fighting Style - Paladin', 0, ''),
+('Protection', NULL, 'When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.', 'Fighting Style - Paladin', 0, ''),
+('Divine Smite', 424, 'Starting at 2nd level, when you hit a creature with a melee weapon attack, you can expend one spell slot to deal radiant damage to the target, in addition to the weapon''s damage. The extra damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend, to a maximum of 6d8.', '', 0, ''),
+('Divine Health', 425, 'By 3rd level, the divine magic flowing through you makes you immune to disease.', '', 0, ''),
+('Feat', 426, '', '', 0, 'feat'),
+('Feat', 430, '', '', 0, 'feat'),
+('Feat', 434, '', '', 0, 'feat'),
+('Feat', 438, '', '', 0, 'feat'),
+('Feat', 441, '', '', 0, 'feat'),
+('Extra Attack', 427, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
 ('Aura of Protection', 428, 'Starting at 6th level, whenever you or a friendly creature within 10 feet of you must make a saving throw, the creature gains a bonus to the saving throw equal to your Charisma modifier (with a minimum bonus of +1). You must be conscious to grant this bonus.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
 ('Aura of Courage', 432, 'Starting at 10th level, you and friendly creatures within 10 feet of you can''t be frightened while you are conscious.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
-('Improved Divine Smite', 433, 'By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
+('Improved Divine Smite', 433, 'By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.', '', 0, ''),
 ('Cleansing Touch', 436, 'Beginning at 14th level, you can use your action to end one spell on yourself or on one willing creature that you touch.
 
-You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.', '', NULL, ''),
-('Oath Spells', 425, 'At 3rd level, you gain Ensnaring Strike and Speak with Animals spells.', '', NULL, 'spell,118|spell,306'),
-('Oath Spells', 427, 'At 5th level, you gain Moonbeam and Misty Step spells.', '', NULL, 'spell,235|spell,233'),
-('Oath Spells', 431, 'At 9th level, you gain Plant Growth and Protection from Energy spells.', '', NULL, 'spell,254|spell,267'),
-('Oath Spells', 435, 'At 13th level, you gain Ice Storm and Stoneskin spells.', '', NULL, 'spell,188|spell,316'),
-('Oath Spells', 439, 'At 17rd level, you gain Commune with Nature and Tree Stride spells.', '', NULL, 'spell,57|spell,336'),
-('Channel Divinity: Nature''s Wrath', 425, 'You can use your Channel Divinity to invoke primeval forces to ensnare a foe. As an action, you can cause spectral vines to spring up and reach for a creature within 10 feet of you that you can see. The creature must succeed on a Strength or Dexterity saving throw (its choice) or be restrained. While restrained by the vines, the creature repeats the saving throw at the end of each of its turns. On a success, it frees itself and the vines vanish.', '', NULL, ''),
+You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.', '', 0, ''),
+('Oath Spells', 425, 'At 3rd level, you gain Ensnaring Strike and Speak with Animals spells.', '', 0, 'spell,118|spell,306'),
+('Oath Spells', 427, 'At 5th level, you gain Moonbeam and Misty Step spells.', '', 0, 'spell,235|spell,233'),
+('Oath Spells', 431, 'At 9th level, you gain Plant Growth and Protection from Energy spells.', '', 0, 'spell,254|spell,267'),
+('Oath Spells', 435, 'At 13th level, you gain Ice Storm and Stoneskin spells.', '', 0, 'spell,188|spell,316'),
+('Oath Spells', 439, 'At 17rd level, you gain Commune with Nature and Tree Stride spells.', '', 0, 'spell,57|spell,336'),
+('Channel Divinity: Nature''s Wrath', 425, 'You can use your Channel Divinity to invoke primeval forces to ensnare a foe. As an action, you can cause spectral vines to spring up and reach for a creature within 10 feet of you that you can see. The creature must succeed on a Strength or Dexterity saving throw (its choice) or be restrained. While restrained by the vines, the creature repeats the saving throw at the end of each of its turns. On a success, it frees itself and the vines vanish.', '', 0, ''),
 ('Channel Divinity: Turn the Faithless', 425, 'You can use your Channel Divinity to utter ancient words that are painful for fey and fiends to hear. As an action, you present your holy symbol, and each fey or fiend within 30 feet of you that can hear you must make a Wisdom saving throw. On a failed save, the creature is turned for 1 minute or until it takes damage.
 
 A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.
 
-If the creature''s true form is concealed by an illusion, shapeshifting, or other effect, that form is revealed while it is turned.', '', NULL, ''),
+If the creature''s true form is concealed by an illusion, shapeshifting, or other effect, that form is revealed while it is turned.', '', 0, ''),
 ('Aura of Warding', 429, 'Beginning at 7th level, ancient magic lies so heavily upon you that it forms an eldritch ward. You and friendly creatures within 10 feet of you have resistance to damage from spells.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
 ('Undying Sentinel', 437, 'Starting at 15th level, when you are reduced to 0 hit points and are not killed outright, you can choose to drop to 1 hit point instead. Once you use this ability, you can''t use it again until you finish a long rest.
 
-Additionally, you suffer none of the drawbacks of old age, and you can''t be aged magically.', '', NULL, ''),
+Additionally, you suffer none of the drawbacks of old age, and you can''t be aged magically.', '', 0, ''),
 ('Elder Champion', 442, 'At 20th level, you can assume the form of an ancient force of nature, taking on an appearance you choose. For example, your skin might turn green or take on a bark-like texture, your hair might become leafy or moss-like, or you might sprout antlers or a lion-like mane.
 
 Using your action, you undergo a transformation. For 1 minute, you gain the following benefits:
@@ -4741,85 +4741,85 @@ Using your action, you undergo a transformation. For 1 minute, you gain the foll
 At the start of each of your turns, you regain 10 hit points.
 Whenever you cast a paladin spell that has a casting time of 1 action, you can cast it using a bonus action instead.
 Enemy creatures within 10 feet of you have disadvantage on saving throws against your paladin spells and Channel Divinity options.
-Once you use this feature, you can''t use it again until you finish a long rest.', '', NULL, ''),
-('Divine Health', 443, 'By 3rd level, the divine magic flowing through you makes you immune to disease.', '', NULL, ''),
-('Feat', 444, '', '', NULL, 'feat'),
-('Feat', 448, '', '', NULL, 'feat'),
-('Feat', 452, '', '', NULL, 'feat'),
-('Feat', 456, '', '', NULL, 'feat'),
-('Feat', 459, '', '', NULL, 'feat'),
-('Extra Attack', 445, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
+Once you use this feature, you can''t use it again until you finish a long rest.', '', 0, ''),
+('Divine Health', 443, 'By 3rd level, the divine magic flowing through you makes you immune to disease.', '', 0, ''),
+('Feat', 444, '', '', 0, 'feat'),
+('Feat', 448, '', '', 0, 'feat'),
+('Feat', 452, '', '', 0, 'feat'),
+('Feat', 456, '', '', 0, 'feat'),
+('Feat', 459, '', '', 0, 'feat'),
+('Extra Attack', 445, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
 ('Aura of Protection', 446, 'Starting at 6th level, whenever you or a friendly creature within 10 feet of you must make a saving throw, the creature gains a bonus to the saving throw equal to your Charisma modifier (with a minimum bonus of +1). You must be conscious to grant this bonus.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
 ('Aura of Courage', 450, 'Starting at 10th level, you and friendly creatures within 10 feet of you can''t be frightened while you are conscious.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
-('Improved Divine Smite', 451, 'By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
+('Improved Divine Smite', 451, 'By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.', '', 0, ''),
 ('Cleansing Touch', 454, 'Beginning at 14th level, you can use your action to end one spell on yourself or on one willing creature that you touch.
 
-You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.', '', NULL, ''),
-('Oath Spells', 443, 'At 3rd level, you gain Protection form Evil and Good and Sanctuary spells.', '', NULL, 'spell,268|spell,285'),
-('Oath Spells', 445, 'At 5th level, you gain Lesser Restoration and Zone of Truth spells.', '', NULL, 'spell,201|spell,361'),
-('Oath Spells', 449, 'At 9th level, you gain Beacon of Hope and Dispel Magic spells.', '', NULL, 'spell,28|spell,102'),
-('Oath Spells', 453, 'At 13th level, you gain Freedom of Movement and Guardian of Faith spells.', '', NULL, 'spell,150|spell,165'),
-('Oath Spells', 457, 'At 17rd level, you gain Commune and Flame Strike spells.', '', NULL, 'spell,56|spell,142'),
+You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.', '', 0, ''),
+('Oath Spells', 443, 'At 3rd level, you gain Protection form Evil and Good and Sanctuary spells.', '', 0, 'spell,268|spell,285'),
+('Oath Spells', 445, 'At 5th level, you gain Lesser Restoration and Zone of Truth spells.', '', 0, 'spell,201|spell,361'),
+('Oath Spells', 449, 'At 9th level, you gain Beacon of Hope and Dispel Magic spells.', '', 0, 'spell,28|spell,102'),
+('Oath Spells', 453, 'At 13th level, you gain Freedom of Movement and Guardian of Faith spells.', '', 0, 'spell,150|spell,165'),
+('Oath Spells', 457, 'At 17rd level, you gain Commune and Flame Strike spells.', '', 0, 'spell,56|spell,142'),
 ('Channel Divinity: Sacred Weapon', 443, 'As an action, you can imbue one weapon that you are holding with positive energy, using your Channel Divinity. For 1 minute, you add your Charisma modifier to attack rolls made with that weapon (with a minimum bonus of +1). The weapon also emits bright light in a 20-foot radius and dim light 20 feet beyond that. If the weapon is not already magical, it becomes magical for the duration.
 
-You can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall unconscious, this effect ends.', '', NULL, ''),
+You can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall unconscious, this effect ends.', '', 0, ''),
 ('Channel Divinity: Turn the Unholy', 443, 'As an action, you present your holy symbol and speak a prayer censuring fiends and undead, using your Channel Divinity. Each fiend or undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes damage.
 
-A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', NULL, ''),
+A turned creature must spend its turns trying to move as far away from you as it can, and it can''t willingly move to a space within 30 feet of you. It also can''t take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there''s nowhere to move, the creature can use the Dodge action.', '', 0, ''),
 ('Aura of Devotion', 447, 'Starting at 7th level, you and friendly creatures within 10 feet of you can''t be charmed while you are conscious.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
-('Purity of Spirit', 455, 'Beginning at 15th level, you are always under the effects of a Protection from Evil and Good spell.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
+('Purity of Spirit', 455, 'Beginning at 15th level, you are always under the effects of a Protection from Evil and Good spell.', '', 0, ''),
 ('Holy Nimbus', 460, 'At 20th level, as an action, you can emanate an aura of sunlight. For 1 minute, bright light shines from you in a 30-foot radius, and dim light shines 30 feet beyond that.
 
 Whenever an enemy creature starts its turn in the bright light, the creature takes 10 radiant damage.
 
 In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead.
 
-Once you use this feature, you can''t use it again until you finish a long rest.', '', NULL, ''),
-('Divine Health', 461, 'By 3rd level, the divine magic flowing through you makes you immune to disease.', '', NULL, ''),
-('Feat', 462, '', '', NULL, 'feat'),
-('Feat', 466, '', '', NULL, 'feat'),
-('Feat', 470, '', '', NULL, 'feat'),
-('Feat', 474, '', '', NULL, 'feat'),
-('Feat', 477, '', '', NULL, 'feat'),
-('Extra Attack', 463, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
+Once you use this feature, you can''t use it again until you finish a long rest.', '', 0, ''),
+('Divine Health', 461, 'By 3rd level, the divine magic flowing through you makes you immune to disease.', '', 0, ''),
+('Feat', 462, '', '', 0, 'feat'),
+('Feat', 466, '', '', 0, 'feat'),
+('Feat', 470, '', '', 0, 'feat'),
+('Feat', 474, '', '', 0, 'feat'),
+('Feat', 477, '', '', 0, 'feat'),
+('Extra Attack', 463, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
 ('Aura of Protection', 464, 'Starting at 6th level, whenever you or a friendly creature within 10 feet of you must make a saving throw, the creature gains a bonus to the saving throw equal to your Charisma modifier (with a minimum bonus of +1). You must be conscious to grant this bonus.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
 ('Aura of Courage', 468, 'Starting at 10th level, you and friendly creatures within 10 feet of you can''t be frightened while you are conscious.
 
-At 18th level, the range of this aura increases to 30 feet.', '', NULL, ''),
-('Improved Divine Smite', 469, 'By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.', '', NULL, ''),
+At 18th level, the range of this aura increases to 30 feet.', '', 0, ''),
+('Improved Divine Smite', 469, 'By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra 1d8 radiant damage.', '', 0, ''),
 ('Cleansing Touch', 472, 'Beginning at 14th level, you can use your action to end one spell on yourself or on one willing creature that you touch.
 
-You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.', '', NULL, ''),
-('Oath Spells', 461, 'At 3rd level, you gain Bane and Hunter''s Mark spells.', '', NULL, 'spell,24|spell,186'),
-('Oath Spells', 463, 'At 5th level, you gain Hold Person and Misty Step spells.', '', NULL, 'spell,183|spell,233'),
-('Oath Spells', 467, 'At 9th level, you gain Haste and Protection from Energy spells.', '', NULL, 'spell,174|spell,267'),
-('Oath Spells', 471, 'At 13th level, you gain Banishment and Dimension Door spells.', '', NULL, 'spell,26|spell,98'),
-('Oath Spells', 475, 'At 17rd level, you gain Hold Monster and Scrying spells.', '', NULL, 'spell,182|spell,287'),
+You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain expended uses when you finish a long rest.', '', 0, ''),
+('Oath Spells', 461, 'At 3rd level, you gain Bane and Hunter''s Mark spells.', '', 0, 'spell,24|spell,186'),
+('Oath Spells', 463, 'At 5th level, you gain Hold Person and Misty Step spells.', '', 0, 'spell,183|spell,233'),
+('Oath Spells', 467, 'At 9th level, you gain Haste and Protection from Energy spells.', '', 0, 'spell,174|spell,267'),
+('Oath Spells', 471, 'At 13th level, you gain Banishment and Dimension Door spells.', '', 0, 'spell,26|spell,98'),
+('Oath Spells', 475, 'At 17rd level, you gain Hold Monster and Scrying spells.', '', 0, 'spell,182|spell,287'),
 ('Channel Divinity: Abjure Enemy', 461, 'As an action, you present your holy symbol and speak a prayer of denunciation, using your Channel Divinity. Choose one creature within 60 feet of you that you can see. That creature must make a Wisdom saving throw, unless it is immune to being frightened. Fiends and undead have disadvantage on this saving throw.
 
 On a failed save, the creature is frightened for 1 minute or until it takes any damage. While frightened, the creature''s speed is 0, and it can''t benefit from any bonus to its speed.
 
-On a successful save, the creature''s speed is halved for 1 minute or until the creature takes any damage.', '', NULL, ''),
-('Channel Divinity: Vow of Enmity', 461, 'As a bonus action, you can utter a vow of enmity against a creature you can see within 10 feet of you, using your Channel Divinity. You gain advantage on attack rolls against the creature for 1 minute or until it drops to 0 hit points or falls unconscious.', '', NULL, ''),
-('Relentless Avenger', 465, 'By 7th level, your supernatural focus helps you close off a foe''s retreat. When you hit a creature with an opportunity attack, you can move up to half your speed immediately after the attack and as part of the same reaction. This movement doesn''t provoke opportunity attacks.', '', NULL, ''),
-('Soul of Vengeance', 473, 'Starting at 15th level, the authority with which you speak your Vow of Enmity gives you greater power over your foe. When a creature under the effect of your Vow of Enmity makes an attack, you can use your reaction to make a melee weapon attack against that creature if it is within range.', '', NULL, ''),
+On a successful save, the creature''s speed is halved for 1 minute or until the creature takes any damage.', '', 0, ''),
+('Channel Divinity: Vow of Enmity', 461, 'As a bonus action, you can utter a vow of enmity against a creature you can see within 10 feet of you, using your Channel Divinity. You gain advantage on attack rolls against the creature for 1 minute or until it drops to 0 hit points or falls unconscious.', '', 0, ''),
+('Relentless Avenger', 465, 'By 7th level, your supernatural focus helps you close off a foe''s retreat. When you hit a creature with an opportunity attack, you can move up to half your speed immediately after the attack and as part of the same reaction. This movement doesn''t provoke opportunity attacks.', '', 0, ''),
+('Soul of Vengeance', 473, 'Starting at 15th level, the authority with which you speak your Vow of Enmity gives you greater power over your foe. When a creature under the effect of your Vow of Enmity makes an attack, you can use your reaction to make a melee weapon attack against that creature if it is within range.', '', 0, ''),
 ('Avenging Angel', 478, 'At 20th level, you can assume the form of an angelic avenger. Using your action, you undergo a transformation. For 1 hour, you gain the following benefits:
 
 Wings sprout from your back and grant you a flying speed of 60 feet.
 You emanate an aura of menace in a 30-foot radius. The first time any enemy creature enters the aura or starts its turn there during a battle, the creature must succeed on a Wisdom saving throw or become frightened of you for 1 minute or until it takes any damage. Attack rolls against the frightened creature have advantage.
-Once you use this feature, you can''t use it again until you finish a long rest.', '', NULL, ''),
-('Saving Throw Proficiency (Strength, Dexterity)', 479, '', '', NULL, 'savingThrowProficiency,str|savingThrowProficiency,dex'),
-('Armor Proficiency (Light, Medium, Shield)', 479, '', '', NULL, 'armorProficiency,light|armorProficiency,medium'),
-('Ranger Weapon Proficiencies', 479, 'As a ranger, you have proficiency with all simple and martial weapons.', '', NULL, 'weaponProficiency,all'),
-('Skill Proficiency', 479, '', '', NULL, 'skillSelect,1,4,7,8,10,11,13,14|skillSelect,1,4,7,8,10,11,13,14|skillSelect,1,4,7,8,10,11,13,14'),
+Once you use this feature, you can''t use it again until you finish a long rest.', '', 0, ''),
+('Saving Throw Proficiency (Strength, Dexterity)', 479, '', '', 0, 'savingThrowProficiency,str|savingThrowProficiency,dex'),
+('Armor Proficiency (Light, Medium, Shield)', 479, '', '', 0, 'armorProficiency,light|armorProficiency,medium'),
+('Ranger Weapon Proficiencies', 479, 'As a ranger, you have proficiency with all simple and martial weapons.', '', 0, 'weaponProficiency,all'),
+('Skill Proficiency', 479, '', '', 0, 'skillSelect,1,4,7,8,10,11,13,14|skillSelect,1,4,7,8,10,11,13,14|skillSelect,1,4,7,8,10,11,13,14'),
 ('Favored Enemy', 479, 'Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.
 
 Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies.
@@ -4831,19 +4831,19 @@ When you gain this feature, you also learn one language of your choice that is s
 You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
 ('Favored Enemy', 484, 'You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
 ('Favored Enemy', 492, 'You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
-('Aberrations', NULL, '', 'Favored Enemy', NULL, ''),
-('Beasts', NULL, '', 'Favored Enemy', NULL, ''),
-('Celestials', NULL, '', 'Favored Enemy', NULL, ''),
-('Constructs', NULL, '', 'Favored Enemy', NULL, ''),
-('Dragons', NULL, '', 'Favored Enemy', NULL, ''),
-('Elementals', NULL, '', 'Favored Enemy', NULL, ''),
-('Fey', NULL, '', 'Favored Enemy', NULL, ''),
-('Fiends', NULL, '', 'Favored Enemy', NULL, ''),
-('Giants', NULL, '', 'Favored Enemy', NULL, ''),
-('Monstrosities', NULL, '', 'Favored Enemy', NULL, ''),
-('Oozes', NULL, '', 'Favored Enemy', NULL, ''),
-('Plants', NULL, '', 'Favored Enemy', NULL, ''),
-('Undead', NULL, '', 'Favored Enemy', NULL, ''),
+('Aberrations', NULL, '', 'Favored Enemy', 0, ''),
+('Beasts', NULL, '', 'Favored Enemy', 0, ''),
+('Celestials', NULL, '', 'Favored Enemy', 0, ''),
+('Constructs', NULL, '', 'Favored Enemy', 0, ''),
+('Dragons', NULL, '', 'Favored Enemy', 0, ''),
+('Elementals', NULL, '', 'Favored Enemy', 0, ''),
+('Fey', NULL, '', 'Favored Enemy', 0, ''),
+('Fiends', NULL, '', 'Favored Enemy', 0, ''),
+('Giants', NULL, '', 'Favored Enemy', 0, ''),
+('Monstrosities', NULL, '', 'Favored Enemy', 0, ''),
+('Oozes', NULL, '', 'Favored Enemy', 0, ''),
+('Plants', NULL, '', 'Favored Enemy', 0, ''),
+('Undead', NULL, '', 'Favored Enemy', 0, ''),
 ('Natural Explorer', 479, 'Also at 1st level, you are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you’re proficient in.
 
 While traveling for an hour or more in your favored terrain, you gain the following benefits:
@@ -4857,155 +4857,155 @@ While tracking other creatures, you also learn their exact number, their sizes, 
 You choose additional favored terrain types at 6th and 10th level.', '', 1, ''),
 ('Natural Explorer', 484, 'You can choose an additional favored terrain type.', '', 1, ''),
 ('Natural Explorer', 488, 'You can choose an additional favored terrain type.', '', 1, ''),
-('Arctic', NULL, '', 'Natural Explorer', NULL, ''),
-('Coast', NULL, '', 'Natural Explorer', NULL, ''),
-('Desert', NULL, '', 'Natural Explorer', NULL, ''),
-('Forest', NULL, '', 'Natural Explorer', NULL, ''),
-('Grassland', NULL, '', 'Natural Explorer', NULL, ''),
-('Mountain', NULL, '', 'Natural Explorer', NULL, ''),
-('Swamp', NULL, '', 'Natural Explorer', NULL, ''),
-('Underdark', NULL, '', 'Natural Explorer', NULL, ''),
+('Arctic', NULL, '', 'Natural Explorer', 0, ''),
+('Coast', NULL, '', 'Natural Explorer', 0, ''),
+('Desert', NULL, '', 'Natural Explorer', 0, ''),
+('Forest', NULL, '', 'Natural Explorer', 0, ''),
+('Grassland', NULL, '', 'Natural Explorer', 0, ''),
+('Mountain', NULL, '', 'Natural Explorer', 0, ''),
+('Swamp', NULL, '', 'Natural Explorer', 0, ''),
+('Underdark', NULL, '', 'Natural Explorer', 0, ''),
 ('Fighting Style - Ranger', 480, 'At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can''t take a Fighting Style option more than once, even if you later get to choose again.', '', 1, ''),
-('Archery', NULL, 'You gain a +2 bonus to attack rolls you make with ranged weapons.', 'Fighting Style - Ranger', NULL, 'archeryStyle'),
-('Defense', NULL, 'While you are wearing armor, you gain a +1 bonus to AC.', 'Fighting Style - Ranger', NULL, 'defenseStyle'),
-('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Ranger', NULL, 'duelingStyle'),
-('Two-Weapon Fighting', NULL, 'When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.', 'Fighting Style - Ranger', NULL, 'twoWeaponFightingStyle'),
-('Primeval Awareness', 481, 'Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn’t reveal the creatures’ location or number.', '', NULL, ''),
-('Feat', 482, '', '', NULL, 'feat'),
-('Feat', 486, '', '', NULL, 'feat'),
-('Feat', 490, '', '', NULL, 'feat'),
-('Feat', 494, '', '', NULL, 'feat'),
-('Feat', 497, '', '', NULL, 'feat'),
-('Extra Attack', 483, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
+('Archery', NULL, 'You gain a +2 bonus to attack rolls you make with ranged weapons.', 'Fighting Style - Ranger', 0, 'archeryStyle'),
+('Defense', NULL, 'While you are wearing armor, you gain a +1 bonus to AC.', 'Fighting Style - Ranger', 0, 'defenseStyle'),
+('Dueling', NULL, 'When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.', 'Fighting Style - Ranger', 0, 'duelingStyle'),
+('Two-Weapon Fighting', NULL, 'When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.', 'Fighting Style - Ranger', 0, 'twoWeaponFightingStyle'),
+('Primeval Awareness', 481, 'Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn’t reveal the creatures’ location or number.', '', 0, ''),
+('Feat', 482, '', '', 0, 'feat'),
+('Feat', 486, '', '', 0, 'feat'),
+('Feat', 490, '', '', 0, 'feat'),
+('Feat', 494, '', '', 0, 'feat'),
+('Feat', 497, '', '', 0, 'feat'),
+('Extra Attack', 483, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
 ('Land''s Stride', 486, 'Starting at 8th level, moving through nonmagical difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.
 
-In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', NULL, ''),
+In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', 0, ''),
 ('Hide in Plain Sight', 488, 'Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.
 
-Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.', '', NULL, ''),
-('Vanish', 492, 'Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can''t be tracked by nonmagical means, unless you choose to leave a trail.', '', NULL, ''),
+Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.', '', 0, ''),
+('Vanish', 492, 'Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can''t be tracked by nonmagical means, unless you choose to leave a trail.', '', 0, ''),
 ('Feral Senses', 496, 'At 18th level, you gain preternatural senses that help you fight creatures you can''t see. When you attack a creature you can''t see, your inability to see it doesn''t impose disadvantage on your attack rolls against it.
 
-You are also aware of the location of any invisible creature within 30 feet of you, provided that the creature isn''t hidden from you and you aren''t blinded or deafened.', '', NULL, ''),
-('Foe Slayer', 498, 'At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied.', '', NULL, ''),
+You are also aware of the location of any invisible creature within 30 feet of you, provided that the creature isn''t hidden from you and you aren''t blinded or deafened.', '', 0, ''),
+('Foe Slayer', 498, 'At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied.', '', 0, ''),
 ('Ranger''s Companion', 481, 'At 3rd level, you gain a beast companion that accompanies you on your adventures and is trained to fight alongside you. Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower (appendix D presents statistics for the hawk, mastiff, and panther as examples). Add your proficiency bonus to the beast’s AC, attack rolls, and damage rolls, as well as to any saving throws and skills it is proficient in. Its hit point maximum equals its normal maximum or four times your ranger level, whichever is higher. Like any creature, the beast can spend Hit Dice during a short rest.
 
 The beast obeys your commands as best as it can. It takes its turn on your initiative. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you don’t issue a command, the beast takes the Dodge action. Once you have the Extra Attack feature, you can make one weapon attack yourself when you command the beast to take the Attack action. While traveling through your favored terrain with only the beast, you can move stealthily at a normal pace.
 
 If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack.
 
-If the beast dies, you can obtain another one by spending 8 hours magically bonding with another beast that isn’t hostile to you, either the same type of beast as before or a different one.', '', NULL, ''),
-('Exceptional Training', 485, 'Beginning at 7th level, on any of your turns when your beast companion doesn’t attack, you can use a bonus action to command the beast to take the Dash, Disengage, or Help action on its turn. In addition, the beast’s attacks now count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', NULL, ''),
-('Bestial Fury', 489, 'Starting at 11th level, when you command your beast companion to take the Attack action, the beast can make two attacks, or it can take the Multiattack action if it has that action.', '', NULL, ''),
-('Share Spells', 493, 'Beginning at 15th level, when you cast a spell targeting yourself, you can also affect your beast companion with the spell if the beast is within 30 feet of you.', '', NULL, ''),
+If the beast dies, you can obtain another one by spending 8 hours magically bonding with another beast that isn’t hostile to you, either the same type of beast as before or a different one.', '', 0, ''),
+('Exceptional Training', 485, 'Beginning at 7th level, on any of your turns when your beast companion doesn’t attack, you can use a bonus action to command the beast to take the Dash, Disengage, or Help action on its turn. In addition, the beast’s attacks now count as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.', '', 0, ''),
+('Bestial Fury', 489, 'Starting at 11th level, when you command your beast companion to take the Attack action, the beast can make two attacks, or it can take the Multiattack action if it has that action.', '', 0, ''),
+('Share Spells', 493, 'Beginning at 15th level, when you cast a spell targeting yourself, you can also affect your beast companion with the spell if the beast is within 30 feet of you.', '', 0, ''),
 ('Favored Enemy', 502, 'You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
 ('Favored Enemy', 510, 'You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
 ('Natural Explorer', 502, 'You can choose an additional favored terrain type.', '', 1, ''),
 ('Natural Explorer', 506, 'You can choose an additional favored terrain type.', '', 1, ''),
-('Primeval Awareness', 499, 'Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn’t reveal the creatures’ location or number.', '', NULL, ''),
-('Feat', 500, '', '', NULL, 'feat'),
-('Feat', 504, '', '', NULL, 'feat'),
-('Feat', 508, '', '', NULL, 'feat'),
-('Feat', 512, '', '', NULL, 'feat'),
-('Feat', 515, '', '', NULL, 'feat'),
-('Extra Attack', 501, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
+('Primeval Awareness', 499, 'Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn’t reveal the creatures’ location or number.', '', 0, ''),
+('Feat', 500, '', '', 0, 'feat'),
+('Feat', 504, '', '', 0, 'feat'),
+('Feat', 508, '', '', 0, 'feat'),
+('Feat', 512, '', '', 0, 'feat'),
+('Feat', 515, '', '', 0, 'feat'),
+('Extra Attack', 501, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
 ('Land''s Stride', 504, 'Starting at 8th level, moving through nonmagical difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.
 
-In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', NULL, ''),
+In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', 0, ''),
 ('Hide in Plain Sight', 506, 'Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.
 
-Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.', '', NULL, ''),
-('Vanish', 510, 'Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can''t be tracked by nonmagical means, unless you choose to leave a trail.', '', NULL, ''),
+Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.', '', 0, ''),
+('Vanish', 510, 'Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can''t be tracked by nonmagical means, unless you choose to leave a trail.', '', 0, ''),
 ('Feral Senses', 514, 'At 18th level, you gain preternatural senses that help you fight creatures you can''t see. When you attack a creature you can''t see, your inability to see it doesn''t impose disadvantage on your attack rolls against it.
 
-You are also aware of the location of any invisible creature within 30 feet of you, provided that the creature isn''t hidden from you and you aren''t blinded or deafened.', '', NULL, ''),
-('Foe Slayer', 516, 'At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied.', '', NULL, ''),
-('Gloom Stalker Magic', NULL, 'Starting at 3rd level, you learn an additional spell when you reach certain levels in this class. The spell counts as a ranger spell for you, but it doesn''t count against the number of ranger spells you know.', '', NULL, ''),
-('Gloom Stalker Spells', 499, 'At 3rd level, you gain Disguise Self spell.', '', NULL, 'spell,99'),
-('Gloom Stalker Spells', 501, 'At 5th level, you gain Rope Trick spell.', '', NULL, 'spell,283'),
-('Gloom Stalker Spells', 505, 'At 9th level, you gain Fear spell.', '', NULL, 'spell,128'),
-('Gloom Stalker Spells', 509, 'At 13th level, you gain Greater Invisibility spell.', '', NULL, 'spell,163'),
-('Gloom Stalker Spells', 513, 'At 17rd level, you gain Seeming spell.', '', NULL, 'spell,290'),
+You are also aware of the location of any invisible creature within 30 feet of you, provided that the creature isn''t hidden from you and you aren''t blinded or deafened.', '', 0, ''),
+('Foe Slayer', 516, 'At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied.', '', 0, ''),
+('Gloom Stalker Magic', NULL, 'Starting at 3rd level, you learn an additional spell when you reach certain levels in this class. The spell counts as a ranger spell for you, but it doesn''t count against the number of ranger spells you know.', '', 0, ''),
+('Gloom Stalker Spells', 499, 'At 3rd level, you gain Disguise Self spell.', '', 0, 'spell,99'),
+('Gloom Stalker Spells', 501, 'At 5th level, you gain Rope Trick spell.', '', 0, 'spell,283'),
+('Gloom Stalker Spells', 505, 'At 9th level, you gain Fear spell.', '', 0, 'spell,128'),
+('Gloom Stalker Spells', 509, 'At 13th level, you gain Greater Invisibility spell.', '', 0, 'spell,163'),
+('Gloom Stalker Spells', 513, 'At 17rd level, you gain Seeming spell.', '', 0, 'spell,290'),
 ('Dread Ambusher', 499, 'At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.
 
-At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the Attack action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon''s damage type.', '', NULL, 'dreadAmbusher'),
+At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the Attack action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon''s damage type.', '', 0, 'dreadAmbusher'),
 ('Umbral Sight', 499, 'At 3rd level, you gain darkvision out to a range of 60 feet. If you already have darkvision from your race, its range increases by 30 feet.
 
-You are also adept at evading creatures that rely on darkvision. While in darkness, you are invisible to any creature that relies on darkvision to see you in that darkness.', '', NULL, 'umbralSight'),
-('Iron Mind', 503, 'By 7th level, you have honed your ability to resist the mind-altering powers of your prey. You gain proficiency in Wisdom saving throws. If you already have this proficiency, you instead gain proficiency in Intelligence or Charisma saving throws (your choice).', '', NULL, 'ironMind'),
-('Stalker''s Flurry', 507, 'At 11th level, you learn to attack with such unexpected speed that you can turn a miss into another strike. Once on each of your turns when you miss with a weapon attack, you can make another weapon attack as part of the same action.', '', NULL, ''),
-('Shadowy Dodge', 511, 'Starting at 15th level, you can dodge in unforeseen ways, with wisps of supernatural shadow around you. Whenever a creature makes an attack roll against you and doesn''t have advantage on the roll, you can use your reaction to impose disadvantage on it. You must use this feature before you know the outcome of the attack roll.', '', NULL, ''),
+You are also adept at evading creatures that rely on darkvision. While in darkness, you are invisible to any creature that relies on darkvision to see you in that darkness.', '', 0, 'umbralSight'),
+('Iron Mind', 503, 'By 7th level, you have honed your ability to resist the mind-altering powers of your prey. You gain proficiency in Wisdom saving throws. If you already have this proficiency, you instead gain proficiency in Intelligence or Charisma saving throws (your choice).', '', 0, 'ironMind'),
+('Stalker''s Flurry', 507, 'At 11th level, you learn to attack with such unexpected speed that you can turn a miss into another strike. Once on each of your turns when you miss with a weapon attack, you can make another weapon attack as part of the same action.', '', 0, ''),
+('Shadowy Dodge', 511, 'Starting at 15th level, you can dodge in unforeseen ways, with wisps of supernatural shadow around you. Whenever a creature makes an attack roll against you and doesn''t have advantage on the roll, you can use your reaction to impose disadvantage on it. You must use this feature before you know the outcome of the attack roll.', '', 0, ''),
 ('Favored Enemy', 520, 'You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
 ('Favored Enemy', 528, 'You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures.', '', 1, ''),
 ('Natural Explorer', 520, 'You can choose an additional favored terrain type.', '', 1, ''),
 ('Natural Explorer', 524, 'You can choose an additional favored terrain type.', '', 1, ''),
-('Primeval Awareness', 517, 'Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn’t reveal the creatures’ location or number.', '', NULL, ''),
-('Feat', 518, '', '', NULL, 'feat'),
-('Feat', 522, '', '', NULL, 'feat'),
-('Feat', 526, '', '', NULL, 'feat'),
-('Feat', 530, '', '', NULL, 'feat'),
-('Feat', 533, '', '', NULL, 'feat'),
-('Extra Attack', 519, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', NULL, 'extraAttack,1'),
+('Primeval Awareness', 517, 'Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn’t reveal the creatures’ location or number.', '', 0, ''),
+('Feat', 518, '', '', 0, 'feat'),
+('Feat', 522, '', '', 0, 'feat'),
+('Feat', 526, '', '', 0, 'feat'),
+('Feat', 530, '', '', 0, 'feat'),
+('Feat', 533, '', '', 0, 'feat'),
+('Extra Attack', 519, 'Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.', '', 0, 'extraAttack,1'),
 ('Land''s Stride', 522, 'Starting at 8th level, moving through nonmagical difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.
 
-In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', NULL, ''),
+In addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such as those created by the Entangle spell.', '', 0, ''),
 ('Hide in Plain Sight', 524, 'Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.
 
-Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.', '', NULL, ''),
-('Vanish', 528, 'Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can''t be tracked by nonmagical means, unless you choose to leave a trail.', '', NULL, ''),
+Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.', '', 0, ''),
+('Vanish', 528, 'Starting at 14th level, you can use the Hide action as a bonus action on your turn. Also, you can''t be tracked by nonmagical means, unless you choose to leave a trail.', '', 0, ''),
 ('Feral Senses', 532, 'At 18th level, you gain preternatural senses that help you fight creatures you can''t see. When you attack a creature you can''t see, your inability to see it doesn''t impose disadvantage on your attack rolls against it.
 
-You are also aware of the location of any invisible creature within 30 feet of you, provided that the creature isn''t hidden from you and you aren''t blinded or deafened.', '', NULL, ''),
-('Foe Slayer', 534, 'At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied.', '', NULL, ''),
+You are also aware of the location of any invisible creature within 30 feet of you, provided that the creature isn''t hidden from you and you aren''t blinded or deafened.', '', 0, ''),
+('Foe Slayer', 534, 'At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied.', '', 0, ''),
 ('Hunter''s Prey', 517, 'At 3rd level, you gain one of the following features of your choice.', '', 1, ''),
-('Colossus Slayer', NULL, 'Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it’s below its hit point maximum. You can deal this extra damage only once per turn.', 'Hunter''s Prey', NULL, ''),
-('Giant Killer', NULL, 'When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature.', 'Hunter''s Prey', NULL, ''),
-('Horde Breaker', NULL, 'Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon.', 'Hunter''s Prey', NULL, ''),
+('Colossus Slayer', NULL, 'Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it’s below its hit point maximum. You can deal this extra damage only once per turn.', 'Hunter''s Prey', 0, ''),
+('Giant Killer', NULL, 'When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature.', 'Hunter''s Prey', 0, ''),
+('Horde Breaker', NULL, 'Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon.', 'Hunter''s Prey', 0, ''),
 ('Defensive Tactics', 521, 'At 7th level, you gain one of the following features of your choice.', '', 1, ''),
-('Escape the Horde', NULL, 'Opportunity attacks against you are made with disadvantage.', 'Defensive Tactics', NULL, ''),
-('Multiattack Defense', NULL, 'When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn.', 'Defensive Tactics', NULL, ''),
-('Steel Will', NULL, 'You have advantage on saving throws against being frightened.', 'Defensive Tactics', NULL, ''),
+('Escape the Horde', NULL, 'Opportunity attacks against you are made with disadvantage.', 'Defensive Tactics', 0, ''),
+('Multiattack Defense', NULL, 'When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn.', 'Defensive Tactics', 0, ''),
+('Steel Will', NULL, 'You have advantage on saving throws against being frightened.', 'Defensive Tactics', 0, ''),
 ('Multiattack', 525, 'At 11th level, you gain one of the following features of your choice.', '', 1, ''),
-('Volley', NULL, 'You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon’s range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target.', 'Multiattack', NULL, ''),
-('Whirlwind Attack', NULL, 'You can use your action to make melee attacks against any number of creatures within 5 feet of you, with a separate attack roll for each target.', 'Multiattack', NULL, ''),
+('Volley', NULL, 'You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon’s range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target.', 'Multiattack', 0, ''),
+('Whirlwind Attack', NULL, 'You can use your action to make melee attacks against any number of creatures within 5 feet of you, with a separate attack roll for each target.', 'Multiattack', 0, ''),
 ('Superior Hunter''s Defense', 529, 'At 15th level, you gain one of the following features of your choice.', '', 1, ''),
-('Evasion', NULL, 'When you are subjected to an effect, such as a red dragon’s fiery breath or a lightning bolt spell, that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on a saving throw, and only half damage if you fail.', 'Superior Hunter''s Defense', NULL, ''),
-('Stand Against the Tide', NULL, 'When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice.', 'Superior Hunter''s Defense', NULL, ''),
-('Uncanny Dodge', NULL, 'When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack’s damage against you.', 'Superior Hunter''s Defense', NULL, ''),
-('Saving Throw Proficiency (Dexterity, Intelligence)', 535, '', '', NULL, 'savingThrowProficiency,dex|savingThrowProficiency,int'),
-('Armor Proficiency (Light)', 535, '', '', NULL, 'armorProficiency,light'),
-('Rogue Weapon Proficiencies', 535, 'As a rogue, you have proficiency with all simple weapons, hand crossbows, longswords, rapiers and shortswords.', '', NULL, 'weaponProficiency,simple|weaponProficiency,multiple,23,27,29,35'),
-('Skill Proficiency', 535, '', '', NULL, 'skillSelect,1,2,3,4,7,11,13,15,16,17,18|skillSelect,1,2,3,4,7,11,13,15,16,17,18|skillSelect,1,2,3,4,7,11,13,15,16,17,18|skillSelect,1,2,3,4,7,11,13,15,16,17,18'),
+('Evasion', NULL, 'When you are subjected to an effect, such as a red dragon’s fiery breath or a lightning bolt spell, that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on a saving throw, and only half damage if you fail.', 'Superior Hunter''s Defense', 0, ''),
+('Stand Against the Tide', NULL, 'When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice.', 'Superior Hunter''s Defense', 0, ''),
+('Uncanny Dodge', NULL, 'When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack’s damage against you.', 'Superior Hunter''s Defense', 0, ''),
+('Saving Throw Proficiency (Dexterity, Intelligence)', 535, '', '', 0, 'savingThrowProficiency,dex|savingThrowProficiency,int'),
+('Armor Proficiency (Light)', 535, '', '', 0, 'armorProficiency,light'),
+('Rogue Weapon Proficiencies', 535, 'As a rogue, you have proficiency with all simple weapons, hand crossbows, longswords, rapiers and shortswords.', '', 0, 'weaponProficiency,simple|weaponProficiency,multiple,23,27,29,35'),
+('Skill Proficiency', 535, '', '', 0, 'skillSelect,1,2,3,4,7,11,13,15,16,17,18|skillSelect,1,2,3,4,7,11,13,15,16,17,18|skillSelect,1,2,3,4,7,11,13,15,16,17,18|skillSelect,1,2,3,4,7,11,13,15,16,17,18'),
 ('Expertise', 535, 'At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves'' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', NULL, 'expertise|expertise'),
+At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', 0, 'expertise|expertise'),
 ('Sneak Attack', 535, 'Beginning at 1st level, you know how to strike subtly and exploit a foe''s distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon.
 
 You don''t need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn''t incapacitated, and you don''t have disadvantage on the attack roll.
 
-The amount of the extra damage increases by 1d6 for each 2 levels you gain in this class (2d6 at 3rd level, 3d6 at 5th level, and so on).', '', NULL, ''),
+The amount of the extra damage increases by 1d6 for each 2 levels you gain in this class (2d6 at 3rd level, 3d6 at 5th level, and so on).', '', 0, ''),
 ('Thieves'' Cant', 535, 'During your rogue training you learned thieves'' cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves'' cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly.
 
-In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves'' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.', '', NULL, ''),
-('Cunning Action', 536, 'Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.', '', NULL, ''),
-('Feat', 538, '', '', NULL, 'feat'),
-('Feat', 542, '', '', NULL, 'feat'),
-('Feat', 544, '', '', NULL, 'feat'),
-('Feat', 546, '', '', NULL, 'feat'),
-('Feat', 550, '', '', NULL, 'feat'),
-('Feat', 553, '', '', NULL, 'feat'),
+In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves'' guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.', '', 0, ''),
+('Cunning Action', 536, 'Starting at 2nd level, your quick thinking and agility allow you to move and act quickly. You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.', '', 0, ''),
+('Feat', 538, '', '', 0, 'feat'),
+('Feat', 542, '', '', 0, 'feat'),
+('Feat', 544, '', '', 0, 'feat'),
+('Feat', 546, '', '', 0, 'feat'),
+('Feat', 550, '', '', 0, 'feat'),
+('Feat', 553, '', '', 0, 'feat'),
 ('Expertise', 540, 'At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves'' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', NULL, 'expertise|expertise'),
-('Uncanny Dodge', 539, 'Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack''s damage against you.', '', NULL, ''),
-('Evasion', 541, 'Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon''s fiery breath or an Ice Storm spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', NULL, ''),
-('Reliable Talent', 545, 'By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.', '', NULL, ''),
-('Blindsense', 548, 'Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or invisible creature within 10 feet of you.', '', NULL, ''),
-('Slippery Mind', 549, 'By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws.', '', NULL, 'savingThrowProficiency,wis'),
-('Elusive', 552, 'Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren''t incapacitated.', '', NULL, ''),
+At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', 0, 'expertise|expertise'),
+('Uncanny Dodge', 539, 'Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack''s damage against you.', '', 0, ''),
+('Evasion', 541, 'Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon''s fiery breath or an Ice Storm spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', 0, ''),
+('Reliable Talent', 545, 'By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.', '', 0, ''),
+('Blindsense', 548, 'Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or invisible creature within 10 feet of you.', '', 0, ''),
+('Slippery Mind', 549, 'By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws.', '', 0, 'savingThrowProficiency,wis'),
+('Elusive', 552, 'Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren''t incapacitated.', '', 0, ''),
 ('Stroke of Luck', 554, 'At 20th level, you have an uncanny knack for succeeding when you need to. If your attack misses a target within range, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the d20 roll as a 20.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
 ('Mage Hand Legerdemain', 537, 'Starting at 3rd level, when you cast Mage Hand, you can make the spectral hand invisible, and you can perform the following additional tasks with it:
 
 - You can stow one object the hand is holding in a container worn or carried by another creature.
@@ -5014,238 +5014,187 @@ Once you use this feature, you can''t use it again until you finish a short or l
 
 You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature''s Wisdom (Perception) check.
 
-In addition, you can use the bonus action granted by your Cunning Action to control the hand.', '', NULL, ''),
-('Magical Ambush', 543, 'Starting at 9th level, if you are hidden from a creature when you cast a spell on it, the creature has disadvantage on any saving throw it makes against the spell this turn.', '', NULL, ''),
-('Versatile Trickster', 547, 'At 13th level, you gain the ability to distract targets with your Mage Hand. As a bonus action on your turn, you can designate a creature within 5 feet of the spectral hand created by the spell. Doing so gives you advantage on attack rolls against that creature until the end of the turn.', '', NULL, ''),
+In addition, you can use the bonus action granted by your Cunning Action to control the hand.', '', 0, ''),
+('Magical Ambush', 543, 'Starting at 9th level, if you are hidden from a creature when you cast a spell on it, the creature has disadvantage on any saving throw it makes against the spell this turn.', '', 0, ''),
+('Versatile Trickster', 547, 'At 13th level, you gain the ability to distract targets with your Mage Hand. As a bonus action on your turn, you can designate a creature within 5 feet of the spectral hand created by the spell. Doing so gives you advantage on attack rolls against that creature until the end of the turn.', '', 0, ''),
 ('Spell Thief', 551, 'At 17th level, you gain the ability to magically steal the knowledge of how to cast a spell from another spellcaster.
 
 Immediately after a creature casts a spell that targets you or includes you in its area of effect, you can use your reaction to force the creature to make a saving throw with its spellcasting ability modifier. The DC equals your spell save DC. On a failed save, you negate the spell''s effect against you, and you steal the knowledge of the spell if it is at least 1st level and of a level you can cast (it doesn''t need to be a wizard spell). For the next 8 hours, you know the spell and can cast it using your spell slots. The creature can''t cast that spell until the 8 hours have passed.
 
-Once you use this feature, you can''t use it again until you finish a long rest.', '', NULL, ''),
-('Feat', 556, '', '', NULL, 'feat'),
-('Feat', 560, '', '', NULL, 'feat'),
-('Feat', 562, '', '', NULL, 'feat'),
-('Feat', 564, '', '', NULL, 'feat'),
-('Feat', 568, '', '', NULL, 'feat'),
-('Feat', 571, '', '', NULL, 'feat'),
+Once you use this feature, you can''t use it again until you finish a long rest.', '', 0, ''),
+('Feat', 556, '', '', 0, 'feat'),
+('Feat', 560, '', '', 0, 'feat'),
+('Feat', 562, '', '', 0, 'feat'),
+('Feat', 564, '', '', 0, 'feat'),
+('Feat', 568, '', '', 0, 'feat'),
+('Feat', 571, '', '', 0, 'feat'),
 ('Expertise', 558, 'At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves'' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', NULL, 'expertise|expertise'),
-('Uncanny Dodge', 557, 'Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack''s damage against you.', '', NULL, ''),
-('Evasion', 559, 'Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon''s fiery breath or an Ice Storm spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', NULL, ''),
-('Reliable Talent', 563, 'By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.', '', NULL, ''),
-('Blindsense', 566, 'Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or invisible creature within 10 feet of you.', '', NULL, ''),
-('Slippery Mind', 567, 'By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws.', '', NULL, 'savingThrowProficiency,wis'),
-('Elusive', 570, 'Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren''t incapacitated.', '', NULL, ''),
+At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', 0, 'expertise|expertise'),
+('Uncanny Dodge', 557, 'Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack''s damage against you.', '', 0, ''),
+('Evasion', 559, 'Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon''s fiery breath or an Ice Storm spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', 0, ''),
+('Reliable Talent', 563, 'By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.', '', 0, ''),
+('Blindsense', 566, 'Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or invisible creature within 10 feet of you.', '', 0, ''),
+('Slippery Mind', 567, 'By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws.', '', 0, 'savingThrowProficiency,wis'),
+('Elusive', 570, 'Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren''t incapacitated.', '', 0, ''),
 ('Stroke of Luck', 572, 'At 20th level, you have an uncanny knack for succeeding when you need to. If your attack misses a target within range, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the d20 roll as a 20.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
-('Bonus Proficiencies (Assassin)', 555, 'When you choose this archetype at 3rd level, you gain proficiency with the disguise kit and the poisoner''s kit.', '', NULL, ''),
-('Assassinate', 555, 'Starting at 3rd level, you are at your deadliest when you get the drop on your enemies. You have advantage on attack rolls against any creature that hasn''t taken a turn in the combat yet. In addition, any hit you score against a creature that is surprised is a critical hit.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
+('Bonus Proficiencies (Assassin)', 555, 'When you choose this archetype at 3rd level, you gain proficiency with the disguise kit and the poisoner''s kit.', '', 0, ''),
+('Assassinate', 555, 'Starting at 3rd level, you are at your deadliest when you get the drop on your enemies. You have advantage on attack rolls against any creature that hasn''t taken a turn in the combat yet. In addition, any hit you score against a creature that is surprised is a critical hit.', '', 0, ''),
 ('Infiltration Expertise', 561, 'Starting at 9th level, you can unfailingly create false identities for yourself. You must spend seven days and 25 gp to establish the history, profession, and affiliations for an identity. You can''t establish an identity that belongs to someone else. For example, you might acquire appropriate clothing, letters of introduction, and official- looking certification to establish yourself as a member of a trading house from a remote city so you can insinuate yourself into the company of other wealthy merchants.
 
-Thereafter, if you adopt the new identity as a disguise, other creatures believe you to be that person until given an obvious reason not to.', '', NULL, ''),
+Thereafter, if you adopt the new identity as a disguise, other creatures believe you to be that person until given an obvious reason not to.', '', 0, ''),
 ('Impostor', 565, 'At 13th level, you gain the ability to unerringly mimic another person''s speech, writing, and behavior. You must spend at least three hours studying these three components of the person''s behavior, listening to speech, examining handwriting, and observing mannerisms.
 
-Your ruse is indiscernible to the casual observer. If a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection.', '', NULL, ''),
-('Death Strike', 569, 'Starting at 17th level, you become a master of instant death. When you attack and hit a creature that is surprised, it must make a Constitution saving throw (DC 8 + your Dexterity modifier + your proficiency bonus). On a failed save, double the damage of your attack against the creature.', '', NULL, ''),
-('Feat', 574, '', '', NULL, 'feat'),
-('Feat', 578, '', '', NULL, 'feat'),
-('Feat', 580, '', '', NULL, 'feat'),
-('Feat', 582, '', '', NULL, 'feat'),
-('Feat', 586, '', '', NULL, 'feat'),
-('Feat', 589, '', '', NULL, 'feat'),
+Your ruse is indiscernible to the casual observer. If a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection.', '', 0, ''),
+('Death Strike', 569, 'Starting at 17th level, you become a master of instant death. When you attack and hit a creature that is surprised, it must make a Constitution saving throw (DC 8 + your Dexterity modifier + your proficiency bonus). On a failed save, double the damage of your attack against the creature.', '', 0, ''),
+('Feat', 574, '', '', 0, 'feat'),
+('Feat', 578, '', '', 0, 'feat'),
+('Feat', 580, '', '', 0, 'feat'),
+('Feat', 582, '', '', 0, 'feat'),
+('Feat', 586, '', '', 0, 'feat'),
+('Feat', 589, '', '', 0, 'feat'),
 ('Expertise', 576, 'At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves'' tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.
 
-At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', NULL, 'expertise|expertise'),
-('Uncanny Dodge', 575, 'Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack''s damage against you.', '', NULL, ''),
-('Evasion', 577, 'Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon''s fiery breath or an Ice Storm spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', NULL, ''),
-('Reliable Talent', 581, 'By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.', '', NULL, ''),
-('Blindsense', 584, 'Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or invisible creature within 10 feet of you.', '', NULL, ''),
-('Slippery Mind', 585, 'By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws.', '', NULL, 'savingThrowProficiency,wis'),
-('Elusive', 588, 'Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren''t incapacitated.', '', NULL, ''),
+At 6th level, you can choose two more of your proficiencies (in skills or with thieves'' tools) to gain this benefit.', '', 0, 'expertise|expertise'),
+('Uncanny Dodge', 575, 'Starting at 5th level, when an attacker that you can see hits you with an attack, you can use your reaction to halve the attack''s damage against you.', '', 0, ''),
+('Evasion', 577, 'Beginning at 7th level, you can nimbly dodge out of the way of certain area effects, such as a red dragon''s fiery breath or an Ice Storm spell. When you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail.', '', 0, ''),
+('Reliable Talent', 581, 'By 11th level, you have refined your chosen skills until they approach perfection. Whenever you make an ability check that lets you add your proficiency bonus, you can treat a d20 roll of 9 or lower as a 10.', '', 0, ''),
+('Blindsense', 584, 'Starting at 14th level, if you are able to hear, you are aware of the location of any hidden or invisible creature within 10 feet of you.', '', 0, ''),
+('Slippery Mind', 585, 'By 15th level, you have acquired greater mental strength. You gain proficiency in Wisdom saving throws.', '', 0, 'savingThrowProficiency,wis'),
+('Elusive', 588, 'Beginning at 18th level, you are so evasive that attackers rarely gain the upper hand against you. No attack roll has advantage against you while you aren''t incapacitated.', '', 0, ''),
 ('Stroke of Luck', 590, 'At 20th level, you have an uncanny knack for succeeding when you need to. If your attack misses a target within range, you can turn the miss into a hit. Alternatively, if you fail an ability check, you can treat the d20 roll as a 20.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
-('Fast Hands', 573, 'Starting at 3rd level, you can use the bonus action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves'' tools to disarm a trap or open a lock, or take the Use an Object action.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
+('Fast Hands', 573, 'Starting at 3rd level, you can use the bonus action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves'' tools to disarm a trap or open a lock, or take the Use an Object action.', '', 0, ''),
 ('Second-Story Work', 573, 'When you choose this archetype at 3rd level, you gain the ability to climb faster than normal; climbing no longer costs you extra movement.
 
-In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier.', '', NULL, ''),
-('Supreme Sneak', 579, 'Starting at 9th level, you have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn.', '', NULL, ''),
-('Use Magic Device', 583, 'By 13th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items.', '', NULL, ''),
-('Thief''s Reflexes', 587, 'When you reach 17th level, you have become adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal initiative and your second turn at your initiative minus 10. You can''t use this feature when you are surprised.', '', NULL, ''),
-('Saving Throw Proficiency (Constitution, Charisma)', 591, '', '', NULL, 'savingThrowProficiency,con|savingThrowProficiency,cha'),
-('Sorcerer Weapon Proficiencies', 591, 'As a sorcerer, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', NULL, 'weaponProficiency,multiple,2,8,12,13,15'),
-('Skill Proficiency', 591, '', '', NULL, 'skillSelect,5,9,11,15,16,18|skillSelect,5,9,11,15,16,18'),
-('Font of Magic', 592, 'At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.', '', NULL, ''),
-('Sorcery Points', 592, 'You have 2 sorcery points, and you gain one more with every sorcerer level. You can never have more sorcery points than your sorcerer level. You regain all spent sorcery points when you finish a long rest.', '', NULL, ''),
+In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier.', '', 0, ''),
+('Supreme Sneak', 579, 'Starting at 9th level, you have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn.', '', 0, ''),
+('Use Magic Device', 583, 'By 13th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items.', '', 0, ''),
+('Thief''s Reflexes', 587, 'When you reach 17th level, you have become adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal initiative and your second turn at your initiative minus 10. You can''t use this feature when you are surprised.', '', 0, ''),
+('Saving Throw Proficiency (Constitution, Charisma)', 591, '', '', 0, 'savingThrowProficiency,con|savingThrowProficiency,cha'),
+('Sorcerer Weapon Proficiencies', 591, 'As a sorcerer, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', 0, 'weaponProficiency,multiple,2,8,12,13,15'),
+('Skill Proficiency', 591, '', '', 0, 'skillSelect,5,9,11,15,16,18|skillSelect,5,9,11,15,16,18'),
+('Font of Magic', 592, 'At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.', '', 0, ''),
+('Sorcery Points', 592, 'You have 2 sorcery points, and you gain one more with every sorcerer level. You can never have more sorcery points than your sorcerer level. You regain all spent sorcery points when you finish a long rest.', '', 0, ''),
 ('Flexible Casting', 592, 'You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels.
 
 Creating Spell Slots - You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The cost is 2 sorcery points per 1st level slot, 3 points per 2nd level slot, 5 points per 3rd level slot, 6 points per 4th level slot and 7 points per 5th level slot. You can create spell slots no higher in level than 5th. Any spell slot you create with this feature vanishes when you finish a long rest.
-Converting a Spell Slot to Sorcery Points - As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.', '', NULL, ''),
+Converting a Spell Slot to Sorcery Points - As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.', '', 0, ''),
 ('Metamagic', 593, 'At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.
 
-You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.', '', NULL, ''),
+You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.', '', 0, ''),
 ('Metamagic Selection', 593, '', '', 2, ''),
 ('Metamagic Selection', 600, '', '', 1, ''),
 ('Metamagic Selection', 607, '', '', 1, ''),
-('Careful Spell', NULL, 'When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell''s full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell.', 'Metamagic Selection', NULL, ''),
+('Careful Spell', NULL, 'When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell''s full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell.', 'Metamagic Selection', 0, ''),
 ('Distant Spell', NULL, 'When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.
-When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet.', 'Metamagic Selection', NULL, ''),
+When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet.', 'Metamagic Selection', 0, ''),
 ('Empowered Spell', NULL, 'When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.
-You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.', 'Metamagic Selection', NULL, ''),
-('Extended Spell', NULL, 'When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.', 'Metamagic Selection', NULL, ''),
-('Heightened Spell', NULL, 'When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell.', 'Metamagic Selection', NULL, ''),
-('Quickened Spell', NULL, 'When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.', 'Metamagic Selection', NULL, ''),
-('Subtle Spell', NULL, 'When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components.', 'Metamagic Selection', NULL, ''),
-('Twinned Spell', NULL, 'When you cast a spell that targets only one creature and doesn''t have a range of self, you can spend a number of sorcery points equal to the spell''s level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip). To be eligible, a spell must be incapable of targeting more than one creature at the spell''s current level. For example, magic missile and scorching ray aren''t eligible, but ray of frost and chromatic orb are.', 'Metamagic Selection', NULL, ''),
-('Feat', 594, '', '', NULL, 'feat'),
-('Feat', 598, '', '', NULL, 'feat'),
-('Feat', 602, '', '', NULL, 'feat'),
-('Feat', 606, '', '', NULL, 'feat'),
-('Feat', 609, '', '', NULL, 'feat'),
-('Sorcerous Restoration', 610, 'At 20th level, you regain 4 expended sorcery points whenever you finish a short rest.', '', NULL, ''),
-('Dragon Ancestor', 591, 'At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.', '', NULL, ''),
+You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell.', 'Metamagic Selection', 0, ''),
+('Extended Spell', NULL, 'When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours.', 'Metamagic Selection', 0, ''),
+('Heightened Spell', NULL, 'When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell.', 'Metamagic Selection', 0, ''),
+('Quickened Spell', NULL, 'When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting.', 'Metamagic Selection', 0, ''),
+('Subtle Spell', NULL, 'When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components.', 'Metamagic Selection', 0, ''),
+('Twinned Spell', NULL, 'When you cast a spell that targets only one creature and doesn''t have a range of self, you can spend a number of sorcery points equal to the spell''s level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip). To be eligible, a spell must be incapable of targeting more than one creature at the spell''s current level. For example, magic missile and scorching ray aren''t eligible, but ray of frost and chromatic orb are.', 'Metamagic Selection', 0, ''),
+('Feat', 594, '', '', 0, 'feat'),
+('Feat', 598, '', '', 0, 'feat'),
+('Feat', 602, '', '', 0, 'feat'),
+('Feat', 606, '', '', 0, 'feat'),
+('Feat', 609, '', '', 0, 'feat'),
+('Sorcerous Restoration', 610, 'At 20th level, you regain 4 expended sorcery points whenever you finish a short rest.', '', 0, ''),
+('Dragon Ancestor', 591, 'At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.', '', 0, ''),
 ('Draconic Resilience', 591, 'As magic flows through your body, it causes physical traits of your dragon ancestors to emerge. At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this class.
 
-Additionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren''t wearing armor, your AC equals 13 + your Dexterity modifier.', '', NULL, 'bonusHP,1|draconicResilience'),
-('Elemental Affinity', 596, 'Starting at 6th level, when you cast a spell that deals damage of the type associated with your draconic ancestry, add your Charisma modifier to one damage roll of that spell. At the same time, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour.', '', NULL, ''),
+Additionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren''t wearing armor, your AC equals 13 + your Dexterity modifier.', '', 0, 'bonusHP,1|draconicResilience'),
+('Elemental Affinity', 596, 'Starting at 6th level, when you cast a spell that deals damage of the type associated with your draconic ancestry, add your Charisma modifier to one damage roll of that spell. At the same time, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour.', '', 0, ''),
 ('Dragon Wings', 604, 'At 14th level, you gain the ability to sprout a pair of dragon wings from your back, gaining a flying speed equal to your current speed. You can create these wings as a bonus action on your turn. They last until you dismiss them as a bonus action on your turn.
 
-You can''t manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them.', '', NULL, ''),
-('Draconic Presence', 608, 'Beginning at 18th level, you can channel the dread presence of your dragon ancestor, causing those around you to become awestruck or frightened. As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear (your choice) to a distance of 60 feet. For 1 minute or until you lose your concentration (as if you were casting a concentration spell), each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours.', '', NULL, ''),
-('Saving Throw Proficiency (Constitution, Charisma)', 611, '', '', NULL, 'savingThrowProficiency,con|savingThrowProficiency,cha'),
-('Sorcerer Weapon Proficiencies', 611, 'As a sorcerer, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', NULL, 'weaponProficiency,multiple,2,8,12,13,15'),
-('Skill Proficiency', 611, '', '', NULL, 'skillSelect,5,9,11,15,16,18|skillSelect,5,9,11,15,16,18'),
-('Font of Magic', 612, 'At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.', '', NULL, ''),
-('Sorcery Points', 612, 'You have 2 sorcery points, and you gain one more with every subsequent level. You can never have more sorcery points than your sorcerer level. You regain all spent sorcery points when you finish a long rest.', '', NULL, ''),
+You can''t manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them.', '', 0, ''),
+('Draconic Presence', 608, 'Beginning at 18th level, you can channel the dread presence of your dragon ancestor, causing those around you to become awestruck or frightened. As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear (your choice) to a distance of 60 feet. For 1 minute or until you lose your concentration (as if you were casting a concentration spell), each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours.', '', 0, ''),
+('Saving Throw Proficiency (Constitution, Charisma)', 611, '', '', 0, 'savingThrowProficiency,con|savingThrowProficiency,cha'),
+('Sorcerer Weapon Proficiencies', 611, 'As a sorcerer, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', 0, 'weaponProficiency,multiple,2,8,12,13,15'),
+('Skill Proficiency', 611, '', '', 0, 'skillSelect,5,9,11,15,16,18|skillSelect,5,9,11,15,16,18'),
+('Font of Magic', 612, 'At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.', '', 0, ''),
+('Sorcery Points', 612, 'You have 2 sorcery points, and you gain one more with every subsequent level. You can never have more sorcery points than your sorcerer level. You regain all spent sorcery points when you finish a long rest.', '', 0, ''),
 ('Flexible Casting', 612, 'You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels.
 
 Creating Spell Slots - You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The cost is 2 sorcery points per 1st level slot, 3 points per 2nd level slot, 5 points per 3rd level slot, 6 points per 4th level slot and 7 points per 5th level slot. You can create spell slots no higher in level than 5th. Any spell slot you create with this feature vanishes when you finish a long rest.
-Converting a Spell Slot to Sorcery Points - As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.', '', NULL, ''),
+Converting a Spell Slot to Sorcery Points - As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.', '', 0, ''),
 ('Metamagic', 613, 'At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.
 
-You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.', '', NULL, ''),
+You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.', '', 0, ''),
 ('Metamagic Selection', 613, '', '', 2, ''),
 ('Metamagic Selection', 620, '', '', 1, ''),
 ('Metamagic Selection', 627, '', '', 1, ''),
-('Feat', 614, '', '', NULL, 'feat'),
-('Feat', 618, '', '', NULL, 'feat'),
-('Feat', 622, '', '', NULL, 'feat'),
-('Feat', 626, '', '', NULL, 'feat'),
-('Feat', 629, '', '', NULL, 'feat'),
-('Sorcerous Restoration', 630, 'At 20th level, you regain 4 expended sorcery points whenever you finish a short rest.', '', NULL, ''),
-('Wind Speaker', 611, 'The arcane magic you command is infused with elemental air. You can speak, read, and write Primordial. Knowing this language allows you to understand and be understood by those who speak its dialects: Aquan, Auran, Ignan, and Terran.', '', NULL, ''),
-('Tempestuous Magic', 611, 'Starting at 1st level, you can use a bonus action on your turn to cause whirling gusts of elemental air to briefly surround you, immediately before or after you cast a spell of 1st level or higher. Doing so allows you to fly up to 10 feet without provoking opportunity attacks.', '', NULL, ''),
-('Heart of the Storm', 616, 'At 6th level, you gain resistance to lightning and thunder damage. In addition, whenever you start casting a spell of 1st level or higher that deals lightning or thunder damage, stormy magic erupts from you. This eruption causes creatures of your choice that you can see within 10 feet of you to take lightning or thunder damage (choose each time this ability activates) equal to half your sorcerer level.', '', NULL, 'damageResistance,lightning|damageResistance,thunder'),
+('Feat', 614, '', '', 0, 'feat'),
+('Feat', 618, '', '', 0, 'feat'),
+('Feat', 622, '', '', 0, 'feat'),
+('Feat', 626, '', '', 0, 'feat'),
+('Feat', 629, '', '', 0, 'feat'),
+('Sorcerous Restoration', 630, 'At 20th level, you regain 4 expended sorcery points whenever you finish a short rest.', '', 0, ''),
+('Wind Speaker', 611, 'The arcane magic you command is infused with elemental air. You can speak, read, and write Primordial. Knowing this language allows you to understand and be understood by those who speak its dialects: Aquan, Auran, Ignan, and Terran.', '', 0, ''),
+('Tempestuous Magic', 611, 'Starting at 1st level, you can use a bonus action on your turn to cause whirling gusts of elemental air to briefly surround you, immediately before or after you cast a spell of 1st level or higher. Doing so allows you to fly up to 10 feet without provoking opportunity attacks.', '', 0, ''),
+('Heart of the Storm', 616, 'At 6th level, you gain resistance to lightning and thunder damage. In addition, whenever you start casting a spell of 1st level or higher that deals lightning or thunder damage, stormy magic erupts from you. This eruption causes creatures of your choice that you can see within 10 feet of you to take lightning or thunder damage (choose each time this ability activates) equal to half your sorcerer level.', '', 0, 'damageResistance,lightning|damageResistance,thunder'),
 ('Storm Guide', 616, 'At 6th level, you gain the ability to subtly control the weather around you.
 
 If it is raining, you can use an action to cause the rain to stop falling in a 20-foot-radius sphere centered on you. You can end this effect as a bonus action.
 
-If it is windy, you can use a bonus action each round to choose the direction that the wind blows in a 100-foot-radius sphere centered on you. The wind blows in that direction until the end of your next turn. This feature doesn''t alter the speed of the wind.', '', NULL, ''),
-('Storm''s Fury', 624, 'Starting at 14th level, when you are hit by a melee attack, you can use your reaction to deal lightning damage to the attacker. The damage equals your sorcerer level. The attacker must also make a Strength saving throw against your sorcerer spell save DC. On a failed save, the attacker is pushed in a straight line up to 20 feet away from you.', '', NULL, ''),
+If it is windy, you can use a bonus action each round to choose the direction that the wind blows in a 100-foot-radius sphere centered on you. The wind blows in that direction until the end of your next turn. This feature doesn''t alter the speed of the wind.', '', 0, ''),
+('Storm''s Fury', 624, 'Starting at 14th level, when you are hit by a melee attack, you can use your reaction to deal lightning damage to the attacker. The damage equals your sorcerer level. The attacker must also make a Strength saving throw against your sorcerer spell save DC. On a failed save, the attacker is pushed in a straight line up to 20 feet away from you.', '', 0, ''),
 ('Wind Soul', 628, 'At 18th level, you gain immunity to lightning and thunder damage.
 
-You also gain a magical flying speed of 60 feet. As an action, you can reduce your flying speed to 30 feet for 1 hour and choose a number of creatures within 30 feet of you equal to 3 + your Charisma modifier. The chosen creatures gain a magical flying speed of 30 feet for 1 hour. Once you reduce your flying speed in this way, you can''t do so again until you finish a short or long rest.', '', NULL, ''),
-('Saving Throw Proficiency (Constitution, Charisma)', 631, '', '', NULL, 'savingThrowProficiency,con|savingThrowProficiency,cha'),
-('Sorcerer Weapon Proficiencies', 631, 'As a sorcerer, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', NULL, 'weaponProficiency,multiple,2,8,12,13,15'),
-('Skill Proficiency', 631, '', '', NULL, 'skillSelect,5,9,11,15,16,18|skillSelect,5,9,11,15,16,18'),
-('Font of Magic', 632, 'At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.', '', NULL, ''),
-('Sorcery Points', 632, 'You have 2 sorcery points, and you gain one more with every subsequent level. You can never have more sorcery points than your sorcerer level. You regain all spent sorcery points when you finish a long rest.', '', NULL, ''),
+You also gain a magical flying speed of 60 feet. As an action, you can reduce your flying speed to 30 feet for 1 hour and choose a number of creatures within 30 feet of you equal to 3 + your Charisma modifier. The chosen creatures gain a magical flying speed of 30 feet for 1 hour. Once you reduce your flying speed in this way, you can''t do so again until you finish a short or long rest.', '', 0, ''),
+('Saving Throw Proficiency (Constitution, Charisma)', 631, '', '', 0, 'savingThrowProficiency,con|savingThrowProficiency,cha'),
+('Sorcerer Weapon Proficiencies', 631, 'As a sorcerer, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', 0, 'weaponProficiency,multiple,2,8,12,13,15'),
+('Skill Proficiency', 631, '', '', 0, 'skillSelect,5,9,11,15,16,18|skillSelect,5,9,11,15,16,18'),
+('Font of Magic', 632, 'At 2nd level, you tap into a deep wellspring of magic within yourself. This wellspring is represented by sorcery points, which allow you to create a variety of magical effects.', '', 0, ''),
+('Sorcery Points', 632, 'You have 2 sorcery points, and you gain one more with every subsequent level. You can never have more sorcery points than your sorcerer level. You regain all spent sorcery points when you finish a long rest.', '', 0, ''),
 ('Flexible Casting', 632, 'You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels.
 
 Creating Spell Slots - You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The cost is 2 sorcery points per 1st level slot, 3 points per 2nd level slot, 5 points per 3rd level slot, 6 points per 4th level slot and 7 points per 5th level slot. You can create spell slots no higher in level than 5th. Any spell slot you create with this feature vanishes when you finish a long rest.
-Converting a Spell Slot to Sorcery Points - As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.', '', NULL, ''),
+Converting a Spell Slot to Sorcery Points - As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot''s level.', '', 0, ''),
 ('Metamagic', 633, 'At 3rd level, you gain the ability to twist your spells to suit your needs. You gain two of the following Metamagic options of your choice. You gain another one at 10th and 17th level.
 
-You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.', '', NULL, ''),
+You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.', '', 0, ''),
 ('Metamagic Selection', 633, '', '', 2, ''),
 ('Metamagic Selection', 640, '', '', 1, ''),
 ('Metamagic Selection', 647, '', '', 1, ''),
-('Feat', 634, '', '', NULL, 'feat'),
-('Feat', 638, '', '', NULL, 'feat'),
-('Feat', 642, '', '', NULL, 'feat'),
-('Feat', 646, '', '', NULL, 'feat'),
-('Feat', 649, '', '', NULL, 'feat'),
-('Sorcerous Restoration', 650, 'At 20th level, you regain 4 expended sorcery points whenever you finish a short rest.', '', NULL, '');
+('Feat', 634, '', '', 0, 'feat'),
+('Feat', 638, '', '', 0, 'feat'),
+('Feat', 642, '', '', 0, 'feat'),
+('Feat', 646, '', '', 0, 'feat'),
+('Feat', 649, '', '', 0, 'feat'),
+('Sorcerous Restoration', 650, 'At 20th level, you regain 4 expended sorcery points whenever you finish a short rest.', '', 0, '');
 	insert into dbo.[ClassFeatures] ([Name], [ClassLevelId], [Description], [ParentFeatureName], [SubfeatureSelections], [Tags])
-	values ('Wild Magic Surge', 631, 'Starting when you choose this origin at 1st level, your spellcasting can unleash surges of untamed magic. Once per turn, the DM can have you roll a d20 immediately after you cast a sorcerer spell of 1st level or higher. If you roll a 1, roll on the Wild Magic Surge table to create a magical effect. If that effect is a spell, it is too wild to be affected by your Metamagic, and if it normally requires concentration, it doesn''t require concentration in this case; the spell lasts for its full duration.
-
-01-02 	Roll on this table at the start of each of your turns for the next minute, ignoring this result on subsequent rolls.
-03-04 	For the next minute, you can see any invisible creature if you have line of sight to it.
-05-06 	A modron chosen and controlled by the DM appears in an unoccupied space within 5 feet of you, then disappears I minute later.
-07-08 	You cast Fireball as a 3rd-level spell centered on yourself.
-09-10 	You cast Magic Missile as a 5th-level spell.
-11-12 	Roll a d10. Your height changes by a number of inches equal to the roll. If the roll is odd, you shrink. If the roll is even, you grow.
-13-14 	You cast Confusion centered on yourself.
-15-16 	For the next minute, you regain 5 hit points at the start of each of your turns.
-17-18 	You grow a long beard made of feathers that remains until you sneeze, at which point the feathers explode out from your face.
-19-20 	You cast Grease centered on yourself.
-21-22 	Creatures have disadvantage on saving throws against the next spell you cast in the next minute that involves a saving throw.
-23-24 	Your skin turns a vibrant shade of blue. A Remove Curse spell can end this effect.
-25-26 	An eye appears on your forehead for the next minute. During that time, you have advantage on Wisdom (Perception) checks that rely on sight.
-27-28 	For the next minute, all your spells with a casting time of 1 action have a casting time of 1 bonus action.
-29-30 	You teleport up to 60 feet to an unoccupied space of your choice that you can see.
-31-32 	You are transported to the Astral Plane until the end of your next turn, after which time you return to the space you previously occupied or the nearest unoccupied space if that space is occupied.
-33-34 	Maximize the damage of the next damaging spell you cast within the next minute.
-35-36 	Roll a d10. Your age changes by a number of years equal to the roll. If the roll is odd, you get younger (minimum 1 year old). If the roll is even, you get older.
-37-38 	1d6 flumphs controlled by the DM appear in unoccupied spaces within 60 feet of you and are frightened of you. They vanish after 1 minute.
-39-40 	You regain 2d10 hit points.
-41-42 	You turn into a potted plant until the start of your next turn. While a plant, you are incapacitated and have vulnerability to all damage. If you drop to 0 hit points, your pot breaks, and your form reverts.
-43-44 	For the next minute, you can teleport up to 20 feet as a bonus action on each of your turns.
-45-46 	You cast Levitate on yourself.
-47-48 	A unicorn controlled by the DM appears in a space within 5 feet of you, then disappears 1 minute later.
-49-50 	You can''t speak for the next minute. Whenever you try, pink bubbles float out of your mouth.
-51-52 	A spectral shield hovers near you for the next minute, granting you a +2 bonus to AC and immunity to Magic Missile.
-53-54 	You are immune to being intoxicated by alcohol for the next 5d6 days.
-55-56 	Your hair falls out but grows back within 24 hours.
-57-58 	For the next minute, any flammable object you touch that isn''t being worn or carried by another creature bursts into flame.
-59-60 	You regain your lowest-level expended spell slot.
-61-62 	For the next minute, you must shout when you speak.
-63-64 	You cast Fog Cloud centered on yourself.
-65-66 	Up to three creatures you choose within 30 feet of you take 4d10 lightning damage.
-67-68 	You are frightened by the nearest creature until the end of your next turn.
-69-70 	Each creature within 30 feet of you becomes invisible for the next minute. The invisibility ends on a creature when it attacks or casts a spell.
-71-72 	You gain resistance to all damage for the next minute.
-73-74 	A random creature within 60 feet of you becomes poisoned for 1d4 hours.
-75-76 	You glow with bright light in a 30-foot radius for the next minute. Any creature that ends its turn within 5 feet of you is blinded until the end of its next turn.
-77-78 	You cast Polymorph on yourself. If you fail the saving throw, you turn into a sheep for the spell''s duration.
-79-80 	Illusory butterflies and flower petals flutter in the air within 10 feet of you for the next minute.
-81-82 	You can take one additional action immediately.
-83-84 	Each creature within 30 feet of you takes 1d10 necrotic damage. You regain hit points equal to the sum of the necrotic damage dealt.
-85-86 	You cast Mirror Image.
-87-88 	You cast Fly on a random creature within 60 feet of you.
-89-90 	You become invisible for the next minute. During that time, other creatures can''t hear you. The invisibility ends if you attack or cast a spell.
-91-92 	If you die within the next minute, you immediately come back to life as if by the Reincarnate spell.
-93-94 	Your size increases by one size category for the next minute.
-95-96 	You and all creatures within 30 feet of you gain vulnerability to piercing damage for the next minute.
-97-98 	You are surrounded by faint, ethereal music for the next minute.
-99-00 	You regain all expended sorcery points.', '', NULL, ''),
+	values ('Wild Magic Surge', 631, 'Starting when you choose this origin at 1st level, your spellcasting can unleash surges of untamed magic. Once per turn, the DM can have you roll a d20 immediately after you cast a sorcerer spell of 1st level or higher. If you roll a 1, roll on the Wild Magic Surge table to create a magical effect. If that effect is a spell, it is too wild to be affected by your Metamagic, and if it normally requires concentration, it doesn''t require concentration in this case; the spell lasts for its full duration.', '', 0, ''),
 ('Tides of Chaos', 636, 'Starting at 1st level, you can manipulate the forces of chance and chaos to gain advantage on one attack roll, ability check, or saving throw. Once you do so, you must finish a long rest before you can use this feature again.
 
-Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature.', '', NULL, ''),
-('Bend Luck', 636, 'Starting at 6th level, you have the ability to twist fate using your wild magic. When another creature you can see makes an attack roll, an ability check, or a saving throw, you can use your reaction and spend 2 sorcery points to roll 1d4 and apply the number rolled as a bonus or penalty (your choice) to the creature''s roll. You can do so after the creature rolls but before any effects of the roll occur.', '', NULL, ''),
-('Controlled Chaos', 644, 'At 14th level, you gain a modicum of control over the surges of your wild magic. Whenever you roll on the Wild Magic Surge table, you can roll twice and use either number.', '', NULL, ''),
-('Spell Bombardment', 648, 'Beginning at 18th level, the harmful energy of your spells intensifies. When you roll damage for a spell and roll the highest number possible on any of the dice, choose one of those dice, roll it again and add that roll to the damage. You can use the feature only once per turn.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 651, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light)', 651, '', '', NULL, 'armorProficiency,light'),
-('Weapon Proficiency (Simple)', 651, 'As a warlock, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple'),
-('Skill Proficiency', 651, '', '', NULL, 'skillSelect,5,6,7,8,9,15,16|skillSelect,5,6,7,8,9,15,16'),
+Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature.', '', 0, ''),
+('Bend Luck', 636, 'Starting at 6th level, you have the ability to twist fate using your wild magic. When another creature you can see makes an attack roll, an ability check, or a saving throw, you can use your reaction and spend 2 sorcery points to roll 1d4 and apply the number rolled as a bonus or penalty (your choice) to the creature''s roll. You can do so after the creature rolls but before any effects of the roll occur.', '', 0, ''),
+('Controlled Chaos', 644, 'At 14th level, you gain a modicum of control over the surges of your wild magic. Whenever you roll on the Wild Magic Surge table, you can roll twice and use either number.', '', 0, ''),
+('Spell Bombardment', 648, 'Beginning at 18th level, the harmful energy of your spells intensifies. When you roll damage for a spell and roll the highest number possible on any of the dice, choose one of those dice, roll it again and add that roll to the damage. You can use the feature only once per turn.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 651, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light)', 651, '', '', 0, 'armorProficiency,light'),
+('Weapon Proficiency (Simple)', 651, 'As a warlock, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple'),
+('Skill Proficiency', 651, '', '', 0, 'skillSelect,5,6,7,8,9,15,16|skillSelect,5,6,7,8,9,15,16'),
 ('Pact Magic', 651, 'Your arcane research and the magic bestowed on you by your patron have given you facility with spells.
 
-At 1st level, you have 1 spell slot of 1st level. The number and level of your spell slots increases as you gain warlock levels. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.', '', NULL, ''),
-('Additional Spell Slot', 652, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Additional Spell Slot', 661, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Additional Spell Slot', 667, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Spell Slot Level Increase', 653, 'Your warlock spell slots upgrade to 2nd level.', '', NULL, ''),
-('Spell Slot Level Increase', 655, 'Your warlock spell slots upgrade to 3rd level.', '', NULL, ''),
-('Spell Slot Level Increase', 657, 'Your warlock spell slots upgrade to 4th level.', '', NULL, ''),
-('Spell Slot Level Increase', 659, 'Your warlock spell slots upgrade to 5th level.', '', NULL, ''),
+At 1st level, you have 1 spell slot of 1st level. The number and level of your spell slots increases as you gain warlock levels. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.', '', 0, ''),
+('Additional Spell Slot', 652, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Additional Spell Slot', 661, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Additional Spell Slot', 667, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Spell Slot Level Increase', 653, 'Your warlock spell slots upgrade to 2nd level.', '', 0, ''),
+('Spell Slot Level Increase', 655, 'Your warlock spell slots upgrade to 3rd level.', '', 0, ''),
+('Spell Slot Level Increase', 657, 'Your warlock spell slots upgrade to 4th level.', '', 0, ''),
+('Spell Slot Level Increase', 659, 'Your warlock spell slots upgrade to 5th level.', '', 0, ''),
 ('Eldritch Invocations', 652, 'In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.
 
 At 2nd level, you gain two eldritch invocations of your choice. When you reach 5th, 7th, 9th, 12th, 15th and 18th warlock level, you gain additional invocations of your choice. A level prerequisite refers to your level in this class.
 
-Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.', '', NULL, ''),
+Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.', '', 0, ''),
 ('Eldritch Invocation Selection', 652, '', '', 2, ''),
 ('Eldritch Invocation Selection', 655, '', '', 1, ''),
 ('Eldritch Invocation Selection', 657, '', '', 1, ''),
@@ -5272,62 +5221,62 @@ Pact of the Tome:
 ('Pact of the Blade', NULL, 'You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it. You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.
 Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.
 You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest.
-You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can''t affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.', 'Pact Boon', NULL, ''),
+You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can''t affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.', 'Pact Boon', 0, ''),
 ('Pact of the Chain', NULL, 'You learn the find familiar spell and can cast it as a ritual. The spell doesn''t count against your number of spells known.
 When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit, or sprite.
-Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.', 'Pact Boon', NULL, 'spell,132'),
+Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.', 'Pact Boon', 0, 'spell,132'),
 ('Pact of the Tome', NULL, 'Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class''s spell list (the three needn''t be from the same list). While the book is on your person, you can cast those cantrips at will. They don''t count against your number of cantrips known. If they don''t appear on the warlock spell list, they are nonetheless warlock spells for you.
-If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.', 'Pact Boon', NULL, 'spellSelectAny,0|spellSelectAny,0|spellSelectAny,0'),
-('Feat', 654, '', '', NULL, 'feat'),
-('Feat', 658, '', '', NULL, 'feat'),
-('Feat', 662, '', '', NULL, 'feat'),
-('Feat', 666, '', '', NULL, 'feat'),
-('Feat', 669, '', '', NULL, 'feat'),
+If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.', 'Pact Boon', 0, 'spellSelectAny,0|spellSelectAny,0|spellSelectAny,0'),
+('Feat', 654, '', '', 0, 'feat'),
+('Feat', 658, '', '', 0, 'feat'),
+('Feat', 662, '', '', 0, 'feat'),
+('Feat', 666, '', '', 0, 'feat'),
+('Feat', 669, '', '', 0, 'feat'),
 ('Mystic Arcanum', 661, 'At 11th level, your patron bestows upon you a magical secret called an arcanum. Choose one 6th-level spell from the warlock spell list as this arcanum.
 
 You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.
 
-At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', NULL, 'spellSelect,war,6'),
-('Mystic Arcanum', 663, '', '', NULL, 'spellSelect,war,7'),
-('Mystic Arcanum', 665, '', '', NULL, 'spellSelect,war,8'),
-('Mystic Arcanum', 667, '', '', NULL, 'spellSelect,war,9'),
-('Eldritch Master', 670, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', NULL, ''),
-('Expanded Spell List', 651, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Faerie Fire and Sleep to the warlock spell list.', '', NULL, 'expandedSpellList,126,302'),
-('Expanded Spell List', 653, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Calm Emotions and Phantasmal Force to the warlock spell list.', '', NULL, 'expandedSpellList,43,248'),
-('Expanded Spell List', 655, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Blink and Plant Growth to the warlock spell list.', '', NULL, 'expandedSpellList,38,254'),
-('Expanded Spell List', 657, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Beast and Greater Invisibility to the warlock spell list.', '', NULL, 'expandedSpellList,107,163'),
-('Expanded Spell List', 659, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Person and Seeming to the warlock spell list.', '', NULL, 'expandedSpellList,109,290'),
+At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,war,6'),
+('Mystic Arcanum', 663, '', '', 0, 'spellSelect,war,7'),
+('Mystic Arcanum', 665, '', '', 0, 'spellSelect,war,8'),
+('Mystic Arcanum', 667, '', '', 0, 'spellSelect,war,9'),
+('Eldritch Master', 670, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', 0, ''),
+('Expanded Spell List', 651, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Faerie Fire and Sleep to the warlock spell list.', '', 0, 'expandedSpellList,126,302'),
+('Expanded Spell List', 653, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Calm Emotions and Phantasmal Force to the warlock spell list.', '', 0, 'expandedSpellList,43,248'),
+('Expanded Spell List', 655, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Blink and Plant Growth to the warlock spell list.', '', 0, 'expandedSpellList,38,254'),
+('Expanded Spell List', 657, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Beast and Greater Invisibility to the warlock spell list.', '', 0, 'expandedSpellList,107,163'),
+('Expanded Spell List', 659, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Person and Seeming to the warlock spell list.', '', 0, 'expandedSpellList,109,290'),
 ('Fey Presence', 651, 'Starting at 1st level, your patron bestows upon you the ability to project the beguiling and fearsome presence of the fey. As an action, you can cause each creature in a 10-foot cube originating from you to make a Wisdom saving throw against your warlock spell save DC. The creatures that fail their saving throws are all charmed or frightened by you (your choice) until the end of your next turn.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
 ('Misty Escape', 656, 'Starting at 6th level, you can vanish in a puff of mist in response to harm. When you take damage, you can use your reaction to turn invisible and teleport up to 60 feet to an unoccupied space you can see. You remain invisible until the start of your next turn or until you attack or cast a spell.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
-('Beguiling Defenses', 660, 'Beginning at 10th level, your patron teaches you how to turn the mind-affecting magic of your enemies against them. You are immune to being charmed, and when another creature attempts to charm you, you can use your reaction to attempt to turn the charm back on that creature. The creature must succeed on a Wisdom saving throw against your warlock spell save DC or be charmed by you for 1 minute or until the creature takes any damage.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
+('Beguiling Defenses', 660, 'Beginning at 10th level, your patron teaches you how to turn the mind-affecting magic of your enemies against them. You are immune to being charmed, and when another creature attempts to charm you, you can use your reaction to attempt to turn the charm back on that creature. The creature must succeed on a Wisdom saving throw against your warlock spell save DC or be charmed by you for 1 minute or until the creature takes any damage.', '', 0, ''),
 ('Dark Delirium', 664, 'Starting at 14th level, you can plunge a creature into an illusory realm. As an action, choose a creature that you can see within 60 feet of you. It must make a Wisdom saving throw against your warlock spell save DC. On a failed save, it is charmed or frightened by you (your choice) for 1 minute or until your concentration is broken (as if you are concentrating on a spell). This effect ends early if the creature takes any damage.
 
 Until this illusion ends, the creature thinks it is lost in a misty realm, the appearance of which you choose. The creature can see and hear only itself, you, and the illusion.
 
-You must finish a short or long rest before you can use this feature again.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 671, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light)', 671, '', '', NULL, 'armorProficiency,light'),
-('Weapon Proficiency (Simple)', 671, 'As a warlock, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple'),
-('Skill Proficiency', 671, '', '', NULL, 'skillSelect,5,6,7,8,9,15,16|skillSelect,5,6,7,8,9,15,16'),
+You must finish a short or long rest before you can use this feature again.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 671, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light)', 671, '', '', 0, 'armorProficiency,light'),
+('Weapon Proficiency (Simple)', 671, 'As a warlock, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple'),
+('Skill Proficiency', 671, '', '', 0, 'skillSelect,5,6,7,8,9,15,16|skillSelect,5,6,7,8,9,15,16'),
 ('Pact Magic', 671, 'Your arcane research and the magic bestowed on you by your patron have given you facility with spells.
 
-At 1st level, you have 1 spell slot of 1st level. The number and level of your spell slots increases as you gain warlock levels. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.', '', NULL, ''),
-('Additional Spell Slot', 672, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Additional Spell Slot', 681, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Additional Spell Slot', 687, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Spell Slot Level Increase', 673, 'Your warlock spell slots upgrade to 2nd level.', '', NULL, ''),
-('Spell Slot Level Increase', 675, 'Your warlock spell slots upgrade to 3rd level.', '', NULL, ''),
-('Spell Slot Level Increase', 677, 'Your warlock spell slots upgrade to 4th level.', '', NULL, ''),
-('Spell Slot Level Increase', 679, 'Your warlock spell slots upgrade to 5th level.', '', NULL, ''),
+At 1st level, you have 1 spell slot of 1st level. The number and level of your spell slots increases as you gain warlock levels. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.', '', 0, ''),
+('Additional Spell Slot', 672, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Additional Spell Slot', 681, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Additional Spell Slot', 687, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Spell Slot Level Increase', 673, 'Your warlock spell slots upgrade to 2nd level.', '', 0, ''),
+('Spell Slot Level Increase', 675, 'Your warlock spell slots upgrade to 3rd level.', '', 0, ''),
+('Spell Slot Level Increase', 677, 'Your warlock spell slots upgrade to 4th level.', '', 0, ''),
+('Spell Slot Level Increase', 679, 'Your warlock spell slots upgrade to 5th level.', '', 0, ''),
 ('Eldritch Invocations', 672, 'In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.
 
 At 2nd level, you gain two eldritch invocations of your choice. When you reach 5th, 7th, 9th, 12th, 15th and 18th warlock level, you gain additional invocations of your choice. A level prerequisite refers to your level in this class.
 
-Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.', '', NULL, ''),
+Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.', '', 0, ''),
 ('Eldritch Invocation Selection', 672, '', '', 2, ''),
 ('Eldritch Invocation Selection', 675, '', '', 1, ''),
 ('Eldritch Invocation Selection', 677, '', '', 1, ''),
@@ -5335,40 +5284,40 @@ Additionally, when you gain a level in this class, you can choose one of the inv
 ('Eldritch Invocation Selection', 682, '', '', 1, ''),
 ('Eldritch Invocation Selection', 685, '', '', 1, ''),
 ('Eldritch Invocation Selection', 688, '', '', 1, ''),
-('Agonizing Blast', NULL, 'When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,spell,114'),
-('Armor of Shadows', NULL, 'You can cast mage armor on yourself at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', NULL, ''),
-('Ascendant Step', NULL, 'You can cast levitate on yourself at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,9'),
-('Beast Speech', NULL, 'You can cast speak with animals at will, without expending a spell slot.', 'Eldritch Invocation Selection', NULL, ''),
-('Beguiling Influence', NULL, 'You gain proficiency in the Deception and Persuasion skills.', 'Eldritch Invocation Selection', NULL, ''),
-('Bewitching Whispers', NULL, 'You can cast compulsion once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,7'),
+('Agonizing Blast', NULL, 'When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,spell,114'),
+('Armor of Shadows', NULL, 'You can cast mage armor on yourself at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', 0, ''),
+('Ascendant Step', NULL, 'You can cast levitate on yourself at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,9'),
+('Beast Speech', NULL, 'You can cast speak with animals at will, without expending a spell slot.', 'Eldritch Invocation Selection', 0, ''),
+('Beguiling Influence', NULL, 'You gain proficiency in the Deception and Persuasion skills.', 'Eldritch Invocation Selection', 0, ''),
+('Bewitching Whispers', NULL, 'You can cast compulsion once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,7'),
 ('Book of Ancient Secrets', NULL, 'You can now inscribe magical rituals in your Book of Shadows. Choose two 1st-level spells that have the ritual tag from any class''s spell list (the two needn''t be from the same list). The spells appear in the book and don''t count against the number of spells you know. With your Book of Shadows in hand, you can cast the chosen spells as rituals. You can''t cast the spells except as rituals, unless you''ve learned them by some other means. You can also cast a warlock spell you know as a ritual if it has the ritual tag.
 
-On your adventures, you can add other ritual spells to your Book of Shadows. When you find such a spell, you can add it to the book if the spell''s level is equal to or less than half your warlock level (rounded up) and if you can spare the time to transcribe the spell. For each level of the spell, the transcription process takes 2 hours and costs 50 gp for the rare inks needed to inscribe it.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,pact,tome'),
-('Chains of Carceri', NULL, 'You can cast hold monster at will – targeting a celestial, fiend, or elemental – without expending a spell slot or material components. You must finish a long rest before you can use this invocation on the same creature again.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,15|invocationRequirement,pact,chain'),
-('Devil''s Sight', NULL, 'You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet.', 'Eldritch Invocation Selection', NULL, ''),
-('Dreadful Word', NULL, 'You can cast confusion once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,7'),
-('Eldritch Sight', NULL, 'You can cast detect magic at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', NULL, ''),
-('Eldritch Spear', NULL, 'When you cast eldritch blast, its range is 300 feet.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,spell,114'),
-('Eyes of the Rune Keeper', NULL, 'You can read all writing.', 'Eldritch Invocation Selection', NULL, ''),
-('Fiendish Vigor', NULL, 'You can cast false life on yourself at will as a 1st-level spell, without expending a spell slot or material components.', 'Eldritch Invocation Selection', NULL, ''),
-('Gaze of Two Minds', NULL, 'You can use your action to touch a willing humanoid and perceive through its senses until the end of your next turn. As long as the creature is on the same plane of existence as you, you can use your action on subsequent turns to maintain this connection, extending the duration until the end of your next turn. While perceiving through the other creature''s senses, you benefit from any special senses possessed by that creature, and you are blinded and deafened to your own surroundings.', 'Eldritch Invocation Selection', NULL, ''),
-('Lifedrinker', NULL, 'When you hit a creature with your pact weapon, the creature takes extra necrotic damage equal to your Charisma modifier (minimum 1).', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,12|invocationRequirement,pact,blade'),
-('Mask of Many Faces', NULL, 'You can cast disguise self at will, without expending a spell slot.', 'Eldritch Invocation Selection', NULL, ''),
-('Master of Myriad Forms', NULL, 'You can cast alter self at will, without expending a spell slot.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,15'),
-('Minions of Chaos', NULL, 'You can cast conjure elemental once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,9'),
-('Mire the Mind', NULL, 'You can cast slow once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,5'),
-('Misty Visions', NULL, 'You can cast silent image at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', NULL, ''),
-('One with Shadows', NULL, 'When you are in an area of dim light or darkness, you can use your action to become invisible until you move or take an action or a reaction.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,5'),
-('Otherwordly Leap', NULL, 'You can cast jump at will, without expending a spell slot.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,9'),
-('Repelling Blast', NULL, 'When you hit a creature with eldritch blast, you can push the creature up to 10 feet away from you in a straight line.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,spell,114'),
-('Sculptor of Flesh', NULL, 'You can cast polymorph once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,7'),
-('Sign of Ill Omen', NULL, 'You can cast bestow curse once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,5'),
-('Thief of Five Fates', NULL, 'You can cast bane once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', NULL, ''),
-('Thirsting Blade', NULL, 'You can attack with your pact weapon twice, instead of once, whenever you take the Attack action on your turn.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,5|invocationRequirement,pact,blade'),
-('Visions of Distant Realms', NULL, 'You can cast arcane eye at will, without expending a spell slot.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,15'),
-('Voice of the Chain Master', NULL, 'You can communicate telepathically with your familiar and perceive through your familiar''s senses as long as you are on the same plane of existence. Additionally, while perceiving through your familiar''s senses, you can also speak through your familiar in your own voice, even if your familiar is normally incapable of speech.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,pact,chain'),
-('Whisper of the Grave', NULL, 'You can cast speak with dead at will, without expending a spell slot.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,9'),
-('Witch Sight', NULL, 'You can see the true form of any shapechanger or creature concealed by illusion or transmutation magic while the creature is within 30 feet of you and within line of sight.', 'Eldritch Invocation Selection', NULL, 'invocationRequirement,level,5'),
+On your adventures, you can add other ritual spells to your Book of Shadows. When you find such a spell, you can add it to the book if the spell''s level is equal to or less than half your warlock level (rounded up) and if you can spare the time to transcribe the spell. For each level of the spell, the transcription process takes 2 hours and costs 50 gp for the rare inks needed to inscribe it.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,pact,tome'),
+('Chains of Carceri', NULL, 'You can cast hold monster at will – targeting a celestial, fiend, or elemental – without expending a spell slot or material components. You must finish a long rest before you can use this invocation on the same creature again.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,15|invocationRequirement,pact,chain'),
+('Devil''s Sight', NULL, 'You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet.', 'Eldritch Invocation Selection', 0, ''),
+('Dreadful Word', NULL, 'You can cast confusion once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,7'),
+('Eldritch Sight', NULL, 'You can cast detect magic at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', 0, ''),
+('Eldritch Spear', NULL, 'When you cast eldritch blast, its range is 300 feet.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,spell,114'),
+('Eyes of the Rune Keeper', NULL, 'You can read all writing.', 'Eldritch Invocation Selection', 0, ''),
+('Fiendish Vigor', NULL, 'You can cast false life on yourself at will as a 1st-level spell, without expending a spell slot or material components.', 'Eldritch Invocation Selection', 0, ''),
+('Gaze of Two Minds', NULL, 'You can use your action to touch a willing humanoid and perceive through its senses until the end of your next turn. As long as the creature is on the same plane of existence as you, you can use your action on subsequent turns to maintain this connection, extending the duration until the end of your next turn. While perceiving through the other creature''s senses, you benefit from any special senses possessed by that creature, and you are blinded and deafened to your own surroundings.', 'Eldritch Invocation Selection', 0, ''),
+('Lifedrinker', NULL, 'When you hit a creature with your pact weapon, the creature takes extra necrotic damage equal to your Charisma modifier (minimum 1).', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,12|invocationRequirement,pact,blade'),
+('Mask of Many Faces', NULL, 'You can cast disguise self at will, without expending a spell slot.', 'Eldritch Invocation Selection', 0, ''),
+('Master of Myriad Forms', NULL, 'You can cast alter self at will, without expending a spell slot.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,15'),
+('Minions of Chaos', NULL, 'You can cast conjure elemental once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,9'),
+('Mire the Mind', NULL, 'You can cast slow once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,5'),
+('Misty Visions', NULL, 'You can cast silent image at will, without expending a spell slot or material components.', 'Eldritch Invocation Selection', 0, ''),
+('One with Shadows', NULL, 'When you are in an area of dim light or darkness, you can use your action to become invisible until you move or take an action or a reaction.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,5'),
+('Otherwordly Leap', NULL, 'You can cast jump at will, without expending a spell slot.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,9'),
+('Repelling Blast', NULL, 'When you hit a creature with eldritch blast, you can push the creature up to 10 feet away from you in a straight line.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,spell,114'),
+('Sculptor of Flesh', NULL, 'You can cast polymorph once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,7'),
+('Sign of Ill Omen', NULL, 'You can cast bestow curse once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,5'),
+('Thief of Five Fates', NULL, 'You can cast bane once using a warlock spell slot. You can''t do so again until you finish a long rest.', 'Eldritch Invocation Selection', 0, ''),
+('Thirsting Blade', NULL, 'You can attack with your pact weapon twice, instead of once, whenever you take the Attack action on your turn.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,5|invocationRequirement,pact,blade'),
+('Visions of Distant Realms', NULL, 'You can cast arcane eye at will, without expending a spell slot.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,15'),
+('Voice of the Chain Master', NULL, 'You can communicate telepathically with your familiar and perceive through your familiar''s senses as long as you are on the same plane of existence. Additionally, while perceiving through your familiar''s senses, you can also speak through your familiar in your own voice, even if your familiar is normally incapable of speech.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,pact,chain'),
+('Whisper of the Grave', NULL, 'You can cast speak with dead at will, without expending a spell slot.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,9'),
+('Witch Sight', NULL, 'You can see the true form of any shapechanger or creature concealed by illusion or transmutation magic while the creature is within 30 feet of you and within line of sight.', 'Eldritch Invocation Selection', 0, 'invocationRequirement,level,5'),
 ('Pact Boon', 673, 'At 3rd level, your otherworldly patron bestows a gift upon you for your loyal service. You gain one of the following features of your choice.
 
 Pact of the Blade:
@@ -5388,60 +5337,60 @@ Pact of the Tome:
 ('Pact of the Blade', NULL, 'You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it. You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.
 Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.
 You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest.
-You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can''t affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.', 'Pact Boon', NULL, ''),
+You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can''t affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.', 'Pact Boon', 0, ''),
 ('Pact of the Chain', NULL, 'You learn the find familiar spell and can cast it as a ritual. The spell doesn''t count against your number of spells known.
 When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit, or sprite.
-Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.', 'Pact Boon', NULL, 'spell,132'),
+Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.', 'Pact Boon', 0, 'spell,132'),
 ('Pact of the Tome', NULL, 'Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class''s spell list (the three needn''t be from the same list). While the book is on your person, you can cast those cantrips at will. They don''t count against your number of cantrips known. If they don''t appear on the warlock spell list, they are nonetheless warlock spells for you.
-If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.', 'Pact Boon', NULL, 'spellSelectAny,0|spellSelectAny,0|spellSelectAny,0'),
-('Feat', 674, '', '', NULL, 'feat'),
-('Feat', 678, '', '', NULL, 'feat'),
-('Feat', 682, '', '', NULL, 'feat'),
-('Feat', 686, '', '', NULL, 'feat'),
-('Feat', 689, '', '', NULL, 'feat'),
+If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.', 'Pact Boon', 0, 'spellSelectAny,0|spellSelectAny,0|spellSelectAny,0'),
+('Feat', 674, '', '', 0, 'feat'),
+('Feat', 678, '', '', 0, 'feat'),
+('Feat', 682, '', '', 0, 'feat'),
+('Feat', 686, '', '', 0, 'feat'),
+('Feat', 689, '', '', 0, 'feat'),
 ('Mystic Arcanum', 681, 'At 11th level, your patron bestows upon you a magical secret called an arcanum. Choose one 6th-level spell from the warlock spell list as this arcanum.
 
 You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.
 
-At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', NULL, 'spellSelect,war,6'),
-('Mystic Arcanum', 683, '', '', NULL, 'spellSelect,war,7'),
-('Mystic Arcanum', 685, '', '', NULL, 'spellSelect,war,8'),
-('Mystic Arcanum', 687, '', '', NULL, 'spellSelect,war,9'),
-('Eldritch Master', 690, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', NULL, ''),
-('Expanded Spell List', 671, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Burning Hands and Command to the warlock spell list.', '', NULL, 'expandedSpellList,41,55'),
-('Expanded Spell List', 673, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Blindess/Deafness and Scorching Ray to the warlock spell list.', '', NULL, 'expandedSpellList,37,286'),
-('Expanded Spell List', 675, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Fireball and Stinking Cloud to the warlock spell list.', '', NULL, 'expandedSpellList,137,314'),
-('Expanded Spell List', 677, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Fire Shield and Wall of Fire to the warlock spell list.', '', NULL, 'expandedSpellList,139,345'),
-('Expanded Spell List', 679, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Flame Strike and Hallow to the warlock spell list.', '', NULL, 'expandedSpellList,142,171'),
-('Dark One''s Blessing', 671, 'Starting at 1st level, when you reduce a hostile creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level (minimum of 1).', '', NULL, ''),
+At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,war,6'),
+('Mystic Arcanum', 683, '', '', 0, 'spellSelect,war,7'),
+('Mystic Arcanum', 685, '', '', 0, 'spellSelect,war,8'),
+('Mystic Arcanum', 687, '', '', 0, 'spellSelect,war,9'),
+('Eldritch Master', 690, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', 0, ''),
+('Expanded Spell List', 671, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Burning Hands and Command to the warlock spell list.', '', 0, 'expandedSpellList,41,55'),
+('Expanded Spell List', 673, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Blindess/Deafness and Scorching Ray to the warlock spell list.', '', 0, 'expandedSpellList,37,286'),
+('Expanded Spell List', 675, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Fireball and Stinking Cloud to the warlock spell list.', '', 0, 'expandedSpellList,137,314'),
+('Expanded Spell List', 677, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Fire Shield and Wall of Fire to the warlock spell list.', '', 0, 'expandedSpellList,139,345'),
+('Expanded Spell List', 679, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Flame Strike and Hallow to the warlock spell list.', '', 0, 'expandedSpellList,142,171'),
+('Dark One''s Blessing', 671, 'Starting at 1st level, when you reduce a hostile creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level (minimum of 1).', '', 0, ''),
 ('Dark One''s Own Luck', 676, 'Starting at 6th level, you can call on your patron to alter fate in your favor. When you make an ability check or a saving throw, you can use this feature to add a d10 to your roll. You can do so after seeing the initial roll but before any of the roll''s effects occur.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
-('Fiendish Resilience', 680, 'Starting at 10th level, you can choose one damage type when you finish a short or long rest. You gain resistance to that damage type until you choose a different one with this feature. Damage from magical weapons or silver weapons ignores this resistance.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
+('Fiendish Resilience', 680, 'Starting at 10th level, you can choose one damage type when you finish a short or long rest. You gain resistance to that damage type until you choose a different one with this feature. Damage from magical weapons or silver weapons ignores this resistance.', '', 0, ''),
 ('Hurl Through Hell', 684, 'Starting at 14th level, when you hit a creature with an attack, you can use this feature to instantly transport the target through the lower planes. The creature disappears and hurtles through a nightmare landscape.
 
 At the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes 10d10 psychic damage as it reels from its horrific experience.
 
-Once you use this feature, you can''t use it again until you finish a long rest.', '', NULL, ''),
-('Saving Throw Proficiency (Wisdom, Charisma)', 691, '', '', NULL, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
-('Armor Proficiency (Light)', 691, '', '', NULL, 'armorProficiency,light'),
-('Weapon Proficiency (Simple)', 691, 'As a warlock, you have proficiency with all simple weapons.', '', NULL, 'weaponProficiency,simple'),
-('Skill Proficiency', 691, '', '', NULL, 'skillSelect,5,6,7,8,9,15,16|skillSelect,5,6,7,8,9,15,16'),
+Once you use this feature, you can''t use it again until you finish a long rest.', '', 0, ''),
+('Saving Throw Proficiency (Wisdom, Charisma)', 691, '', '', 0, 'savingThrowProficiency,wis|savingThrowProficiency,cha'),
+('Armor Proficiency (Light)', 691, '', '', 0, 'armorProficiency,light'),
+('Weapon Proficiency (Simple)', 691, 'As a warlock, you have proficiency with all simple weapons.', '', 0, 'weaponProficiency,simple'),
+('Skill Proficiency', 691, '', '', 0, 'skillSelect,5,6,7,8,9,15,16|skillSelect,5,6,7,8,9,15,16'),
 ('Pact Magic', 691, 'Your arcane research and the magic bestowed on you by your patron have given you facility with spells.
 
-At 1st level, you have 1 spell slot of 1st level. The number and level of your spell slots increases as you gain warlock levels. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.', '', NULL, ''),
-('Additional Spell Slot', 692, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Additional Spell Slot', 701, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Additional Spell Slot', 707, 'You gain an additional warlock spell slot.', '', NULL, ''),
-('Spell Slot Level Increase', 693, 'Your warlock spell slots upgrade to 2nd level.', '', NULL, ''),
-('Spell Slot Level Increase', 695, 'Your warlock spell slots upgrade to 3rd level.', '', NULL, ''),
-('Spell Slot Level Increase', 697, 'Your warlock spell slots upgrade to 4th level.', '', NULL, ''),
-('Spell Slot Level Increase', 699, 'Your warlock spell slots upgrade to 5th level.', '', NULL, ''),
+At 1st level, you have 1 spell slot of 1st level. The number and level of your spell slots increases as you gain warlock levels. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.', '', 0, ''),
+('Additional Spell Slot', 692, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Additional Spell Slot', 701, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Additional Spell Slot', 707, 'You gain an additional warlock spell slot.', '', 0, ''),
+('Spell Slot Level Increase', 693, 'Your warlock spell slots upgrade to 2nd level.', '', 0, ''),
+('Spell Slot Level Increase', 695, 'Your warlock spell slots upgrade to 3rd level.', '', 0, ''),
+('Spell Slot Level Increase', 697, 'Your warlock spell slots upgrade to 4th level.', '', 0, ''),
+('Spell Slot Level Increase', 699, 'Your warlock spell slots upgrade to 5th level.', '', 0, ''),
 ('Eldritch Invocations', 692, 'In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.
 
 At 2nd level, you gain two eldritch invocations of your choice. When you reach 5th, 7th, 9th, 12th, 15th and 18th warlock level, you gain additional invocations of your choice. A level prerequisite refers to your level in this class.
 
-Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.', '', NULL, ''),
+Additionally, when you gain a level in this class, you can choose one of the invocations you know and replace it with another invocation that you could learn at that level.', '', 0, ''),
 ('Eldritch Invocation Selection', 692, '', '', 2, ''),
 ('Eldritch Invocation Selection', 695, '', '', 1, ''),
 ('Eldritch Invocation Selection', 697, '', '', 1, ''),
@@ -5468,42 +5417,42 @@ Pact of the Tome:
 ('Pact of the Blade', NULL, 'You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it. You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.
 Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.
 You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest.
-You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can''t affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.', 'Pact Boon', NULL, ''),
+You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can''t affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.', 'Pact Boon', 0, ''),
 ('Pact of the Chain', NULL, 'You learn the find familiar spell and can cast it as a ritual. The spell doesn''t count against your number of spells known.
 When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: imp, pseudodragon, quasit, or sprite.
-Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.', 'Pact Boon', NULL, 'spell,132'),
+Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your familiar to make one attack with its reaction.', 'Pact Boon', 0, 'spell,132'),
 ('Pact of the Tome', NULL, 'Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class''s spell list (the three needn''t be from the same list). While the book is on your person, you can cast those cantrips at will. They don''t count against your number of cantrips known. If they don''t appear on the warlock spell list, they are nonetheless warlock spells for you.
-If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.', 'Pact Boon', NULL, 'spellSelectAny,0|spellSelectAny,0|spellSelectAny,0'),
-('Feat', 694, '', '', NULL, 'feat'),
-('Feat', 698, '', '', NULL, 'feat'),
-('Feat', 702, '', '', NULL, 'feat'),
-('Feat', 706, '', '', NULL, 'feat'),
-('Feat', 709, '', '', NULL, 'feat'),
+If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.', 'Pact Boon', 0, 'spellSelectAny,0|spellSelectAny,0|spellSelectAny,0'),
+('Feat', 694, '', '', 0, 'feat'),
+('Feat', 698, '', '', 0, 'feat'),
+('Feat', 702, '', '', 0, 'feat'),
+('Feat', 706, '', '', 0, 'feat'),
+('Feat', 709, '', '', 0, 'feat'),
 ('Mystic Arcanum', 701, 'At 11th level, your patron bestows upon you a magical secret called an arcanum. Choose one 6th-level spell from the warlock spell list as this arcanum.
 
 You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.
 
-At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', NULL, 'spellSelect,war,6'),
-('Mystic Arcanum', 703, '', '', NULL, 'spellSelect,war,7'),
-('Mystic Arcanum', 705, '', '', NULL, 'spellSelect,war,8'),
-('Mystic Arcanum', 707, '', '', NULL, 'spellSelect,war,9'),
-('Eldritch Master', 710, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', NULL, ''),
-('Expanded Spell List', 691, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dissonant Whispers and Tasha''s Hideous Laughter to the warlock spell list.', '', NULL, 'expandedSpellList,103,323'),
-('Expanded Spell List', 693, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Detect Thoughts and Phantasmal Force to the warlock spell list.', '', NULL, 'expandedSpellList,97,248'),
-('Expanded Spell List', 695, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Clairvoyance and Sending to the warlock spell list.', '', NULL, 'expandedSpellList,50,291'),
-('Expanded Spell List', 697, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Beast and Evard''s Black Tentacles to the warlock spell list.', '', NULL, 'expandedSpellList,107,122'),
-('Expanded Spell List', 699, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Person and Telekinesis to the warlock spell list.', '', NULL, 'expandedSpellList,109,324'),
-('Awakened Mind', 691, 'Starting at 1st level, your alien knowledge gives you the ability to touch the minds of other creatures. You can telepathically speak to any creature you can see within 30 feet of you. You don''t need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language.', '', NULL, ''),
+At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,war,6'),
+('Mystic Arcanum', 703, '', '', 0, 'spellSelect,war,7'),
+('Mystic Arcanum', 705, '', '', 0, 'spellSelect,war,8'),
+('Mystic Arcanum', 707, '', '', 0, 'spellSelect,war,9'),
+('Eldritch Master', 710, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', 0, ''),
+('Expanded Spell List', 691, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dissonant Whispers and Tasha''s Hideous Laughter to the warlock spell list.', '', 0, 'expandedSpellList,103,323'),
+('Expanded Spell List', 693, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Detect Thoughts and Phantasmal Force to the warlock spell list.', '', 0, 'expandedSpellList,97,248'),
+('Expanded Spell List', 695, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Clairvoyance and Sending to the warlock spell list.', '', 0, 'expandedSpellList,50,291'),
+('Expanded Spell List', 697, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Beast and Evard''s Black Tentacles to the warlock spell list.', '', 0, 'expandedSpellList,107,122'),
+('Expanded Spell List', 699, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dominate Person and Telekinesis to the warlock spell list.', '', 0, 'expandedSpellList,109,324'),
+('Awakened Mind', 691, 'Starting at 1st level, your alien knowledge gives you the ability to touch the minds of other creatures. You can telepathically speak to any creature you can see within 30 feet of you. You don''t need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language.', '', 0, ''),
 ('Entropic Ward', 696, 'At 6th level, you learn to magically ward yourself against attack and to turn an enemy''s failed strike into good luck for yourself. When a creature makes an attack roll against you, you can use your reaction to impose disadvantage on that roll. If the attack misses you, your next attack roll against the creature has advantage if you make it before the end of your next turn.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
-('Thought Shield', 700, 'Starting at 10th level, your thoughts can''t be read by telepathy or other means unless you allow it. You also have resistance to psychic damage, and whenever a creature deals psychic damage to you, that creature takes the same amount of damage that you do.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
+('Thought Shield', 700, 'Starting at 10th level, your thoughts can''t be read by telepathy or other means unless you allow it. You also have resistance to psychic damage, and whenever a creature deals psychic damage to you, that creature takes the same amount of damage that you do.', '', 0, ''),
 ('Create Thrall', 704, 'At 14th level, you gain the ability to infect a humanoid''s mind with the alien magic of your patron. You can use your action to touch an incapacitated humanoid. That creature is then charmed by you until a Remove Curse spell is cast on it, the charmed condition is removed from it, or you use this feature again.
 
-You can communicate telepathically with the charmed creature as long as the two of you are on the same plane of existence.', '', NULL, ''),
-('Saving Throw Proficiency (Intelligence, Wisdom)', 711, '', '', NULL, 'savingThrowProficiency,int|savingThrowProficiency,wis'),
-('Wizard Weapon Proficiencies', 711, 'As a wizard, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', NULL, 'weaponProficiency,multiple,2,8,12,13,15'),
-('Skill Proficiency', 711, '', '', NULL, 'skillSelect,5,6,7,9,11,12|skillSelect,5,6,7,9,11,12'),
+You can communicate telepathically with the charmed creature as long as the two of you are on the same plane of existence.', '', 0, ''),
+('Saving Throw Proficiency (Intelligence, Wisdom)', 711, '', '', 0, 'savingThrowProficiency,int|savingThrowProficiency,wis'),
+('Wizard Weapon Proficiencies', 711, 'As a wizard, you have proficiency with daggers, darts, slings, quarterstaves and light crossbows.', '', 0, 'weaponProficiency,multiple,2,8,12,13,15'),
+('Skill Proficiency', 711, '', '', 0, 'skillSelect,5,6,7,9,11,12|skillSelect,5,6,7,9,11,12'),
 ('Spellbook', 711, 'At 1st level, you have a spellbook containing six 1st-level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind.
 
 The spells that you add to your spellbook as you gain levels reflect the arcane research you conduct on your own, as well as intellectual breakthroughs you have had about the nature of the multiverse. You might find other spells during your adventures. You could discover a spell recorded on a scroll in an evil wizard''s chest, for example, or in a dusty tome in an ancient library.
@@ -5518,68 +5467,68 @@ Replacing the Book - You can copy a spell from your own spellbook into another b
 
 If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place.
 
-The Book''s Appearance - Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap.', '', NULL, ''),
+The Book''s Appearance - Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap.', '', 0, ''),
 ('Arcane Recovery', 711, 'You have learned to regain some of your magical energy by studying your spellbook. Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher.
 
-For example, if you''re a 4th-level wizard, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level spell slot or two 1st-level spell slots.', '', NULL, ''),
-('Feat', 714, '', '', NULL, 'feat'),
-('Feat', 718, '', '', NULL, 'feat'),
-('Feat', 722, '', '', NULL, 'feat'),
-('Feat', 726, '', '', NULL, 'feat'),
-('Feat', 729, '', '', NULL, 'feat'),
+For example, if you''re a 4th-level wizard, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level spell slot or two 1st-level spell slots.', '', 0, ''),
+('Feat', 714, '', '', 0, 'feat'),
+('Feat', 718, '', '', 0, 'feat'),
+('Feat', 722, '', '', 0, 'feat'),
+('Feat', 726, '', '', 0, 'feat'),
+('Feat', 729, '', '', 0, 'feat'),
 ('Spell Mastery', 728, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 730, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Abjuration Savant', 712, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a abjuration spell into your spellbook is halved.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Abjuration Savant', 712, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a abjuration spell into your spellbook is halved.', '', 0, ''),
 ('Arcane Ward', 712, 'Starting at 2nd level, you can weave magic around yourself for protection. When you cast an abjuration spell of 1st level or higher, you can simultaneously use a strand of the spell''s magic to create a magical ward on yourself that lasts until you finish a long rest. The ward has hit points equal to twice your wizard level + your Intelligence modifier. Whenever you take damage, the ward takes the damage instead. If this damage reduces the ward to 0 hit points, you take any remaining damage.
 
 While the ward has 0 hit points, it can''t absorb damage, but its magic remains. Whenever you cast an abjuration spell of 1st level or higher, the ward regains a number of hit points equal to twice the level of the spell.
 
-Once you create the ward, you can''t create it again until you finish a long rest.', '', NULL, ''),
-('Projected Ward', 716, 'Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage.', '', NULL, ''),
-('Improved Abjuration', 720, 'Beginning at 10th level, when you cast an abjuration spell that requires you to make an ability check as a part of casting that spell (as in Counterspell and Dispel Magic), you add your proficiency bonus to that ability check.', '', NULL, ''),
+Once you create the ward, you can''t create it again until you finish a long rest.', '', 0, ''),
+('Projected Ward', 716, 'Starting at 6th level, when a creature that you can see within 30 feet of you takes damage, you can use your reaction to cause your Arcane Ward to absorb that damage. If this damage reduces the ward to 0 hit points, the warded creature takes any remaining damage.', '', 0, ''),
+('Improved Abjuration', 720, 'Beginning at 10th level, when you cast an abjuration spell that requires you to make an ability check as a part of casting that spell (as in Counterspell and Dispel Magic), you add your proficiency bonus to that ability check.', '', 0, ''),
 ('Spell Resistance', 724, 'Starting at 14th level, you have advantage on saving throws against spells.
 
-Furthermore, you have resistance against the damage of spells.', '', NULL, 'damageResistance,spells'),
-('Feat', 733, '', '', NULL, 'feat'),
-('Feat', 737, '', '', NULL, 'feat'),
-('Feat', 741, '', '', NULL, 'feat'),
-('Feat', 745, '', '', NULL, 'feat'),
-('Feat', 748, '', '', NULL, 'feat'),
+Furthermore, you have resistance against the damage of spells.', '', 0, 'damageResistance,spells'),
+('Feat', 733, '', '', 0, 'feat'),
+('Feat', 737, '', '', 0, 'feat'),
+('Feat', 741, '', '', 0, 'feat'),
+('Feat', 745, '', '', 0, 'feat'),
+('Feat', 748, '', '', 0, 'feat'),
 ('Spell Mastery', 747, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 749, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Conjuration Savant', 731, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Conjuration spell into your spellbook is halved.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Conjuration Savant', 731, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Conjuration spell into your spellbook is halved.', '', 0, ''),
 ('Minor Conjuration', 731, 'Starting at 2nd level when you select this school, you can use your action to conjure up an inanimate object in your hand or on the ground in an unoccupied space that you can see within 10 feet of you. This object can be no larger than 3 feet on a side and weigh no more than 10 pounds, and its form must be that of a nonmagical object that you have seen. The object is visibly magical, radiating dim light out to 5 feet.
 
-The object disappears after 1 hour, when you use this feature again, or if it takes or deals any damage.', '', NULL, ''),
+The object disappears after 1 hour, when you use this feature again, or if it takes or deals any damage.', '', 0, ''),
 ('Benign Transposition', 735, 'Starting at 6th level, you can use your action to teleport up to 30 feet to an unoccupied space that you can see. Alternatively, you can choose a space within range that is occupied by a Small or Medium creature. If that creature is willing, you both teleport, swapping places.
 
-Once you use this feature, you can''t use it again until you finish a long rest or you cast a conjuration spell of 1st level or higher.', '', NULL, ''),
-('Focused Conjuration', 739, 'Beginning at 10th level, while you are concentrating on a conjuration spell, your concentration can''t be broken as a result of taking damage.', '', NULL, ''),
-('Durable Summons', 743, 'Starting at 14th level, any creature that you summon or create with a conjuration spell has 30 temporary hit points.', '', NULL, ''),
-('Feat', 752, '', '', NULL, 'feat'),
-('Feat', 756, '', '', NULL, 'feat'),
-('Feat', 760, '', '', NULL, 'feat'),
-('Feat', 764, '', '', NULL, 'feat'),
-('Feat', 767, '', '', NULL, 'feat'),
+Once you use this feature, you can''t use it again until you finish a long rest or you cast a conjuration spell of 1st level or higher.', '', 0, ''),
+('Focused Conjuration', 739, 'Beginning at 10th level, while you are concentrating on a conjuration spell, your concentration can''t be broken as a result of taking damage.', '', 0, ''),
+('Durable Summons', 743, 'Starting at 14th level, any creature that you summon or create with a conjuration spell has 30 temporary hit points.', '', 0, ''),
+('Feat', 752, '', '', 0, 'feat'),
+('Feat', 756, '', '', 0, 'feat'),
+('Feat', 760, '', '', 0, 'feat'),
+('Feat', 764, '', '', 0, 'feat'),
+('Feat', 767, '', '', 0, 'feat'),
 ('Spell Mastery', 766, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 768, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Divination Savant', 750, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Divination spell into your spellbook is halved.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Divination Savant', 750, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Divination spell into your spellbook is halved.', '', 0, ''),
 ('Portent', 750, 'Starting at 2nd level when you choose this school, glimpses of the future begin to press in on your awareness. When you finish a long rest, roll two d20s and record the numbers rolled. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with one of these foretelling rolls. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.
 
-Each foretelling roll can be used only once. When you finish a long rest, you lose any unused foretelling rolls.', '', NULL, ''),
-('Expert Divination', 754, 'Beginning at 6th level, casting divination spells comes so easily to you that it expends only a fraction of your spellcasting efforts. When you cast a divination spell of 2nd level or higher using a spell slot, you regain one expended spell slot. The slot you regain must be of a level lower than the spell you cast and can''t be higher than 5th level.', '', NULL, ''),
+Each foretelling roll can be used only once. When you finish a long rest, you lose any unused foretelling rolls.', '', 0, ''),
+('Expert Divination', 754, 'Beginning at 6th level, casting divination spells comes so easily to you that it expends only a fraction of your spellcasting efforts. When you cast a divination spell of 2nd level or higher using a spell slot, you regain one expended spell slot. The slot you regain must be of a level lower than the spell you cast and can''t be higher than 5th level.', '', 0, ''),
 ('The Third Eye', 758, 'Starting at 10th level, you can use your action to increase your powers of perception. When you do so, choose one of the following benefits, which lasts until you are incapacitated or you take a short or long rest. You can''t use the feature again until you finish a short or long rest.
 
 Darkvision - You gain darkvision out to a range of 60 feet.
@@ -5588,110 +5537,110 @@ Ethereal Sight - You can see into the Ethereal Plane within 60 feet of you.
 
 Greater Comprehension - You can read any language.
 
-See Invisibility - You can see invisible creatures and objects within 10 feet of you that are within line of sight.', '', NULL, ''),
-('Greater Portent', 762, 'Starting at 14th level, the visions in your dreams intensify and paint a more accurate picture in your mind of what is to come. You roll three d20s for your Portent feature, rather than two.', '', NULL, ''),
-('Feat', 771, '', '', NULL, 'feat'),
-('Feat', 775, '', '', NULL, 'feat'),
-('Feat', 779, '', '', NULL, 'feat'),
-('Feat', 783, '', '', NULL, 'feat'),
-('Feat', 786, '', '', NULL, 'feat'),
+See Invisibility - You can see invisible creatures and objects within 10 feet of you that are within line of sight.', '', 0, ''),
+('Greater Portent', 762, 'Starting at 14th level, the visions in your dreams intensify and paint a more accurate picture in your mind of what is to come. You roll three d20s for your Portent feature, rather than two.', '', 0, ''),
+('Feat', 771, '', '', 0, 'feat'),
+('Feat', 775, '', '', 0, 'feat'),
+('Feat', 779, '', '', 0, 'feat'),
+('Feat', 783, '', '', 0, 'feat'),
+('Feat', 786, '', '', 0, 'feat'),
 ('Spell Mastery', 785, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 787, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Enchantment Savant', 769, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Enchantment spell into your spellbook is halved.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Enchantment Savant', 769, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Enchantment spell into your spellbook is halved.', '', 0, ''),
 ('Hypnotic Gaze', 769, 'Starting at 2nd level when you choose this school, your soft words and enchanting gaze can magically enthrall another creature. As an action, choose one creature that you can see within 5 feet of you. If the target can see or hear you, it must succeed on a Wisdom saving throw against your wizard spell save DC or be charmed by you until the end of your next turn. The charmed creature''s speed drops to 0, and the creature is incapacitated and visibly dazed.
 
 On subsequent turns, you can use your action to maintain this effect, extending its duration until the end of your next turn. However, the effect ends if you move more than 5 feet away from the creature, if the creature can neither see nor hear you, or if the creature takes damage.
 
-Once the effect ends, or if the creature succeeds on its initial saving throw against this effect, you can''t use this feature on that creature again until you finish a long rest.', '', NULL, ''),
+Once the effect ends, or if the creature succeeds on its initial saving throw against this effect, you can''t use this feature on that creature again until you finish a long rest.', '', 0, ''),
 ('Instinctive Charm', 773, 'Beginning at 6th level, when a creature you can see within 30 feet of you makes an attack roll against you, you can use your reaction to divert the attack, provided that another creature is within the attack''s range. The attacker must make a Wisdom saving throw against your wizard spell save DC. On a failed save, the attacker must target the creature that is closest to it, not including you or itself. If multiple creatures are closest, the attacker chooses which one to target.
 
 On a successful save, you can''t use this feature on the attacker again until you finish a long rest.
 
-You must choose to use this feature before knowing whether the attack hits or misses. Creatures that can''t be charmed are immune to this effect.', '', NULL, ''),
-('Split Enchantment', 777, 'Starting at 10th level, when you cast an enchantment spell of 1st level or higher that targets only one creature, you can have it target a second creature.', '', NULL, ''),
+You must choose to use this feature before knowing whether the attack hits or misses. Creatures that can''t be charmed are immune to this effect.', '', 0, ''),
+('Split Enchantment', 777, 'Starting at 10th level, when you cast an enchantment spell of 1st level or higher that targets only one creature, you can have it target a second creature.', '', 0, ''),
 ('Alter Memories', 781, 'At 14th level, you gain the ability to make a creature unaware of your magical influence on it. When you cast an enchantment spell to charm one or more creatures, you can alter one creature''s understanding so that it remains unaware of being charmed.
 
-Additionally, once before the spell expires, you can use your action to try to make the chosen creature forget some of the time it spent charmed. The creature must succeed on an Intelligence saving throw against your wizard spell save DC or lose a number of hours of its memories equal to 1 + your Charisma modifier (minimum 1). You can make the creature forget less time, and the amount of time can''t exceed the duration of your enchantment spell.', '', NULL, ''),
-('Feat', 790, '', '', NULL, 'feat'),
-('Feat', 794, '', '', NULL, 'feat'),
-('Feat', 798, '', '', NULL, 'feat'),
-('Feat', 802, '', '', NULL, 'feat'),
-('Feat', 805, '', '', NULL, 'feat'),
+Additionally, once before the spell expires, you can use your action to try to make the chosen creature forget some of the time it spent charmed. The creature must succeed on an Intelligence saving throw against your wizard spell save DC or lose a number of hours of its memories equal to 1 + your Charisma modifier (minimum 1). You can make the creature forget less time, and the amount of time can''t exceed the duration of your enchantment spell.', '', 0, ''),
+('Feat', 790, '', '', 0, 'feat'),
+('Feat', 794, '', '', 0, 'feat'),
+('Feat', 798, '', '', 0, 'feat'),
+('Feat', 802, '', '', 0, 'feat'),
+('Feat', 805, '', '', 0, 'feat'),
 ('Spell Mastery', 804, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 806, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Evocation Savant', 788, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Evocation spell into your spellbook is halved.', '', NULL, ''),
-('Sculpt Spells', 788, 'Beginning at 2nd level, you can create pockets of relative safety within the effects of your evocation spells. When you cast an evocation spell that affects other creatures that you can see, you can choose a number of them equal to 1 + the spell''s level. The chosen creatures automatically succeed on their saving throws against the spell, and they take no damage if they would normally take half damage on a successful save.', '', NULL, ''),
-('Potent Cantrip', 792, 'Starting at 6th level, your damaging cantrips affect even creatures that avoid the brunt of the effect. When a creature succeeds on a saving throw against your cantrip, the creature takes half the cantrip''s damage (if any) but suffers no additional effect from the cantrip.', '', NULL, ''),
-('Empowered Evocation', 796, 'Beginning at 10th level, you can add your Intelligence modifier (minimum of +1) to one damage roll of any wizard evocation spell that you cast.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Evocation Savant', 788, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Evocation spell into your spellbook is halved.', '', 0, ''),
+('Sculpt Spells', 788, 'Beginning at 2nd level, you can create pockets of relative safety within the effects of your evocation spells. When you cast an evocation spell that affects other creatures that you can see, you can choose a number of them equal to 1 + the spell''s level. The chosen creatures automatically succeed on their saving throws against the spell, and they take no damage if they would normally take half damage on a successful save.', '', 0, ''),
+('Potent Cantrip', 792, 'Starting at 6th level, your damaging cantrips affect even creatures that avoid the brunt of the effect. When a creature succeeds on a saving throw against your cantrip, the creature takes half the cantrip''s damage (if any) but suffers no additional effect from the cantrip.', '', 0, ''),
+('Empowered Evocation', 796, 'Beginning at 10th level, you can add your Intelligence modifier (minimum of +1) to one damage roll of any wizard evocation spell that you cast.', '', 0, ''),
 ('Overchannel', 800, 'Starting at 14th level, you can increase the power of your simpler spells. When you cast a wizard spell of 1st through 5th level that deals damage, you can deal maximum damage with that spell.
 
-The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take 2d12 necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by 1d12. This damage ignores resistance and immunity.', '', NULL, ''),
-('Feat', 809, '', '', NULL, 'feat'),
-('Feat', 813, '', '', NULL, 'feat'),
-('Feat', 817, '', '', NULL, 'feat'),
-('Feat', 821, '', '', NULL, 'feat'),
-('Feat', 824, '', '', NULL, 'feat'),
+The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take 2d12 necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by 1d12. This damage ignores resistance and immunity.', '', 0, ''),
+('Feat', 809, '', '', 0, 'feat'),
+('Feat', 813, '', '', 0, 'feat'),
+('Feat', 817, '', '', 0, 'feat'),
+('Feat', 821, '', '', 0, 'feat'),
+('Feat', 824, '', '', 0, 'feat'),
 ('Spell Mastery', 823, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 825, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Illusion Savant', 807, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Illusion spell into your spellbook is halved.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Illusion Savant', 807, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Illusion spell into your spellbook is halved.', '', 0, ''),
 ('Improved Minor Illusion', 807, 'When you choose this school at 2nd level, you learn the Minor Illusion cantrip. If you already know this cantrip, you learn a different wizard cantrip of your choice. The cantrip doesn''t count against your number of cantrips known.
 
-When you cast Minor Illusion, you can create both a sound and an image with a single casting of the spell.', '', NULL, ''),
-('Malleable Illusions', 811, 'Starting at 6th level, when you cast an illusion spell that has a duration of 1 minute or longer, you can use your action to change the nature of that illusion (using the spell''s normal parameters for the illusion), provided that you can see the illusion.', '', NULL, ''),
+When you cast Minor Illusion, you can create both a sound and an image with a single casting of the spell.', '', 0, ''),
+('Malleable Illusions', 811, 'Starting at 6th level, when you cast an illusion spell that has a duration of 1 minute or longer, you can use your action to change the nature of that illusion (using the spell''s normal parameters for the illusion), provided that you can see the illusion.', '', 0, ''),
 ('Illusory Self', 815, 'Beginning at 10th level, you can create an illusory duplicate of yourself as an instant, almost instinctual reaction to danger. When a creature makes an attack roll against you, you can use your reaction to interpose the illusory duplicate between the attacker and yourself. The attack automatically misses you, then the illusion dissipates.
 
-Once you use this feature, you can''t use it again until you finish a short or long rest.', '', NULL, ''),
+Once you use this feature, you can''t use it again until you finish a short or long rest.', '', 0, ''),
 ('Illusory Reality', 819, 'By 14th level, you have learned the secret of weaving shadow magic into your illusions to give them a semi-reality. When you cast an illusion spell of 1st level or higher, you can choose one inanimate, nonmagical object that is part of the illusion and make that object real. You can do this on your turn as a bonus action while the spell is ongoing. The object remains real for 1 minute. For example, you can create an illusion of a bridge over a chasm and then make it real long enough for your allies to cross.
 
-The object can''t deal damage or otherwise directly harm anyone.', '', NULL, ''),
-('Feat', 828, '', '', NULL, 'feat'),
-('Feat', 832, '', '', NULL, 'feat'),
-('Feat', 836, '', '', NULL, 'feat'),
-('Feat', 840, '', '', NULL, 'feat'),
-('Feat', 843, '', '', NULL, 'feat'),
+The object can''t deal damage or otherwise directly harm anyone.', '', 0, ''),
+('Feat', 828, '', '', 0, 'feat'),
+('Feat', 832, '', '', 0, 'feat'),
+('Feat', 836, '', '', 0, 'feat'),
+('Feat', 840, '', '', 0, 'feat'),
+('Feat', 843, '', '', 0, 'feat'),
 ('Spell Mastery', 842, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 844, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Necromancy Savant', 826, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Necromancy spell into your spellbook is halved.', '', NULL, ''),
-('Grim Harvest', 826, 'At 2nd level, you gain the ability to reap life energy from creatures you kill with your spells. Once per turn when you kill one or more creatures with a spell of 1st level or higher, you regain hit points equal to twice the spell''s level, or three times its level if the spell belongs to the School of Necromancy. You don''t gain this benefit for killing constructs or undead.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Necromancy Savant', 826, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Necromancy spell into your spellbook is halved.', '', 0, ''),
+('Grim Harvest', 826, 'At 2nd level, you gain the ability to reap life energy from creatures you kill with your spells. Once per turn when you kill one or more creatures with a spell of 1st level or higher, you regain hit points equal to twice the spell''s level, or three times its level if the spell belongs to the School of Necromancy. You don''t gain this benefit for killing constructs or undead.', '', 0, ''),
 ('Undead Thralls', 830, 'At 6th level, you add the Animate Dead spell to your spellbook if it is not there already. When you cast Animate Dead, you can target one additional corpse or pile of bones, creating another zombie or skeleton, as appropriate.
 
 Whenever you create an undead using a necromancy spell, it has additional benefits:
 
 - The creature''s hit point maximum is increased by an amount equal to your wizard level.
-- The creature adds your proficiency bonus to its weapon damage rolls.', '', NULL, ''),
-('Inured to Undeath', 834, 'Beginning at 10th level, you have resistance to necrotic damage, and your hit point maximum can''t be reduced. You have spent so much time dealing with undead and the forces that animate them that you have become inured to some of their worst effects.', '', NULL, 'damageResistance,necrotic'),
+- The creature adds your proficiency bonus to its weapon damage rolls.', '', 0, ''),
+('Inured to Undeath', 834, 'Beginning at 10th level, you have resistance to necrotic damage, and your hit point maximum can''t be reduced. You have spent so much time dealing with undead and the forces that animate them that you have become inured to some of their worst effects.', '', 0, 'damageResistance,necrotic'),
 ('Command Undead', 838, 'Starting at 14th level, you can use magic to bring undead under your control, even those created by other wizards. As an action, you can choose one undead that you can see within 60 feet of you. That creature must make a Charisma saving throw against your wizard spell save DC. If it succeeds, you can''t use this feature on it again. If it fails, it becomes friendly to you and obeys your commands until you use this feature again.
 
-Intelligent undead are harder to control in this way. If the target has an Intelligence of 8 or higher, it has advantage on the saving throw. If it fails the saving throw and has an Intelligence of 12 or higher, it can repeat the saving throw at the end of every hour until it succeeds and breaks free.', '', NULL, ''),
-('Feat', 847, '', '', NULL, 'feat'),
-('Feat', 851, '', '', NULL, 'feat'),
-('Feat', 855, '', '', NULL, 'feat'),
-('Feat', 859, '', '', NULL, 'feat'),
-('Feat', 862, '', '', NULL, 'feat'),
+Intelligent undead are harder to control in this way. If the target has an Intelligence of 8 or higher, it has advantage on the saving throw. If it fails the saving throw and has an Intelligence of 12 or higher, it can repeat the saving throw at the end of every hour until it succeeds and breaks free.', '', 0, ''),
+('Feat', 847, '', '', 0, 'feat'),
+('Feat', 851, '', '', 0, 'feat'),
+('Feat', 855, '', '', 0, 'feat'),
+('Feat', 859, '', '', 0, 'feat'),
+('Feat', 862, '', '', 0, 'feat'),
 ('Spell Mastery', 861, 'At 18th level, you have achieved such mastery over certain spells that you can cast them at will. Choose a 1st-level wizard spell and a 2nd-level wizard spell that are in your spellbook. You can cast those spells at their lowest level without expending a spell slot when you have them prepared. If you want to cast either spell at a higher level, you must expend a spell slot as normal.
 
-By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', NULL, 'spellMastery,1|spellMastery,2'),
+By spending 8 hours in study, you can exchange one or both of the spells you chose for different spells of the same levels.', '', 0, 'spellMastery,1|spellMastery,2'),
 ('Signature Spells', 863, 'When you reach 20th level, you gain mastery over two powerful spells and can cast them with little effort. Choose two 3rd-level wizard spells in your spellbook as your signature spells. You always have these spells prepared, they don''t count against the number of spells you have prepared, and you can cast each of them once at 3rd level without expending a spell slot. When you do so, you can''t do so again until you finish a short or long rest.
 
-If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', NULL, 'spellMastery,3|spellMastery,3'),
-('Transmutation Savant', 845, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Transmutation spell into your spellbook is halved.', '', NULL, ''),
-('Minor Alchemy', 845, 'Starting at 2nd level when you select this school, you can temporarily alter the physical properties of one nonmagical object, changing it from one substance into another. You perform a special alchemical procedure on one object composed entirely of wood, stone (but not a gemstone), iron, copper, or silver, transforming it into a different one of those materials. For each 10 minutes you spend performing the procedure, you can transform up to 1 cubic foot of material. After 1 hour, or until you lose your concentration (as if you were concentrating on a spell), the material reverts to its original substance.', '', NULL, ''),
+If you want to cast either spell at a higher level, you must expend a spell slot as normal.', '', 0, 'spellMastery,3|spellMastery,3'),
+('Transmutation Savant', 845, 'Beginning when you select this school at 2nd level, the gold and time you must spend to copy a Transmutation spell into your spellbook is halved.', '', 0, ''),
+('Minor Alchemy', 845, 'Starting at 2nd level when you select this school, you can temporarily alter the physical properties of one nonmagical object, changing it from one substance into another. You perform a special alchemical procedure on one object composed entirely of wood, stone (but not a gemstone), iron, copper, or silver, transforming it into a different one of those materials. For each 10 minutes you spend performing the procedure, you can transform up to 1 cubic foot of material. After 1 hour, or until you lose your concentration (as if you were concentrating on a spell), the material reverts to its original substance.', '', 0, ''),
 ('Transmuter''s Stone', 849, 'Starting at 6th level, you can spend 8 hours creating a transmuter''s stone that stores transmutation magic. You can benefit from the stone yourself or give it to another creature. A creature gains a benefit of your choice as long as the stone is in the creature''s possession. When you create the stone, choose the benefit from the following options:
 
 Darkvision out to a range of 60 feet
@@ -5700,10 +5649,10 @@ Proficiency in Constitution saving throws
 Resistance to acid, cold, fire, lightning, or thunder damage (your choice whenever you choose this benefit)
 Each time you cast a transmutation spell of 1st level or higher, you can change the effect of your stone if the stone is on your person.
 
-If you create a new transmuter''s stone, the previous one ceases to function.', '', NULL, ''),
+If you create a new transmuter''s stone, the previous one ceases to function.', '', 0, ''),
 ('Shapechanger', 853, 'At 10th level, you add the Polymorph spell to your spellbook, if it is not there already. You can cast Polymorph without expending a spell slot. When you do so, you can target only yourself and transform into a beast whose challenge rating is 1 or lower.
 
-Once you cast Polymorph in this way, you can''t do so again until you finish a short or long rest, though you can still cast it normally using an available spell slot.', '', NULL, ''),
+Once you cast Polymorph in this way, you can''t do so again until you finish a short or long rest, though you can still cast it normally using an available spell slot.', '', 0, ''),
 ('Master Transmuter', 857, 'Starting at 14th level, you can use your action to consume the reserve of transmutation magic stored within your transmuter''s stone in a single burst. When you do so, choose one of the following effects. Your transmuter''s stone is destroyed and can''t be remade until you finish a long rest.
 
 Major Transformation. You can transmute one nonmagical object – no larger than a 5-foot cube – into another nonmagical object of similar size and mass and of equal or lesser value. You must spend 10 minutes handling the object to transform it.
@@ -5712,179 +5661,179 @@ Panacea. You remove all curses, diseases, and poisons affecting a creature that 
 
 Restore Life. You cast the Raise Dead spell on a creature you touch with the transmuter''s stone, without expending a spell slot or needing to have the spell in your spellbook.
 
-Restore Youth. You touch the transmuter''s stone to a willing creature, and that creature''s apparent age is reduced by 3d10 years, to a minimum of 13 years. This effect doesn''t extend the creature''s lifespan.', '', NULL, '');
+Restore Youth. You touch the transmuter''s stone to a willing creature, and that creature''s apparent age is reduced by 3d10 years, to a minimum of 13 years. This effect doesn''t extend the creature''s lifespan.', '', 0, '');
 end
 if not exists (select 1 from dbo.[RacialFeatures])
 begin
 	insert into dbo.[RacialFeatures] ([Name], [RaceId], [Description], [ParentFeatureName], [SubfeatureSelections], [Tags])
-	values ('Ability Score Increase: Strength +2', 1, '', '', NULL, 'abilityImprovement,str,2'),
-('Ability Score Increase: Charisma +1', 1, '', '', NULL, 'abilityImprovement,cha,1'),
+	values ('Ability Score Increase: Strength +2', 1, '', '', 0, 'abilityImprovement,str,2'),
+('Ability Score Increase: Charisma +1', 1, '', '', 0, 'abilityImprovement,cha,1'),
 ('Draconic Ancestry', 1, 'You are distantly related to a particular kind of dragon. Choose a type of dragon from the below list; this determines the damage and area of your breath weapon, and the type of resistance you gain.', '', 1, ''),
-('Draconic Ancestry: Black', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Blue', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Brass', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Bronze', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Copper', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Gold', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Green', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Red', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: Silver', NULL, '', 'Draconic Ancestry', 0, ''),
-('Draconic Ancestry: White', NULL, '', 'Draconic Ancestry', 0, ''),
-('Breath Weapon: Acid', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Black', NULL, ''),
-('Breath Weapon: Lightning', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Blue', NULL, ''),
-('Breath Weapon: Fire', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Brass', NULL, ''),
-('Breath Weapon: Lightning', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Bronze', NULL, ''),
-('Breath Weapon: Acid', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Copper', NULL, ''),
-('Breath Weapon: Fire', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Gold', NULL, ''),
-('Breath Weapon: Poison', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Constitution saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 poison damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Green', NULL, ''),
-('Breath Weapon: Fire', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Red', NULL, ''),
-('Breath Weapon: Cold', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Constitution saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Silver', NULL, ''),
-('Breath Weapon: Cold', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Constitution saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: White', NULL, ''),
-('Damage Resistance: Acid', NULL, 'Black dragon heritage grants you resistance to acid damage.', 'Draconic Ancestry: Black', NULL, 'damageResistance,acid'),
-('Damage Resistance: Lightning', NULL, 'Blue dragon heritage grants you resistance to lightning damage.', 'Draconic Ancestry: Blue', NULL, 'damageResistance,lightning'),
-('Damage Resistance: Fire', NULL, 'Brass dragon heritage grants you resistance to fire damage.', 'Draconic Ancestry: Brass', NULL, 'damageResistance,fire'),
-('Damage Resistance: Lightning', NULL, 'Bronze dragon heritage grants you resistance to lightning damage.', 'Draconic Ancestry: Bronze', NULL, 'damageResistance,lightning'),
-('Damage Resistance: Acid', NULL, 'Copper dragon heritage grants you resistance to acid damage.', 'Draconic Ancestry: Copper', NULL, 'damageResistance,acid'),
-('Damage Resistance: Fire', NULL, 'Gold dragon heritage grants you resistance to fire damage.', 'Draconic Ancestry: Gold', NULL, 'damageResistance,fire'),
-('Damage Resistance: Poison', NULL, 'Green dragon heritage grants you resistance to poison damage.', 'Draconic Ancestry: Green', NULL, 'damageResistance,poison'),
-('Damage Resistance: Fire', NULL, 'Red dragon heritage grants you resistance to fire damage.', 'Draconic Ancestry: Red', NULL, 'damageResistance,fire'),
-('Damage Resistance: Cold', NULL, 'Silver dragon heritage grants you resistance to cold damage.', 'Draconic Ancestry: Silver', NULL, 'damageResistance,cold'),
-('Damage Resistance: Cold', NULL, 'White dragon heritage grants you resistance to cold damage.', 'Draconic Ancestry: White', NULL, 'damageResistance,cold'),
-('Ability Score Increase: Dexterity +2', 2, '', '', NULL, 'abilityImprovement,dex,2'),
-('Ability Score Increase: Charisma +1', 2, '', '', NULL, 'abilityImprovement,cha,1'),
-('Superior Darkvision', 2, 'You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'superiorDarkvision'),
-('Keen Senses', 2, 'You have proficiency in the Perception skill.', '', NULL, 'skillProficiency,13'),
-('Fey Ancestry', 2, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', NULL, ''),
-('Trance', 2, 'Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is "trance." While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep.', '', NULL, ''),
-('Sunlight Sensitivity', 2, 'You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of the attack, or whatever you are trying to perceive is in direct sunlight.', '', NULL, ''),
-('Drow Magic', 2, 'You know the Dancing Lights cantrip. When you reach 3rd level, you can cast the Faerie Fire spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Darkness spell onceand regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.', '', NULL, 'spell,86'),
-('Drow Weapon Training', 2, 'You have proficiency with rapiers, shortswords, and hand crossbows.', '', NULL, 'weaponProficiency,single,27|weaponProficiency,single,29|weaponProficiency,single,35'),
-('Ability Score Increase: Constitution +2', 3, '', '', NULL, 'abilityImprovement,con,2'),
-('Ability Score Increase: Strength +1', 3, '', '', NULL, 'abilityImprovement,str,1'),
-('Dwarven Resilience', 3, 'You have advantage on saving throws against poison, and you have resistance against poison damage.', '', NULL, 'damageResistance,poison'),
-('Dwarven Combat Training', 3, 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.', '', NULL, 'weaponProficiency,single,16|weaponProficiency,single,4|weaponProficiency,single,6|weaponProficiency,single,32'),
-('Superior Darkvision', 3, 'You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'superiorDarkvision'),
-('Duergar Resilience', 3, 'You have advantage on saving throws against illusions and against being charmed or paralyzed.', '', NULL, ''),
-('Duergar Magic', 3, 'Starting at 3rd level, you can cast the Enlarge/Reduce spell with this trait, without requiring a material component. Starting at 5th level, you can also cast the Invisibility spell with it, without requiring a material component. Once you cast either of these spells with this trait, you can’t cast that spell with it again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level.
-Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).', '', NULL, ''),
-('Sunlight Sensitivity', 3, 'You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of the attack, or whatever you are trying to perceive is in direct sunlight.', '', NULL, ''),
-('Ability Score Increase: Constitution +2', 4, '', '', NULL, 'abilityImprovement,con,2'),
-('Ability Score Increase: Wisdom +1', 4, '', '', NULL, 'abilityImprovement,wis,1'),
-('Darkvision', 4, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Dwarven Resilience', 4, 'You have advantage on saving throws against poison, and you have resistance against poison damage.', '', NULL, 'damageResistance,poison'),
-('Dwarven Combat Training', 4, 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.', '', NULL, 'weaponProficiency,single,16|weaponProficiency,single,4|weaponProficiency,single,6|weaponProficiency,single,32'),
-('Dwarven Toughness', 4, 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.', '', NULL, 'bonusHP,1'),
-('Ability Score Increase: Constitution +2', 5, '', '', NULL, 'abilityImprovement,con,2'),
-('Ability Score Increase: Strength +2', 5, '', '', NULL, 'abilityImprovement,str,2'),
-('Darkvision', 5, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Dwarven Resilience', 5, 'You have advantage on saving throws against poison, and you have resistance against poison damage.', '', NULL, 'damageResistance,poison'),
-('Dwarven Combat Training', 5, 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.', '', NULL, 'weaponProficiency,single,16|weaponProficiency,single,4|weaponProficiency,single,6|weaponProficiency,single,32'),
-('Dwarven Armor Training', 5, 'You have proficiency with light and medium armor.', '', NULL, 'armorProficiency,light|armorProficiency,med'),
-('Ability Score Increase: Dexterity +2', 6, '', '', NULL, 'abilityImprovement,dex,2'),
-('Ability Score Increase: Intelligence +1', 6, '', '', NULL, 'abilityImprovement,int,1'),
-('Darkvision', 6, 'Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Keen Senses', 6, 'You have proficiency in the Perception skill.', '', NULL, 'skillProficiency,13'),
-('Fey Ancestry', 6, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', NULL, ''),
-('Trance', 6, 'Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is "trance." While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep.', '', NULL, ''),
-('Elf Weapon Training', 6, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', '', NULL, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
-('Cantrip', 6, 'You know one cantrip of your choice from the Wizard spell list. Intelligence is your spellcasting ability for it.', '', NULL, 'spellSelect,wiz,0'),
-('Ability Score Increase: Dexterity +2', 7, '', '', NULL, 'abilityImprovement,dex,2'),
-('Ability Score Increase: Wisdom +1', 7, '', '', NULL, 'abilityImprovement,wis,1'),
-('Darkvision', 7, 'Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Keen Senses', 7, 'You have proficiency in the Perception skill.', '', NULL, 'skillProficiency,13'),
-('Fey Ancestry', 7, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', NULL, ''),
-('Trance', 7, 'Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is "trance." While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep.', '', NULL, ''),
-('Elf Weapon Training', 7, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', '', NULL, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
-('Fleet of Foot', 7, 'Your base walking speed increases to 35 feet.', '', NULL, ''),
-('Mask of the Wild', 7, 'You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.', '', NULL, ''),
-('Ability Score Increase: Dexterity +2', 8, '', '', NULL, 'abilityImprovement,dex,2'),
-('Ability Score Increase: Charisma +1', 8, '', '', NULL, 'abilityImprovement,cha,1'),
-('Lucky', 8, 'When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1.', '', NULL, ''),
-('Brave', 8, 'You have advantage on saving throws against being frightened.', '', NULL, ''),
-('Halfling Nimbleness', 8, 'You can move through the space of any creature that is of a size larger than yours.', '', NULL, ''),
-('Naturally Stealthy', 8, 'You can attempt to hide even when you are only obscured by a creature that is at least one size larger than you.', '', NULL, ''),
-('Ability Score Increase: Dexterity +2', 9, '', '', NULL, ''),
-('Ability Score Increase: Constitution +1', 9, '', '', NULL, ''),
-('Lucky', 9, 'When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1.', '', NULL, ''),
-('Brave', 9, 'You have advantage on saving throws against being frightened.', '', NULL, ''),
-('Halfling Nimbleness', 9, 'You can move through the space of any creature that is of a size larger than yours.', '', NULL, ''),
-('Stout Resilience', 9, 'You have advantage on saving throws against poison, and you have resistance to poison damage.', '', NULL, 'damageResistance,poison'),
-('Ability Score Increase: Charisma +2', 10, '', '', NULL, 'abilityImprovement,cha,2'),
+('Draconic Ancestry: Black', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Blue', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Brass', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Bronze', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Copper', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Gold', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Green', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Red', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: Silver', NULL, '', 'Draconic Ancestry', -1, ''),
+('Draconic Ancestry: White', NULL, '', 'Draconic Ancestry', -1, ''),
+('Breath Weapon: Acid', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Black', 0, ''),
+('Breath Weapon: Lightning', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Blue', 0, ''),
+('Breath Weapon: Fire', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Brass', 0, ''),
+('Breath Weapon: Lightning', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 lightning damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Bronze', 0, ''),
+('Breath Weapon: Acid', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 5'' by 30'' line. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 acid damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Copper', 0, ''),
+('Breath Weapon: Fire', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Gold', 0, ''),
+('Breath Weapon: Poison', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Constitution saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 poison damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Green', 0, ''),
+('Breath Weapon: Fire', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Dexterity saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 fire damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Red', 0, ''),
+('Breath Weapon: Cold', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Constitution saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: Silver', 0, ''),
+('Breath Weapon: Cold', NULL, 'You can use your action to exhale destructive energy. It deals damage in a 15'' cone. When you use your breath weapon, all creatures in the area must make a Constitution saving throw. The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 cold damage on a failed save, and half as much damage on a successful one. The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level. After using your breath weapon, you cannot use it again until you complete a short or long rest.', 'Draconic Ancestry: White', 0, ''),
+('Damage Resistance: Acid', NULL, 'Black dragon heritage grants you resistance to acid damage.', 'Draconic Ancestry: Black', 0, 'damageResistance,acid'),
+('Damage Resistance: Lightning', NULL, 'Blue dragon heritage grants you resistance to lightning damage.', 'Draconic Ancestry: Blue', 0, 'damageResistance,lightning'),
+('Damage Resistance: Fire', NULL, 'Brass dragon heritage grants you resistance to fire damage.', 'Draconic Ancestry: Brass', 0, 'damageResistance,fire'),
+('Damage Resistance: Lightning', NULL, 'Bronze dragon heritage grants you resistance to lightning damage.', 'Draconic Ancestry: Bronze', 0, 'damageResistance,lightning'),
+('Damage Resistance: Acid', NULL, 'Copper dragon heritage grants you resistance to acid damage.', 'Draconic Ancestry: Copper', 0, 'damageResistance,acid'),
+('Damage Resistance: Fire', NULL, 'Gold dragon heritage grants you resistance to fire damage.', 'Draconic Ancestry: Gold', 0, 'damageResistance,fire'),
+('Damage Resistance: Poison', NULL, 'Green dragon heritage grants you resistance to poison damage.', 'Draconic Ancestry: Green', 0, 'damageResistance,poison'),
+('Damage Resistance: Fire', NULL, 'Red dragon heritage grants you resistance to fire damage.', 'Draconic Ancestry: Red', 0, 'damageResistance,fire'),
+('Damage Resistance: Cold', NULL, 'Silver dragon heritage grants you resistance to cold damage.', 'Draconic Ancestry: Silver', 0, 'damageResistance,cold'),
+('Damage Resistance: Cold', NULL, 'White dragon heritage grants you resistance to cold damage.', 'Draconic Ancestry: White', 0, 'damageResistance,cold'),
+('Ability Score Increase: Dexterity +2', 2, '', '', 0, 'abilityImprovement,dex,2'),
+('Ability Score Increase: Charisma +1', 2, '', '', 0, 'abilityImprovement,cha,1'),
+('Superior Darkvision', 2, 'You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'superiorDarkvision'),
+('Keen Senses', 2, 'You have proficiency in the Perception skill.', '', 0, 'skillProficiency,13'),
+('Fey Ancestry', 2, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', 0, ''),
+('Trance', 2, 'Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is "trance." While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep.', '', 0, ''),
+('Sunlight Sensitivity', 2, 'You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of the attack, or whatever you are trying to perceive is in direct sunlight.', '', 0, ''),
+('Drow Magic', 2, 'You know the Dancing Lights cantrip. When you reach 3rd level, you can cast the Faerie Fire spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the Darkness spell onceand regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells.', '', 0, 'spell,86'),
+('Drow Weapon Training', 2, 'You have proficiency with rapiers, shortswords, and hand crossbows.', '', 0, 'weaponProficiency,single,27|weaponProficiency,single,29|weaponProficiency,single,35'),
+('Ability Score Increase: Constitution +2', 3, '', '', 0, 'abilityImprovement,con,2'),
+('Ability Score Increase: Strength +1', 3, '', '', 0, 'abilityImprovement,str,1'),
+('Dwarven Resilience', 3, 'You have advantage on saving throws against poison, and you have resistance against poison damage.', '', 0, 'damageResistance,poison'),
+('Dwarven Combat Training', 3, 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.', '', 0, 'weaponProficiency,single,16|weaponProficiency,single,4|weaponProficiency,single,6|weaponProficiency,single,32'),
+('Superior Darkvision', 3, 'You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'superiorDarkvision'),
+('Duergar Resilience', 3, 'You have advantage on saving throws against illusions and against being charmed or paralyzed.', '', 0, ''),
+('Duergar Magic', 3, '"Starting at 3rd level, you can cast the Enlarge/Reduce spell with this trait, without requiring a material component. Starting at 5th level, you can also cast the Invisibility spell with it, without requiring a material component. Once you cast either of these spells with this trait, you can’t cast that spell with it again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level.
+Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race)."', '', 0, ''),
+('Sunlight Sensitivity', 3, 'You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you, the target of the attack, or whatever you are trying to perceive is in direct sunlight.', '', 0, ''),
+('Ability Score Increase: Constitution +2', 4, '', '', 0, 'abilityImprovement,con,2'),
+('Ability Score Increase: Wisdom +1', 4, '', '', 0, 'abilityImprovement,wis,1'),
+('Darkvision', 4, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Dwarven Resilience', 4, 'You have advantage on saving throws against poison, and you have resistance against poison damage.', '', 0, 'damageResistance,poison'),
+('Dwarven Combat Training', 4, 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.', '', 0, 'weaponProficiency,single,16|weaponProficiency,single,4|weaponProficiency,single,6|weaponProficiency,single,32'),
+('Dwarven Toughness', 4, 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.', '', 0, 'bonusHP,1'),
+('Ability Score Increase: Constitution +2', 5, '', '', 0, 'abilityImprovement,con,2'),
+('Ability Score Increase: Strength +2', 5, '', '', 0, 'abilityImprovement,str,2'),
+('Darkvision', 5, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Dwarven Resilience', 5, 'You have advantage on saving throws against poison, and you have resistance against poison damage.', '', 0, 'damageResistance,poison'),
+('Dwarven Combat Training', 5, 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.', '', 0, 'weaponProficiency,single,16|weaponProficiency,single,4|weaponProficiency,single,6|weaponProficiency,single,32'),
+('Dwarven Armor Training', 5, 'You have proficiency with light and medium armor.', '', 0, 'armorProficiency,light|armorProficiency,med'),
+('Ability Score Increase: Dexterity +2', 6, '', '', 0, 'abilityImprovement,dex,2'),
+('Ability Score Increase: Intelligence +1', 6, '', '', 0, 'abilityImprovement,int,1'),
+('Darkvision', 6, 'Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Keen Senses', 6, 'You have proficiency in the Perception skill.', '', 0, 'skillProficiency,13'),
+('Fey Ancestry', 6, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', 0, ''),
+('Trance', 6, 'Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is "trance." While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep.', '', 0, ''),
+('Elf Weapon Training', 6, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', '', 0, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
+('Cantrip', 6, 'You know one cantrip of your choice from the Wizard spell list. Intelligence is your spellcasting ability for it.', '', 0, 'spellSelect,wiz,0'),
+('Ability Score Increase: Dexterity +2', 7, '', '', 0, 'abilityImprovement,dex,2'),
+('Ability Score Increase: Wisdom +1', 7, '', '', 0, 'abilityImprovement,wis,1'),
+('Darkvision', 7, 'Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Keen Senses', 7, 'You have proficiency in the Perception skill.', '', 0, 'skillProficiency,13'),
+('Fey Ancestry', 7, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', 0, ''),
+('Trance', 7, 'Elves do not sleep. Instead they meditate deeply, remaining semi-conscious, for 4 hours a day. The Common word for this meditation is "trance." While meditating, you dream after a fashion; such dreams are actually mental exercises that have become reflexive after years of practice. After resting in this way, you gain the same benefit a human would from 8 hours of sleep.', '', 0, ''),
+('Elf Weapon Training', 7, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', '', 0, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
+('Fleet of Foot', 7, 'Your base walking speed increases to 35 feet.', '', 0, ''),
+('Mask of the Wild', 7, 'You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.', '', 0, ''),
+('Ability Score Increase: Dexterity +2', 8, '', '', 0, 'abilityImprovement,dex,2'),
+('Ability Score Increase: Charisma +1', 8, '', '', 0, 'abilityImprovement,cha,1'),
+('Lucky', 8, 'When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1.', '', 0, ''),
+('Brave', 8, 'You have advantage on saving throws against being frightened.', '', 0, ''),
+('Halfling Nimbleness', 8, 'You can move through the space of any creature that is of a size larger than yours.', '', 0, ''),
+('Naturally Stealthy', 8, 'You can attempt to hide even when you are only obscured by a creature that is at least one size larger than you.', '', 0, ''),
+('Ability Score Increase: Dexterity +2', 9, '', '', 0, ''),
+('Ability Score Increase: Constitution +1', 9, '', '', 0, ''),
+('Lucky', 9, 'When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1.', '', 0, ''),
+('Brave', 9, 'You have advantage on saving throws against being frightened.', '', 0, ''),
+('Halfling Nimbleness', 9, 'You can move through the space of any creature that is of a size larger than yours.', '', 0, ''),
+('Stout Resilience', 9, 'You have advantage on saving throws against poison, and you have resistance to poison damage.', '', 0, 'damageResistance,poison'),
+('Ability Score Increase: Charisma +2', 10, '', '', 0, 'abilityImprovement,cha,2'),
 ('Ability Score Increase', 10, '', '', 1, ''),
-('Ability Score Increase: Strength +1', NULL, '', 'Ability Score Increase', NULL, 'abilityImprovement,str,1'),
-('Ability Score Increase: Dexterity +1', NULL, '', 'Ability Score Increase', NULL, 'abilityImprovement,dex,1'),
-('Ability Score Increase: Constitution +1', NULL, '', 'Ability Score Increase', NULL, 'abilityImprovement,con,1'),
-('Ability Score Increase: Intelligence +1', NULL, '', 'Ability Score Increase', NULL, 'abilityImprovement,int,1'),
-('Ability Score Increase: Wisdom +1', NULL, '', 'Ability Score Increase', NULL, 'abilityImprovement,wis,1'),
-('Ability Score Increase: Charisma +1', NULL, '', 'Ability Score Increase', NULL, 'abilityImprovement,cha,1'),
+('Ability Score Increase: Strength +1', NULL, '', 'Ability Score Increase', 0, 'abilityImprovement,str,1'),
+('Ability Score Increase: Dexterity +1', NULL, '', 'Ability Score Increase', 0, 'abilityImprovement,dex,1'),
+('Ability Score Increase: Constitution +1', NULL, '', 'Ability Score Increase', 0, 'abilityImprovement,con,1'),
+('Ability Score Increase: Intelligence +1', NULL, '', 'Ability Score Increase', 0, 'abilityImprovement,int,1'),
+('Ability Score Increase: Wisdom +1', NULL, '', 'Ability Score Increase', 0, 'abilityImprovement,wis,1'),
+('Ability Score Increase: Charisma +1', NULL, '', 'Ability Score Increase', 0, 'abilityImprovement,cha,1'),
 ('Ability Score Increase', 10, '', '', 1, ''),
-('Darkvision', 10, 'Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Fey Ancestry', 10, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', NULL, ''),
+('Darkvision', 10, 'Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Fey Ancestry', 10, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', 0, ''),
 ('Half-Elf Versatility: High Elf Heritage', 10, 'Choose one of the following traits:', '', 1, ''),
-('Elf Weapon Training', NULL, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', 'Half-Elf Versatility: High Elf Heritage', NULL, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
-('Cantrip', NULL, 'You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.', 'Half-Elf Versatility: High Elf Heritage', NULL, 'spellSelect,wiz,0'),
-('Skill Versatility', NULL, 'You gain proficiency in two skills of your choice.', 'Half-Elf Versatility: High Elf Heritage', NULL, 'skillSelectAny|skillSelectAny'),
-('Ability Score Increase: Charisma +2', 11, '', '', NULL, 'abilityImprovement,cha,2'),
+('Elf Weapon Training', NULL, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', 'Half-Elf Versatility: High Elf Heritage', 0, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
+('Cantrip', NULL, 'You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.', 'Half-Elf Versatility: High Elf Heritage', 0, 'spellSelect,wiz,0'),
+('Skill Versatility', NULL, 'You gain proficiency in two skills of your choice.', 'Half-Elf Versatility: High Elf Heritage', 0, 'skillSelectAny|skillSelectAny'),
+('Ability Score Increase: Charisma +2', 11, '', '', 0, 'abilityImprovement,cha,2'),
 ('Ability Score Increase', 11, '', '', 1, ''),
 ('Ability Score Increase', 11, '', '', 1, ''),
-('Darkvision', 11, 'Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Fey Ancestry', 11, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', NULL, ''),
+('Darkvision', 11, 'Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Fey Ancestry', 11, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', 0, ''),
 ('Half-Elf Versatility: Wood Elf Heritage', 11, 'Choose one of the following traits:', '', 1, ''),
-('Fleet of Foot', NULL, 'Your base walking speed increases to 35 feet.', 'Half-Elf Versatility: Wood Elf Heritage', NULL, 'bonusSpeed,5'),
-('Mask of the Wild', NULL, 'You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.', 'Half-Elf Versatility: Wood Elf Heritage', NULL, ''),
-('Elf Weapon Training', NULL, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', 'Half-Elf Versatility: Wood Elf Heritage', NULL, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
-('Skill Versatility', NULL, 'You gain proficiency in two skills of your choice.', 'Half-Elf Versatility: Wood Elf Heritage', NULL, 'skillSelectAny|skillSelectAny'),
-('Ability Score Increase: Charisma +2', 12, '', '', NULL, 'abilityImprovement,cha,2'),
+('Fleet of Foot', NULL, 'Your base walking speed increases to 35 feet.', 'Half-Elf Versatility: Wood Elf Heritage', 0, 'bonusSpeed,5'),
+('Mask of the Wild', NULL, 'You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.', 'Half-Elf Versatility: Wood Elf Heritage', 0, ''),
+('Elf Weapon Training', NULL, 'You have proficiency with the longsword, shortsword, shortbow, and longbow.', 'Half-Elf Versatility: Wood Elf Heritage', 0, 'weaponProficiency,single,23|weaponProficiency,single,29|weaponProficiency,single,14|weaponProficiency,single,37'),
+('Skill Versatility', NULL, 'You gain proficiency in two skills of your choice.', 'Half-Elf Versatility: Wood Elf Heritage', 0, 'skillSelectAny|skillSelectAny'),
+('Ability Score Increase: Charisma +2', 12, '', '', 0, 'abilityImprovement,cha,2'),
 ('Ability Score Increase', 12, '', '', 1, ''),
 ('Ability Score Increase', 12, '', '', 1, ''),
-('Darkvision', 12, 'Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Fey Ancestry', 12, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', NULL, ''),
+('Darkvision', 12, 'Thanks to your elven heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Fey Ancestry', 12, 'You have advantage on saving throws against being charmed, and magic can''t put you to sleep.', '', 0, ''),
 ('Half-Elf Versatility: Drow Heritage', 12, 'Choose one of the following traits:', '', 1, ''),
-('Drow Magic', NULL, 'You know the Dancing Lights cantrip. When you reach 3rd level, you can cast Faerie Fire once, and it recharges after a long rest. When you reach 5th level, you can cast Darkness once, and it recharges after a long rest. Charisma is your spellcasting ability for these spells.', 'Half-Elf Versatility: Drow Elf Heritage', NULL, 'spell,86'),
-('Skill Versatility', NULL, 'You gain proficiency in two skills of your choice.', 'Half-Elf Versatility: Drow Elf Heritage', NULL, 'skillSelectAny|skillSelectAny'),
-('Ability Score Increase: Strength +2', 13, '', '', NULL, 'abilityImprovement,str,2'),
-('Ability Score Increase: Constitution +1', 13, '', '', NULL, 'abilityImprovement,con,1'),
-('Darkvision', 13, 'Thanks to your orc blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Menacing', 13, 'You gain proficiency in the Intimidation skill.', '', NULL, 'skillProficiency,16'),
-('Relentless Endurance', 13, 'When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can''t use this feature again until you finish a long rest.', '', NULL, ''),
-('Savage Attacks', 13, 'When you score a critical hit with a melee weapon attack, you can roll one of the weapon''s damage dice one additional time and add it to the extra damage of the critical hit.', '', NULL, ''),
-('Ability Score Increase: All +1', 14, '', '', NULL, 'abilityImprovement,str,1|AbilityImprovement,dex,1|AbilityImprovement,con,1|AbilityImprovement,int,1|AbilityImprovement,wis,1|AbilityImprovement,cha,1'),
-('Ability Score Increase: Intelligence +2', 15, '', '', NULL, 'abilityImprovement,int,2'),
-('Ability Score Increase: Dexterity +1', 15, '', '', NULL, 'abilityImprovement,dex,1'),
-('Gnome Cunning', 15, 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.', '', NULL, ''),
-('Superior Darkvision', 15, 'You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'superiorDarkvision'),
-('Stone Camouflage', 15, 'You have advantage on Dexterity (stealth) checks to hide in rocky terrain.', '', NULL, ''),
-('Ability Score Increase: Intelligence +2', 16, '', '', NULL, 'abilityImprovement,int,2'),
-('Ability Score Increase: Dexterity +1', 16, '', '', NULL, 'abilityImprovement,dex,1'),
-('Gnome Cunning', 16, 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.', '', NULL, ''),
-('Darkvision', 16, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'superiorDarkvision'),
-('Natural Illusionist', 16, 'You know the Minor Illusion cantrip. Intelligence is your spellcasting modifier for it.', '', NULL, 'spell,229'),
-('Speak with Small Beasts', 16, 'Through sound and gestures, you may communicate simple ideas with Small or smaller beasts.', '', NULL, ''),
-('Ability Score Increase: Intelligence +2', 17, '', '', NULL, 'abilityImprovement,int,2'),
-('Ability Score Increase: Constitution +1', 17, '', '', NULL, 'abilityImprovement,con,1'),
-('Gnome Cunning', 17, 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.', '', NULL, ''),
-('Darkvision', 17, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Artificer''s Lore', 17, 'Whenever you make an Intelligence (History) check related to magical, alchemical, or technological items, you can add twice your proficiency bonus instead of any other proficiency bonus that may apply.', '', NULL, ''),
-('Tinker', 17, 'You have proficiency with artisan tools (tinker''s tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options:
+('Drow Magic', NULL, 'You know the Dancing Lights cantrip. When you reach 3rd level, you can cast Faerie Fire once, and it recharges after a long rest. When you reach 5th level, you can cast Darkness once, and it recharges after a long rest. Charisma is your spellcasting ability for these spells.', 'Half-Elf Versatility: Drow Elf Heritage', 0, 'spell,86'),
+('Skill Versatility', NULL, 'You gain proficiency in two skills of your choice.', 'Half-Elf Versatility: Drow Elf Heritage', 0, 'skillSelectAny|skillSelectAny'),
+('Ability Score Increase: Strength +2', 13, '', '', 0, 'abilityImprovement,str,2'),
+('Ability Score Increase: Constitution +1', 13, '', '', 0, 'abilityImprovement,con,1'),
+('Darkvision', 13, 'Thanks to your orc blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Menacing', 13, 'You gain proficiency in the Intimidation skill.', '', 0, 'skillProficiency,16'),
+('Relentless Endurance', 13, 'When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can''t use this feature again until you finish a long rest.', '', 0, ''),
+('Savage Attacks', 13, 'When you score a critical hit with a melee weapon attack, you can roll one of the weapon''s damage dice one additional time and add it to the extra damage of the critical hit.', '', 0, ''),
+('Ability Score Increase: All +1', 14, '', '', 0, 'abilityImprovement,str,1|AbilityImprovement,dex,1|AbilityImprovement,con,1|AbilityImprovement,int,1|AbilityImprovement,wis,1|AbilityImprovement,cha,1'),
+('Ability Score Increase: Intelligence +2', 15, '', '', 0, 'abilityImprovement,int,2'),
+('Ability Score Increase: Dexterity +1', 15, '', '', 0, 'abilityImprovement,dex,1'),
+('Gnome Cunning', 15, 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.', '', 0, ''),
+('Superior Darkvision', 15, 'You can see in dim light within 120 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'superiorDarkvision'),
+('Stone Camouflage', 15, 'You have advantage on Dexterity (stealth) checks to hide in rocky terrain.', '', 0, ''),
+('Ability Score Increase: Intelligence +2', 16, '', '', 0, 'abilityImprovement,int,2'),
+('Ability Score Increase: Dexterity +1', 16, '', '', 0, 'abilityImprovement,dex,1'),
+('Gnome Cunning', 16, 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.', '', 0, ''),
+('Darkvision', 16, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'superiorDarkvision'),
+('Natural Illusionist', 16, 'You know the Minor Illusion cantrip. Intelligence is your spellcasting modifier for it.', '', 0, 'spell,229'),
+('Speak with Small Beasts', 16, 'Through sound and gestures, you may communicate simple ideas with Small or smaller beasts.', '', 0, ''),
+('Ability Score Increase: Intelligence +2', 17, '', '', 0, 'abilityImprovement,int,2'),
+('Ability Score Increase: Constitution +1', 17, '', '', 0, 'abilityImprovement,con,1'),
+('Gnome Cunning', 17, 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.', '', 0, ''),
+('Darkvision', 17, 'Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can''t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Artificer''s Lore', 17, 'Whenever you make an Intelligence (History) check related to magical, alchemical, or technological items, you can add twice your proficiency bonus instead of any other proficiency bonus that may apply.', '', 0, ''),
+('Tinker', 17, '"You have proficiency with artisan tools (tinker''s tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options:
 - Clockwork Toy. This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.
 - Fire Starter. The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.
 - Music Box. When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song''s end or when it is closed.
-At your DM''s discretion, you may make other objects with effects similar in power to these. The Prestidigitation cantrip is a good baseline for such effects.', '', NULL, ''),
-('Ability Score Increase: Charisma +2', 18, '', '', NULL, 'abilityImprovement,cha,2'),
-('Ability Score Increase Intelligence +1', 18, '', '', NULL, 'abilityImprovement,int,1'),
-('Darkvision', 18, 'Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Hellish Resistance', 18, 'You have resistance to fire damage.', '', NULL, 'damageResistance,fire'),
-('Infernal Legacy', 18, 'You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hellish Rebuke spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.', '', NULL, 'spell,329'),
-('Ability Score Increase: Charisma +2', 19, '', '', NULL, 'abilityImprovement,cha,2'),
-('Ability Score Increase Intelligence +1', 19, '', '', NULL, 'abilityImprovement,int,1'),
-('Darkvision', 19, 'Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Hellish Resistance', 19, 'You have resistance to fire damage.', '', NULL, 'damageResistance,fire'),
-('Legacy of Cania', 19, 'You know the Mage Hand cantrip. Once you reach 3rd level, you can cast the Burning Hands spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Flame Blade spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.', '', NULL, 'spell,211'),
-('Ability Score Increase: Charisma +2', 20, '', '', NULL, 'abilityImprovement,cha,2'),
-('Ability Score Increase Strength +1', 20, '', '', NULL, 'abilityImprovement,str,1'),
-('Darkvision', 20, 'Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.', '', NULL, 'darkvision'),
-('Hellish Resistance', 20, 'You have resistance to fire damage.', '', NULL, 'damageResistance,fire'),
-('Legacy of Avernus', 20, 'You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Searing Smite spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Branding Smite spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.', '', NULL, 'spell,329');
+At your DM''s discretion, you may make other objects with effects similar in power to these. The Prestidigitation cantrip is a good baseline for such effects."', '', 0, ''),
+('Ability Score Increase: Charisma +2', 18, '', '', 0, 'abilityImprovement,cha,2'),
+('Ability Score Increase Intelligence +1', 18, '', '', 0, 'abilityImprovement,int,1'),
+('Darkvision', 18, 'Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Hellish Resistance', 18, 'You have resistance to fire damage.', '', 0, 'damageResistance,fire'),
+('Infernal Legacy', 18, 'You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Hellish Rebuke spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Darkness spell once. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.', '', 0, 'spell,329'),
+('Ability Score Increase: Charisma +2', 19, '', '', 0, 'abilityImprovement,cha,2'),
+('Ability Score Increase Intelligence +1', 19, '', '', 0, 'abilityImprovement,int,1'),
+('Darkvision', 19, 'Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Hellish Resistance', 19, 'You have resistance to fire damage.', '', 0, 'damageResistance,fire'),
+('Legacy of Cania', 19, 'You know the Mage Hand cantrip. Once you reach 3rd level, you can cast the Burning Hands spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Flame Blade spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.', '', 0, 'spell,211'),
+('Ability Score Increase: Charisma +2', 20, '', '', 0, 'abilityImprovement,cha,2'),
+('Ability Score Increase Strength +1', 20, '', '', 0, 'abilityImprovement,str,1'),
+('Darkvision', 20, 'Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.', '', 0, 'darkvision'),
+('Hellish Resistance', 20, 'You have resistance to fire damage.', '', 0, 'damageResistance,fire'),
+('Legacy of Avernus', 20, 'You know the Thaumaturgy cantrip. Once you reach 3rd level, you can cast the Searing Smite spell once as a 2nd-level spell. Once you reach 5th level, you can also cast the Branding Smite spell once as a 3rd-level spell. You must finish a long rest to cast these spells again with this trait. Charisma is your spellcasting ability for these spells.', '', 0, 'spell,329');
 end
 if not exists (select 1 from dbo.[Feats])
 begin

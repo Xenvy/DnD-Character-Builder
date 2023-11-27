@@ -5,6 +5,6 @@
     [RaceId] TINYINT NULL, 
     [Description] VARCHAR(5000) NULL, 
     [ParentFeatureName] VARCHAR(80) NULL, 
-    [SubfeatureSelections] TINYINT NULL, 
+    [SubfeatureSelections] SMALLINT NULL, 
     [Tags] VARCHAR(200) NULL
 )
