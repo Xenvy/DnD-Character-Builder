@@ -935,6 +935,10 @@
 	private async Task AddClassLevel(CharacterClassLevel classLevel)
 	{
 		characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
+		foreach(var cf in characterClassFeatures)
+		{
+			await cf.FormatTags();
+		}
 		classLevel.ClassLevelFeatures = characterClassFeatures;
 
 		characterSheet.CharacterClassLevels.Add(classLevel);
