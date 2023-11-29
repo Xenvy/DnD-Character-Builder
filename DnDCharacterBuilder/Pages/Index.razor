@@ -480,6 +480,38 @@
 							<div class="feature-no-tooltip">@f.Name</div>
 						}
 						<!--Class feature tag parser-->
+						@foreach (var te in f.TagEntries)
+						{
+							switch(te.Tag)
+							{
+								case "skillSelectAny":
+									<!-- <SkillSelectInput> -->
+									break;
+								case "skillSelect":
+									<!-- <SkillSelectInput> -->
+									break;
+								case "skillSelectExpertise":
+									<!-- <SkillSelectInput> -->
+									break;
+								case "expertise":
+									<!-- <SkillSelectInput> -->
+									break;
+								case "spellSelect":
+									<!-- <SpellSelectInput> -->
+									break;
+								case "spellSelectAny":
+									<!-- <SpellSelectInput> -->
+									break;
+								case "spellMastery":
+									<!-- <SpellSelectInput> -->
+									break;
+								case "feat":
+									<!-- <FeatSelectInput> -->
+									break;
+								default:
+									break;
+							}
+						}
 					}
 				}
 			}
