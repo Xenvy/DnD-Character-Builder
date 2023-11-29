@@ -269,6 +269,28 @@ public class CharacterSheetData : ICharacterSheetData
 	}
 
 	/// <summary>
+	/// Gets all subfeatures obtained with the specified class level feature.
+	/// </summary>
+	/// <param name="feature"></param>
+	/// <returns></returns>
+	/// <exception cref="Exception"></exception>
+	public async Task<List<CharacterClassFeature>> GetLevelFeatureSubfeatures(CharacterClassFeature parentFeature)
+	{
+		List<CharacterClassFeature> output;
+
+		try
+		{
+			output = (await _characterClassFeatureData.GetSubfeaturesByParentFeature(parentFeature.Name)).ToList();
+		}
+		catch (Exception ex)
+		{
+			throw new Exception(ex.Message);
+		}
+
+		return output;
+	}
+
+	/// <summary>
 	/// Gets all skills present in the database.
 	/// </summary>
 	/// <returns>A list of all skills.</returns>

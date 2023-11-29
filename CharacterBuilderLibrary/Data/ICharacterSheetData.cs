@@ -14,6 +14,7 @@ namespace CharacterBuilderLibrary.Data
 		Task<CharacterClassLevel> GetClassLevel(int classLevelId);
 		Task<CharacterClassFeature> GetClassLevelFeature(int classFeatureId);
 		Task<List<CharacterClassFeature>> GetClassLevelFeatures(CharacterClassLevel characterClassLevel);
+		Task<List<CharacterClassFeature>> GetLevelFeatureSubfeatures(CharacterClassFeature parentFeature);
 		Task<Feat> GetFeat(int featId);
 		Task<Race> GetRace(int raceId);
 		Task<List<Race>> GetRaces();
