@@ -1,0 +1,96 @@
+﻿@inject ISpellData spellData
+@inject ICharacterSheetData characterSheetData
+
+<div class="autocomplete">
+	<div class="option-selection">
+		<!-- Autocomplete-style selection of character's spells -->
+		<input type="text"
+			   id="spellSelection"
+			   placeholder="Select a spell..."
+			   class="form-control filter"
+			   aria-label="Search box"
+			   @bind-value="spellSearchText"
+			   @oninput="((txt) => OnSpellSearchInput((string)txt.Value))"
+			   @onfocusin="(_ => showSpellSelect = !showSpellSelect)"
+			   @onfocusout="(_ => OnSpellSelection())" />
+		<div class="option-list">
+			<ul name="spellSelectionList" class="options @(showSpellSelect ? "" : "hide")">
+				@if (spells?.Count > 0)
+				{
+					@foreach (var s in spells)
+					{
+						<li class="option" @onclick="(_ => AddSpell(s))">
+							<span class="option-text">@s.Name</span>
+						</li>
+					}
+				}
+				else
+				{
+					<li class="disabled option">No results</li>
+				}
+			</ul>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	protected async override Task OnInitializedAsync()
+	{
+		spells = await characterSheetData.GetAllSpellsByLevel(classLevel);
+	}
+
+	[Parameter]
+	public CharacterClassLevel? classLevel { get; set; }
+
+	[Parameter]
+	public List<Spell>? bonusSpells { get; set; }
+
+	[Parameter]
+	public string? tagData { get; set; }
+
+	[Parameter]
+	public EventCallback<string> tagDataChanged { get; set; }
+
+	private List<Spell> spells = new();
+	private string spellSearchText;
+	private bool showSpellSelect = false;
+	CancellationTokenSource tokenSource;
+
+	private async Task OnSpellSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showSpellSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	private async Task AddSpell(Spell spell)
+	{
+		bonusSpells.Add(spell);
+		tagData = spell.Id.ToString();
+		await OnSpellSearchInput("");
+		await tagDataChanged.InvokeAsync(tagData);
+	}
+
+	private async Task OnSpellSearchInput(string searchInput)
+	{
+		spellSearchText = searchInput;
+		await FilterSpells();
+	}
+
+	private async Task FilterSpells()
+	{
+		var output = await characterSheetData.GetAvailableSpells(classLevel);
+
+		if (string.IsNullOrWhiteSpace(spellSearchText) == false)
+		{
+			output = output.Where(s => s.Name.Contains(spellSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		spells = output.OrderByDescending(x => x.Level).ToList();
+	}
+}

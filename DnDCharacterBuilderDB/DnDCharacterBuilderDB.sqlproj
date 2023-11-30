@@ -92,6 +92,7 @@
     <Build Include="dbo\StoredProcedures\spFeats_GetByParentFeat.sql" />
     <Build Include="dbo\StoredProcedures\spSpells_Get.sql" />
     <Build Include="dbo\StoredProcedures\spSpells_GetByListAndLevel.sql" />
+    <Build Include="dbo\StoredProcedures\spSpells_GetByLevel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DnDCharacterBuilderDB.refactorlog" />

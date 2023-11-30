@@ -102,6 +102,14 @@ public class CharacterSheet
 	/// </summary>
 	public Armor EquippedArmor { get; set; } = new();
 
+	/// <summary>
+	/// Points used to buy ability score increases.
+	/// </summary>
 	public int AbilityScorePoints { get; set; } = 27;
+
+	/// <summary>
+	/// Bonus spells gained from class level or race features.
+	/// </summary>
+	public List<Spell> BonusSpells { get; set; } = new();
 
 }

@@ -399,6 +399,28 @@ public class CharacterSheetData : ICharacterSheetData
 	}
 
 	/// <summary>
+	/// Gets spells of all spell groups up to the level available to the specified character class level.
+	/// </summary>
+	/// <param name="characterClassLevel"> The class level to get the available spells of.</param>
+	/// <returns>A list of all available spells.</returns>
+	/// <exception cref="Exception"></exception>
+	public async Task<List<Spell>> GetAllSpellsByLevel(CharacterClassLevel classLevel)
+	{
+		List<Spell> output;
+
+		try
+		{
+			output = (await _spellData.GetSpellsBySpellLevel(classLevel.GetAvailableSpellLevel())).ToList();
+		}
+		catch (Exception ex)
+		{
+			throw new Exception(ex.Message);
+		}
+
+		return output;
+	}
+
+	/// <summary>
 	/// Gets all spells available to the current character's class and level, excluding already known.
 	/// </summary>
 	/// <param name="characterClassLevel"> The class level to get the available spells of.</param>

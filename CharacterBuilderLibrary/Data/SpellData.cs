@@ -27,11 +27,22 @@ public class SpellData : ISpellData
         return result.FirstOrDefault();
     }
 
-    /// <summary>
-    /// A database query returning all spells of a given spellcasting group.
-    /// </summary>
-    /// <returns></returns>
-    public async Task<IEnumerable<Spell>?> GetSpellsBySpellListAndLevel(string spellList, int spellLevel)
+	/// <summary>
+	/// A database query returning all spells of a specified level and lower.
+	/// </summary>
+	/// <returns></returns>
+	public async Task<IEnumerable<Spell>?> GetSpellsBySpellLevel(int spellLevel)
+	{
+		var results = await _db.LoadData<Spell, dynamic>("dbo.spSpells_GetByLevel", new { SpellLevel = spellLevel });
+
+		return results;
+	}
+
+	/// <summary>
+	/// A database query returning all spells of a given spellcasting group.
+	/// </summary>
+	/// <returns></returns>
+	public async Task<IEnumerable<Spell>?> GetSpellsBySpellListAndLevel(string spellList, int spellLevel)
     {
         var results = await _db.LoadData<Spell, dynamic>("dbo.spSpells_GetByListAndLevel", new { ClassGroup = spellList, SpellLevel = spellLevel });
 

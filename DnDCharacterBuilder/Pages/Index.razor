@@ -404,6 +404,17 @@
 						</div>
 					}		
 				}
+				@if(characterSheet.BonusSpells.Any())
+				{
+					<p>Bonus spells:</p>
+					@foreach (var b in characterSheet.BonusSpells)
+					{
+						<div class="feature-with-tooltip">
+							@b.Name
+							<span class="spell-tooltip-text"> @b.Description </span>
+						</div>
+					}
+				}
 			}
 		</div>
 	</div>
@@ -500,7 +511,16 @@
 									<!-- <SpellSelectInput> -->
 									break;
 								case "spellSelectAny":
-									<!-- <SpellSelectInput> -->
+									@if(string.IsNullOrEmpty(te.TagData))
+									{
+										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]" 
+																						  bonusSpells="characterSheet.BonusSpells" 
+																						  @bind-tagData="te.TagData" />
+									}
+									else
+									{
+										<button class="btn btn-sm"><span class="oi oi-loop-circular"></span></button>
+									}
 									break;
 								case "spellMastery":
 									<!-- <SpellSelectInput> -->
