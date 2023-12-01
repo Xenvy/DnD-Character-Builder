@@ -1,5 +1,120 @@
-﻿<h3>SkillSubselection</h3>
+﻿@inject ISkillData skillData
+@inject ICharacterSheetData characterSheetData
+
+<div class="autocomplete">
+	<div class="option-selection">
+		<!-- Autocomplete-style selection of character's spells -->
+		<input type="text"
+			   id="skillSelection"
+			   placeholder="Select a skill..."
+			   class="form-control filter"
+			   aria-label="Search box"
+			   @bind-value="skillSearchText"
+			   @oninput="((txt) => OnSkillSearchInput((string)txt.Value))"
+			   @onfocusin="(_ => showSkillSelect = !showSkillSelect)"
+			   @onfocusout="(_ => OnSkillSelection())" />
+		<div class="option-list">
+			<ul name="skillSelectionList" class="options @(showSkillSelect ? "" : "hide")">
+				@if (skills?.Count > 0)
+				{
+					@foreach (var s in skills)
+					{
+						<li class="option" @onclick="(_ => AddSkill(s))">
+							<span class="option-text">@s.Name</span>
+						</li>
+					}
+				}
+				else
+				{
+					<li class="disabled option">No results</li>
+				}
+			</ul>
+		</div>
+	</div>
+</div>
 
 @code {
+
+	protected async override Task OnInitializedAsync()
+	{
+		var s = await characterSheetData.GetSkills();
+		if (tagArguments?.Count > 0)
+		{
+			foreach (var a in tagArguments)
+			{
+				skills.Add(s.Find(x => x.Id == int.Parse(a)));
+			}
+		}
+		else
+		{
+			skills = s;
+		}
+	}
+
+	[Parameter]
+	public List<Skill>? skillProficiencies { get; set; }
+
+	[Parameter]
+	public List<string>? tagArguments { get; set; }
+
+	[Parameter]
+	public string? tagData { get; set; }
+
+	[Parameter]
+	public EventCallback<string> tagDataChanged { get; set; }
+
+	private List<Skill> skills = new();
+	private string skillSearchText;
+	private bool showSkillSelect = false;
+	CancellationTokenSource tokenSource;
+
+	private async Task OnSkillSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showSkillSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	private async Task AddSkill(Skill skill)
+	{
+		skillProficiencies.Add(skill);
+		tagData = skill.Id.ToString();
+		await OnSkillSearchInput("");
+		await tagDataChanged.InvokeAsync(tagData);
+	}
+
+	private async Task OnSkillSearchInput(string searchInput)
+	{
+		skillSearchText = searchInput;
+		await FilterSkills();
+	}
+
+	private async Task FilterSkills()
+	{
+		var s = await characterSheetData.GetSkills();
+		List<Skill> output = new();
+		if (tagArguments?.Count > 0)
+		{
+			foreach (var a in tagArguments)
+			{
+				output.Add(s.Find(x => x.Id == int.Parse(a)));
+			}
+		}
+		else
+		{
+			output = s;
+		}
+
+		if (string.IsNullOrWhiteSpace(skillSearchText) == false)
+		{
+			output = output.Where(s => s.Name.Contains(skillSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		skills = output;
+	}
 
 }
