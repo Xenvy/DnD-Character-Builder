@@ -1,5 +1,94 @@
-﻿<h3>FeatSubselection</h3>
+﻿@inject IFeatData featData
+@inject ICharacterSheetData characterSheetData
+
+<div class="autocomplete">
+	<div class="option-selection">
+		<!-- Autocomplete-style selection of character's spells -->
+		<input type="text"
+			   id="featSelection"
+			   placeholder="Select a feat..."
+			   class="form-control filter"
+			   aria-label="Search box"
+			   @bind-value="featSearchText"
+			   @oninput="((txt) => OnFeatSearchInput((string)txt.Value))"
+			   @onfocusin="(_ => showFeatSelect = !showFeatSelect)"
+			   @onfocusout="(_ => OnFeatSelection())" />
+		<div class="option-list">
+			<ul name="featSelectionList" class="options @(showFeatSelect ? "" : "hide")">
+				@if (feats?.Count > 0)
+				{
+					@foreach (var f in feats)
+					{
+						<li class="option" @onclick="(_ => AddFeat(f))">
+							<span class="option-text">@f.Name</span>
+						</li>
+					}
+				}
+				else
+				{
+					<li class="disabled option">No results</li>
+				}
+			</ul>
+		</div>
+	</div>
+</div>
 
 @code {
+
+	protected async override Task OnInitializedAsync()
+	{
+		feats = await characterSheetData.GetAvailableFeats();
+	}
+
+	[Parameter]
+	public List<Feat>? characterFeats { get; set; }
+
+	[Parameter]
+	public string? tagData { get; set; }
+
+	[Parameter]
+	public EventCallback<string> tagDataChanged { get; set; }
+
+	private List<Feat> feats = new();
+	private string featSearchText;
+	private bool showFeatSelect = false;
+	CancellationTokenSource tokenSource;
+
+	private async Task OnFeatSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showFeatSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	private async Task AddFeat(Feat feat)
+	{
+		characterFeats.Add(feat);
+		tagData = feat.Id.ToString();
+		await OnFeatSearchInput("");
+		await tagDataChanged.InvokeAsync(tagData);
+	}
+
+	private async Task OnFeatSearchInput(string searchInput)
+	{
+		featSearchText = searchInput;
+		await FilterFeats();
+	}
+
+	private async Task FilterFeats()
+	{
+		var output = await characterSheetData.GetAvailableFeats();
+
+		if (string.IsNullOrWhiteSpace(featSearchText) == false)
+		{
+			output = output.Where(s => s.Name.Contains(featSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		feats = output;
+	}
 
 }
