@@ -4093,7 +4093,7 @@ At 20th level, your call for intervention succeeds automatically, no roll requir
 ('Domain Spells', 177, 'At 5th level, you gain Plant Growth and Wind Wall spells.', '', 0, 'spell,254|spell,356'),
 ('Domain Spells', 179, 'At 7th level, you gain Dominate Beast and Grasping Vine spells.', '', 0, 'spell,107|spell,161'),
 ('Domain Spells', 181, 'At 9th level, you gain Insect Plague and Tree Stride spells.', '', 0, 'spell,194|spell,336'),
-('Acolyte of Nature', 173, 'At 1st level, you learn one cantrip of your choice from the druid spell list. This cantrip counts as a cleric cantrip for you, but it doesn’t count against the number of cleric cantrips you know. You also gain proficiency in one of the following skills of your choice: Animal Handling, Nature, or Survival.', '', 0, 'spellSelect,druid,0|skillSelect,8,10,14'),
+('Acolyte of Nature', 173, 'At 1st level, you learn one cantrip of your choice from the druid spell list. This cantrip counts as a cleric cantrip for you, but it doesn’t count against the number of cleric cantrips you know. You also gain proficiency in one of the following skills of your choice: Animal Handling, Nature, or Survival.', '', 0, 'spellSelect,Druid,0|skillSelect,8,10,14'),
 ('Channel Divinity: Charm Animals and Plants', 174, 'Starting at 2nd level, you can use your Channel Divinity to charm animals and plants.
 
 As an action, you present your holy symbol and invoke the name of your deity. Each beast or plant creature that can see you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is charmed by you for 1 minute or until it takes damage. While it is charmed by you, it is friendly to you and other creatures you designate.', '', 0, ''),
@@ -4245,7 +4245,7 @@ While you are transformed, the following rules apply:
 ('Archdruid', 272, 'At 20th level, you can use your Wild Shape an unlimited number of times.
 
 Additionally, you can ignore the verbal and somatic components of your druid spells, as well as any material components that lack a cost and aren''t consumed by a spell. You gain this benefit in both your normal shape and your beast shape from Wild Shape.', '', 0, ''),
-('Bonus Cantrip', 254, 'When you choose this circle at 2nd level, you learn one additional druid cantrip of your choice. This cantrip doesn’t count against the number of druid cantrips you know.', '', 0, 'spellSelect,dru,0'),
+('Bonus Cantrip', 254, 'When you choose this circle at 2nd level, you learn one additional druid cantrip of your choice. This cantrip doesn’t count against the number of druid cantrips you know.', '', 0, 'spellSelect,Druid,0'),
 ('Natural Recovery', 254, 'Starting at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can''t use this feature again until you finish a long rest.
 
 For example, when you are a 4th-level druid, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level slot or two 1st-level slots.', '', 0, ''),
@@ -5236,10 +5236,10 @@ If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a
 
 You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.
 
-At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,war,6'),
-('Mystic Arcanum', 663, '', '', 0, 'spellSelect,war,7'),
-('Mystic Arcanum', 665, '', '', 0, 'spellSelect,war,8'),
-('Mystic Arcanum', 667, '', '', 0, 'spellSelect,war,9'),
+At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,Warlock,6'),
+('Mystic Arcanum', 663, '', '', 0, 'spellSelect,Warlock,7'),
+('Mystic Arcanum', 665, '', '', 0, 'spellSelect,Warlock,8'),
+('Mystic Arcanum', 667, '', '', 0, 'spellSelect,Warlock,9'),
 ('Eldritch Master', 670, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', 0, ''),
 ('Expanded Spell List', 651, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Faerie Fire and Sleep to the warlock spell list.', '', 0, 'expandedSpellList,126,302'),
 ('Expanded Spell List', 653, 'The Archfey lets you choose from an expanded list of spells when you learn a warlock spell. You add Calm Emotions and Phantasmal Force to the warlock spell list.', '', 0, 'expandedSpellList,43,248'),
@@ -5352,10 +5352,10 @@ If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a
 
 You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.
 
-At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,war,6'),
-('Mystic Arcanum', 683, '', '', 0, 'spellSelect,war,7'),
-('Mystic Arcanum', 685, '', '', 0, 'spellSelect,war,8'),
-('Mystic Arcanum', 687, '', '', 0, 'spellSelect,war,9'),
+At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,Warlock,6'),
+('Mystic Arcanum', 683, '', '', 0, 'spellSelect,Warlock,7'),
+('Mystic Arcanum', 685, '', '', 0, 'spellSelect,Warlock,8'),
+('Mystic Arcanum', 687, '', '', 0, 'spellSelect,Warlock,9'),
 ('Eldritch Master', 690, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', 0, ''),
 ('Expanded Spell List', 671, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Burning Hands and Command to the warlock spell list.', '', 0, 'expandedSpellList,41,55'),
 ('Expanded Spell List', 673, 'The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. You add Blindess/Deafness and Scorching Ray to the warlock spell list.', '', 0, 'expandedSpellList,37,286'),
@@ -5432,10 +5432,10 @@ If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a
 
 You can cast your arcanum spell once without expending a spell slot. You must finish a long rest before you can do so again.
 
-At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,war,6'),
-('Mystic Arcanum', 703, '', '', 0, 'spellSelect,war,7'),
-('Mystic Arcanum', 705, '', '', 0, 'spellSelect,war,8'),
-('Mystic Arcanum', 707, '', '', 0, 'spellSelect,war,9'),
+At higher levels, you gain more warlock spells of your choice that can be cast in this way: one 7th-level spell at 13th level, one 8th-level spell at 15th level, and one 9th-level spell at 17th level. You regain all uses of your Mystic Arcanum when you finish a long rest.', '', 0, 'spellSelect,Warlock,6'),
+('Mystic Arcanum', 703, '', '', 0, 'spellSelect,Warlock,7'),
+('Mystic Arcanum', 705, '', '', 0, 'spellSelect,Warlock,8'),
+('Mystic Arcanum', 707, '', '', 0, 'spellSelect,Warlock,9'),
 ('Eldritch Master', 710, 'At 20th level, you can draw on your inner reserve of mystical power while entreating your patron to regain expended spell slots. You can spend 1 minute entreating your patron for aid to regain all your expended spell slots from your Pact Magic feature. Once you regain spell slots with this feature, you must finish a long rest before you can do so again.', '', 0, ''),
 ('Expanded Spell List', 691, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Dissonant Whispers and Tasha''s Hideous Laughter to the warlock spell list.', '', 0, 'expandedSpellList,103,323'),
 ('Expanded Spell List', 693, 'The Great Old One lets you choose from an expanded list of spells when you learn a warlock spell. You add Detect Thoughts and Phantasmal Force to the warlock spell list.', '', 0, 'expandedSpellList,97,248'),
