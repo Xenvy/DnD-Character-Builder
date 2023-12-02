@@ -9,7 +9,7 @@ namespace CharacterBuilderLibrary.Data
 		Task<List<CharacterClassLevel>> GetClassLevels();
 		Task<List<Feat>> GetAvailableFeats();
 		Task<List<Spell>> GetAllSpellsByLevel(CharacterClassLevel characterClassLevel);
-		Task<List<Spell>> GetAvailableSpells(CharacterClassLevel characterClassLevel);
+		Task<List<Spell>> GetSpellsByListAndLevel(string spellGroup, int spellLevel);
 		Task<Background> GetBackground(int backgroundId);
 		Task<List<Background>> GetBackgrounds();
 		Task<CharacterClassLevel> GetClassLevel(int classLevelId);

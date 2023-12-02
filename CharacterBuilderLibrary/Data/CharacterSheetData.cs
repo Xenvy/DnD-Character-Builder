@@ -426,13 +426,13 @@ public class CharacterSheetData : ICharacterSheetData
 	/// <param name="characterClassLevel"> The class level to get the available spells of.</param>
 	/// <returns>A list of all available spells.</returns>
 	/// <exception cref="Exception"></exception>
-	public async Task<List<Spell>> GetAvailableSpells(CharacterClassLevel classLevel)
+	public async Task<List<Spell>> GetSpellsByListAndLevel(string spellGroup, int spellLevel)
 	{
 		List<Spell> output;
 
 		try
 		{
-			output = (await _spellData.GetSpellsBySpellListAndLevel(classLevel.BaseClass, classLevel.GetAvailableSpellLevel())).ToList();
+			output = (await _spellData.GetSpellsBySpellListAndLevel(spellGroup, spellLevel)).ToList();
 		}
 		catch (Exception ex)
 		{
