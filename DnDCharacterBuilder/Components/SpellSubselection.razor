@@ -37,9 +37,17 @@
 
 	protected async override Task OnInitializedAsync()
 	{
-		if (tagArguments?.Count > 1)
+		if (tagArguments?.Count > 0)
 		{
-			spells = await characterSheetData.GetSpellsByListAndLevel(tagArguments[0], int.Parse(tagArguments[1]));
+			// Determine if tag arguments specify selection from character spells of given level (1 argument), or all spells of given spell-list and level (2 arguments).
+			if(tagArguments.Count == 1)
+			{
+				spells = spellChoice;
+			}
+			else
+			{
+				spells = await characterSheetData.GetSpellsByListAndLevel(tagArguments[0], int.Parse(tagArguments[1]));
+			}
 		}
 		else
 		{
@@ -52,6 +60,9 @@
 
 	[Parameter]
 	public List<Spell>? bonusSpells { get; set; }
+
+	[Parameter]
+	public List<Spell>? spellChoice { get; set; }
 
 	[Parameter]
 	public List<string>? tagArguments { get; set; }
@@ -96,9 +107,17 @@
 	{
 		List<Spell> output = new();
 
-		if (tagArguments?.Count > 1)
+		if (tagArguments?.Count > 0)
 		{
-			output = await characterSheetData.GetSpellsByListAndLevel(tagArguments[0], int.Parse(tagArguments[1]));
+			// Determine if tag arguments specify selection from character spells of given level (1 argument), or all spells of given spell-list and level (2 arguments).
+			if (tagArguments.Count == 1)
+			{
+				output = spellChoice;
+			}
+			else
+			{
+				output = await characterSheetData.GetSpellsByListAndLevel(tagArguments[0], int.Parse(tagArguments[1]));
+			}
 		}
 		else
 		{

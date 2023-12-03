@@ -578,7 +578,18 @@
 									}
 									break;
 								case "spellMastery":
-									<!-- <SpellSelectInput> -->
+									@if (string.IsNullOrEmpty(te.TagData))
+									{
+										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]"
+																						  bonusSpells="characterSheet.BonusSpells"
+																						  spellChoice="characterSheet.GetAllClassSpellsByLevel(int.Parse(te.Arguments[0]))"
+																						  tagArguments="te.Arguments"
+																						  @bind-tagData="te.TagData" />
+									}
+									else
+									{
+										<button class="btn btn-sm"><span class="oi oi-loop-circular"></span></button>
+									}
 									break;
 								case "feat":
 									@if (string.IsNullOrEmpty(te.TagData))

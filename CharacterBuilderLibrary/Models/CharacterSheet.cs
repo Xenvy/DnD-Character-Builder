@@ -117,4 +117,26 @@ public class CharacterSheet
 	/// </summary>
 	public List<Skill> SkillExpertise { get; set; } = new();
 
+	/// <summary>
+	/// Combines and returns all learned (from class levels) spells of a specified level.
+	/// </summary>
+	/// <param name="level"></param>
+	/// <returns></returns>
+	public List<Spell> GetAllClassSpellsByLevel(int level)
+	{
+		var output = new List<Spell>();
+
+		foreach(var cl in CharacterClassLevels)
+		{
+			foreach(var s in cl.SpellsLearned)
+			{ 
+				if(s.Level == level)
+				{
+					output.Add(s);
+				}
+			}
+		}
+
+		return output;
+	}
 }
