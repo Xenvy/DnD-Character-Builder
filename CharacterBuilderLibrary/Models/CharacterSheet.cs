@@ -112,4 +112,9 @@ public class CharacterSheet
 	/// </summary>
 	public List<Spell> BonusSpells { get; set; } = new();
 
+	/// <summary>
+	/// Skills in which character has expertise in (doubled proficiency bonus).
+	/// </summary>
+	public List<Skill> SkillExpertise { get; set; } = new();
+
 }

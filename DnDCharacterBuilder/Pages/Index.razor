@@ -177,8 +177,8 @@
 							<td>@s.Name</td>
 							<td>@s.AssociatedAbilityScore</td>
 							<td>@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier</td>
-							<td>@(characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) != null ? characterSheet.ProficiencyBonus : 0)</td>
-							<td>@(@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier + (characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) != null ? characterSheet.ProficiencyBonus : 0))</td>
+							<td>@(characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) == null ? 0 : characterSheet.SkillExpertise.Find(x => x.Name == s.Name) == null ? characterSheet.ProficiencyBonus : 2*characterSheet.ProficiencyBonus)</td>
+							<td>@(@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier + (characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) == null ? 0 : characterSheet.SkillExpertise.Find(x => x.Name == s.Name) == null ? characterSheet.ProficiencyBonus : 2 * characterSheet.ProficiencyBonus))</td>
 						</tr>		
 					}
 				</tbody>		
@@ -528,10 +528,29 @@
 									}
 									break;
 								case "skillSelectExpertise":
-									<!-- <SkillSelectInput> -->
+									@if (string.IsNullOrEmpty(te.TagData))
+									{
+										<DnDCharacterBuilder.Components.SkillSubselection skillProficiencies="characterSheet.SkillProficiencies"
+																						  skillExpertise="characterSheet.SkillExpertise"
+																						  tagArguments="te.Arguments"
+																						  @bind-tagData="te.TagData" />
+									}
+									else
+									{
+										<button class="btn btn-sm"><span class="oi oi-loop-circular"></span></button>
+									}
 									break;
 								case "expertise":
-									<!-- <SkillSelectInput> -->
+									@if (string.IsNullOrEmpty(te.TagData))
+									{
+										<DnDCharacterBuilder.Components.SkillSubselection skillProficiencies="characterSheet.SkillProficiencies"
+																						  skillExpertise="characterSheet.SkillExpertise"
+																						  @bind-tagData="te.TagData" />
+									}
+									else
+									{
+										<button class="btn btn-sm"><span class="oi oi-loop-circular"></span></button>
+									}
 									break;
 								case "spellSelect":
 									@if (string.IsNullOrEmpty(te.TagData))
@@ -683,7 +702,10 @@
 		{
 			await Task.Delay(100);
 			showBackgroundSelect = false;
-			showBackgroundSwap = false;
+			if(characterSheet.Background?.Name is not null)
+			{
+				showBackgroundSwap = false;
+			}
 			backgroundSearchText = "";
 			await InvokeAsync(StateHasChanged);
 			await FilterBackgrounds();
@@ -747,7 +769,10 @@
 		{
 			await Task.Delay(100);
 			showRaceSelect = false;
-			showRaceSwap = false;
+			if(characterSheet.Race?.Name is not null)
+			{
+				showRaceSwap = false;
+			}
 			raceSearchText = "";
 			await InvokeAsync(StateHasChanged);
 			await FilterRaces();

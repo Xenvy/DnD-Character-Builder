@@ -37,22 +37,37 @@
 
 	protected async override Task OnInitializedAsync()
 	{
-		var s = await characterSheetData.GetSkills();
-		if (tagArguments?.Count > 0)
+		// Determine if it's proficiency or expertise selection
+		if (skillExpertise is null || tagArguments is not null)
 		{
-			foreach (var a in tagArguments)
+			var s = await characterSheetData.GetSkills();
+			// Is the selection limited?
+			if (tagArguments?.Count > 0)
 			{
-				skills.Add(s.Find(x => x.Id == int.Parse(a)));
+				// Limit the choices to those provided in tag arguments
+				foreach (var a in tagArguments)
+				{
+					skills.Add(s.Find(x => x.Id == int.Parse(a)));
+				}
+			}
+			else
+			{
+				// In this case it's unrestricted selection
+				skills = s;
 			}
 		}
 		else
 		{
-			skills = s;
+			// In this case it's expertise selection, so the source is current skill proficiencies
+			skills = skillProficiencies;
 		}
 	}
 
 	[Parameter]
 	public List<Skill>? skillProficiencies { get; set; }
+
+	[Parameter]
+	public List<Skill>? skillExpertise { get; set; }
 
 	[Parameter]
 	public List<string>? tagArguments { get; set; }
@@ -81,7 +96,20 @@
 
 	private async Task AddSkill(Skill skill)
 	{
-		skillProficiencies.Add(skill);
+		// Determine if it's proficiency or expertise selection
+		if(skillExpertise is null)
+		{
+			skillProficiencies.Add(skill);
+		}
+		else
+		{
+			// If it's an expertise selection, but there are tag arguments, it also add the corresponding skill proficiency.
+			if(tagArguments is not null)
+			{
+				skillProficiencies.Add(skill);
+			}
+			skillExpertise.Add(skill);
+		}
 		tagData = skill.Id.ToString();
 		await OnSkillSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
@@ -95,23 +123,36 @@
 
 	private async Task FilterSkills()
 	{
-		var s = await characterSheetData.GetSkills();
 		List<Skill> output = new();
-		if (tagArguments?.Count > 0)
+
+		// Determine if it's proficiency or expertise selection
+		if (skillExpertise is null || tagArguments is not null)
 		{
-			foreach (var a in tagArguments)
+			var s = await characterSheetData.GetSkills();
+			// Is the selection limited?
+			if (tagArguments?.Count > 0)
 			{
-				output.Add(s.Find(x => x.Id == int.Parse(a)));
+				// Limit the choices to those provided in tag arguments
+				foreach (var a in tagArguments)
+				{
+					output.Add(s.Find(x => x.Id == int.Parse(a)));
+				}
+			}
+			else
+			{
+				// In this case it's unrestricted selection
+				output = s;
 			}
 		}
 		else
 		{
-			output = s;
+			// In this case it's expertise selection, so the source is current skill proficiencies
+			output = skillProficiencies.ToList();
 		}
 
 		if (string.IsNullOrWhiteSpace(skillSearchText) == false)
 		{
-			output = output.Where(s => s.Name.Contains(skillSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+			output = output.Where(x => x.Name.Contains(skillSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
 		}
 
 		skills = output;
