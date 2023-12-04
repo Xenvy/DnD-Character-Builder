@@ -506,17 +506,17 @@
 							switch(te.Tag)
 							{
 								case "skillSelectAny":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SkillSubselection skillProficiencies="characterSheet.SkillProficiencies" @bind-tagData="te.TagData" />
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveSkillProficiencyFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "skillSelect":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SkillSubselection skillProficiencies="characterSheet.SkillProficiencies" 
 																						  tagArguments="te.Arguments"
@@ -524,11 +524,11 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveSkillProficiencyFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "skillSelectExpertise":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SkillSubselection skillProficiencies="characterSheet.SkillProficiencies"
 																						  skillExpertise="characterSheet.SkillExpertise"
@@ -537,11 +537,11 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "expertise":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SkillSubselection skillProficiencies="characterSheet.SkillProficiencies"
 																						  skillExpertise="characterSheet.SkillExpertise"
@@ -549,11 +549,11 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveSkillExpertiseFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "spellSelect":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]"
 																						  bonusSpells="characterSheet.BonusSpells"
@@ -562,11 +562,11 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveBonusSpellFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "spellSelectAny":
-									@if(string.IsNullOrEmpty(te.TagData))
+									@if(string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]" 
 																						  bonusSpells="characterSheet.BonusSpells" 
@@ -574,11 +574,11 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveBonusSpellFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "spellMastery":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]"
 																						  bonusSpells="characterSheet.BonusSpells"
@@ -588,17 +588,17 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => te.TagData = new string[2])">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "feat":
-									@if (string.IsNullOrEmpty(te.TagData))
+									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
 										<DnDCharacterBuilder.Components.FeatSubselection characterFeats="characterSheet.Feats" @bind-tagData="te.TagData" />
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								default:
@@ -1196,6 +1196,51 @@
 	{
 		abilityScore.Value--;
 		characterSheet.AbilityScorePoints += abilityScore.IncreaseCost;
+
+		await SaveSessionData();
+	}
+
+	/// <summary>
+	/// Removes the bonus spell selected with the specified tag.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	private async Task RemoveBonusSpellFromTag(TagEntry tagEntry)
+	{
+		var spell = await characterSheetData.GetSpell(int.Parse(tagEntry.TagData[0]));
+
+		characterSheet.BonusSpells.RemoveAt(characterSheet.BonusSpells.FindIndex(s => s.Id == spell.Id));
+		tagEntry.TagData = new string[2];
+
+		await SaveSessionData();
+	}
+
+	/// <summary>
+	/// Removes the skill proficiency selected with the specified tag.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	private async Task RemoveSkillProficiencyFromTag(TagEntry tagEntry)
+	{
+		var skill = await characterSheetData.GetSkill(int.Parse(tagEntry.TagData[0]));
+
+		characterSheet.SkillProficiencies.RemoveAt(characterSheet.SkillProficiencies.FindIndex(s => s.Id == skill.Id));
+		tagEntry.TagData = new string[2];
+
+		await SaveSessionData();
+	}
+
+	/// <summary>
+	/// Removes the skill expertise selected with the specified tag.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	private async Task RemoveSkillExpertiseFromTag(TagEntry tagEntry)
+	{
+		var skill = await characterSheetData.GetSkill(int.Parse(tagEntry.TagData[0]));
+
+		characterSheet.SkillExpertise.RemoveAt(characterSheet.SkillExpertise.FindIndex(s => s.Id == skill.Id));
+		tagEntry.TagData = new string[2];
 
 		await SaveSessionData();
 	}

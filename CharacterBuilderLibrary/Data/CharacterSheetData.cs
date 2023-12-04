@@ -291,6 +291,24 @@ public class CharacterSheetData : ICharacterSheetData
 	}
 
 	/// <summary>
+	/// Gets a single skill from the database by its ID.
+	/// </summary>
+	/// <param name="skillId"></param>
+	/// <returns></returns>
+	/// <exception cref="Exception"></exception>
+	public async Task<Skill> GetSkill(int skillId)
+	{
+		try
+		{
+			return await _skillData.GetSkill(skillId);
+		}
+		catch (Exception ex)
+		{
+			throw new Exception(ex.Message);
+		}
+	}
+
+	/// <summary>
 	/// Gets all skills present in the database.
 	/// </summary>
 	/// <returns>A list of all skills.</returns>

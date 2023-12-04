@@ -73,10 +73,10 @@
 	public List<string>? tagArguments { get; set; }
 
 	[Parameter]
-	public string? tagData { get; set; }
+	public string[]? tagData { get; set; }
 
 	[Parameter]
-	public EventCallback<string> tagDataChanged { get; set; }
+	public EventCallback<string[]> tagDataChanged { get; set; }
 
 	private List<Skill> skills = new();
 	private string skillSearchText;
@@ -110,7 +110,8 @@
 			}
 			skillExpertise.Add(skill);
 		}
-		tagData = skill.Name;
+		tagData[0] = skill.Id.ToString();
+		tagData[1] = skill.Name;
 		await OnSkillSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
 	}

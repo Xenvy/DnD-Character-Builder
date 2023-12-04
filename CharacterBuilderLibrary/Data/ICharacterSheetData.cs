@@ -21,6 +21,7 @@ namespace CharacterBuilderLibrary.Data
 		Task<List<Race>> GetRaces();
 		Task<List<RacialFeature>> GetRacialFeatures(Race race);
 		Task<List<RacialFeature>> GetRacialSubfeatures(RacialFeature parentFeature);
+		Task<Skill> GetSkill(int skillId);
 		Task<List<Skill>> GetSkills();
 		Task<Spell> GetSpell(int spellId);
 		Task<List<Feat>> GetSubFeats(Feat parentFeat);

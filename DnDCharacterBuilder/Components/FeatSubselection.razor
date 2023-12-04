@@ -44,10 +44,10 @@
 	public List<Feat>? characterFeats { get; set; }
 
 	[Parameter]
-	public string? tagData { get; set; }
+	public string[]? tagData { get; set; }
 
 	[Parameter]
-	public EventCallback<string> tagDataChanged { get; set; }
+	public EventCallback<string[]> tagDataChanged { get; set; }
 
 	private List<Feat> feats = new();
 	private string featSearchText;
@@ -68,7 +68,8 @@
 	private async Task AddFeat(Feat feat)
 	{
 		characterFeats.Add(feat);
-		tagData = feat.Name;
+		tagData[0] = feat.Id.ToString();
+		tagData[1] = feat.Name;
 		await OnFeatSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
 	}

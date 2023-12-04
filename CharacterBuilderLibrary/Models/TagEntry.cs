@@ -22,5 +22,5 @@ public class TagEntry
 	/// <summary>
 	/// Stores information about an item selection made with the tag, if any.
 	/// </summary>
-	public string? TagData { get; set; }
+	public string[]? TagData { get; set; } = new string[2];
 }

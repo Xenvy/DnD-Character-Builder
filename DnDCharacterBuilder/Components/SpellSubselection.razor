@@ -68,10 +68,10 @@
 	public List<string>? tagArguments { get; set; }
 
 	[Parameter]
-	public string? tagData { get; set; }
+	public string[]? tagData { get; set; }
 
 	[Parameter]
-	public EventCallback<string> tagDataChanged { get; set; }
+	public EventCallback<string[]> tagDataChanged { get; set; }
 
 	private List<Spell> spells = new();
 	private string spellSearchText;
@@ -95,7 +95,8 @@
 		{
 			bonusSpells.Add(spell);
 		}
-		tagData = spell.Name;
+		tagData[0] = spell.Id.ToString();
+		tagData[1] = spell.Name;
 		await OnSpellSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
 	}
