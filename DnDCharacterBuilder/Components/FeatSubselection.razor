@@ -68,7 +68,7 @@
 	private async Task AddFeat(Feat feat)
 	{
 		characterFeats.Add(feat);
-		tagData = feat.Id.ToString();
+		tagData = feat.Name;
 		await OnFeatSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
 	}

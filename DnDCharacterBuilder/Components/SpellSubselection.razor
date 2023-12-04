@@ -40,7 +40,7 @@
 		if (tagArguments?.Count > 0)
 		{
 			// Determine if tag arguments specify selection from character spells of given level (1 argument), or all spells of given spell-list and level (2 arguments).
-			if(tagArguments.Count == 1)
+			if (tagArguments.Count == 1)
 			{
 				spells = spellChoice;
 			}
@@ -91,8 +91,11 @@
 
 	private async Task AddSpell(Spell spell)
 	{
-		bonusSpells.Add(spell);
-		tagData = spell.Id.ToString();
+		if (tagArguments?.Count != 1)
+		{
+			bonusSpells.Add(spell);
+		}
+		tagData = spell.Name;
 		await OnSpellSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
 	}

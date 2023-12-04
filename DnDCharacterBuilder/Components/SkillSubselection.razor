@@ -110,7 +110,7 @@
 			}
 			skillExpertise.Add(skill);
 		}
-		tagData = skill.Id.ToString();
+		tagData = skill.Name;
 		await OnSkillSearchInput("");
 		await tagDataChanged.InvokeAsync(tagData);
 	}
