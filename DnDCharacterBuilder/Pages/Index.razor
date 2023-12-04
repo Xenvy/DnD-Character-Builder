@@ -598,7 +598,7 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveFeatFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								default:
@@ -1240,6 +1240,22 @@
 		var skill = await characterSheetData.GetSkill(int.Parse(tagEntry.TagData[0]));
 
 		characterSheet.SkillExpertise.RemoveAt(characterSheet.SkillExpertise.FindIndex(s => s.Id == skill.Id));
+		tagEntry.TagData = new string[2];
+
+		await SaveSessionData();
+	}
+
+
+	/// <summary>
+	/// Removes the feat selected with the specified tag.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	private async Task RemoveFeatFromTag(TagEntry tagEntry)
+	{
+		var feat = await characterSheetData.GetFeat(int.Parse(tagEntry.TagData[0]));
+
+		characterSheet.Feats.RemoveAt(characterSheet.Feats.FindIndex(f => f.Id == feat.Id));
 		tagEntry.TagData = new string[2];
 
 		await SaveSessionData();
