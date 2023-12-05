@@ -373,6 +373,8 @@ public class CharacterSheetData : ICharacterSheetData
 			}
 		}
 
+		output.RemoveAll(f => !string.IsNullOrEmpty(f.ParentFeatName));
+
 		return output;
 	}
 
