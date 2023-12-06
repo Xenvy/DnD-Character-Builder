@@ -537,7 +537,7 @@
 									}
 									else
 									{
-										<button class="btn btn-sm">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
+										<button class="btn btn-sm" @onclick="(_ => RemoveSkillAndExpertiseFromTag(te))">(@te.TagData[1] <span class="oi oi-loop-circular"></span>)</button>
 									}
 									break;
 								case "expertise":
@@ -1245,6 +1245,21 @@
 		await SaveSessionData();
 	}
 
+	/// <summary>
+	/// Remove the skill proficiency and expertise selected with the specified tag.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	private async Task RemoveSkillAndExpertiseFromTag(TagEntry tagEntry)
+	{
+		var skill = await characterSheetData.GetSkill(int.Parse(tagEntry.TagData[0]));
+
+		characterSheet.SkillProficiencies.RemoveAt(characterSheet.SkillProficiencies.FindIndex(s => s.Id == skill.Id));
+		characterSheet.SkillExpertise.RemoveAt(characterSheet.SkillExpertise.FindIndex(s => s.Id == skill.Id));
+		tagEntry.TagData = new string[2];
+
+		await SaveSessionData();
+	}
 
 	/// <summary>
 	/// Removes the feat selected with the specified tag.
