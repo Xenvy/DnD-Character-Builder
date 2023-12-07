@@ -1,7 +1,104 @@
-﻿<h3>FeatureSubselection</h3>
+﻿@inject ICharacterClassFeatureData characterClassFeatureData
+@inject ICharacterSheetData characterSheetData
+
+<div class="autocomplete">
+	<div class="option-selection">
+		<!-- Autocomplete-style selection of character's spells -->
+		<input type="text"
+			   id="featureSelection"
+			   placeholder="Select a feature..."
+			   class="form-control filter"
+			   aria-label="Search box"
+			   @bind-value="featureSearchText"
+			   @oninput="((txt) => OnFeatureSearchInput((string)txt.Value))"
+			   @onfocusin="(_ => showFeatureSelect = !showFeatureSelect)"
+			   @onfocusout="(_ => OnFeatureSelection())" />
+		<div class="option-list">
+			<ul name="featureSelectionList" class="options @(showFeatureSelect ? "" : "hide")">
+				@if (features?.Count > 0)
+				{
+					@foreach (var f in features)
+					{
+						<li class="option" @onclick="(_ => AddFeature(f))">
+							<span class="option-text">@f.Name</span>
+						</li>
+					}
+				}
+				else
+				{
+					<li class="disabled option">No results</li>
+				}
+			</ul>
+		</div>
+	</div>
+</div>
 
 @code {
 
+	protected async override Task OnInitializedAsync()
+	{
+		features = await characterSheetData.GetLevelFeatureSubfeatures(classFeature);
+	}
 
+	[Parameter]
+	public CharacterClassLevel? classLevel { get; set; }
+
+	[Parameter]
+	public CharacterClassFeature? classFeature { get; set; }
+
+	[Parameter]
+	public EventCallback<CharacterClassLevel> classLevelChanged { get; set; }
+
+	private List<CharacterClassFeature> features = new();
+	private string featureSearchText;
+	private bool showFeatureSelect = false;
+	CancellationTokenSource tokenSource;
+
+	private async Task OnFeatureSelection()
+	{
+		tokenSource = new CancellationTokenSource();
+		await Task.Factory.StartNew(async () =>
+		{
+			await Task.Delay(100);
+			showFeatureSelect = false;
+			await InvokeAsync(StateHasChanged);
+		}, tokenSource.Token);
+	}
+
+	private async Task AddFeature(CharacterClassFeature feature)
+	{
+		await feature.FormatTags();
+		classLevel.ClassLevelFeatures.Add(feature);
+		if (feature.SubfeatureSelections == -1)
+		{
+			var subfeatures = await characterSheetData.GetLevelFeatureSubfeatures(feature);
+			foreach(var s in subfeatures)
+			{
+				await s.FormatTags();
+			}
+			classLevel.ClassLevelFeatures.AddRange(subfeatures);
+		}
+		classFeature.SubselectionsMade++;
+		await OnFeatureSearchInput("");
+		await classLevelChanged.InvokeAsync(classLevel);
+	}
+
+	private async Task OnFeatureSearchInput(string searchInput)
+	{
+		featureSearchText = searchInput;
+		await FilterFeatures();
+	}
+
+	private async Task FilterFeatures()
+	{
+		var output = await characterSheetData.GetLevelFeatureSubfeatures(classFeature);
+
+		if (string.IsNullOrWhiteSpace(featureSearchText) == false)
+		{
+			output = output.Where(s => s.Name.Contains(featureSearchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+		}
+
+		features = output;
+	}
 
 }

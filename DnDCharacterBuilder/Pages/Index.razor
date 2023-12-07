@@ -484,10 +484,10 @@
 			<!-- Display all acquired level features, grouped by level -->
 			@if (characterSheet.CharacterClassLevels.Count > 0)
 			{
-				@for (int i = 0; i < characterSheet.CharacterClassLevels.Count; i++)
+				@foreach (var cl in Enumerable.Range(0, characterSheet.CharacterClassLevels.Count))
 				{
-					<p>Character level @(i + 1) / @($"{characterSheet.CharacterClassLevels[i].BaseClass} - {characterSheet.CharacterClassLevels[i].Subclass} level {characterSheet.CharacterClassLevels[i].Level}") features:</p>
-					@foreach (var f in characterSheet.CharacterClassLevels[i].ClassLevelFeatures)
+					<p>Character level @(cl + 1) / @($"{characterSheet.CharacterClassLevels[cl].BaseClass} - {characterSheet.CharacterClassLevels[cl].Subclass} level {characterSheet.CharacterClassLevels[cl].Level}") features:</p>
+					@foreach (var f in characterSheet.CharacterClassLevels[cl].ClassLevelFeatures)
 					{
 						@if (!String.IsNullOrWhiteSpace(f.Description))
 						{
@@ -555,7 +555,7 @@
 								case "spellSelect":
 									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
-										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]"
+										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[cl]"
 																						  bonusSpells="characterSheet.BonusSpells"
 																						  tagArguments="te.Arguments"
 																						  @bind-tagData="te.TagData" />
@@ -568,7 +568,7 @@
 								case "spellSelectAny":
 									@if(string.IsNullOrEmpty(te.TagData[0]))
 									{
-										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]" 
+										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[cl]" 
 																						  bonusSpells="characterSheet.BonusSpells" 
 																						  @bind-tagData="te.TagData" />
 									}
@@ -580,7 +580,7 @@
 								case "spellMastery":
 									@if (string.IsNullOrEmpty(te.TagData[0]))
 									{
-										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[i]"
+										<DnDCharacterBuilder.Components.SpellSubselection classLevel="characterSheet.CharacterClassLevels[cl]"
 																						  bonusSpells="characterSheet.BonusSpells"
 																						  spellChoice="characterSheet.GetAllClassSpellsByLevel(int.Parse(te.Arguments[0]))"
 																						  tagArguments="te.Arguments"
@@ -603,6 +603,20 @@
 									break;
 								default:
 									break;
+							}
+						}
+						@if(f.SubfeatureSelections > 0)
+						{
+							@foreach (var subf in Enumerable.Range(0, f.SubfeatureSelections))
+							{
+								if (subf >= f.SubselectionsMade)
+								{
+									<DnDCharacterBuilder.Components.FeatureSubselection @bind-classLevel="characterSheet.CharacterClassLevels[cl]" classFeature="f" />
+								}
+								else
+								{
+									<button class="btn btn-sm"><span class="oi oi-loop-circular"></span></button>
+								}
 							}
 						}
 					}
