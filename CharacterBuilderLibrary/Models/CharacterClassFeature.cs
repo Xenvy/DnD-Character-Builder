@@ -37,9 +37,9 @@ public class CharacterClassFeature
     public int SubfeatureSelections { get; set; }
 
     /// <summary>
-    /// Number of subfeature selections already made.
+    /// List of ID's of selected subfeatures.
     /// </summary>
-    public int SubselectionsMade { get; set; }
+    public List<int> SubselectionsMade { get; set; } = new();
 
     /// <summary>
     /// Additional information used to update the character's sheet (extra attack, proficiencies, etc.).

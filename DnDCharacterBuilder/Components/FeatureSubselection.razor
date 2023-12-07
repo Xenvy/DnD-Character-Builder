@@ -47,6 +47,9 @@
 	public CharacterClassFeature? classFeature { get; set; }
 
 	[Parameter]
+	public int subfeatureIndex { get; set; }
+
+	[Parameter]
 	public EventCallback<CharacterClassLevel> classLevelChanged { get; set; }
 
 	private List<CharacterClassFeature> features = new();
@@ -78,7 +81,7 @@
 			}
 			classLevel.ClassLevelFeatures.AddRange(subfeatures);
 		}
-		classFeature.SubselectionsMade++;
+		classFeature.SubselectionsMade.Add(feature.Id);
 		await OnFeatureSearchInput("");
 		await classLevelChanged.InvokeAsync(classLevel);
 	}

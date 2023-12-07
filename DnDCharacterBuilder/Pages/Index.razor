@@ -609,13 +609,13 @@
 						{
 							@foreach (var subf in Enumerable.Range(0, f.SubfeatureSelections))
 							{
-								if (subf >= f.SubselectionsMade)
+								if (subf >= f.SubselectionsMade.Count)
 								{
 									<DnDCharacterBuilder.Components.FeatureSubselection @bind-classLevel="characterSheet.CharacterClassLevels[cl]" classFeature="f" />
 								}
 								else
 								{
-									<button class="btn btn-sm"><span class="oi oi-loop-circular"></span></button>
+									<button class="btn btn-sm" @onclick="(_ => RemoveSubfeature(characterSheet.CharacterClassLevels[cl], f, f.SubselectionsMade[subf]))"><span class="oi oi-loop-circular"></span></button>
 								}
 							}
 						}
@@ -1286,6 +1286,19 @@
 
 		characterSheet.Feats.RemoveAt(characterSheet.Feats.FindIndex(f => f.Id == feat.Id));
 		tagEntry.TagData = new string[2];
+
+		await SaveSessionData();
+	}
+
+	/// <summary>
+	/// Removes the subfeature selected with the specified class level feature.
+	/// </summary>
+	/// <param name="classFeature"></param>
+	/// <returns></returns>
+	private async Task RemoveSubfeature(CharacterClassLevel classLevel, CharacterClassFeature classFeature, int featureId)
+	{
+		classFeature.SubselectionsMade.Remove(featureId);
+		classLevel.ClassLevelFeatures.RemoveAt(classLevel.ClassLevelFeatures.FindIndex(f => f.Id == featureId));
 
 		await SaveSessionData();
 	}
