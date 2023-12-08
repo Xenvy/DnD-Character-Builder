@@ -613,11 +613,11 @@
 								{
 									<DnDCharacterBuilder.Components.FeatureSubselection @bind-classLevel="characterSheet.CharacterClassLevels[cl]" classFeature="f" />
 								}
-								else
-								{
-									<button class="btn btn-sm" @onclick="(_ => RemoveSubfeature(characterSheet.CharacterClassLevels[cl], f, f.SubselectionsMade[subf]))"><span class="oi oi-loop-circular"></span></button>
-								}
 							}
+						}
+						@if (!string.IsNullOrEmpty(f.ParentFeatureName) && characterSheet.CharacterClassLevels[cl].ClassLevelFeatures.Find(x => x.Name == f.ParentFeatureName)?.SubfeatureSelections > 0)
+						{
+							<button class="btn btn-sm" @onclick="(_ => RemoveSubfeature(characterSheet.CharacterClassLevels[cl], f))"><span class="oi oi-loop-circular"></span></button>
 						}
 					}
 				}
@@ -1295,10 +1295,11 @@
 	/// </summary>
 	/// <param name="classFeature"></param>
 	/// <returns></returns>
-	private async Task RemoveSubfeature(CharacterClassLevel classLevel, CharacterClassFeature classFeature, int featureId)
+	private async Task RemoveSubfeature(CharacterClassLevel classLevel, CharacterClassFeature subfeature)
 	{
-		classFeature.SubselectionsMade.Remove(featureId);
-		classLevel.ClassLevelFeatures.RemoveAt(classLevel.ClassLevelFeatures.FindIndex(f => f.Id == featureId));
+		var classFeature = classLevel.ClassLevelFeatures.Find(x => x.Name == subfeature.ParentFeatureName);
+		classFeature.SubselectionsMade.Remove(subfeature.Id);
+		classLevel.ClassLevelFeatures.RemoveAt(classLevel.ClassLevelFeatures.FindIndex(f => f.Id == subfeature.Id));
 
 		await SaveSessionData();
 	}
