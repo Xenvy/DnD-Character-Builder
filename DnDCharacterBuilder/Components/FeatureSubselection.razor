@@ -38,6 +38,7 @@
 	protected async override Task OnInitializedAsync()
 	{
 		features = await characterSheetData.GetLevelFeatureSubfeatures(classFeature);
+		// TODO: Add checks for warlock invocation requirements
 	}
 
 	[Parameter]

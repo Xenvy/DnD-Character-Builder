@@ -157,6 +157,63 @@ public static class CharacterSheetHelpers
         return output;
     }
 
+    public static void ParseTag(this CharacterSheet characterSheet, TagEntry tagEntry)
+    {
+        switch(tagEntry.Tag) 
+        {
+            case "spell":
+                break;
+            case "savingThrowProficiency":
+                break;
+            case "weaponProficiency":
+                break;
+            case "armorProficiency":
+                break;
+            case "abilityImprovement":
+                break;
+            case "buffer":
+                break;
+            case "extraAttack":
+                break;
+			case "damageResistance":
+				break;
+			case "unarmoredDefense":
+                break;
+            case "fastMovement":
+                break;
+            case "jackOfAllTrades":
+                break;
+            case "archeryStyle":
+                break;
+            case "defenseStyle":
+                break;
+            case "duelingStyle":
+                break;
+            case "twoWeaponFightingStyle":
+                break;
+            case "remarkableAthlete":
+                break;
+            case "martialArts":
+                break;
+            case "unarmoredMovement":
+                break;
+            case "dreadAmbusher":
+                break;
+            case "umbralSight":
+                break;
+            case "ironMind":
+                break;
+            case "bonusHP":
+                break;
+            case "draconicResilience":
+                break;
+            case "expandedSpellList":
+                break;
+            default:
+                break;
+        }
+    }
+
     //Spell tables
     private static int[] BardSpellsLearned = new int[] { 4, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0 };
 
