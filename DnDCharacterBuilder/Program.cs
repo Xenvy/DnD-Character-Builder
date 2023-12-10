@@ -20,6 +20,7 @@ builder.Services.AddSingleton<ISkillData, SkillData>();
 builder.Services.AddSingleton<ISpellData, SpellData>();
 builder.Services.AddSingleton<IWeaponData, WeaponData>();
 builder.Services.AddSingleton<ICharacterSheetData, CharacterSheetData>();
+builder.Services.AddScoped<ICharacterSheet, CharacterSheet>();
 
 var app = builder.Build();
 

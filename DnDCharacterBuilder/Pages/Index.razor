@@ -11,6 +11,7 @@
 @inject ISpellData spellData
 @inject IWeaponData weaponData
 @inject ICharacterSheetData characterSheetData
+@inject ICharacterSheet characterSheet
 @inject NavigationManager navManager
 @inject ProtectedSessionStorage sessionStorage
 
@@ -662,8 +663,6 @@
 	private bool showArmorSwap = true;
 	CancellationTokenSource tokenSource;
 
-	private CharacterSheet characterSheet = new();
-
 	protected async override Task OnInitializedAsync()
 	{
 		armors = await characterSheetData.GetArmors();
@@ -713,7 +712,7 @@
 		var activeSheetResult = await sessionStorage.GetAsync<CharacterSheet>(nameof(characterSheet));
 
 		showSpellSelect = activeShowSpellsResult.Success ? activeShowSpellsResult.Value : new Dictionary<int, bool>();
-		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet();
+		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet(characterSheetData);
 	}
 
 	/// <summary>
@@ -1083,6 +1082,10 @@
 		foreach(var cf in characterClassFeatures)
 		{
 			await cf.FormatTags();
+			foreach(var t in cf.TagEntries)
+			{
+				await characterSheet.ParseTag(t);
+			}
 		}
 		classLevel.ClassLevelFeatures = characterClassFeatures;
 

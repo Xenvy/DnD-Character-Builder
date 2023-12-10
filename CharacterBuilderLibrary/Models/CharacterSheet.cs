@@ -1,12 +1,18 @@
-﻿namespace CharacterBuilderLibrary.Models;
+﻿using CharacterBuilderLibrary.CharacterSheetLogic;
+using CharacterBuilderLibrary.Data;
+
+namespace CharacterBuilderLibrary.Models;
 
 /// <summary>
 /// Represents a set of statistics and selectable features defining a character.
 /// </summary>
-public class CharacterSheet
+public class CharacterSheet : ICharacterSheet
 {
-	public CharacterSheet()
+	private readonly ICharacterSheetData _characterSheetData;
+
+	public CharacterSheet(ICharacterSheetData characterSheetData)
 	{
+		_characterSheetData = characterSheetData;
 		//Create character's ability scores table
 		AbilityScores = new List<AbilityScore>
 		{
@@ -126,11 +132,11 @@ public class CharacterSheet
 	{
 		var output = new List<Spell>();
 
-		foreach(var cl in CharacterClassLevels)
+		foreach (var cl in CharacterClassLevels)
 		{
-			foreach(var s in cl.SpellsLearned)
-			{ 
-				if(s.Level == level)
+			foreach (var s in cl.SpellsLearned)
+			{
+				if (s.Level == level)
 				{
 					output.Add(s);
 				}
@@ -138,5 +144,78 @@ public class CharacterSheet
 		}
 
 		return output;
+	}
+
+	/// <summary>
+	/// Parses the specified tag information into adequate changes on the character sheet.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	/// <exception cref="Exception"></exception>
+	public async Task ParseTag(TagEntry tagEntry)
+	{
+		try
+		{
+			switch (tagEntry.Tag)
+			{
+				case "spell":
+					BonusSpells.Add(await _characterSheetData.GetSpell(int.Parse(tagEntry.Arguments[0])));
+					break;
+				case "savingThrowProficiency":
+					SavingThrowProficiencies.Add(tagEntry.Arguments[0].ToAbility());
+					break;
+				case "weaponProficiency":
+					break;
+				case "armorProficiency":
+					break;
+				case "abilityImprovement":
+					AbilityScores.Find(x => x.Ability == tagEntry.Arguments[0].ToAbility()).Value += int.Parse(tagEntry.Arguments[1]);
+					break;
+				case "buffer":
+					break;
+				case "extraAttack":
+					break;
+				case "damageResistance":
+					break;
+				case "unarmoredDefense":
+					break;
+				case "fastMovement":
+					break;
+				case "jackOfAllTrades":
+					break;
+				case "archeryStyle":
+					break;
+				case "defenseStyle":
+					break;
+				case "duelingStyle":
+					break;
+				case "twoWeaponFightingStyle":
+					break;
+				case "remarkableAthlete":
+					break;
+				case "martialArts":
+					break;
+				case "unarmoredMovement":
+					break;
+				case "dreadAmbusher":
+					break;
+				case "umbralSight":
+					break;
+				case "ironMind":
+					break;
+				case "bonusHP":
+					break;
+				case "draconicResilience":
+					break;
+				case "expandedSpellList":
+					break;
+				default:
+					break;
+			}
+		}
+		catch (Exception e)
+		{
+			throw new Exception(e.Message);
+		}
 	}
 }
