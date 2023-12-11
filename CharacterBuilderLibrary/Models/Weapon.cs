@@ -24,7 +24,7 @@ public class Weapon
     /// <summary>
     /// Proficiency group the weapon belongs to.
     /// </summary>
-    public string WeaponGroup { get; set; }
+    public string Category { get; set; }
 
     /// <summary>
     /// Indicates if the weapon is two-handed or not.

@@ -175,14 +175,14 @@ public class CharacterSheet : ICharacterSheet
 						case "single":
 							var wep = await _characterSheetData.GetWeapon(int.Parse(tagEntry.Arguments[1]));
 							WeaponProficiencies.Add(wep);
-							if(!DisplayedWeaponProficiencies.Contains($"{wep.WeaponGroup} weapons"))
+							if(!DisplayedWeaponProficiencies.Contains($"{wep.Category} weapons"))
 							{
 								DisplayedWeaponProficiencies.Add(wep.Name);
 							}
 							break;
 						case "simple":
 							var w = await _characterSheetData.GetWeapons();
-							WeaponProficiencies.AddRange(w.Where(x => x.WeaponGroup == "Simple"));
+							WeaponProficiencies.AddRange(w.Where(x => x.Category == "Simple"));
 							if (!DisplayedWeaponProficiencies.Contains("Simple weapons"))
 							{
 								DisplayedWeaponProficiencies.Add("Simple weapons");
@@ -190,7 +190,7 @@ public class CharacterSheet : ICharacterSheet
 							break;
 						case "martial":
 							w = await _characterSheetData.GetWeapons();
-							WeaponProficiencies.AddRange(w.Where(x => x.WeaponGroup == "Martial"));
+							WeaponProficiencies.AddRange(w.Where(x => x.Category == "Martial"));
 							if (!DisplayedWeaponProficiencies.Contains("Martial weapons"))
 							{
 								DisplayedWeaponProficiencies.Add("Martial weapons");
