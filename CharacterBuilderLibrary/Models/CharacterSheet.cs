@@ -81,7 +81,12 @@ public class CharacterSheet : ICharacterSheet
 	/// <summary>
 	/// A list of character's weapon proficiencies.
 	/// </summary>
-	public List<string> WeaponProficiencies { get; set; } = new List<string>();
+	public List<Weapon> WeaponProficiencies { get; set; } = new List<Weapon>();
+
+	/// <summary>
+	/// A list of character's weapon proficiencies to display, bundling all simple weapons as 'Simple', etc.
+	/// </summary>
+	public List<string> DisplayedWeaponProficiencies { get; set; } = new List<string>();
 
 	/// <summary>
 	/// A list of character's armor proficiencies.
@@ -165,6 +170,42 @@ public class CharacterSheet : ICharacterSheet
 					SavingThrowProficiencies.Add(tagEntry.Arguments[0].ToAbility());
 					break;
 				case "weaponProficiency":
+					switch(tagEntry.Arguments[0])
+					{
+						case "single":
+							var wep = await _characterSheetData.GetWeapon(int.Parse(tagEntry.Arguments[1]));
+							WeaponProficiencies.Add(wep);
+							if(!DisplayedWeaponProficiencies.Contains($"{wep.WeaponGroup} weapons"))
+							{
+								DisplayedWeaponProficiencies.Add(wep.Name);
+							}
+							break;
+						case "simple":
+							var w = await _characterSheetData.GetWeapons();
+							WeaponProficiencies.AddRange(w.Where(x => x.WeaponGroup == "Simple"));
+							if (!DisplayedWeaponProficiencies.Contains("Simple weapons"))
+							{
+								DisplayedWeaponProficiencies.Add("Simple weapons");
+							}
+							break;
+						case "martial":
+							w = await _characterSheetData.GetWeapons();
+							WeaponProficiencies.AddRange(w.Where(x => x.WeaponGroup == "Martial"));
+							if (!DisplayedWeaponProficiencies.Contains("Martial weapons"))
+							{
+								DisplayedWeaponProficiencies.Add("Martial weapons");
+							}
+							break;
+						case "all":
+							WeaponProficiencies.AddRange(await _characterSheetData.GetWeapons());
+							DisplayedWeaponProficiencies.Clear();
+							DisplayedWeaponProficiencies.Add("Simple weapons");
+							DisplayedWeaponProficiencies.Add("Martial weapons");
+							DisplayedWeaponProficiencies.Add("Shield");
+							break;
+						default:
+							break;
+					}
 					break;
 				case "armorProficiency":
 					break;

@@ -19,8 +19,8 @@ namespace CharacterBuilderLibrary.Models
 		List<Skill> SkillExpertise { get; set; }
 		List<Skill> SkillProficiencies { get; set; }
 		List<Spell> SpellsKnown { get; set; }
-		List<string> WeaponProficiencies { get; set; }
-
+		List<Weapon> WeaponProficiencies { get; set; }
+		List<string> DisplayedWeaponProficiencies { get; set; }
 		List<Spell> GetAllClassSpellsByLevel(int level);
 		Task ParseTag(TagEntry tagEntry);
 	}

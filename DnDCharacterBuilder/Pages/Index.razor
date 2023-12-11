@@ -223,6 +223,15 @@
 	<!-- Weapon and armor section -->
 	<div class="weapons-and-armors-section sheet-row">
 		<div class="weapons-section">
+			<div class="weapon-proficiencies">
+				<label for="weaponProficiencies">Weapon proficiencies:</label>
+				<ul name="weaponProficiencies">
+					@foreach (var w in characterSheet.DisplayedWeaponProficiencies)
+					{
+						<li>@w</li>
+					}
+				</ul>
+			</div>
 			<div class="autocomplete">
 				<div class="option-selection">
 					<label for="weapon1Selection">Main hand: @characterSheet.EquippedWeapons[0]?.Name</label>
