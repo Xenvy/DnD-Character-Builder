@@ -233,6 +233,35 @@ public class CharacterSheet : ICharacterSheet
 					}
 					break;
 				case "armorProficiency":
+					switch(tagEntry.Arguments[0])
+					{
+						case "all":
+							ArmorProficiencies.Clear();
+							ArmorProficiencies.Add("Light armor");
+							ArmorProficiencies.Add("Medium armor");
+							ArmorProficiencies.Add("Heavy armor");
+							break;
+						case "light":
+							if (!ArmorProficiencies.Contains("Light armor"))
+							{
+								ArmorProficiencies.Add("Light armor");
+							}
+							break;
+						case "medium":
+							if (!ArmorProficiencies.Contains("Medium armor"))
+							{
+								ArmorProficiencies.Add("Medium armor");
+							}
+							break;
+						case "heavy":
+							if (!ArmorProficiencies.Contains("Heavy armor"))
+							{
+								ArmorProficiencies.Add("Heavy armor");
+							}
+							break;
+						default:
+							break;
+					}
 					break;
 				case "abilityImprovement":
 					AbilityScores.Find(x => x.Ability == tagEntry.Arguments[0].ToAbility()).Value += int.Parse(tagEntry.Arguments[1]);

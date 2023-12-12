@@ -125,7 +125,7 @@ label {
     
 }
 
-.weapon-proficiencies {
+.weapon-proficiencies, .armor-proficiencies {
     padding-left: 1rem;
 }
 

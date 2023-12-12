@@ -323,6 +323,15 @@
 			}
 		</div>
 		<div class="armor-section">
+			<div class="armor-proficiencies">
+				<label for="armorProficiencies">Armor proficiencies:</label>
+				<ul name="armorProficiencies">
+					@foreach (var a in characterSheet.ArmorProficiencies)
+					{
+						<li>@a</li>
+					}
+				</ul>
+			</div>
 			<div class="autocomplete">
 				<div class="option-selection">
 					<label for="armorSelection">Equipped armor: @characterSheet.EquippedArmor.Name</label>
