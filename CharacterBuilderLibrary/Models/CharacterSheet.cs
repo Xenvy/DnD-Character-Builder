@@ -175,9 +175,20 @@ public class CharacterSheet : ICharacterSheet
 						case "single":
 							var wep = await _characterSheetData.GetWeapon(int.Parse(tagEntry.Arguments[1]));
 							WeaponProficiencies.Add(wep);
-							if(!DisplayedWeaponProficiencies.Contains($"{wep.Category} weapons"))
+							if(!DisplayedWeaponProficiencies.Contains($"{wep.Category} weapons") && !DisplayedWeaponProficiencies.Contains(wep.Name))
 							{
 								DisplayedWeaponProficiencies.Add(wep.Name);
+							}
+							break;
+						case "multiple":
+							foreach (var a in Enumerable.Range(1, tagEntry.Arguments.Count - 1))
+							{
+								wep = await _characterSheetData.GetWeapon(int.Parse(tagEntry.Arguments[a]));
+								WeaponProficiencies.Add(wep);
+								if (!DisplayedWeaponProficiencies.Contains($"{wep.Category} weapons") && !DisplayedWeaponProficiencies.Contains(wep.Name))
+								{
+									DisplayedWeaponProficiencies.Add(wep.Name);
+								}
 							}
 							break;
 						case "simple":
@@ -185,6 +196,13 @@ public class CharacterSheet : ICharacterSheet
 							WeaponProficiencies.AddRange(w.Where(x => x.Category == "Simple"));
 							if (!DisplayedWeaponProficiencies.Contains("Simple weapons"))
 							{
+								foreach (var d in DisplayedWeaponProficiencies.ToList())
+								{
+									if (w.Find(x => x.Name == d)?.Category == "Simple")
+									{
+										DisplayedWeaponProficiencies.Remove(d);
+									}
+								}
 								DisplayedWeaponProficiencies.Add("Simple weapons");
 							}
 							break;
@@ -193,6 +211,13 @@ public class CharacterSheet : ICharacterSheet
 							WeaponProficiencies.AddRange(w.Where(x => x.Category == "Martial"));
 							if (!DisplayedWeaponProficiencies.Contains("Martial weapons"))
 							{
+								foreach (var d in DisplayedWeaponProficiencies.ToList())
+								{
+									if (w.Find(x => x.Name == d)?.Category == "Martial")
+									{
+										DisplayedWeaponProficiencies.Remove(d);
+									}
+								}
 								DisplayedWeaponProficiencies.Add("Martial weapons");
 							}
 							break;
