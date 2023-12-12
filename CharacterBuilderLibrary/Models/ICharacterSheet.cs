@@ -21,7 +21,5 @@ namespace CharacterBuilderLibrary.Models
 		List<Spell> SpellsKnown { get; set; }
 		List<Weapon> WeaponProficiencies { get; set; }
 		List<string> DisplayedWeaponProficiencies { get; set; }
-		List<Spell> GetAllClassSpellsByLevel(int level);
-		Task ParseTag(TagEntry tagEntry);
 	}
 }

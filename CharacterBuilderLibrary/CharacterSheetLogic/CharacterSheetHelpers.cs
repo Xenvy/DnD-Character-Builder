@@ -1,4 +1,5 @@
-﻿using CharacterBuilderLibrary.Models;
+﻿using CharacterBuilderLibrary.Data;
+using CharacterBuilderLibrary.Models;
 
 namespace CharacterBuilderLibrary.CharacterSheetLogic;
 
@@ -157,7 +158,193 @@ public static class CharacterSheetHelpers
         return output;
     }
 
-    public static Ability ToAbility(this string tag)
+	/// <summary>
+	/// Combines and returns all learned (from class levels) spells of a specified level.
+	/// </summary>
+	/// <param name="level"></param>
+	/// <returns></returns>
+	public static List<Spell> GetAllClassSpellsByLevel(this ICharacterSheet characterSheet, int level)
+	{
+		var output = new List<Spell>();
+
+		foreach (var cl in characterSheet.CharacterClassLevels)
+		{
+			foreach (var s in cl.SpellsLearned)
+			{
+				if (s.Level == level)
+				{
+					output.Add(s);
+				}
+			}
+		}
+
+		return output;
+	}
+
+	/// <summary>
+	/// Parses the specified tag information into adequate changes on the character sheet.
+	/// </summary>
+	/// <param name="tagEntry"></param>
+	/// <returns></returns>
+	/// <exception cref="Exception"></exception>
+	public static async Task ParseTag(this ICharacterSheet characterSheet, ICharacterSheetData characterSheetData, TagEntry tagEntry)
+	{
+		try
+		{
+			switch (tagEntry.Tag)
+			{
+				case "spell":
+					characterSheet.BonusSpells.Add(await characterSheetData.GetSpell(int.Parse(tagEntry.Arguments[0])));
+					break;
+				case "savingThrowProficiency":
+					characterSheet.SavingThrowProficiencies.Add(tagEntry.Arguments[0].ToAbility());
+					break;
+				case "weaponProficiency":
+					switch (tagEntry.Arguments[0])
+					{
+						case "single":
+							var wep = await characterSheetData.GetWeapon(int.Parse(tagEntry.Arguments[1]));
+							characterSheet.WeaponProficiencies.Add(wep);
+							if (!characterSheet.DisplayedWeaponProficiencies.Contains($"{wep.Category} weapons") && !characterSheet.DisplayedWeaponProficiencies.Contains(wep.Name))
+							{
+								characterSheet.DisplayedWeaponProficiencies.Add(wep.Name);
+							}
+							break;
+						case "multiple":
+							foreach (var a in Enumerable.Range(1, tagEntry.Arguments.Count - 1))
+							{
+								wep = await characterSheetData.GetWeapon(int.Parse(tagEntry.Arguments[a]));
+								characterSheet.WeaponProficiencies.Add(wep);
+								if (!characterSheet.DisplayedWeaponProficiencies.Contains($"{wep.Category} weapons") && !characterSheet.DisplayedWeaponProficiencies.Contains(wep.Name))
+								{
+									characterSheet.DisplayedWeaponProficiencies.Add(wep.Name);
+								}
+							}
+							break;
+						case "simple":
+							var w = await characterSheetData.GetWeapons();
+							characterSheet.WeaponProficiencies.AddRange(w.Where(x => x.Category == "Simple"));
+							if (!characterSheet.DisplayedWeaponProficiencies.Contains("Simple weapons"))
+							{
+								foreach (var d in characterSheet.DisplayedWeaponProficiencies.ToList())
+								{
+									if (w.Find(x => x.Name == d)?.Category == "Simple")
+									{
+										characterSheet.DisplayedWeaponProficiencies.Remove(d);
+									}
+								}
+								characterSheet.DisplayedWeaponProficiencies.Add("Simple weapons");
+							}
+							break;
+						case "martial":
+							w = await characterSheetData.GetWeapons();
+							characterSheet.WeaponProficiencies.AddRange(w.Where(x => x.Category == "Martial"));
+							if (!characterSheet.DisplayedWeaponProficiencies.Contains("Martial weapons"))
+							{
+								foreach (var d in characterSheet.DisplayedWeaponProficiencies.ToList())
+								{
+									if (w.Find(x => x.Name == d)?.Category == "Martial")
+									{
+										characterSheet.DisplayedWeaponProficiencies.Remove(d);
+									}
+								}
+								characterSheet.DisplayedWeaponProficiencies.Add("Martial weapons");
+							}
+							break;
+						case "all":
+							characterSheet.WeaponProficiencies.AddRange(await characterSheetData.GetWeapons());
+							characterSheet.DisplayedWeaponProficiencies.Clear();
+							characterSheet.DisplayedWeaponProficiencies.Add("Simple weapons");
+							characterSheet.DisplayedWeaponProficiencies.Add("Martial weapons");
+							characterSheet.DisplayedWeaponProficiencies.Add("Shield");
+							break;
+						default:
+							break;
+					}
+					break;
+				case "armorProficiency":
+					switch (tagEntry.Arguments[0])
+					{
+						case "all":
+							characterSheet.ArmorProficiencies.Clear();
+							characterSheet.ArmorProficiencies.Add("Light armor");
+							characterSheet.ArmorProficiencies.Add("Medium armor");
+							characterSheet.ArmorProficiencies.Add("Heavy armor");
+							break;
+						case "light":
+							if (!characterSheet.ArmorProficiencies.Contains("Light armor"))
+							{
+								characterSheet.ArmorProficiencies.Add("Light armor");
+							}
+							break;
+						case "medium":
+							if (!characterSheet.ArmorProficiencies.Contains("Medium armor"))
+							{
+								characterSheet.ArmorProficiencies.Add("Medium armor");
+							}
+							break;
+						case "heavy":
+							if (!characterSheet.ArmorProficiencies.Contains("Heavy armor"))
+							{
+								characterSheet.ArmorProficiencies.Add("Heavy armor");
+							}
+							break;
+						default:
+							break;
+					}
+					break;
+				case "abilityImprovement":
+					characterSheet.AbilityScores.Find(x => x.Ability == tagEntry.Arguments[0].ToAbility()).Value += int.Parse(tagEntry.Arguments[1]);
+					break;
+				case "buffer":
+					break;
+				case "extraAttack":
+					break;
+				case "damageResistance":
+					break;
+				case "unarmoredDefense":
+					break;
+				case "fastMovement":
+					break;
+				case "jackOfAllTrades":
+					break;
+				case "archeryStyle":
+					break;
+				case "defenseStyle":
+					break;
+				case "duelingStyle":
+					break;
+				case "twoWeaponFightingStyle":
+					break;
+				case "remarkableAthlete":
+					break;
+				case "martialArts":
+					break;
+				case "unarmoredMovement":
+					break;
+				case "dreadAmbusher":
+					break;
+				case "umbralSight":
+					break;
+				case "ironMind":
+					break;
+				case "bonusHP":
+					break;
+				case "draconicResilience":
+					break;
+				case "expandedSpellList":
+					break;
+				default:
+					break;
+			}
+		}
+		catch (Exception e)
+		{
+			throw new Exception(e.Message);
+		}
+	}
+
+	public static Ability ToAbility(this string tag)
     {
         switch(tag) 
         {

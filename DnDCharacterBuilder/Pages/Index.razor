@@ -730,7 +730,7 @@
 		var activeSheetResult = await sessionStorage.GetAsync<CharacterSheet>(nameof(characterSheet));
 
 		showSpellSelect = activeShowSpellsResult.Success ? activeShowSpellsResult.Value : new Dictionary<int, bool>();
-		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet(characterSheetData);
+		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet();
 	}
 
 	/// <summary>
@@ -1102,7 +1102,7 @@
 			await cf.FormatTags();
 			foreach(var t in cf.TagEntries)
 			{
-				await characterSheet.ParseTag(t);
+				await characterSheet.ParseTag(characterSheetData, t);
 			}
 		}
 		classLevel.ClassLevelFeatures = characterClassFeatures;
