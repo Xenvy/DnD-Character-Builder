@@ -51,6 +51,16 @@ public class CharacterSheet : ICharacterSheet
 	}
 
 	/// <summary>
+	/// Character's maximum hit points.
+	/// </summary>
+	public int HitPoints { get; set; }
+
+	/// <summary>
+	/// Character's movement speed in feet.
+	/// </summary>
+	public int Speed { get; set; }
+
+	/// <summary>
 	/// Character's selected race.
 	/// </summary>
 	public Race? Race { get; set; }

@@ -10,6 +10,8 @@ namespace CharacterBuilderLibrary.Models
 		List<Spell> BonusSpells { get; set; }
 		List<CharacterClassLevel> CharacterClassLevels { get; set; }
 		int CharacterLevel { get; }
+		int HitPoints { get; set; }
+		int Speed { get; set; }
 		Armor EquippedArmor { get; set; }
 		List<Weapon> EquippedWeapons { get; set; }
 		List<Feat> Feats { get; set; }
