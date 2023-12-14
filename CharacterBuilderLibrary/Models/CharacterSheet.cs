@@ -135,4 +135,8 @@ public class CharacterSheet : ICharacterSheet
 	/// </summary>
 	public List<Skill> SkillExpertise { get; set; } = new();
 
+	/// <summary>
+	/// Additional features gained from tags which provide conditional benefits to character's stats.
+	/// </summary>
+	public List<SpecialFeature> SpecialFeatures { get; set; } = new();
 }

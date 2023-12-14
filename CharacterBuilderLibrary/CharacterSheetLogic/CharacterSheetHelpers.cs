@@ -299,38 +299,55 @@ public static class CharacterSheetHelpers
 				case "buffer":
 					break;
 				case "extraAttack":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag, tagEntry.Arguments[0]));
 					break;
 				case "damageResistance":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag, tagEntry.Arguments[0]));
 					break;
 				case "unarmoredDefense":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag, tagEntry.Arguments[0]));
 					break;
 				case "fastMovement":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "jackOfAllTrades":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "archeryStyle":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "defenseStyle":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "duelingStyle":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "twoWeaponFightingStyle":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "remarkableAthlete":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "martialArts":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "unarmoredMovement":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "dreadAmbusher":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "umbralSight":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "ironMind":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "bonusHP":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag, tagEntry.Arguments[0]));
 					break;
 				case "draconicResilience":
+					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
 					break;
 				case "expandedSpellList":
 					break;

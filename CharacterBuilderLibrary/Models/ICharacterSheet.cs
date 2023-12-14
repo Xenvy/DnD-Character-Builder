@@ -23,5 +23,6 @@ namespace CharacterBuilderLibrary.Models
 		List<Spell> SpellsKnown { get; set; }
 		List<Weapon> WeaponProficiencies { get; set; }
 		List<string> DisplayedWeaponProficiencies { get; set; }
+		List<SpecialFeature> SpecialFeatures { get; set; }
 	}
 }
