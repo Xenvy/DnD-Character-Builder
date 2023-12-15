@@ -309,6 +309,7 @@ public static class CharacterSheetHelpers
 					break;
 				case "fastMovement":
 					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
+					await characterSheet.UpdateSpeed();
 					break;
 				case "jackOfAllTrades":
 					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
@@ -333,6 +334,7 @@ public static class CharacterSheetHelpers
 					break;
 				case "unarmoredMovement":
 					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
+					await characterSheet.UpdateSpeed();
 					break;
 				case "dreadAmbusher":
 					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));

@@ -24,5 +24,6 @@ namespace CharacterBuilderLibrary.Models
 		List<Weapon> WeaponProficiencies { get; set; }
 		List<string> DisplayedWeaponProficiencies { get; set; }
 		List<SpecialFeature> SpecialFeatures { get; set; }
+		Task UpdateSpeed();
 	}
 }

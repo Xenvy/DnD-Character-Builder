@@ -5,6 +5,10 @@
 /// </summary>
 public class SpecialFeature
 {
+    public SpecialFeature()
+    {
+        
+    }
     public SpecialFeature(string name)
     {
         Name = name;

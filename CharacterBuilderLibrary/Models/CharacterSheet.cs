@@ -139,4 +139,32 @@ public class CharacterSheet : ICharacterSheet
 	/// Additional features gained from tags which provide conditional benefits to character's stats.
 	/// </summary>
 	public List<SpecialFeature> SpecialFeatures { get; set; } = new();
+
+	public async Task UpdateSpeed()
+	{
+		await Task.Run(() =>
+		{
+			int speed = 0;
+			if (SpecialFeatures.Find(x => x.Name == "fastMovement") != null && EquippedArmor.ArmorGroup != "Heavy") 
+			{
+				speed += 10;
+			}
+			if (SpecialFeatures.Find(x => x.Name == "unarmoredMovement") != null && EquippedArmor.Name == null)
+			{
+				speed += CharacterClassLevels.FindLast(x => x.BaseClass == "Monk").Level switch
+				{
+					< 6 => 10,
+					< 10 => 15,
+					< 14 => 20,
+					< 18 => 25,
+					_ => 30,
+				};
+			}
+			if(Race != null)
+			{
+				speed += Race.Speed;
+			}
+			Speed = speed;
+		});
+	}
 }
