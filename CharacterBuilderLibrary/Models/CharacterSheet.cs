@@ -1,5 +1,6 @@
 ﻿using CharacterBuilderLibrary.CharacterSheetLogic;
 using CharacterBuilderLibrary.Data;
+using System.Text;
 
 namespace CharacterBuilderLibrary.Models;
 
@@ -106,11 +107,6 @@ public class CharacterSheet : ICharacterSheet
 	public List<Feat> Feats { get; set; } = new List<Feat>();
 
 	/// <summary>
-	/// A list of character's known spells.
-	/// </summary>
-	public List<Spell> SpellsKnown { get; set; } = new List<Spell>();
-
-	/// <summary>
 	/// A list of character's currently equipped weapon(s).
 	/// </summary>
 	public List<Weapon> EquippedWeapons { get; set; } = new List<Weapon> { new Weapon(), new Weapon() };
@@ -140,6 +136,11 @@ public class CharacterSheet : ICharacterSheet
 	/// </summary>
 	public List<SpecialFeature> SpecialFeatures { get; set; } = new();
 
+	/// <summary>
+	/// A string uniquely identifying the current character build.
+	/// </summary>
+	public string? BuildReferenceId { get; private set; }
+
 	public async Task UpdateSpeed()
 	{
 		await Task.Run(() =>
@@ -165,6 +166,38 @@ public class CharacterSheet : ICharacterSheet
 				speed += Race.Speed;
 			}
 			Speed = speed;
+		});
+	}
+
+	public async Task UpdateBuildRefId()
+	{
+		await Task.Run(() =>
+		{
+			var refId = new StringBuilder();
+			foreach (var cl in CharacterClassLevels) 
+			{
+				refId.Append('c').Append(cl.Id);
+				foreach (var s in cl.SpellsLearned) 
+				{
+					refId.Append('s').Append(s.Id);
+				}
+				foreach (var f in cl.ClassLevelFeatures)
+				{
+					if(f.SubfeatureSelections > 0)
+					{
+						refId.Append('f').Append(f.Id).AppendJoin('-', f.SubselectionsMade);
+					}	
+				}
+			}
+			refId.Append('r').Append(Race?.Id);
+			refId.Append('b').Append(Background?.Id);
+			refId.Append('a');
+			foreach (var a in AbilityScores)
+			{
+				refId.Append(a.Value - 8).Append('-');
+			}
+
+			BuildReferenceId = refId.ToString();
 		});
 	}
 }

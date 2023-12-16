@@ -20,10 +20,11 @@ namespace CharacterBuilderLibrary.Models
 		List<Ability> SavingThrowProficiencies { get; set; }
 		List<Skill> SkillExpertise { get; set; }
 		List<Skill> SkillProficiencies { get; set; }
-		List<Spell> SpellsKnown { get; set; }
 		List<Weapon> WeaponProficiencies { get; set; }
 		List<string> DisplayedWeaponProficiencies { get; set; }
 		List<SpecialFeature> SpecialFeatures { get; set; }
+		string BuildReferenceId { get; }
 		Task UpdateSpeed();
+		Task UpdateBuildRefId();
 	}
 }
