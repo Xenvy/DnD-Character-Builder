@@ -139,7 +139,7 @@ public class CharacterSheet : ICharacterSheet
 	/// <summary>
 	/// A string uniquely identifying the current character build.
 	/// </summary>
-	public string? BuildReferenceId { get; private set; }
+	public string? BuildReferenceId { get; set; }
 
 	public async Task UpdateSpeed()
 	{
@@ -185,12 +185,18 @@ public class CharacterSheet : ICharacterSheet
 				{
 					if(f.SubfeatureSelections > 0)
 					{
-						refId.Append('f').Append(f.Id).AppendJoin('-', f.SubselectionsMade);
+						refId.Append('f').Append(f.Id).Append('-').AppendJoin('-', f.SubselectionsMade);
 					}	
 				}
 			}
-			refId.Append('r').Append(Race?.Id);
-			refId.Append('b').Append(Background?.Id);
+			if (Race != null)
+			{
+				refId.Append('r').Append(Race.Id);
+			}
+			if(Background != null) 
+			{
+				refId.Append('b').Append(Background.Id);
+			}	
 			refId.Append('a');
 			foreach (var a in AbilityScores)
 			{

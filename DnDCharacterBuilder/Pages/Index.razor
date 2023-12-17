@@ -732,10 +732,13 @@
 	private async Task LoadCharacterSheetState()
 	{
 		var activeShowSpellsResult = await sessionStorage.GetAsync<Dictionary<int, bool>>(nameof(showSpellSelect));
-		var activeSheetResult = await sessionStorage.GetAsync<CharacterSheet>(nameof(characterSheet));
+		var activeBuildResult = await sessionStorage.GetAsync<string>(nameof(characterSheet.BuildReferenceId));
 
 		showSpellSelect = activeShowSpellsResult.Success ? activeShowSpellsResult.Value : new Dictionary<int, bool>();
-		characterSheet = activeSheetResult.Success ? activeSheetResult.Value : new CharacterSheet();
+		if (activeBuildResult.Success)
+		{
+			await characterSheet.LoadBuildFromRefId(activeBuildResult.Value, characterSheetData);
+		}
 	}
 
 	/// <summary>
@@ -1338,8 +1341,9 @@
 	/// <returns></returns>
 	private async Task SaveSessionData()
 	{
+		await characterSheet.UpdateBuildRefId();
 		await sessionStorage.SetAsync(nameof(showSpellSelect), showSpellSelect);
-		await sessionStorage.SetAsync(nameof(characterSheet), characterSheet);
+		await sessionStorage.SetAsync(nameof(characterSheet.BuildReferenceId), characterSheet.BuildReferenceId);
 	}
 
 }

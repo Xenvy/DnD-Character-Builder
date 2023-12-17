@@ -23,7 +23,7 @@ namespace CharacterBuilderLibrary.Models
 		List<Weapon> WeaponProficiencies { get; set; }
 		List<string> DisplayedWeaponProficiencies { get; set; }
 		List<SpecialFeature> SpecialFeatures { get; set; }
-		string BuildReferenceId { get; }
+		string? BuildReferenceId { get; set; }
 		Task UpdateSpeed();
 		Task UpdateBuildRefId();
 	}

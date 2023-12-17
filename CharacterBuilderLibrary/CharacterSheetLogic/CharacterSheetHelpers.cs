@@ -363,6 +363,146 @@ public static class CharacterSheetHelpers
 		}
 	}
 
+	public static async Task LoadBuildFromRefId(this ICharacterSheet characterSheet, string refId, ICharacterSheetData characterSheetData)
+	{
+		// TODO: Exception handling
+		var build = refId.Split('r');
+		if (refId.Contains('r')) 
+		{
+			var raceBackgroundAbilities = build[1].Split(new char[] { 'b', 'a' });
+			characterSheet.Race = await characterSheetData.GetRace(int.Parse(raceBackgroundAbilities[0]));
+			if (refId.Contains('b'))
+			{
+				characterSheet.Background = await characterSheetData.GetBackground(int.Parse(raceBackgroundAbilities[1]));
+				var abilityScores = raceBackgroundAbilities[2].Split('-', StringSplitOptions.RemoveEmptyEntries);
+				for (int i = 0; i < abilityScores.Length; i++)
+				{
+					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
+				}
+			}
+			else
+			{
+				var abilityScores = raceBackgroundAbilities[1].Split('-');
+				for (int i = 0; i < abilityScores.Length; i++)
+				{
+					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
+				}
+			}
+		}
+		else
+		{
+			var backgroundAndAbilities = build[0].Split(new char[] { 'b', 'a' }, StringSplitOptions.RemoveEmptyEntries);
+			if (refId.Contains('b'))
+			{
+				characterSheet.Background = await characterSheetData.GetBackground(int.Parse(backgroundAndAbilities[0]));
+				var abilityScores = backgroundAndAbilities[1].Split('-', StringSplitOptions.RemoveEmptyEntries);
+				for (int i = 0; i < abilityScores.Length; i++)
+				{
+					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
+				}
+			}
+			else
+			{
+				var abilityScores = backgroundAndAbilities[0].Split('-');
+				for (int i = 0; i < abilityScores.Length; i++)
+				{
+					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
+				}
+			}
+		}
+		    
+		if (refId.Contains('c'))
+		{
+			var classLevels = build[0].Split('c');
+			foreach (var cl in classLevels)
+			{
+				CharacterClassLevel classLevel;
+				if (cl.Contains('f'))
+				{
+					var levelSpellsAndFeatures = cl.Split('f');
+					if (levelSpellsAndFeatures[0].Contains('s'))
+					{
+						var levelAndSpells = levelSpellsAndFeatures[0].Split('s');
+						classLevel = await characterSheetData.GetClassLevel(int.Parse(levelAndSpells[0]));
+						for (int i = 1; i < levelAndSpells.Length; i++)
+						{
+							classLevel.SpellsLearned.Add(await characterSheetData.GetSpell(int.Parse(levelAndSpells[i])));
+						}
+
+					}
+					else
+					{
+						classLevel = await characterSheetData.GetClassLevel(int.Parse(levelSpellsAndFeatures[0]));
+					}
+
+					var characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
+					foreach (var cf in characterClassFeatures)
+					{
+						await cf.FormatTags();
+						foreach (var t in cf.TagEntries)
+						{
+							await characterSheet.ParseTag(characterSheetData, t);
+						}
+					}
+					classLevel.ClassLevelFeatures = characterClassFeatures;
+
+					for (int i = 1; i < levelSpellsAndFeatures.Length; i++)
+					{
+						var featureAndSubselections = levelSpellsAndFeatures[i].Split('-');
+						var parentFeature = classLevel.ClassLevelFeatures.Find(x => x.Id == int.Parse(featureAndSubselections[0]));
+						for (int j = 1; j < featureAndSubselections.Length; j++)
+						{
+							var selectedFeature = await characterSheetData.GetClassLevelFeature(int.Parse(featureAndSubselections[j]));
+							classLevel.ClassLevelFeatures.Add(selectedFeature);
+							if (selectedFeature.SubfeatureSelections == -1)
+							{
+								var subfeatures = await characterSheetData.GetLevelFeatureSubfeatures(parentFeature);
+								foreach (var s in subfeatures)
+								{
+									await s.FormatTags();
+								}
+								classLevel.ClassLevelFeatures.AddRange(subfeatures);
+							}
+							parentFeature.SubselectionsMade.Add(selectedFeature.Id);
+						}
+					}
+					characterSheet.CharacterClassLevels.Add(classLevel);
+				}
+				else
+				{
+					if (cl.Contains('s'))
+					{
+						var levelAndSpells = cl.Split('s');
+						classLevel = await characterSheetData.GetClassLevel(int.Parse(levelAndSpells[0]));
+						for (int i = 1; i < levelAndSpells.Length; i++)
+						{
+							classLevel.SpellsLearned.Add(await characterSheetData.GetSpell(int.Parse(levelAndSpells[i])));
+						}
+					}
+					else
+					{
+						classLevel = await characterSheetData.GetClassLevel(int.Parse(cl));
+					}
+
+					var characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
+					foreach (var cf in characterClassFeatures)
+					{
+						await cf.FormatTags();
+						foreach (var t in cf.TagEntries)
+						{
+							await characterSheet.ParseTag(characterSheetData, t);
+						}
+					}
+					classLevel.ClassLevelFeatures = characterClassFeatures;
+
+					characterSheet.CharacterClassLevels.Add(classLevel);
+				}
+			}
+		}
+
+		characterSheet.BuildReferenceId = refId;
+	}
+
 	public static Ability ToAbility(this string tag)
     {
         switch(tag) 
