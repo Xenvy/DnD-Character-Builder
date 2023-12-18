@@ -702,7 +702,12 @@
 	{
 		if(firstRender)
 		{
-			await LoadCharacterSheetState();
+			// TODO: Replace with a proper check (if current sheet is empty)
+			if (characterSheet.CharacterClassLevels.Count == 0)
+			{
+				await LoadCharacterSheetState();
+			}
+			
 			foreach(var s in showSpellSelect)
 			{
 				showSpellSelect[s.Key] = false;

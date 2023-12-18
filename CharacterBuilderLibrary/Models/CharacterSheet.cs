@@ -174,33 +174,36 @@ public class CharacterSheet : ICharacterSheet
 		await Task.Run(() =>
 		{
 			var refId = new StringBuilder();
-			foreach (var cl in CharacterClassLevels) 
-			{
-				refId.Append('c').Append(cl.Id);
-				foreach (var s in cl.SpellsLearned) 
-				{
-					refId.Append('s').Append(s.Id);
-				}
-				foreach (var f in cl.ClassLevelFeatures)
-				{
-					if(f.SubfeatureSelections > 0)
-					{
-						refId.Append('f').Append(f.Id).Append('-').AppendJoin('-', f.SubselectionsMade);
-					}	
-				}
-			}
+			
 			if (Race != null)
 			{
-				refId.Append('r').Append(Race.Id);
+				refId.Append(Race.Id).Append('r');
 			}
 			if(Background != null) 
 			{
-				refId.Append('b').Append(Background.Id);
+				refId.Append(Background.Id).Append('b');
 			}	
-			refId.Append('a');
+			
 			foreach (var a in AbilityScores)
 			{
 				refId.Append(a.Value - 8).Append('-');
+			}
+			refId.Append('a');
+
+			foreach (var cl in CharacterClassLevels)
+			{
+				foreach (var s in cl.SpellsLearned)
+				{
+					refId.Append(s.Id).Append('s');
+				}
+				foreach (var f in cl.ClassLevelFeatures)
+				{
+					if (f.SubfeatureSelections > 0)
+					{
+						refId.AppendJoin('-', f.SubselectionsMade).Append('-').Append(f.Id).Append('f');
+					}
+				}
+				refId.Append(cl.Id).Append('c');
 			}
 
 			BuildReferenceId = refId.ToString();

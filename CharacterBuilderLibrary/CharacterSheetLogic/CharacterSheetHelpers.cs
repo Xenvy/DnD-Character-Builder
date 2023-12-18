@@ -1,5 +1,6 @@
 ﻿using CharacterBuilderLibrary.Data;
 using CharacterBuilderLibrary.Models;
+using System.Diagnostics;
 
 namespace CharacterBuilderLibrary.CharacterSheetLogic;
 
@@ -366,75 +367,53 @@ public static class CharacterSheetHelpers
 	public static async Task LoadBuildFromRefId(this ICharacterSheet characterSheet, string refId, ICharacterSheetData characterSheetData)
 	{
 		// TODO: Exception handling
-		var build = refId.Split('r');
-		if (refId.Contains('r')) 
-		{
-			var raceBackgroundAbilities = build[1].Split(new char[] { 'b', 'a' });
-			characterSheet.Race = await characterSheetData.GetRace(int.Parse(raceBackgroundAbilities[0]));
-			if (refId.Contains('b'))
-			{
-				characterSheet.Background = await characterSheetData.GetBackground(int.Parse(raceBackgroundAbilities[1]));
-				var abilityScores = raceBackgroundAbilities[2].Split('-', StringSplitOptions.RemoveEmptyEntries);
-				for (int i = 0; i < abilityScores.Length; i++)
-				{
-					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
-				}
-			}
-			else
-			{
-				var abilityScores = raceBackgroundAbilities[1].Split('-');
-				for (int i = 0; i < abilityScores.Length; i++)
-				{
-					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
-				}
-			}
-		}
-		else
-		{
-			var backgroundAndAbilities = build[0].Split(new char[] { 'b', 'a' }, StringSplitOptions.RemoveEmptyEntries);
-			if (refId.Contains('b'))
-			{
-				characterSheet.Background = await characterSheetData.GetBackground(int.Parse(backgroundAndAbilities[0]));
-				var abilityScores = backgroundAndAbilities[1].Split('-', StringSplitOptions.RemoveEmptyEntries);
-				for (int i = 0; i < abilityScores.Length; i++)
-				{
-					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
-				}
-			}
-			else
-			{
-				var abilityScores = backgroundAndAbilities[0].Split('-');
-				for (int i = 0; i < abilityScores.Length; i++)
-				{
-					characterSheet.AbilityScores[i].Value += int.Parse(abilityScores[i]);
-				}
-			}
-		}
-		    
-		if (refId.Contains('c'))
-		{
-			var classLevels = build[0].Split('c');
-			foreach (var cl in classLevels)
-			{
-				CharacterClassLevel classLevel;
-				if (cl.Contains('f'))
-				{
-					var levelSpellsAndFeatures = cl.Split('f');
-					if (levelSpellsAndFeatures[0].Contains('s'))
-					{
-						var levelAndSpells = levelSpellsAndFeatures[0].Split('s');
-						classLevel = await characterSheetData.GetClassLevel(int.Parse(levelAndSpells[0]));
-						for (int i = 1; i < levelAndSpells.Length; i++)
-						{
-							classLevel.SpellsLearned.Add(await characterSheetData.GetSpell(int.Parse(levelAndSpells[i])));
-						}
 
-					}
-					else
-					{
-						classLevel = await characterSheetData.GetClassLevel(int.Parse(levelSpellsAndFeatures[0]));
-					}
+		string value = "";
+		List<string> values = new List<string>();
+		List<string> spells = new List<string>();
+		Dictionary<string, List<string>> features = new();
 
+		for (int i = 0; i < refId.Length; i++)
+		{
+			switch (refId[i]) 
+			{
+				case 'a':
+					for (int j = 0; j < values.Count; j++)
+					{
+						characterSheet.AbilityScores[j].Value += int.Parse(values[j]);
+					}
+					values = new List<string>();
+					value = "";
+					break;
+				case 'b':
+					characterSheet.Background = await characterSheetData.GetBackground(int.Parse(value));
+					var skills = await characterSheetData.GetSkills();
+					characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == characterSheet.Background.Skill1Id));
+					characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == characterSheet.Background.Skill2Id));
+					value = "";
+					break;
+				case 'r':
+					characterSheet.Race = await characterSheetData.GetRace(int.Parse(value));
+					var racialFeatures = await characterSheetData.GetRacialFeatures(characterSheet.Race);
+					characterSheet.Race.RaceFeatures = racialFeatures;
+					value = "";
+					break;
+				case 's':
+					spells.Add(value);
+					value = "";
+					break;
+				case 'f':
+					features.Add(value, values);
+					values = new List<string>();
+					value = "";
+					break;
+				case 'c':
+					CharacterClassLevel classLevel = await characterSheetData.GetClassLevel(int.Parse(value));
+					foreach (var s in spells)
+					{
+						classLevel.SpellsLearned.Add(await characterSheetData.GetSpell(int.Parse(s)));
+					}
+					spells = new List<string>();
 					var characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
 					foreach (var cf in characterClassFeatures)
 					{
@@ -445,14 +424,12 @@ public static class CharacterSheetHelpers
 						}
 					}
 					classLevel.ClassLevelFeatures = characterClassFeatures;
-
-					for (int i = 1; i < levelSpellsAndFeatures.Length; i++)
+					foreach (var f in features)
 					{
-						var featureAndSubselections = levelSpellsAndFeatures[i].Split('-');
-						var parentFeature = classLevel.ClassLevelFeatures.Find(x => x.Id == int.Parse(featureAndSubselections[0]));
-						for (int j = 1; j < featureAndSubselections.Length; j++)
+						var parentFeature = classLevel.ClassLevelFeatures.Find(x => x.Id == int.Parse(f.Key));
+						foreach (var sf in f.Value)
 						{
-							var selectedFeature = await characterSheetData.GetClassLevelFeature(int.Parse(featureAndSubselections[j]));
+							var selectedFeature = await characterSheetData.GetClassLevelFeature(int.Parse(sf));
 							classLevel.ClassLevelFeatures.Add(selectedFeature);
 							if (selectedFeature.SubfeatureSelections == -1)
 							{
@@ -467,36 +444,16 @@ public static class CharacterSheetHelpers
 						}
 					}
 					characterSheet.CharacterClassLevels.Add(classLevel);
-				}
-				else
-				{
-					if (cl.Contains('s'))
-					{
-						var levelAndSpells = cl.Split('s');
-						classLevel = await characterSheetData.GetClassLevel(int.Parse(levelAndSpells[0]));
-						for (int i = 1; i < levelAndSpells.Length; i++)
-						{
-							classLevel.SpellsLearned.Add(await characterSheetData.GetSpell(int.Parse(levelAndSpells[i])));
-						}
-					}
-					else
-					{
-						classLevel = await characterSheetData.GetClassLevel(int.Parse(cl));
-					}
-
-					var characterClassFeatures = await characterSheetData.GetClassLevelFeatures(classLevel);
-					foreach (var cf in characterClassFeatures)
-					{
-						await cf.FormatTags();
-						foreach (var t in cf.TagEntries)
-						{
-							await characterSheet.ParseTag(characterSheetData, t);
-						}
-					}
-					classLevel.ClassLevelFeatures = characterClassFeatures;
-
-					characterSheet.CharacterClassLevels.Add(classLevel);
-				}
+					features = new();
+					value = "";
+					break;
+				case '-':
+					values.Add(value);
+					value = "";
+					break;
+				default:
+					value += refId[i];
+					break;
 			}
 		}
 
