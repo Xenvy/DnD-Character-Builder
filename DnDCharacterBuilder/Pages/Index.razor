@@ -62,7 +62,7 @@
 							   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
 							   @bind-value="raceSearchText" />
 						<div class="option-list">
-							<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
+							<ul name="raceSelectionList" class="options">
 								@if (races?.Count > 0)
 								{
 									@foreach (var r in races)
@@ -147,7 +147,7 @@
 						   @oninput="((txt) => OnBackgroundSearchInput((string)txt.Value))"
 						   @bind-value="backgroundSearchText" />
 					<div class="option-list">
-						<ul name="backgroundSelectionList" class="options @(showBackgroundSelect ? "" : "hide")">
+						<ul name="backgroundSelectionList" class="options">
 							@if (backgrounds?.Count > 0)
 							{
 								@foreach (var b in backgrounds)
@@ -266,7 +266,7 @@
 							   @oninput="((txt) => OnWeapon1SearchInput((string)txt.Value))"
 							   @bind-value="weapon1SearchText" />
 						<div class="option-list">
-							<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
+							<ul name="weaponSelectionList" class="options">
 								@if (weapons?.Count > 0)
 								{
 									<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 0))"><span class="option-text">(Empty hand)</span></li>
@@ -314,7 +314,7 @@
 								   @oninput="((txt) => OnWeapon2SearchInput((string)txt.Value))"
 								   @bind-value="weapon2SearchText" />
 							<div class="option-list">
-								<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
+								<ul name="weaponSelectionList" class="options">
 									@if (weapons?.Count > 0)
 									{
 										<li class="option" @onclick="(_ => SelectWeapon(new Weapon(), 1))"><span class="option-text">(Empty hand)</span></li>
@@ -372,7 +372,7 @@
 							   @oninput="((txt) => OnArmorSearchInput((string)txt.Value))"
 							   @bind-value="armorSearchText" />
 						<div class="option-list">
-							<ul name="armorSelectionList" class="options @(showArmorSelect ? "" : "hide")">
+							<ul name="armorSelectionList" class="options">
 								@if (armors?.Count > 0)
 								{
 									<li class="option" @onclick="(_ => SelectArmor(new Armor()))"><span class="option-text">(No armor)</span></li>
@@ -436,7 +436,7 @@
 										   @bind-value="spellSearchText"
 										   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, characterSheet.CharacterClassLevels[cl]))" />
 									<div class="option-list">
-										<ul name="spellSelectionList" class="options @(showSpellSelect[cl] ? "" : "hide")">
+										<ul name="spellSelectionList" class="options">
 											@if (spells?.Count > 0)
 											{
 												@foreach (var s in spells)
@@ -504,7 +504,7 @@
 								   @bind-value=classLevelSearchText
 								   @oninput="((txt) => OnClassLevelSearchInput((string)txt.Value))" />
 							<div class="option-list">
-								<ul name="classLevelSelection" class="options @(showClassLevelSelect ? "" : "hide")">
+								<ul name="classLevelSelection" class="options">
 									@if (characterClassLevels?.Count > 0)
 									{
 										@foreach (var cl in characterClassLevels)
