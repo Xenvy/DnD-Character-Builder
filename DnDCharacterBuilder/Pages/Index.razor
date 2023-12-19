@@ -44,9 +44,14 @@
 					<label for="raceSelection">Race: @(characterSheet.Race?.Name)</label>
 					@if(characterSheet.Race is not null)
 					{
-						<button class="btn btn-sm" @onclick="(_ => showRaceSwap = !showRaceSwap)"><span class="oi oi-loop-circular"></span></button>
+						<button class="btn btn-sm" @onclick="(_ => showRaceSelect = !showRaceSelect)"><span class="oi oi-loop-circular"></span></button>
 					}
-					@if(showRaceSwap)
+					else
+					{
+						<br />
+						<button class="btn btn-outline-dark" @onclick="(_ => showRaceSelect = !showRaceSelect)">Select a race</button>
+					}
+					@if(showRaceSelect)
 					{
 						<!-- Autocomplete-style selection of character's race -->
 						<input type="text"
@@ -55,8 +60,6 @@
 							   class="form-control filter"
 							   aria-label="Search box"
 							   @oninput="((txt) => OnRaceSearchInput((string)txt.Value))"
-							   @onfocusin="(_ => showRaceSelect = !showRaceSelect)"
-							   @onfocusout="(_ => OnRaceSelection())"
 							   @bind-value="raceSearchText" />
 						<div class="option-list">
 							<ul name="raceSelectionList" class="options @(showRaceSelect ? "" : "hide")">
@@ -126,9 +129,14 @@
 				<label for="backgroundSelection">Background: @(characterSheet.Background?.Name)</label>
 				@if (characterSheet.Background is not null)
 				{
-					<button class="btn btn-sm" @onclick="(_ => showBackgroundSwap = !showBackgroundSwap)"><span class="oi oi-loop-circular"></span></button>
+					<button class="btn btn-sm" @onclick="(_ => showBackgroundSelect = !showBackgroundSelect)"><span class="oi oi-loop-circular"></span></button>
 				}
-				@if(showBackgroundSwap)
+				else
+				{
+					<br />
+					<button class="btn btn-outline-dark" @onclick="(_ => showBackgroundSelect = !showBackgroundSelect)">Select a background</button>
+				}
+				@if(showBackgroundSelect)
 				{
 					<!-- Autocomplete-style selection of character's background -->
 					<input type="text"
@@ -137,8 +145,6 @@
 						   class="form-control filter"
 						   aria-label="Search box"
 						   @oninput="((txt) => OnBackgroundSearchInput((string)txt.Value))"
-						   @onfocusin="(_ => showBackgroundSelect = !showBackgroundSelect)"
-						   @onfocusout="(_ => OnBackgroundSelection())"
 						   @bind-value="backgroundSearchText" />
 					<div class="option-list">
 						<ul name="backgroundSelectionList" class="options @(showBackgroundSelect ? "" : "hide")">
@@ -242,9 +248,14 @@
 					<label for="weapon1Selection">Main hand: @characterSheet.EquippedWeapons[0]?.Name</label>
 					@if (characterSheet.EquippedWeapons[0].Name is not null)
 					{
-						<button class="btn btn-sm" @onclick="(_ => showWeapon1Swap = !showWeapon1Swap)"><span class="oi oi-loop-circular"></span></button>
+						<button class="btn btn-sm" @onclick="(_ => MainHandSelect())"><span class="oi oi-loop-circular"></span></button>
 					}
-					@if(showWeapon1Swap)
+					else
+					{
+						<br />
+						<button class="btn btn-outline-dark" @onclick="(_ => MainHandSelect())">Select a weapon</button>
+					}
+					@if(showWeapon1Select)
 					{
 						<!-- Autocomplete-style selection of character's main hand weapon -->
 						<input type="text"
@@ -253,8 +264,6 @@
 							   class="form-control filter"
 							   aria-label="Search box"
 							   @oninput="((txt) => OnWeapon1SearchInput((string)txt.Value))"
-							   @onfocusin="(_ => MainHandSelect())"
-							   @onfocusout="(_ => OnWeaponSelection())"
 							   @bind-value="weapon1SearchText" />
 						<div class="option-list">
 							<ul name="weaponSelectionList" class="options @(showWeapon1Select ? "" : "hide")">
@@ -287,9 +296,14 @@
 						<label for="weapon2Selection">Off hand: @characterSheet.EquippedWeapons[1]?.Name</label>
 						@if (characterSheet.EquippedWeapons[1].Name is not null)
 						{
-							<button class="btn btn-sm" @onclick="(_ => showWeapon2Swap = !showWeapon2Swap)"><span class="oi oi-loop-circular"></span></button>
+							<button class="btn btn-sm" @onclick="(_ => OffHandSelect())"><span class="oi oi-loop-circular"></span></button>
 						}
-						@if(showWeapon2Swap)
+						else
+						{
+							<br />
+							<button class="btn btn-outline-dark" @onclick="(_ => OffHandSelect())">Select a weapon</button>
+						}
+						@if(showWeapon2Select)
 						{
 							<!-- Autocomplete-style selection of character's off-hand weapon -->
 							<input type="text"
@@ -298,8 +312,6 @@
 								   class="form-control filter"
 								   aria-label="Search box"
 								   @oninput="((txt) => OnWeapon2SearchInput((string)txt.Value))"
-								   @onfocusin="(_ => OffHandSelect())"
-								   @onfocusout="(_ => OnWeaponSelection())"
 								   @bind-value="weapon2SearchText" />
 							<div class="option-list">
 								<ul name="weaponSelectionList" class="options @(showWeapon2Select ? "" : "hide")">
@@ -342,9 +354,14 @@
 					<label for="armorSelection">Equipped armor: @characterSheet.EquippedArmor.Name</label>
 					@if (characterSheet.EquippedArmor.Name is not null)
 					{
-						<button class="btn btn-sm" @onclick="(_ => showArmorSwap = !showArmorSwap)"><span class="oi oi-loop-circular"></span></button>
+						<button class="btn btn-sm" @onclick="(_ => showArmorSelect = !showArmorSelect)"><span class="oi oi-loop-circular"></span></button>
 					}
-					@if(showArmorSwap)
+					else
+					{
+						<br />
+						<button class="btn btn-outline-dark" @onclick="(_ => showArmorSelect = !showArmorSelect)">Select armor</button>
+					}
+					@if(showArmorSelect)
 					{
 						<!-- Autocomplete-style selection of character's armor -->
 						<input type="text"
@@ -353,8 +370,6 @@
 							   class="form-control filter"
 							   aria-label="Search box"
 							   @oninput="((txt) => OnArmorSearchInput((string)txt.Value))"
-							   @onfocusin="(_ => showArmorSelect = !showArmorSelect)"
-							   @onfocusout="(_ => OnArmorSelection())"
 							   @bind-value="armorSearchText" />
 						<div class="option-list">
 							<ul name="armorSelectionList" class="options @(showArmorSelect ? "" : "hide")">
@@ -679,11 +694,6 @@
 	private bool showClassLevelSelect = false;
 	private Dictionary<int, bool> showSpellSelect = new();
 
-	private bool showRaceSwap = true;
-	private bool showBackgroundSwap = true;
-	private bool showWeapon1Swap = true;
-	private bool showWeapon2Swap = true;
-	private bool showArmorSwap = true;
 	CancellationTokenSource tokenSource;
 
 	protected async override Task OnInitializedAsync()
@@ -713,19 +723,6 @@
 				showSpellSelect[s.Key] = false;
 			}
 
-			if(characterSheet.EquippedWeapons[0].Name is not null)
-			{
-				showWeapon1Swap = false;
-			}
-			if(characterSheet.EquippedWeapons[1].Name is not null)
-			{
-				showWeapon2Swap = false;
-			}
-			if(characterSheet.EquippedArmor.Name is not null)
-			{
-				showArmorSwap = false;
-			}
-
 			StateHasChanged();
 		}
 	}
@@ -744,27 +741,6 @@
 		{
 			await characterSheet.LoadBuildFromRefId(activeBuildResult.Value, characterSheetData);
 		}
-	}
-
-	/// <summary>
-	/// Delays the autocomplete option list hiding on background selection to make sure the choice goes through.
-	/// </summary>
-	/// <returns></returns>
-	private async Task OnBackgroundSelection()
-	{
-		tokenSource = new CancellationTokenSource();
-		await Task.Factory.StartNew(async () =>
-		{
-			await Task.Delay(100);
-			showBackgroundSelect = false;
-			if(characterSheet.Background?.Name is not null)
-			{
-				showBackgroundSwap = false;
-			}
-			backgroundSearchText = "";
-			await InvokeAsync(StateHasChanged);
-			await FilterBackgrounds();
-		}, tokenSource.Token);	
 	}
 
 	/// <summary>
@@ -810,28 +786,11 @@
 		characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == background.Skill1Id));
 		characterSheet.SkillProficiencies.Add(skills.Find(x => x.Id == background.Skill2Id));
 
-		await SaveSessionData();
-	}
+		showBackgroundSelect = false;
+		backgroundSearchText = "";
+		await FilterBackgrounds();
 
-	/// <summary>
-	/// Delays the autocomplete option list hiding on race selection to make sure the choice goes through.
-	/// </summary>
-	/// <returns></returns>
-	private async Task OnRaceSelection()
-	{
-		tokenSource = new CancellationTokenSource();
-		await Task.Factory.StartNew(async () =>
-		{
-			await Task.Delay(100);
-			showRaceSelect = false;
-			if(characterSheet.Race?.Name is not null)
-			{
-				showRaceSwap = false;
-			}
-			raceSearchText = "";
-			await InvokeAsync(StateHasChanged);
-			await FilterRaces();
-		}, tokenSource.Token);
+		await SaveSessionData();
 	}
 
 	/// <summary>
@@ -845,6 +804,10 @@
 		race.RaceFeatures = racialFeatures;
 
 		characterSheet.Race = race;
+
+		showRaceSelect = false;
+		raceSearchText = "";
+		await FilterRaces();
 
 		await characterSheet.UpdateSpeed();
 		await SaveSessionData();
@@ -884,7 +847,7 @@
 	private async Task MainHandSelect()
 	{
 		showWeapon2Select = false;
-		showWeapon1Select = true;
+		showWeapon1Select = !showWeapon1Select;
 		weapon1SearchText = "";
 		await FilterWeapons(weapon1SearchText);
 	}
@@ -896,42 +859,9 @@
 	private async Task OffHandSelect()
 	{
 		showWeapon1Select = false;
-		showWeapon2Select = true;
+		showWeapon2Select = !showWeapon2Select;
 		weapon2SearchText = "";
 		await FilterWeapons(weapon2SearchText);
-	}
-
-	/// <summary>
-	/// Delays the autocomplete option list hiding on weapon selection to make sure the choice goes through.
-	/// </summary>
-	/// <returns></returns>
-	private async Task OnWeaponSelection()
-	{
-		tokenSource = new CancellationTokenSource();
-		await Task.Factory.StartNew(async () =>
-		{
-			await Task.Delay(100);
-			if(showWeapon1Select)
-			{
-				showWeapon1Select = false;
-				if(characterSheet.EquippedWeapons[0].Name is not null)
-				{
-					showWeapon1Swap = false;
-				}
-				weapon1SearchText = "";
-			}
-			else
-			{
-				showWeapon2Select = false;
-				if (characterSheet.EquippedWeapons[1].Name is not null)
-				{
-					showWeapon2Swap = false;
-				}
-				weapon2SearchText = "";
-			}
-			await InvokeAsync(StateHasChanged);
-			await FilterWeapons("");
-		}, tokenSource.Token);
 	}
 
 	/// <summary>
@@ -943,6 +873,18 @@
 	private async Task SelectWeapon(Weapon weapon, int hand)
 	{
 		characterSheet.EquippedWeapons[hand] = weapon;
+
+		if (showWeapon1Select)
+		{
+			showWeapon1Select = false;
+			weapon1SearchText = "";
+		}
+		else
+		{
+			showWeapon2Select = false;
+			weapon2SearchText = "";
+		}
+		await FilterWeapons("");
 
 		await SaveSessionData();
 	}
@@ -991,27 +933,6 @@
 	}
 
 	/// <summary>
-	/// Delays the autocomplete option list hiding on armor selection to make sure the choice goes through.
-	/// </summary>
-	/// <returns></returns>
-	private async Task OnArmorSelection()
-	{
-		tokenSource = new CancellationTokenSource();
-		await Task.Factory.StartNew(async () =>
-		{
-			await Task.Delay(100);
-			showArmorSelect = false;
-			if(characterSheet.EquippedArmor.Name is not null)
-			{
-				showArmorSwap = false;
-			}
-			armorSearchText = "";
-			await InvokeAsync(StateHasChanged);
-			await FilterArmors();
-		}, tokenSource.Token);
-	}
-
-	/// <summary>
 	/// Marks the armor selection on the character sheet.
 	/// </summary>
 	/// <param name="armor"></param>
@@ -1019,6 +940,10 @@
 	private async Task SelectArmor(Armor armor)
 	{
 		characterSheet.EquippedArmor = armor;
+
+		showArmorSelect = false;
+		armorSearchText = "";
+		await FilterArmors();
 
 		await SaveSessionData();
 	}
