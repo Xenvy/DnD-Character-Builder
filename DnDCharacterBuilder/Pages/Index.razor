@@ -403,52 +403,56 @@
 			<p>Spells</p>
 			@if (characterSheet.CharacterClassLevels.Count > 0)
 			{
-				@foreach (var cl in characterSheet.CharacterClassLevels)
+				@foreach (var cl in Enumerable.Range(0, characterSheet.CharacterClassLevels.Count))
 				{
-					@if(cl.SpellsLearned.Count > 0)
+					@if(characterSheet.CharacterClassLevels[cl].SpellsLearned.Count > 0)
 					{
-						<p>@($"{cl.BaseClass} - {cl.Subclass} level {cl.Level}") spells:</p>
-						@foreach(var s in cl.SpellsLearned)
+						<p>@($"{characterSheet.CharacterClassLevels[cl].BaseClass} - {characterSheet.CharacterClassLevels[cl].Subclass} level {characterSheet.CharacterClassLevels[cl].Level}") spells:</p>
+						@foreach (var s in characterSheet.CharacterClassLevels[cl].SpellsLearned)
 						{
 							<div class="feature-with-tooltip">
 								@s.Name
 								<span class="spell-tooltip-text"> @s.Description </span>
 							</div>
-							<button class="btn btn-light remove-spell-button" @onclick="(_ => RemoveSpell(s, cl))">-</button>
+							<button class="btn btn-light remove-spell-button" @onclick="(_ => RemoveSpell(s, characterSheet.CharacterClassLevels[cl]))">-</button>
 						}
 					}
-					@if (cl.GetNewSpellCount() > cl.SpellsLearned.Count)
+					@if (characterSheet.CharacterClassLevels[cl].GetNewSpellCount() > characterSheet.CharacterClassLevels[cl].SpellsLearned.Count)
 					{
-						<p>Select a spell for @cl.BaseClass level @cl.Level (@(cl.GetNewSpellCount() - cl.SpellsLearned.Count) remaining):</p>
 						<div class="autocomplete">
 							<div class="option-selection">
-								<!-- Autocomplete-style selection of character's spells -->
-								<input type="text"
-									   id="spellSelection"
-									   placeholder="Select a spell..."
-									   class="form-control filter"
-									   aria-label="Search box"
-									   @bind-value="spellSearchText"
-									   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, cl))"
-									   @onfocusin="(_ => OnSpellSelectFocusIn(cl))"
-									   @onfocusout="(_ => OnSpellSelection(cl.Id))" />
-								<div class="option-list">
-									<ul name="spellSelectionList" class="options @(showSpellSelect[cl.Id] ? "" : "hide")">
-										@if (spells?.Count > 0)
-										{
-											@foreach (var s in spells)
+								<span>
+									Select spells for @characterSheet.CharacterClassLevels[cl].BaseClass - @characterSheet.CharacterClassLevels[cl].Subclass level @characterSheet.CharacterClassLevels[cl].Level
+									(@(characterSheet.CharacterClassLevels[cl].GetNewSpellCount() - characterSheet.CharacterClassLevels[cl].SpellsLearned.Count) remaining)</span>
+								<button class="btn btn-outline-dark" @onclick="(_ => OnSpellSelectToggle(characterSheet.CharacterClassLevels[cl], cl))">Select a spell</button>
+								@if (showSpellSelect[cl])
+								{
+									<!-- Autocomplete-style selection of character's spells -->
+									<input type="text"
+										   id="spellSelection"
+										   placeholder="Select a spell..."
+										   class="form-control filter"
+										   aria-label="Search box"
+										   @bind-value="spellSearchText"
+										   @oninput="((txt) => OnSpellSearchInput((string)txt.Value, characterSheet.CharacterClassLevels[cl]))" />
+									<div class="option-list">
+										<ul name="spellSelectionList" class="options @(showSpellSelect[cl] ? "" : "hide")">
+											@if (spells?.Count > 0)
 											{
-												<li class="option" @onclick="(_ => AddSpell(s, cl))">
-													<span class="option-text">@s.Name</span>
-												</li>
+												@foreach (var s in spells)
+												{
+													<li class="option" @onclick="(_ => AddSpell(s, characterSheet.CharacterClassLevels[cl], cl))">
+														<span class="option-text">@s.Name</span>
+													</li>
+												}
 											}
-										}
-										else
-										{
-											<li class="disabled option">No results</li>
-										}
-									</ul>
-								</div>
+											else
+											{
+												<li class="disabled option">No results</li>
+											}
+										</ul>
+									</div>
+								}
 							</div>
 						</div>
 					}		
@@ -488,33 +492,35 @@
 			{
 				<div class="autocomplete">
 					<div class="option-selection">
-						<!-- Autocomplete-style selection of character's class levels -->
-						<input type="text"
-							   id="classLevelSelection"
-							   placeholder="Select a class..."
-							   class="form-control filter"
-							   aria-label="Search box"
-							   @bind-value=classLevelSearchText
-							   @oninput="((txt) => OnClassLevelSearchInput((string)txt.Value))"
-							   @onfocusin="(_ => OnClassLevelSelectFocusIn())"
-							   @onfocusout="(_ => OnClassLevelSelection())" />
-						<div class="option-list">
-							<ul name="classLevelSelection" class="options @(showClassLevelSelect ? "" : "hide")">
-								@if (characterClassLevels?.Count > 0)
-								{
-									@foreach (var cl in characterClassLevels)
+						<button class="btn btn-outline-dark" @onclick="(_ => OnClassLevelSelectToggle())">Add a class level</button>
+						@if (showClassLevelSelect)
+						{
+							<!-- Autocomplete-style selection of character's class levels -->
+							<input type="text"
+								   id="classLevelSelection"
+								   placeholder="Select a class..."
+								   class="form-control filter"
+								   aria-label="Search box"
+								   @bind-value=classLevelSearchText
+								   @oninput="((txt) => OnClassLevelSearchInput((string)txt.Value))" />
+							<div class="option-list">
+								<ul name="classLevelSelection" class="options @(showClassLevelSelect ? "" : "hide")">
+									@if (characterClassLevels?.Count > 0)
 									{
-										<li class="option" @onclick="(_ => AddClassLevel(cl))">
-											<span class="option-text">@($"{cl.BaseClass} - {cl.Subclass} {cl.Level}")</span>
-										</li>
+										@foreach (var cl in characterClassLevels)
+										{
+											<li class="option" @onclick="(_ => AddClassLevel(cl))">
+												<span class="option-text">@($"{cl.BaseClass} - {cl.Subclass} {cl.Level}")</span>
+											</li>
+										}
 									}
-								}
-								else
-								{
-									<li class="disabled option">No results</li>
-								}
-							</ul>
-						</div>
+									else
+									{
+										<li class="disabled option">No results</li>
+									}
+								</ul>
+							</div>
+						}	
 					</div>
 				</div>
 			}		
@@ -692,9 +698,7 @@
 	private bool showWeapon2Select = false;
 	private bool showArmorSelect = false;
 	private bool showClassLevelSelect = false;
-	private Dictionary<int, bool> showSpellSelect = new();
-
-	CancellationTokenSource tokenSource;
+	private bool[] showSpellSelect = new bool[20];
 
 	protected async override Task OnInitializedAsync()
 	{
@@ -717,11 +721,6 @@
 			{
 				await LoadCharacterSheetState();
 			}
-			
-			foreach(var s in showSpellSelect)
-			{
-				showSpellSelect[s.Key] = false;
-			}
 
 			StateHasChanged();
 		}
@@ -733,10 +732,8 @@
 	/// <returns></returns>
 	private async Task LoadCharacterSheetState()
 	{
-		var activeShowSpellsResult = await sessionStorage.GetAsync<Dictionary<int, bool>>(nameof(showSpellSelect));
 		var activeBuildResult = await sessionStorage.GetAsync<string>(nameof(characterSheet.BuildReferenceId));
 
-		showSpellSelect = activeShowSpellsResult.Success ? activeShowSpellsResult.Value : new Dictionary<int, bool>();
 		if (activeBuildResult.Success)
 		{
 			await characterSheet.LoadBuildFromRefId(activeBuildResult.Value, characterSheetData);
@@ -976,21 +973,6 @@
 	}
 
 	/// <summary>
-	/// Delays the autocomplete option list hiding on class level selection to make sure the choice goes through.
-	/// </summary>
-	/// <returns></returns>
-	private async Task OnClassLevelSelection()
-	{
-		tokenSource = new CancellationTokenSource();
-		await Task.Factory.StartNew(async () =>
-		{
-			await Task.Delay(100);
-			showClassLevelSelect = false;
-			await InvokeAsync(StateHasChanged);
-		}, tokenSource.Token);
-	}
-
-	/// <summary>
 	/// Filters available class levels based on search text input.
 	/// </summary>
 	/// <returns></returns>
@@ -1022,7 +1004,7 @@
 	/// Triggers the class level filter and activates the display of available selections.
 	/// </summary>
 	/// <returns></returns>
-	private async Task OnClassLevelSelectFocusIn()
+	private async Task OnClassLevelSelectToggle()
 	{
 		await FilterClassLevels();
 		showClassLevelSelect = !showClassLevelSelect;
@@ -1048,7 +1030,7 @@
 
 		characterSheet.CharacterClassLevels.Add(classLevel);
 
-		showSpellSelect.Add(classLevel.Id, false);
+		showClassLevelSelect = false;
 
 		await characterSheet.UpdateSpeed();
 		await SaveSessionData();
@@ -1063,25 +1045,8 @@
 	private async Task RemoveClassLevel(CharacterClassLevel classLevel)
 	{
 		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);
-		showSpellSelect.Remove(classLevel.Id);
 		await FilterClassLevels();
 		await SaveSessionData();
-	}
-
-	/// <summary>
-	/// Delays the autocomplete option list hiding on spell selection to make sure the choice goes through.
-	/// </summary>
-	/// <param name="level"></param>
-	/// <returns></returns>
-	private async Task OnSpellSelection(int level)
-	{
-		tokenSource = new CancellationTokenSource();
-		await Task.Factory.StartNew(async () =>
-		{
-			await Task.Delay(100);
-			showSpellSelect[level] = false;
-			await InvokeAsync(StateHasChanged);
-		}, tokenSource.Token);
 	}
 
 	/// <summary>
@@ -1118,10 +1083,10 @@
 	/// </summary>
 	/// <param name="classLevel"></param>
 	/// <returns></returns>
-	private async Task OnSpellSelectFocusIn(CharacterClassLevel classLevel)
+	private async Task OnSpellSelectToggle(CharacterClassLevel classLevel, int characterLevel)
 	{
 		await FilterSpells(classLevel);
-		showSpellSelect[classLevel.Id] = !showSpellSelect[classLevel.Id];
+		showSpellSelect[characterLevel] = !showSpellSelect[characterLevel];
 	}
 
 	/// <summary>
@@ -1130,9 +1095,10 @@
 	/// <param name="spell"></param>
 	/// <param name="classLevel"></param>
 	/// <returns></returns>
-	private async Task AddSpell(Spell spell, CharacterClassLevel classLevel)
+	private async Task AddSpell(Spell spell, CharacterClassLevel classLevel, int characterLevel)
 	{
 		classLevel.SpellsLearned.Add(spell);
+		showSpellSelect[characterLevel] = false;
 		await SaveSessionData();
 		await OnSpellSearchInput("", classLevel);
 	}
