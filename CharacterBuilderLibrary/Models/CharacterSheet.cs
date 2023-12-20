@@ -179,7 +179,7 @@ public class CharacterSheet : ICharacterSheet
 			{
 				refId.Append(Race.Id).Append('r');
 			}
-			if(Background != null) 
+			if (Background != null) 
 			{
 				refId.Append(Background.Id).Append('b');
 			}	
@@ -189,6 +189,21 @@ public class CharacterSheet : ICharacterSheet
 				refId.Append(a.Value - 8).Append('-');
 			}
 			refId.Append('a');
+
+			if (EquippedWeapons[0].Name != null) 
+			{
+				refId.Append(EquippedWeapons[0].Id).Append('w');
+			}
+
+			if (EquippedWeapons[1].Name != null) 
+			{
+				refId.Append(EquippedWeapons[1].Id).Append('v');
+			}
+
+			if (EquippedArmor.Name != null)
+			{
+				refId.Append(EquippedArmor.Id).Append('m');
+			}
 
 			foreach (var cl in CharacterClassLevels)
 			{

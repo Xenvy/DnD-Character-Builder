@@ -407,6 +407,18 @@ public static class CharacterSheetHelpers
 					values = new List<string>();
 					value = "";
 					break;
+				case 'w':
+					characterSheet.EquippedWeapons[0] = await characterSheetData.GetWeapon(int.Parse(value));
+					value = "";
+					break;
+				case 'v':
+					characterSheet.EquippedWeapons[1] = await characterSheetData.GetWeapon(int.Parse(value));
+					value = "";
+					break;
+				case 'm':
+					characterSheet.EquippedArmor = await characterSheetData.GetArmor(int.Parse(value));
+					value = "";
+					break;
 				case 'c':
 					CharacterClassLevel classLevel = await characterSheetData.GetClassLevel(int.Parse(value));
 					foreach (var s in spells)
