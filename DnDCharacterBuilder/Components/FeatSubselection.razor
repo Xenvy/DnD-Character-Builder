@@ -3,33 +3,37 @@
 
 <div class="autocomplete">
 	<div class="option-selection">
-		<!-- Autocomplete-style selection of character's spells -->
-		<input type="text"
-			   id="featSelection"
-			   placeholder="Select a feat..."
-			   class="form-control filter"
-			   aria-label="Search box"
-			   @bind-value="featSearchText"
-			   @oninput="((txt) => OnFeatSearchInput((string)txt.Value))"
-			   @onfocusin="(_ => showFeatSelect = !showFeatSelect)"
-			   @onfocusout="(_ => OnFeatSelection())" />
-		<div class="option-list">
-			<ul name="featSelectionList" class="options @(showFeatSelect ? "" : "hide")">
-				@if (feats?.Count > 0)
-				{
-					@foreach (var f in feats)
+		<button class="btn btn-outline-dark" @onclick="(_ => showFeatSelect = !showFeatSelect)">Select a feat</button>
+		@if (showFeatSelect)
+		{
+			<!-- Autocomplete-style selection of character's spells -->
+			<input type="text"
+				   id="featSelection"
+				   placeholder="Search..."
+				   class="form-control filter"
+				   aria-label="Search box"
+				   @bind-value="featSearchText"
+				   @oninput="((txt) => OnFeatSearchInput((string)txt.Value))"
+				   @onfocusin="(_ => showFeatSelect = !showFeatSelect)"
+				   @onfocusout="(_ => OnFeatSelection())" />
+			<div class="option-list">
+				<ul name="featSelectionList" class="options">
+					@if (feats?.Count > 0)
 					{
-						<li class="option" @onclick="(_ => AddFeat(f))">
-							<span class="option-text">@f.Name</span>
-						</li>
+						@foreach (var f in feats)
+						{
+							<li class="option" @onclick="(_ => AddFeat(f))">
+								<span class="option-text">@f.Name</span>
+							</li>
+						}
 					}
-				}
-				else
-				{
-					<li class="disabled option">No results</li>
-				}
-			</ul>
-		</div>
+					else
+					{
+						<li class="disabled option">No results</li>
+					}
+				</ul>
+			</div>
+		}
 	</div>
 </div>
 

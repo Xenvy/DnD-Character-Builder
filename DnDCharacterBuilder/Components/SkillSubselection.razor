@@ -3,33 +3,37 @@
 
 <div class="autocomplete">
 	<div class="option-selection">
-		<!-- Autocomplete-style selection of character's spells -->
-		<input type="text"
-			   id="skillSelection"
-			   placeholder="Select a skill..."
-			   class="form-control filter"
-			   aria-label="Search box"
-			   @bind-value="skillSearchText"
-			   @oninput="((txt) => OnSkillSearchInput((string)txt.Value))"
-			   @onfocusin="(_ => showSkillSelect = !showSkillSelect)"
-			   @onfocusout="(_ => OnSkillSelection())" />
-		<div class="option-list">
-			<ul name="skillSelectionList" class="options @(showSkillSelect ? "" : "hide")">
-				@if (skills?.Count > 0)
-				{
-					@foreach (var s in skills)
+		<button class="btn btn-outline-dark" @onclick="(_ => showSkillSelect = !showSkillSelect)">Select a skill</button>
+		@if (showSkillSelect)
+		{
+			<!-- Autocomplete-style selection of character's spells -->
+			<input type="text"
+				   id="skillSelection"
+				   placeholder="Select a skill..."
+				   class="form-control filter"
+				   aria-label="Search box"
+				   @bind-value="skillSearchText"
+				   @oninput="((txt) => OnSkillSearchInput((string)txt.Value))"
+				   @onfocusin="(_ => showSkillSelect = !showSkillSelect)"
+				   @onfocusout="(_ => OnSkillSelection())" />
+			<div class="option-list">
+				<ul name="skillSelectionList" class="options">
+					@if (skills?.Count > 0)
 					{
-						<li class="option" @onclick="(_ => AddSkill(s))">
-							<span class="option-text">@s.Name</span>
-						</li>
+						@foreach (var s in skills)
+						{
+							<li class="option" @onclick="(_ => AddSkill(s))">
+								<span class="option-text">@s.Name</span>
+							</li>
+						}
 					}
-				}
-				else
-				{
-					<li class="disabled option">No results</li>
-				}
-			</ul>
-		</div>
+					else
+					{
+						<li class="disabled option">No results</li>
+					}
+				</ul>
+			</div>
+		}
 	</div>
 </div>
 

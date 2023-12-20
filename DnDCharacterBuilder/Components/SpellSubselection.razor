@@ -3,33 +3,37 @@
 
 <div class="autocomplete">
 	<div class="option-selection">
-		<!-- Autocomplete-style selection of character's spells -->
-		<input type="text"
-			   id="spellSelection"
-			   placeholder="Select a spell..."
-			   class="form-control filter"
-			   aria-label="Search box"
-			   @bind-value="spellSearchText"
-			   @oninput="((txt) => OnSpellSearchInput((string)txt.Value))"
-			   @onfocusin="(_ => showSpellSelect = !showSpellSelect)"
-			   @onfocusout="(_ => OnSpellSelection())" />
-		<div class="option-list">
-			<ul name="spellSelectionList" class="options @(showSpellSelect ? "" : "hide")">
-				@if (spells?.Count > 0)
-				{
-					@foreach (var s in spells)
+		<button class="btn btn-outline-dark" @onclick="(_ => showSpellSelect = !showSpellSelect)">Select a spell</button>
+		@if (showSpellSelect)
+		{
+			<!-- Autocomplete-style selection of character's spells -->
+			<input type="text"
+				   id="spellSelection"
+				   placeholder="Select a spell..."
+				   class="form-control filter"
+				   aria-label="Search box"
+				   @bind-value="spellSearchText"
+				   @oninput="((txt) => OnSpellSearchInput((string)txt.Value))"
+				   @onfocusin="(_ => showSpellSelect = !showSpellSelect)"
+				   @onfocusout="(_ => OnSpellSelection())" />
+			<div class="option-list">
+				<ul name="spellSelectionList" class="options">
+					@if (spells?.Count > 0)
 					{
-						<li class="option" @onclick="(_ => AddSpell(s))">
-							<span class="option-text">@s.Name</span>
-						</li>
+						@foreach (var s in spells)
+						{
+							<li class="option" @onclick="(_ => AddSpell(s))">
+								<span class="option-text">@s.Name</span>
+							</li>
+						}
 					}
-				}
-				else
-				{
-					<li class="disabled option">No results</li>
-				}
-			</ul>
-		</div>
+					else
+					{
+						<li class="disabled option">No results</li>
+					}
+				</ul>
+			</div>
+		}
 	</div>
 </div>
 
