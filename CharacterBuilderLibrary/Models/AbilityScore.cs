@@ -6,14 +6,11 @@ namespace CharacterBuilderLibrary.Models;
 /// </summary>
 public class AbilityScore
 {
-    public AbilityScore(Ability ability)
+    public AbilityScore()
     {
-        Ability = ability;
         Value = 8;
         Bonus = 0;
     }
-
-    public Ability Ability { get; set; }
 
 	public int Value { get; set; }
 

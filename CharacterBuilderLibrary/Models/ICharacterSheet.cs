@@ -4,7 +4,7 @@ namespace CharacterBuilderLibrary.Models
 	public interface ICharacterSheet
 	{
 		int AbilityScorePoints { get; set; }
-		List<AbilityScore> AbilityScores { get; set; }
+		Dictionary<Ability, AbilityScore> AbilityScores { get; set; }
 		List<string> ArmorProficiencies { get; set; }
 		Background? Background { get; set; }
 		List<Spell> BonusSpells { get; set; }

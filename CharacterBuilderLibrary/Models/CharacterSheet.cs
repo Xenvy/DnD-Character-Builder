@@ -12,14 +12,14 @@ public class CharacterSheet : ICharacterSheet
 	public CharacterSheet()
 	{
 		//Create character's ability scores table
-		AbilityScores = new List<AbilityScore>
+		AbilityScores = new Dictionary<Ability, AbilityScore>
 		{
-			{ new AbilityScore(Ability.Strength) },
-			{ new AbilityScore(Ability.Dexterity) },
-			{ new AbilityScore(Ability.Constitution) },
-			{ new AbilityScore(Ability.Intelligence) },
-			{ new AbilityScore(Ability.Wisdom) },
-			{ new AbilityScore(Ability.Charisma) }
+			{ Ability.Strength, new AbilityScore() },
+			{ Ability.Dexterity , new AbilityScore() },
+			{ Ability.Constitution , new AbilityScore() },
+			{ Ability.Intelligence, new AbilityScore() },
+			{ Ability.Wisdom , new AbilityScore() },
+			{ Ability.Charisma , new AbilityScore() }
 		};
 	}
 
@@ -74,7 +74,7 @@ public class CharacterSheet : ICharacterSheet
 	/// <summary>
 	/// A table of character's ability scores.
 	/// </summary>
-	public List<AbilityScore> AbilityScores { get; set; }
+	public Dictionary<Ability, AbilityScore> AbilityScores { get; set; }
 
 	/// <summary>
 	/// A list of character's saving throw proficiencies.
@@ -149,7 +149,7 @@ public class CharacterSheet : ICharacterSheet
 			var bonusHP = SpecialFeatures.Find(x => x.Name == "bonusHP");
 			foreach (var cl in CharacterClassLevels)
 			{
-				hitPoints += cl.HitDie / 2 + 1 + AbilityScores[2].Modifier;
+				hitPoints += cl.HitDie / 2 + 1 + AbilityScores[Ability.Constitution].Modifier;
 				if (bonusHP != null)
 				{
 					hitPoints += int.Parse(bonusHP.Parameters);
@@ -204,7 +204,7 @@ public class CharacterSheet : ICharacterSheet
 			
 			foreach (var a in AbilityScores)
 			{
-				refId.Append(a.Value - 8).Append('-');
+				refId.Append(a.Value.Value - 8).Append('-');
 			}
 			refId.Append('a');
 

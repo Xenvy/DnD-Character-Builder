@@ -115,9 +115,9 @@
 			@foreach (var a in characterSheet.AbilityScores)
 			{
 				<div class="ability-score-entry">
-					@($"{a.Ability.ToString()}: {a.Value} [{a.Modifier}]")
-					<button class="btn btn-light as-subtract-btn @(a.Value > 8 ? "" : "disabled disabled-btn")" @onclick="(_ => DecreaseAbilityScore(a))">-</button>
-					<button class="btn btn-light as-add-btn @(a.CanIncrease && characterSheet.AbilityScorePoints >= a.IncreaseCost ? "" : "disabled disabled-btn")" @onclick="(_ => IncreaseAbilityScore(a))">+</button>
+					@($"{a.Key.ToString()}: {a.Value.Value} [{a.Value.Modifier}]")
+					<button class="btn btn-light as-subtract-btn @(a.Value.Value > 8 ? "" : "disabled disabled-btn")" @onclick="(_ => DecreaseAbilityScore(a.Value))">-</button>
+					<button class="btn btn-light as-add-btn @(a.Value.CanIncrease && characterSheet.AbilityScorePoints >= a.Value.IncreaseCost ? "" : "disabled disabled-btn")" @onclick="(_ => IncreaseAbilityScore(a.Value))">+</button>
 				</div>
 			}
 		</div>				
@@ -188,9 +188,9 @@
 						<tr>
 							<td>@s.Name</td>
 							<td>@s.AssociatedAbilityScore</td>
-							<td>@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier</td>
+							<td>@characterSheet.AbilityScores[s.AssociatedAbilityScore].Modifier</td>
 							<td>@(characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) == null ? 0 : characterSheet.SkillExpertise.Find(x => x.Name == s.Name) == null ? characterSheet.ProficiencyBonus : 2*characterSheet.ProficiencyBonus)</td>
-							<td>@(@characterSheet.AbilityScores.Find(x => x.Ability == s.AssociatedAbilityScore).Modifier + (characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) == null ? 0 : characterSheet.SkillExpertise.Find(x => x.Name == s.Name) == null ? characterSheet.ProficiencyBonus : 2 * characterSheet.ProficiencyBonus))</td>
+							<td>@(@characterSheet.AbilityScores[s.AssociatedAbilityScore].Modifier + (characterSheet.SkillProficiencies.Find(x => x.Name == s.Name) == null ? 0 : characterSheet.SkillExpertise.Find(x => x.Name == s.Name) == null ? characterSheet.ProficiencyBonus : 2 * characterSheet.ProficiencyBonus))</td>
 						</tr>		
 					}
 				</tbody>		
@@ -211,10 +211,10 @@
 					@foreach (var a in characterSheet.AbilityScores)
 					{
 						<tr>
-							<td>@a.Ability</td>
-							<td>@a.Modifier</td>
-							<td>@(characterSheet.SavingThrowProficiencies.FindIndex(x => x == a.Ability) != -1 ? characterSheet.ProficiencyBonus : 0)</td>
-							<td>@(a.Modifier + (characterSheet.SavingThrowProficiencies.FindIndex(x => x == a.Ability) != -1 ? characterSheet.ProficiencyBonus : 0))</td>
+							<td>@a.Key.ToString()</td>
+							<td>@a.Value.Modifier</td>
+							<td>@(characterSheet.SavingThrowProficiencies.FindIndex(x => x == a.Key) != -1 ? characterSheet.ProficiencyBonus : 0)</td>
+							<td>@(a.Value.Modifier + (characterSheet.SavingThrowProficiencies.FindIndex(x => x == a.Key) != -1 ? characterSheet.ProficiencyBonus : 0))</td>
 						</tr>
 					}
 				</tbody>
@@ -393,7 +393,7 @@
 				</div>
 			</div>
 			<div>
-				<p>Current Armor Class: @(characterSheet.EquippedArmor.Name is null ? 10 : characterSheet.EquippedArmor.ArmorClass) base + @(characterSheet.AbilityScores[1].Modifier > characterSheet.EquippedArmor.MaxDexBonus ? characterSheet.EquippedArmor.MaxDexBonus : characterSheet.AbilityScores[1].Modifier) dexterity bonus</p>
+				<p>Current Armor Class: @(characterSheet.EquippedArmor.Name is null ? 10 : characterSheet.EquippedArmor.ArmorClass) base + @(characterSheet.AbilityScores[CharacterBuilderLibrary.Ability.Dexterity].Modifier > characterSheet.EquippedArmor.MaxDexBonus ? characterSheet.EquippedArmor.MaxDexBonus : characterSheet.AbilityScores[CharacterBuilderLibrary.Ability.Dexterity].Modifier) dexterity bonus</p>
 			</div>
 		</div>
 	</div>
@@ -1129,6 +1129,7 @@
 		characterSheet.AbilityScorePoints -= abilityScore.IncreaseCost;
 		abilityScore.Value++;
 
+		await characterSheet.UpdateHitPoints();
 		await SaveSessionData();
 	}
 
@@ -1142,6 +1143,7 @@
 		abilityScore.Value--;
 		characterSheet.AbilityScorePoints += abilityScore.IncreaseCost;
 
+		await characterSheet.UpdateHitPoints();
 		await SaveSessionData();
 	}
 

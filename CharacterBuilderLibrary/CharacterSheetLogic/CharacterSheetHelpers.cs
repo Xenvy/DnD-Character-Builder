@@ -295,7 +295,7 @@ public static class CharacterSheetHelpers
 					}
 					break;
 				case "abilityImprovement":
-					characterSheet.AbilityScores.Find(x => x.Ability == tagEntry.Arguments[0].ToAbility()).Value += int.Parse(tagEntry.Arguments[1]);
+					characterSheet.AbilityScores[tagEntry.Arguments[0].ToAbility()].Value += int.Parse(tagEntry.Arguments[1]);
 					break;
 				case "buffer":
 					break;
@@ -370,20 +370,28 @@ public static class CharacterSheetHelpers
 		// TODO: Exception handling
 
 		string value = "";
-		List<string> values = new List<string>();
+		List<int> values = new List<int>();
 		List<string> spells = new List<string>();
-		Dictionary<string, List<string>> features = new();
+		Dictionary<string, List<int>> features = new();
 
 		for (int i = 0; i < refId.Length; i++)
 		{
 			switch (refId[i]) 
 			{
 				case 'a':
-					for (int j = 0; j < values.Count; j++)
-					{
-						characterSheet.AbilityScores[j].Value += int.Parse(values[j]);
-					}
-					values = new List<string>();
+					characterSheet.AbilityScores[Ability.Strength].Value += values[0];
+					characterSheet.AbilityScorePoints -= values[0] switch { 6 => 7, 7 => 9, _ => values[0] };
+					characterSheet.AbilityScores[Ability.Dexterity].Value += values[1];
+					characterSheet.AbilityScorePoints -= values[1] switch { 6 => 7, 7 => 9, _ => values[1] };
+					characterSheet.AbilityScores[Ability.Constitution].Value += values[2];
+					characterSheet.AbilityScorePoints -= values[2] switch { 6 => 7, 7 => 9, _ => values[2] };
+					characterSheet.AbilityScores[Ability.Intelligence].Value += values[3];
+					characterSheet.AbilityScorePoints -= values[3] switch { 6 => 7, 7 => 9, _ => values[3] };
+					characterSheet.AbilityScores[Ability.Wisdom].Value += values[4];
+					characterSheet.AbilityScorePoints -= values[4] switch { 6 => 7, 7 => 9, _ => values[4] };
+					characterSheet.AbilityScores[Ability.Charisma].Value += values[5];
+					characterSheet.AbilityScorePoints -= values[5] switch { 6 => 7, 7 => 9, _ => values[5] };
+					values = new List<int>();
 					value = "";
 					break;
 				case 'b':
@@ -405,7 +413,7 @@ public static class CharacterSheetHelpers
 					break;
 				case 'f':
 					features.Add(value, values);
-					values = new List<string>();
+					values = new List<int>();
 					value = "";
 					break;
 				case 'w':
@@ -442,7 +450,7 @@ public static class CharacterSheetHelpers
 						var parentFeature = classLevel.ClassLevelFeatures.Find(x => x.Id == int.Parse(f.Key));
 						foreach (var sf in f.Value)
 						{
-							var selectedFeature = await characterSheetData.GetClassLevelFeature(int.Parse(sf));
+							var selectedFeature = await characterSheetData.GetClassLevelFeature(sf);
 							classLevel.ClassLevelFeatures.Add(selectedFeature);
 							if (selectedFeature.SubfeatureSelections == -1)
 							{
@@ -461,7 +469,7 @@ public static class CharacterSheetHelpers
 					value = "";
 					break;
 				case '-':
-					values.Add(value);
+					values.Add(int.Parse(value));
 					value = "";
 					break;
 				default:
@@ -471,6 +479,8 @@ public static class CharacterSheetHelpers
 		}
 
 		characterSheet.BuildReferenceId = refId;
+		await characterSheet.UpdateHitPoints();
+		await characterSheet.UpdateSpeed();
 	}
 
 	public static Ability ToAbility(this string tag)
