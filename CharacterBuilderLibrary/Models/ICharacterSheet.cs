@@ -24,6 +24,7 @@ namespace CharacterBuilderLibrary.Models
 		List<string> DisplayedWeaponProficiencies { get; set; }
 		List<SpecialFeature> SpecialFeatures { get; set; }
 		string? BuildReferenceId { get; set; }
+		Task UpdateHitPoints();
 		Task UpdateSpeed();
 		Task UpdateBuildRefId();
 	}

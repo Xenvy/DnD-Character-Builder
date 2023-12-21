@@ -1032,6 +1032,7 @@
 
 		showClassLevelSelect = false;
 
+		await characterSheet.UpdateHitPoints();
 		await characterSheet.UpdateSpeed();
 		await SaveSessionData();
 		await OnClassLevelSearchInput("");
@@ -1045,6 +1046,9 @@
 	private async Task RemoveClassLevel(CharacterClassLevel classLevel)
 	{
 		characterSheet.CharacterClassLevels.RemoveAll(x => x.BaseClass == classLevel.BaseClass && x.Level >= classLevel.Level);
+
+		await characterSheet.UpdateHitPoints();
+		await characterSheet.UpdateSpeed();
 		await FilterClassLevels();
 		await SaveSessionData();
 	}

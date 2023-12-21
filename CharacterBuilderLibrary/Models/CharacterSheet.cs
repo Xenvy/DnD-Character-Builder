@@ -141,6 +141,24 @@ public class CharacterSheet : ICharacterSheet
 	/// </summary>
 	public string? BuildReferenceId { get; set; }
 
+	public async Task UpdateHitPoints()
+	{
+		await Task.Run(() =>
+		{
+			int hitPoints = 0;
+			var bonusHP = SpecialFeatures.Find(x => x.Name == "bonusHP");
+			foreach (var cl in CharacterClassLevels)
+			{
+				hitPoints += cl.HitDie / 2 + 1 + AbilityScores[2].Modifier;
+				if (bonusHP != null)
+				{
+					hitPoints += int.Parse(bonusHP.Parameters);
+				}
+			}
+			HitPoints = hitPoints;
+		});
+	}
+
 	public async Task UpdateSpeed()
 	{
 		await Task.Run(() =>

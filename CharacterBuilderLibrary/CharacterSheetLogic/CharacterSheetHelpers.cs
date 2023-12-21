@@ -348,6 +348,7 @@ public static class CharacterSheetHelpers
 					break;
 				case "bonusHP":
 					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag, tagEntry.Arguments[0]));
+					await characterSheet.UpdateHitPoints();
 					break;
 				case "draconicResilience":
 					characterSheet.SpecialFeatures.Add(new SpecialFeature(tagEntry.Tag));
