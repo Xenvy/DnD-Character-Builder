@@ -141,6 +141,10 @@ public class CharacterSheet : ICharacterSheet
 	/// </summary>
 	public string? BuildReferenceId { get; set; }
 
+	/// <summary>
+	/// Updates character's hit points value based on selected class levels and additional obtained features.
+	/// </summary>
+	/// <returns></returns>
 	public async Task UpdateHitPoints()
 	{
 		await Task.Run(() =>
@@ -159,6 +163,10 @@ public class CharacterSheet : ICharacterSheet
 		});
 	}
 
+	/// <summary>
+	/// Updates character's speed value based on selected race and additional obtained features.
+	/// </summary>
+	/// <returns></returns>
 	public async Task UpdateSpeed()
 	{
 		await Task.Run(() =>
@@ -187,6 +195,10 @@ public class CharacterSheet : ICharacterSheet
 		});
 	}
 
+	/// <summary>
+	/// Updates the reference ID of the character build, storing information about all selections made by the user.
+	/// </summary>
+	/// <returns></returns>
 	public async Task UpdateBuildRefId()
 	{
 		await Task.Run(() =>

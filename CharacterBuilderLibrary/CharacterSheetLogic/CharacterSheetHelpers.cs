@@ -365,6 +365,13 @@ public static class CharacterSheetHelpers
 		}
 	}
 
+	/// <summary>
+	/// Loads the character sheet state specified by the provided reference ID.
+	/// </summary>
+	/// <param name="characterSheet"></param>
+	/// <param name="refId"></param>
+	/// <param name="characterSheetData"></param>
+	/// <returns></returns>
 	public static async Task LoadBuildFromRefId(this ICharacterSheet characterSheet, string refId, ICharacterSheetData characterSheetData)
 	{
 		// TODO: Exception handling
@@ -483,6 +490,11 @@ public static class CharacterSheetHelpers
 		await characterSheet.UpdateSpeed();
 	}
 
+	/// <summary>
+	/// Converts a short string form of character ability used in the database to the corresponding enum.
+	/// </summary>
+	/// <param name="tag"></param>
+	/// <returns></returns>
 	public static Ability ToAbility(this string tag)
     {
         switch(tag) 
