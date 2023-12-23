@@ -42,4 +42,26 @@ public class RacialFeature
 	/// Additional information used to update the character's sheet (ability score increase, proficiencies, etc.).
 	/// </summary>
 	public string? Tags { get; set; }
+
+	/// <summary>
+	/// Tag data formatted in a way to be handled by tag parser.
+	/// </summary>
+	public List<TagEntry> TagEntries { get; set; } = new();
+
+	public async Task FormatTags()
+	{
+		await Task.Run(() =>
+		{
+			if (!string.IsNullOrEmpty(Tags))
+			{
+				foreach (var tag in Tags.Split('|'))
+				{
+					var tagArgs = tag.Split(',').ToList();
+					string tagHeader = tagArgs[0];
+					tagArgs.RemoveAt(0);
+					TagEntries.Add(new TagEntry(tagHeader, tagArgs));
+				}
+			}
+		});
+	}
 }

@@ -295,7 +295,7 @@ public static class CharacterSheetHelpers
 					}
 					break;
 				case "abilityImprovement":
-					characterSheet.AbilityScores[tagEntry.Arguments[0].ToAbility()].Value += int.Parse(tagEntry.Arguments[1]);
+					characterSheet.AbilityScores[tagEntry.Arguments[0].ToAbility()].Bonus += int.Parse(tagEntry.Arguments[1]);
 					break;
 				case "buffer":
 					break;

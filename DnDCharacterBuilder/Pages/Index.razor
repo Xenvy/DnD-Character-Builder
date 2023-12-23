@@ -115,7 +115,7 @@
 			@foreach (var a in characterSheet.AbilityScores)
 			{
 				<div class="ability-score-entry">
-					@($"{a.Key.ToString()}: {a.Value.Value} [{a.Value.Modifier}]")
+					@($"{a.Key.ToString()}: {a.Value.Value + a.Value.Bonus} [{a.Value.Modifier}]")
 					<button class="btn btn-light as-subtract-btn @(a.Value.Value > 8 ? "" : "disabled disabled-btn")" @onclick="(_ => DecreaseAbilityScore(a.Value))">-</button>
 					<button class="btn btn-light as-add-btn @(a.Value.CanIncrease && characterSheet.AbilityScorePoints >= a.Value.IncreaseCost ? "" : "disabled disabled-btn")" @onclick="(_ => IncreaseAbilityScore(a.Value))">+</button>
 				</div>
@@ -798,6 +798,14 @@
 	private async Task SelectRace(Race race)
 	{
 		racialFeatures = await characterSheetData.GetRacialFeatures(race);
+		foreach (var rf in racialFeatures)
+		{
+			await rf.FormatTags();
+			foreach (var t in rf.TagEntries)
+			{
+				await characterSheet.ParseTag(characterSheetData, t);
+			}
+		}
 		race.RaceFeatures = racialFeatures;
 
 		characterSheet.Race = race;
@@ -806,6 +814,7 @@
 		raceSearchText = "";
 		await FilterRaces();
 
+		await characterSheet.UpdateHitPoints();
 		await characterSheet.UpdateSpeed();
 		await SaveSessionData();
 	}
