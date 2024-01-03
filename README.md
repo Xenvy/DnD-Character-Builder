@@ -6,3 +6,5 @@ DnD Character Builder has been written with ASP.NET Blazor Server (.NET 6) and u
 
 ### Description
 DnD Character Builder is a tool for planning out, organizing and maintaining Dungeons & Dragons character sheets. This includes tracking character's ability scores and skills, race, background, level progression, equipment, and more.
+
+Short demo video: https://drive.google.com/file/d/11njgdwY4oXvZ1i-eqGrUt-uUohXqJwG6/view
